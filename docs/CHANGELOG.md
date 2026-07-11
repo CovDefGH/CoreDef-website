@@ -6,6 +6,7 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 ## [Unreleased]
 
 ### Decided (2026-07-12 — resolves TECHNICAL-DESIGN.md §10 Open Decisions)
+
 - **Theme:** light ("High-Performance Engineering") confirmed by stakeholders; matches provided logo.
 - **Icon system:** Lucide React (Material Symbols retired).
 - **"Secure Login":** relabeled to "Request Access," routes to `/contact`.
@@ -14,6 +15,7 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 - **Nav label:** "About" chosen over prototype's "Defense Tech" (UX-NOTES §9 Q1) — revisit if stakeholders object.
 
 ### Phase 1 (complete)
+
 - Next.js 15 App Router scaffold (`src/`), TypeScript strict, Tailwind v4.
 - Single design-token source: `src/styles/tokens.css` (Tailwind v4 `@theme` replaces the
   planned `tailwind.config.ts` + generated-CSS pair — one file serves both roles).
