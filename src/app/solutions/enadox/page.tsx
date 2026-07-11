@@ -87,7 +87,7 @@ export default function EnadoxPage() {
             <p className="text-ink mt-2 flex items-center gap-2.5 text-3xl font-bold">
               <span
                 aria-hidden
-                className="bg-accent inline-block size-2.5 animate-pulse rounded-full"
+                className="bg-accent inline-block size-2.5 animate-pulse rounded-full motion-reduce:animate-none"
               />
               Optimal
             </p>

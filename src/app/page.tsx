@@ -60,7 +60,7 @@ export default function Home() {
           <p className="text-primary flex items-center gap-2 text-sm font-medium">
             <span
               aria-hidden
-              className="bg-accent inline-block size-1.5 animate-pulse rounded-full"
+              className="bg-accent inline-block size-1.5 animate-pulse rounded-full motion-reduce:animate-none"
             />
             System Status: Optimal
           </p>
