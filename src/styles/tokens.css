@@ -1,0 +1,25 @@
+/*
+ * Design tokens — single source of truth (TECHNICAL-DESIGN.md §4).
+ * "High-Performance Engineering" light theme per UX-NOTES.md §1/§3.
+ * Tailwind v4 @theme: each token is emitted as a CSS custom property AND a
+ * Tailwind utility (bg-primary, text-ink, border-line, ...), replacing the
+ * tailwind.config.ts + tokens.css pair described in the doc with one file.
+ */
+@theme {
+  /* Color — UX-NOTES.md §3 */
+  --color-primary: #0052ff; /* Electric Blue — primary actions, critical status */
+  --color-accent: #00d1ff; /* Sentinel Cyan — data viz, highlights, interactive states */
+  --color-ink: #0f172a; /* Deep Slate — high-contrast text and structure */
+  --color-ink-muted: #475569; /* secondary text, ≥4.5:1 on white and surface */
+  --color-surface: #f8fafc; /* Cool Slate — surface layering, background depth */
+  --color-line: #e2e8f0; /* 1px outlines (elevation = outline, not shadow) */
+
+  /* Shape — sharp (0-radius) everywhere except status pips/avatars */
+  --radius-none: 0;
+}
+
+/* Typography — Space Grotesk across all roles. `inline` is required so the
+   next/font variable (set on <body>) resolves at the element, not :root. */
+@theme inline {
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+}
