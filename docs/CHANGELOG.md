@@ -5,6 +5,25 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Decided (2026-07-12 — resolves TECHNICAL-DESIGN.md §10 Open Decisions)
+- **Theme:** light ("High-Performance Engineering") confirmed by stakeholders; matches provided logo.
+- **Icon system:** Lucide React (Material Symbols retired).
+- **"Secure Login":** relabeled to "Request Access," routes to `/contact`.
+- **Live data panels:** ship as clearly-illustrative UI (per PRD §4); real telemetry deferred to Phase 6.
+- **Email/CRM provider:** still open — must be chosen before Phase 3 contact-form backend (Resend recommended).
+- **Nav label:** "About" chosen over prototype's "Defense Tech" (UX-NOTES §9 Q1) — revisit if stakeholders object.
+
+### Phase 1 (complete)
+- Next.js 15 App Router scaffold (`src/`), TypeScript strict, Tailwind v4.
+- Single design-token source: `src/styles/tokens.css` (Tailwind v4 `@theme` replaces the
+  planned `tailwind.config.ts` + generated-CSS pair — one file serves both roles).
+- Shared layout shell: `NavBar` (active state + mobile collapse, FR-NAV-1..4) and one
+  standardized `Footer` (FR-FOOT-1/2; §6.8 discrepancy resolved before first use).
+- Route stubs for the full sitemap with unique per-page metadata (NFR-SEO-2).
+- ESLint + Prettier (+tailwindcss plugin) + GitHub Actions CI; deployed to Vercel.
+- Note: `DESIGN.md` and the HTML prototypes referenced by this doc set were not present in
+  the repo; tokens were reconstructed from UX-NOTES.md §3 with stakeholder sign-off.
+
 ### Added
 
 - Initial documentation set: PRD, SRS, Technical Design, User Stories, UX Notes, Test Plan, Roadmap.
