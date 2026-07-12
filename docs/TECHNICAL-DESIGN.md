@@ -30,17 +30,18 @@ Modules             │
 
 ## 2. Tech Stack
 
-| Layer              | Choice                 | Notes                                                                                                                      |
-| ------------------ | ---------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Framework          | Next.js 15, App Router | SSG for marketing pages, RSC by default                                                                                    |
-| Language           | TypeScript             | strict mode on                                                                                                             |
-| Styling            | Tailwind CSS           | tokens sourced from `DESIGN.md` design system                                                                              |
-| Components         | shadcn/ui              | headless primitives, styled to design tokens, not default shadcn theme                                                     |
-| Animation          | Framer Motion          | scroll-reveal, fade, slide only — no heavy/looping animation                                                               |
-| Forms              | React Hook Form + Zod  | client validation; server-side re-validation on submit                                                                     |
-| Icons              | Lucide React           | consistent with Material Symbols used in current prototypes — **decide one icon system before build** (see Open Decisions) |
-| Deployment         | Vercel                 | preview deployments per PR                                                                                                 |
-| Linting/Formatting | ESLint + Prettier      | enforced in CI                                                                                                             |
+| Layer              | Choice                 | Notes                                                                                                                                                                           |
+| ------------------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Framework          | Next.js 15, App Router | SSG for marketing pages, RSC by default                                                                                                                                         |
+| Language           | TypeScript             | strict mode on                                                                                                                                                                  |
+| Styling            | Tailwind CSS           | tokens sourced from `DESIGN.md` design system                                                                                                                                   |
+| Components         | shadcn/ui              | headless primitives, styled to design tokens, not default shadcn theme                                                                                                          |
+| Animation          | Native CSS             | scroll-driven reveals (`animation-timeline: view()`) + nav fade (`app/template.tsx`); reduced-motion-gated, visible without JS. Framer Motion/motion.dev NOT adopted (Phase 2b) |
+| Fonts              | Space Grotesk + Inter  | display + body via `next/font`; image/font sourcing policy in `docs/ASSETS.md`                                                                                                  |
+| Forms              | React Hook Form + Zod  | client validation; server-side re-validation on submit                                                                                                                          |
+| Icons              | Lucide React           | consistent with Material Symbols used in current prototypes — **decide one icon system before build** (see Open Decisions)                                                      |
+| Deployment         | Vercel                 | preview deployments per PR                                                                                                                                                      |
+| Linting/Formatting | ESLint + Prettier      | enforced in CI                                                                                                                                                                  |
 
 ## 3. Folder Structure
 

@@ -14,6 +14,38 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 - **Email/CRM provider:** still open — must be chosen before Phase 3 contact-form backend (Resend recommended).
 - **Nav label:** "About" chosen over prototype's "Defense Tech" (UX-NOTES §9 Q1) — revisit if stakeholders object.
 
+### Phase 2b — Premium UX pass (client `/goal` request, 2026-07-12)
+
+- **Typography:** two-family system — Space Grotesk (display) + Inter (body), both via
+  `next/font` (self-hosted, no external request). Headings pick up the display family from one
+  `globals.css` rule; body defaults to Inter. Tokens: `--font-display` / `--font-sans`.
+- **Hero image:** replaced the prototype terminal panel on Home with an owned, optimized image
+  (`public/hero-infrastructure.jpg`, Unsplash) served via `next/image`. **Deviation from FR-HOME-2**
+  (which specified a live-style terminal panel) — done on explicit client direction. The
+  "System Status: Optimal" credibility chip is retained.
+- **Image sourcing policy:** new `docs/ASSETS.md` — royalty-free only (Unsplash/Pexels/Pixabay),
+  downloaded into `public/` and served through `next/image`, never runtime-hotlinked. Provenance
+  table maintained there.
+- **Contact section** (`/contact`): live Google Maps place embed (client-provided `cid`,
+  `output=embed` → iframe-safe, no Maps API key, NFR-SEC-2), email card (`info@covertdefenses.com`),
+  ASTeCC operations address, and a careers cross-link. The full validated "Transmission Details"
+  form (FR-CONTACT) still waits on the email/CRM provider decision — Phase 3.
+- **Careers section** (`/careers`): recruitment hero, Engineering Impact cards (FR-CAR-2, incl. the
+  `< 5ms` quantified claim), "Apply Now" → client Google Form, "View All Open Roles" →
+  covertdefenses.com/careers. Data-driven job-listing model (FR-CAR-3/4) remains Phase 3.
+- **Motion:** native CSS only — scroll-driven reveals (`animation-timeline: view()`) and a
+  navigation fade (`app/template.tsx`), both gated on `prefers-reduced-motion: no-preference` and
+  visible-by-default (SRS §2.3, no-JS safe). Chose this over adding the `motion`/motion.dev runtime:
+  zero bundle, keeps the <150 KB budget, more accessible. Can swap in motion.dev later if richer
+  choreography is wanted. The other suggested libraries (reactbits, aceternity, skiper-ui,
+  shadcnblocks, unlumen) were treated as inspiration only — no dependencies added.
+- **a11y:** `prefers-reduced-motion` respected on all status-pulse indicators (`motion-reduce`).
+  Resolves Copilot review on PR #1.
+- **⚠ Brand/domain mismatch (needs a stakeholder call):** the site brands as "Core Defenses" but
+  the client-provided contact email and careers links are `@covertdefenses.com` /
+  covertdefenses.com. Data used as given; confirm which brand name is canonical before launch.
+- Retired the now-unused `TerminalPanel` component.
+
 ### Phase 1 (complete)
 
 - Next.js 15 App Router scaffold (`src/`), TypeScript strict, Tailwind v4.

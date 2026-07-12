@@ -18,8 +18,12 @@
   --radius-none: 0;
 }
 
-/* Typography — Space Grotesk across all roles. `inline` is required so the
-   next/font variable (set on <body>) resolves at the element, not :root. */
+/* Typography — two-family system: Space Grotesk (display/headings, geometric)
+   + Inter (body, humanist) for contrast per impeccable pairing rules.
+   `inline` is required so next/font variables (set on <body>) resolve at the
+   element, not :root. */
 @theme inline {
-  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }

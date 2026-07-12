@@ -1,17 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ShieldCheck, Timer, Globe2, Atom, Radio } from "lucide-react";
 import { CTALink } from "@/components/ui/CTALink";
-import { TerminalPanel } from "@/components/sections/TerminalPanel";
-
-const TERMINAL_LINES = [
-  "[00:00:01] sentinel.core — link established",
-  "[00:00:02] ingest: 4 telemetry channels nominal",
-  "[00:00:04] edim.margin — uncertainty bands recomputed",
-  "[00:00:05] enadox.mesh — 12/12 nodes reachable",
-  "[00:00:07] integrity check … PASS",
-  "[00:00:09] compliance stream … PASS",
-  "[00:00:11] watch state: OPTIMAL",
-];
 
 // FR-HOME-3 — EDIM featured first per PRD §7 product priority.
 const CAPABILITIES = [
@@ -82,15 +72,27 @@ export default function Home() {
             </CTALink>
           </div>
         </div>
-        <TerminalPanel
-          title="Live Stream"
-          lines={TERMINAL_LINES}
-          ariaSummary="Illustrative operations terminal showing simulated system checks passing with an optimal watch state."
-        />
+        {/* Premium hero image (owned asset, next/image) replaces the prototype
+            terminal panel per client direction — see CHANGELOG. */}
+        <div className="border-line relative aspect-[3/2] overflow-hidden border">
+          <Image
+            src="/hero-infrastructure.jpg"
+            alt="Nuclear power plant cooling towers releasing steam against a blue sky."
+            fill
+            priority
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="object-cover"
+          />
+          <div className="from-ink/70 absolute inset-x-0 bottom-0 bg-gradient-to-t to-transparent p-5">
+            <p className="font-mono text-xs tracking-widest text-white/90 uppercase">
+              Critical infrastructure · Zero compromise
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* Core Capabilities — FR-HOME-3 */}
-      <section className="border-line bg-surface border-y">
+      <section className="reveal border-line bg-surface border-y">
         <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
           <h2 className="text-ink text-3xl font-bold">Core Capabilities</h2>
           <p className="text-ink-muted mt-3 max-w-2xl">
@@ -125,7 +127,7 @@ export default function Home() {
       </section>
 
       {/* Trust row — FR-HOME-4 */}
-      <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
+      <section className="reveal mx-auto max-w-6xl px-4 py-14 md:px-6">
         <ul className="grid gap-8 md:grid-cols-3">
           {TRUST_SIGNALS.map(({ icon: Icon, heading, description }) => (
             <li key={heading} className="flex items-start gap-4">
@@ -144,7 +146,7 @@ export default function Home() {
       </section>
 
       {/* Outbound paths — FR-HOME-5 */}
-      <section className="border-line border-t">
+      <section className="reveal border-line border-t">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6 px-4 py-12 md:px-6">
           <div>
             <h2 className="text-ink text-2xl font-bold">

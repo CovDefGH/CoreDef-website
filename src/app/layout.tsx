@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
@@ -26,7 +32,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
+      <body
+        className={`${spaceGrotesk.variable} ${inter.variable} font-sans antialiased`}
+      >
         <a
           href="#main"
           className="focus:bg-primary sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:text-white"
