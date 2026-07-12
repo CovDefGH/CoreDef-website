@@ -65,9 +65,9 @@ export default function Home() {
           poster={media.heroVideo.poster}
           alt="Nuclear power plant operations footage."
         />
-        {/* Scrim: darkest at bottom-left where the text sits, fading toward the top-right. */}
-        <div className="from-ink/95 via-ink/60 absolute inset-0 bg-gradient-to-t to-transparent" />
-        <div className="from-ink/80 absolute inset-0 bg-gradient-to-r to-transparent md:to-30%" />
+        {/* Scrim: darkest at bottom-left where the text sits, lighter toward the top-right. */}
+        <div className="from-ink/90 absolute inset-0 bg-gradient-to-t to-transparent" />
+        <div className="from-ink/90 absolute inset-0 bg-gradient-to-r to-ink/10" />
 
         <div className="relative mx-auto flex min-h-[560px] max-w-6xl items-end px-4 py-16 md:min-h-[680px] md:px-6 md:py-24">
           <div>

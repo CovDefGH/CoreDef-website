@@ -23,14 +23,14 @@ export function HeroVideo({ src, poster, alt }: HeroVideoProps) {
         fill
         priority
         sizes="100vw"
-        className="object-cover"
+        className="-scale-x-100 object-cover"
       />
     );
   }
 
   return (
     <video
-      className="absolute inset-0 h-full w-full object-cover"
+      className="absolute inset-0 h-full w-full -scale-x-100 object-cover"
       autoPlay
       muted
       loop
