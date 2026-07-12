@@ -18,17 +18,38 @@ Rules:
 
 ## Current assets
 
-| File                             | Subject                          | Source                                      | License          |
-| -------------------------------- | -------------------------------- | ------------------------------------------- | ---------------- |
-| `public/hero-infrastructure.jpg` | Nuclear cooling towers, blue sky | Unsplash (photo-1630142895963-6996ae6b3a5b) | Unsplash License |
-| `public/logo.png`                | Core Defenses shield mark        | Client-provided                             | Owned            |
+All imagery is referenced through the manifest `src/content/media.ts` (semantic keys),
+never by hardcoded path.
+
+| File                             | Subject                          | Source                                                         | License          |
+| -------------------------------- | -------------------------------- | -------------------------------------------------------------- | ---------------- |
+| `public/hero.mp4`                | Abstract data-network hero loop  | Pixabay (video 184489) — transcoded 1080p/12s/muted via ffmpeg | Pixabay License  |
+| `public/hero-poster.jpg`         | Hero video poster frame          | Derived from `hero.mp4`                                        | Pixabay License  |
+| `public/hero-infrastructure.jpg` | Nuclear cooling towers, blue sky | Unsplash (photo-1630142895963-6996ae6b3a5b)                    | Unsplash License |
+| `public/data-center.jpg`         | Data-center network cabling      | Unsplash (photo-1744868562210-fffb7fa882d9)                    | Unsplash License |
+| `public/operations.jpg`          | Operations-center display wall   | Unsplash (photo-1762846700143-4f3a47400986)                    | Unsplash License |
+| `public/comms.jpg`               | Satellite communications dish    | Unsplash (photo-1526666923127-b2970f64b422)                    | Unsplash License |
+| `public/drone.jpg`               | Unmanned aerial vehicle          | Unsplash (photo-1514598800938-f7125ea1aa1c)                    | Unsplash License |
+| `public/energy.jpg`              | Electricity transmission towers  | Unsplash (photo-1473341304170-971dccb5ac1e)                    | Unsplash License |
+| `public/team.jpg`                | Engineers collaborating          | Unsplash (photo-1581091226033-d5c48150dbaa, ThisisEngineering) | Unsplash License |
+| `public/logo.png`                | Core Defenses shield mark        | Client-provided                                                | Owned            |
+
+Video note: hero source was a 4K/30s/32 MB clip, transcoded to a 1080p / 12s / muted /
+`faststart` H.264 loop (~2 MB) for web delivery. Served via `<video autoplay muted loop
+playsinline>` with a poster; `prefers-reduced-motion` renders the poster still only
+(see `src/components/sections/HeroVideo.tsx`).
 
 ## Typography
 
 Loaded via `next/font/google` (self-hosted, `font-display: swap`, no external request):
 
-- **Display / headings:** Space Grotesk (geometric) — `--font-display`
-- **Body:** Inter (humanist) — `--font-sans`
+- **Display / headings:** Space Grotesk (geometric) — applied to `h1`–`h4` in `globals.css`
+  via the `--font-space-grotesk` next/font variable.
+- **Body:** Inter (humanist) — `--font-sans` (Tailwind `font-sans`).
+
+Paired on a contrast axis (geometric + humanist). NOTE: there is no `--font-display` custom
+property — Tailwind v4 `@theme inline` inlines tokens into utilities but does not emit them
+as referenceable CSS vars, so `globals.css` references `var(--font-space-grotesk)` directly.
 
 Paired on a contrast axis (geometric + humanist) per the impeccable pairing rule. Tokens live in
 `src/styles/tokens.css`; heading family is applied globally in `globals.css`, not per-component.

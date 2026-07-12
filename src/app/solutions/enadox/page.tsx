@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
+import { FeatureRow } from "@/components/sections/FeatureRow";
+import { SpecTable } from "@/components/sections/SpecTable";
 import { CTALink } from "@/components/ui/CTALink";
+import { Reveal } from "@/components/motion/Reveal";
+import { media } from "@/content/media";
 import { enadox } from "@/content/products/enadox";
 
 export const metadata: Metadata = {
@@ -8,126 +12,95 @@ export const metadata: Metadata = {
     "ENADOX enables resilient, secure communication across platforms in denied, degraded, intermittent, and limited-bandwidth environments.",
 };
 
-// Static illustrative waveform for the Live Integrity Stream (FR-ENADOX-2).
-const WAVE =
-  "M0 70 C 40 55, 60 30, 100 38 S 160 80, 200 62 S 260 20, 300 34 S 360 76, 400 58 S 460 28, 500 40 S 560 66, 600 48";
-
 export default function EnadoxPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
-      {/* Header with actions — FR-ENADOX-1/5 */}
-      <div className="flex flex-wrap items-end justify-between gap-6">
-        <div>
-          <p className="text-primary flex items-center gap-2 text-sm font-medium">
-            <span
-              aria-hidden
-              className="bg-accent inline-block size-1.5 rounded-full"
-            />
-            {enadox.eyebrow}
-          </p>
-          <h1 className="text-ink mt-4 text-4xl font-bold md:text-5xl">
-            ENADOX System
-          </h1>
-          <p className="text-ink-muted mt-5 max-w-2xl text-lg">
-            {enadox.tagline}
-          </p>
-        </div>
-        {/* Both actions route to contact — no live functionality implied */}
-        <div className="flex gap-3">
-          <CTALink href="/contact" variant="secondary">
-            View Logs
-          </CTALink>
-          <CTALink href="/contact">Initialize Sequence</CTALink>
-        </div>
+      {/* Header */}
+      <Reveal as="section" className="max-w-3xl">
+        <p className="text-primary text-sm font-medium">{enadox.eyebrow}</p>
+        <h1 className="text-ink mt-4 text-4xl font-bold md:text-5xl">
+          {enadox.name}
+        </h1>
+        <p className="text-ink-muted mt-5 text-lg leading-relaxed">
+          {enadox.tagline}
+        </p>
+      </Reveal>
+
+      {/* Use cases */}
+      <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
+        <FeatureRow
+          eyebrow="Self-healing redundancy"
+          heading="Redundancy built into the data itself"
+          body="ENADOX enables secure communication between platforms by transforming the data they exchange, with self-healing built in. One sensor's data can be embedded within another, so if a sensor fails, the original can be reconstructed — a kind of inbuilt redundancy that keeps information available even as sources drop."
+          bullets={[
+            "Secure data exchange across otherwise separate platforms",
+            "Cross-source embedding for reconstruction when a sensor fails",
+            "Redundancy that lives in the data, not just the network",
+          ]}
+          image={media.dataCenter}
+          imageSide="right"
+        />
+
+        <FeatureRow
+          eyebrow="Contested environments"
+          heading="Secure communication where links are denied"
+          body="ENADOX supports secure communication in both open and denied environments, with proven military use cases. It carries traffic over software-defined radio, sustains communication in DDIL conditions, and coordinates drone-swarm navigation where conventional links break down."
+          bullets={[
+            "Software-defined radio (SDR) links",
+            "Communication in denied, degraded, intermittent, and limited-bandwidth (DDIL) environments",
+            "Drone-swarm navigation in denied environments",
+          ]}
+          image={media.comms}
+          imageSide="left"
+        />
+
+        <FeatureRow
+          eyebrow="Resilient by design"
+          heading="Mission continuity as conditions degrade"
+          body="Critical operations cannot pause when the environment turns hostile. ENADOX is resilient by design, keeping mission-critical operations connected as bandwidth narrows and links come and go — so teams stay coordinated when it matters most."
+          image={media.operations}
+          imageSide="right"
+        />
       </div>
 
-      {/* Bento — FR-ENADOX-2/3/4, collapses below md (NFR-RESP-2) */}
-      <div className="mt-14 grid gap-6 md:grid-cols-12">
-        <figure className="border-line bg-ink border p-6 md:col-span-8">
-          <figcaption className="flex items-baseline justify-between">
-            <span className="text-accent font-mono text-xs font-medium tracking-widest uppercase">
-              Live Integrity Stream
-            </span>
-            <span className="font-mono text-xs text-white/40">
-              ILLUSTRATIVE DATA
-            </span>
-          </figcaption>
-          <svg
-            viewBox="0 0 600 100"
-            role="img"
-            aria-label="Illustrative signal-integrity waveform holding steady within operating bounds."
-            className="mt-6 h-auto w-full"
-          >
-            {[0, 25, 50, 75, 100].map((y) => (
-              <line
-                key={y}
-                x1="0"
-                y1={y}
-                x2="600"
-                y2={y}
-                stroke="rgba(255,255,255,0.08)"
-              />
+      {/* Specifications */}
+      <Reveal as="section" className="mt-16 md:mt-24">
+        <h2 className="text-ink text-2xl font-bold md:text-3xl">At a glance</h2>
+        <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-12">
+          <dl className="space-y-6">
+            {enadox.stats.map(({ label, value, description }) => (
+              <div key={label} className="border-line border p-6">
+                <dt className="text-ink-muted text-sm">{label}</dt>
+                <dd className="text-ink mt-2 text-2xl font-bold">{value}</dd>
+                <p className="text-ink-muted mt-3 text-sm leading-relaxed">
+                  {description}
+                </p>
+              </div>
             ))}
-            <path
-              d={WAVE}
-              fill="none"
-              stroke="var(--color-accent)"
-              strokeWidth="2"
-            />
-          </svg>
-          <p className="mt-4 font-mono text-xs text-white/60">
-            channel integrity: nominal · packet recovery: passive · mesh: 12/12
-          </p>
-        </figure>
+          </dl>
+          <SpecTable
+            caption="ENADOX specifications"
+            rows={enadox.specifications}
+          />
+        </div>
+      </Reveal>
 
-        <div className="grid gap-6 md:col-span-4">
-          {/* System Status card — FR-ENADOX-3 */}
-          <div className="border-line border bg-white p-6">
-            <p className="text-ink-muted text-sm">System Status</p>
-            <p className="text-ink mt-2 flex items-center gap-2.5 text-3xl font-bold">
-              <span
-                aria-hidden
-                className="bg-accent inline-block size-2.5 animate-pulse rounded-full motion-reduce:animate-none"
-              />
-              Optimal
-            </p>
-            <p className="text-ink-muted mt-3 text-sm">
-              All communication channels operating with full redundancy
-              available.
-            </p>
-          </div>
-          {/* Core Metrics — FR-ENADOX-4 */}
-          <div className="border-line border bg-white p-6">
-            <h2 className="text-ink text-sm font-semibold">Core Metrics</h2>
-            <dl className="mt-4 space-y-3">
-              {enadox.specifications.map(({ label, value }) => (
-                <div
-                  key={label}
-                  className="border-line flex items-baseline justify-between gap-4 border-b pb-3 last:border-0"
-                >
-                  <dt className="text-ink-muted text-sm">{label}</dt>
-                  <dd className="text-ink text-right font-mono text-sm font-medium">
-                    {value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+      {/* Closing CTA */}
+      <Reveal as="section" className="mt-16 md:mt-24">
+        <div className="border-line border p-8 md:p-12">
+          <h2 className="text-ink text-2xl font-bold md:text-3xl">
+            Talk through your mission requirements
+          </h2>
+          <p className="text-ink-muted mt-4 max-w-2xl leading-relaxed">
+            Tell us about the environments you operate in and the platforms you
+            need to keep connected. Our team will walk you through how ENADOX
+            fits.
+          </p>
+          <div className="mt-8">
+            <CTALink href="/contact">Contact the ENADOX Team</CTALink>
           </div>
         </div>
-      </div>
-
-      {/* Mission envelope stats */}
-      <section className="mt-16 grid gap-6 md:grid-cols-2">
-        {enadox.stats.map(({ label, value, description }) => (
-          <div key={label} className="border-line border p-6">
-            <p className="text-ink-muted text-sm">{label}</p>
-            <p className="text-ink mt-2 font-mono text-2xl font-bold">
-              {value}
-            </p>
-            <p className="text-ink-muted mt-3 text-sm">{description}</p>
-          </div>
-        ))}
-      </section>
+      </Reveal>
     </div>
   );
 }

@@ -19,11 +19,10 @@
 }
 
 /* Typography — two-family system: Space Grotesk (display/headings, geometric)
-   + Inter (body, humanist) for contrast per impeccable pairing rules.
+   + Inter (body, humanist) for contrast per impeccable pairing rules. Body uses
+   --font-sans; headings are set to Space Grotesk directly in globals.css.
    `inline` is required so next/font variables (set on <body>) resolve at the
    element, not :root. */
 @theme inline {
-  --font-display:
-    var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }

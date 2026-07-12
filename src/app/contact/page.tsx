@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { Mail, MapPin, ExternalLink, Briefcase } from "lucide-react";
 import { CTALink } from "@/components/ui/CTALink";
 import { site } from "@/content/site";
+import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Reach Core Defenses — email, operations location, and careers. Enterprise inquiry routing and a secure contact form ship in a later phase.",
+    "Reach the Core Defenses team by email, find our operations location, and explore careers.",
 };
 
 export default function ContactPage() {
@@ -23,14 +24,13 @@ export default function ContactPage() {
       </p>
       <h1 className="text-ink mt-4 text-4xl font-bold md:text-5xl">Contact</h1>
       <p className="text-ink-muted mt-5 max-w-2xl text-lg">
-        Reach the team directly. Category-based enterprise routing and a secure
-        transmission form are scheduled for a later phase — until then, email is
-        the fastest path.
+        Reach the Core Defenses team. Tell us about your program or inquiry and
+        we&apos;ll route it to the right group.
       </p>
 
       <div className="mt-14 grid gap-6 md:grid-cols-2">
         {/* Contact card */}
-        <div className="reveal border-line flex flex-col border">
+        <Reveal className="border-line flex flex-col border">
           <div className="border-line border-b p-6">
             <div className="flex items-start gap-4">
               <span className="bg-surface border-line inline-flex border p-3">
@@ -95,10 +95,10 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Map embed */}
-        <div className="reveal border-line min-h-[360px] border">
+        <Reveal className="border-line min-h-[360px] border">
           <iframe
             title={`Map showing Core Defenses operations location at ${address.line1}, ${address.city}`}
             src={mapEmbedUrl}
@@ -106,7 +106,7 @@ export default function ContactPage() {
             referrerPolicy="no-referrer-when-downgrade"
             className="h-full min-h-[360px] w-full"
           />
-        </div>
+        </Reveal>
       </div>
     </div>
   );

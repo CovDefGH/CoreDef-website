@@ -2,25 +2,39 @@ import Link from "next/link";
 import Image from "next/image";
 import { ShieldCheck, Timer, Globe2, Atom, Radio } from "lucide-react";
 import { CTALink } from "@/components/ui/CTALink";
+import { Reveal } from "@/components/motion/Reveal";
+import { MotionCard } from "@/components/motion/MotionCard";
+import { HeroVideo } from "@/components/sections/HeroVideo";
+import { media } from "@/content/media";
 
 // FR-HOME-3 — EDIM featured first per PRD §7 product priority.
 const CAPABILITIES = [
   {
     icon: Atom,
     heading: "Nuclear Analytics",
+    image: media.nuclear,
     description:
-      "EDIM narrows nuclear data uncertainty to reduce the penalty on thermal margin — recovering power output, fuel cycle length, and operational flexibility that conservatism leaves on the table.",
-    linkLabel: "Detail Specs",
+      "EDIM narrows nuclear data uncertainty to reduce the penalty on thermal margin — recovering power output, fuel-cycle length, and operational flexibility that conservatism leaves on the table.",
+    linkLabel: "Explore EDIM",
     href: "/solutions/edim",
   },
   {
     icon: Radio,
-    heading: "OT/ICS Safeguards",
+    heading: "Secure Communications",
+    image: media.comms,
     description:
-      "ENADOX keeps mission-critical operations connected across denied, degraded, intermittent, and limited-bandwidth environments — with redundancy built into the data itself.",
-    linkLabel: "View Protocol",
+      "ENADOX delivers resilient, secure communication across denied, degraded, intermittent, and low-bandwidth environments — with redundancy built into the data itself.",
+    linkLabel: "Explore ENADOX",
     href: "/solutions/enadox",
   },
+];
+
+// FR-HOME-6 — critical infrastructure visual strip.
+const INFRASTRUCTURE = [
+  { image: media.nuclear, caption: "Nuclear" },
+  { image: media.energy, caption: "Energy" },
+  { image: media.comms, caption: "Communications" },
+  { image: media.dataCenter, caption: "Industrial" },
 ];
 
 const TRUST_SIGNALS = [
@@ -44,44 +58,33 @@ const TRUST_SIGNALS = [
 export default function Home() {
   return (
     <>
-      {/* Hero — FR-HOME-1/2 */}
+      {/* Hero — FR-HOME-1/2. Large video panel as primary visual. */}
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 md:grid-cols-2 md:px-6 md:py-24">
         <div>
-          <p className="text-primary flex items-center gap-2 text-sm font-medium">
-            <span
-              aria-hidden
-              className="bg-accent inline-block size-1.5 animate-pulse rounded-full motion-reduce:animate-none"
-            />
-            System Status: Optimal
-          </p>
-          <h1 className="text-ink mt-5 text-4xl font-bold md:text-5xl">
+          <h1 className="text-ink text-4xl font-bold md:text-5xl">
             Precision analytics for critical infrastructure.
             <span className="text-primary block">
               Resilient comms for contested environments.
             </span>
           </h1>
           <p className="text-ink-muted mt-6 max-w-xl text-lg">
-            Core Defenses builds for environments where failure has physical
-            consequences — nuclear, energy, defense, and industrial operations.
-            Expertise first, products second: EDIM and ENADOX.
+            Core Defenses builds analytics and secure communications for
+            environments where failure has physical consequences — nuclear,
+            energy, defense, and industrial operations. Two products: EDIM and
+            ENADOX.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <CTALink href="/solutions">Explore Solutions</CTALink>
-            <CTALink href="/solutions/enadox" variant="secondary">
-              View Telemetry
+            <CTALink href="/contact" variant="secondary">
+              Contact Us
             </CTALink>
           </div>
         </div>
-        {/* Premium hero image (owned asset, next/image) replaces the prototype
-            terminal panel per client direction — see CHANGELOG. */}
-        <div className="border-line relative aspect-[3/2] overflow-hidden border">
-          <Image
-            src="/hero-infrastructure.jpg"
-            alt="Nuclear power plant cooling towers releasing steam against a blue sky."
-            fill
-            priority
-            sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover"
+        <div className="border-line relative min-h-[420px] overflow-hidden border md:aspect-[4/5] md:min-h-0">
+          <HeroVideo
+            src={media.heroVideo.src}
+            poster={media.heroVideo.poster}
+            alt="Critical infrastructure operations footage."
           />
           <div className="from-ink/70 absolute inset-x-0 bottom-0 bg-gradient-to-t to-transparent p-5">
             <p className="font-mono text-xs tracking-widest text-white/90 uppercase">
@@ -91,8 +94,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Core Capabilities — FR-HOME-3 */}
-      <section className="reveal border-line bg-surface border-y">
+      {/* Core Capabilities — FR-HOME-3 (EDIM first) */}
+      <Reveal as="section" className="border-line bg-surface border-y">
         <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
           <h2 className="text-ink text-3xl font-bold">Core Capabilities</h2>
           <p className="text-ink-muted mt-3 max-w-2xl">
@@ -101,11 +104,27 @@ export default function Home() {
           </p>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {CAPABILITIES.map(
-              ({ icon: Icon, heading, description, linkLabel, href }) => (
-                <div
+              ({
+                icon: Icon,
+                heading,
+                image,
+                description,
+                linkLabel,
+                href,
+              }) => (
+                <MotionCard
                   key={heading}
                   className="border-line hover:border-accent border bg-white p-8 transition-colors"
                 >
+                  <div className="border-line relative mb-6 aspect-[16/9] overflow-hidden border">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes="(min-width: 768px) 45vw, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
                   <span className="bg-surface border-line inline-flex border p-3">
                     <Icon aria-hidden size={22} className="text-primary" />
                   </span>
@@ -119,16 +138,47 @@ export default function Home() {
                   >
                     {linkLabel} →
                   </Link>
-                </div>
+                </MotionCard>
               ),
             )}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      {/* Trust row — FR-HOME-4 */}
-      <section className="reveal mx-auto max-w-6xl px-4 py-14 md:px-6">
-        <ul className="grid gap-8 md:grid-cols-3">
+      {/* Critical infrastructure strip — FR-HOME-6 */}
+      <Reveal
+        as="section"
+        className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24"
+      >
+        <h2 className="text-ink text-3xl font-bold">Where we operate</h2>
+        <p className="text-ink-muted mt-3 max-w-2xl">
+          Systems that cannot fail quietly. We build for the sectors that carry
+          physical consequence.
+        </p>
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {INFRASTRUCTURE.map(({ image, caption }) => (
+            <li
+              key={caption}
+              className="border-line relative aspect-[4/5] overflow-hidden border"
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover"
+              />
+              <div className="from-ink/70 absolute inset-x-0 bottom-0 bg-gradient-to-t to-transparent p-4">
+                <p className="text-sm font-semibold text-white">{caption}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </Reveal>
+
+      {/* Trust row — FR-HOME-7 */}
+      <Reveal as="section" className="border-line bg-surface border-y">
+        <ul className="mx-auto grid max-w-6xl gap-8 px-4 py-14 md:grid-cols-3 md:px-6">
           {TRUST_SIGNALS.map(({ icon: Icon, heading, description }) => (
             <li key={heading} className="flex items-start gap-4">
               <Icon
@@ -137,16 +187,16 @@ export default function Home() {
                 className="text-primary mt-0.5 shrink-0"
               />
               <div>
-                <h2 className="text-ink text-base font-semibold">{heading}</h2>
+                <h3 className="text-ink text-base font-semibold">{heading}</h3>
                 <p className="text-ink-muted mt-1 text-sm">{description}</p>
               </div>
             </li>
           ))}
         </ul>
-      </section>
+      </Reveal>
 
-      {/* Outbound paths — FR-HOME-5 */}
-      <section className="reveal border-line border-t">
+      {/* Outbound paths — FR-HOME-8 */}
+      <Reveal as="section" className="border-line border-b">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6 px-4 py-12 md:px-6">
           <div>
             <h2 className="text-ink text-2xl font-bold">
@@ -168,7 +218,7 @@ export default function Home() {
             </CTALink>
           </div>
         </div>
-      </section>
+      </Reveal>
     </>
   );
 }

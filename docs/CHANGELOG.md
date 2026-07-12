@@ -14,6 +14,34 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 - **Email/CRM provider:** still open — must be chosen before Phase 3 contact-form backend (Resend recommended).
 - **Nav label:** "About" chosen over prototype's "Defense Tech" (UX-NOTES §9 Q1) — revisit if stakeholders object.
 
+### Phase 2c — Full site build-out + client revisions (2026-07-12)
+
+Built in parallel (multi-agent). All pages now carry real content + imagery.
+
+- **Home:** hero now a muted autoplaying **video** loop (`public/hero.mp4`, bigger panel);
+  removed the "System Status: Optimal" chip; generalized copy; multiple images across the page.
+- **EDIM:** rebuilt as simple/professional use-case blocks (`FeatureRow`) with photos — the
+  thermal-margin story (uncertainty → margin → $300–500M/reactor). Removed the SVG topology gimmick.
+- **ENADOX:** rebuilt to Arvind's framing — self-healing redundancy (embedding one sensor's data
+  in another), secure comms in DDIL environments (SDR, drone-swarm), resilient mission continuity.
+  Removed the "Live Integrity Stream / System Status / Initialize Sequence" gimmicks.
+- **Careers:** all open roles now render **inline** with a department filter (`content/careers.ts`,
+  8 roles mirrored from covertdefenses.com/careers); Apply Now → Google Form. No external redirect to view roles.
+- **Contact:** removed the temporary "scheduled for a later phase" copy — evergreen now.
+- **New pages built:** Industries (`content/industries.ts`), About, Global/Locations
+  (`content/locations.ts` — Lexington HQ ACTIVE + planned AMER/EMEA/APAC hubs), Solutions overview polished.
+- **Imagery:** 1 hero video + 7 owned images sourced (Unsplash/Pixabay) and optimized; manifest at
+  `content/media.ts`; policy + provenance in `docs/ASSETS.md`.
+- **Motion:** `motion`/motion.dev adopted for hover micro-interactions (`MotionCard`); scroll reveals
+  use native CSS scroll-driven animation (`Reveal` → `.cd-reveal`) because motion `whileInView` gated
+  content visibility and could ship blank in headless/SEO renderers. Page-transition fade via `template.tsx`.
+- **⚠ Perf:** motion.dev in the root provider adds ~40 KB gz to first-load; pages using it report
+  ~169 kB (over the 150 kB NFR guardrail). Accepted per client's rich-UX direction; Lighthouse CI in a
+  later phase is the real gate — fallback is scoping the provider or dropping to CSS-only hover.
+- **⚠ Compliance chips (Global):** ISO 27001 / SOC 2 / NIST CSF / FedRAMP shown as _target_ posture,
+  not held certifications — confirm before launch (PRD §10).
+- **⚠ Careers employmentType** defaulted to Full-Time (not specified on source) — confirm.
+
 ### Phase 2b — Premium UX pass (client `/goal` request, 2026-07-12)
 
 - **Typography:** two-family system — Space Grotesk (display) + Inter (body), both via

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
+import { MotionProvider } from "@/components/motion/MotionProvider";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -41,11 +42,13 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <NavBar />
-        <main id="main" className="pt-16">
-          {children}
-        </main>
-        <Footer />
+        <MotionProvider>
+          <NavBar />
+          <main id="main" className="pt-16">
+            {children}
+          </main>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

@@ -13,12 +13,14 @@ body {
 }
 
 /* Headings use the display family (Space Grotesk); body inherits Inter.
-   One rule instead of a font-display class on every heading. */
+   One rule instead of a font-display class on every heading. Reference the
+   next/font variable directly — Tailwind's `@theme inline` inlines --font-display
+   into utilities but does NOT emit it as a referenceable custom property. */
 h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-display);
+  font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   letter-spacing: -0.02em;
 }
 
@@ -32,30 +34,30 @@ p {
   text-wrap: pretty;
 }
 
-/* Motion — native CSS only. Content is visible by default; animation is a pure
-   enhancement (SRS §2.3: core content works without JS). Everything is gated on
+/* Motion — CSS handles scroll reveals + page fade (visible by default, so
+   nothing ships blank in headless/SEO/no-JS renderers, SRS §2.3). Hover
+   micro-interactions use motion.dev (MotionCard). All gated on
    prefers-reduced-motion: no-preference, so motion-sensitive users get nothing. */
 @media (prefers-reduced-motion: no-preference) {
-  /* Scroll reveal — scroll-driven, no JS/observer. Unsupported browsers just
-     show content (no hidden default), so nothing ever ships blank. */
+  .page-enter {
+    animation: page-fade 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Scroll reveal (the <Reveal> component). Scroll-driven, no JS/observer;
+     unsupported browsers just show content, so it never ships blank. */
   @supports (animation-timeline: view()) {
-    .reveal {
-      animation: reveal-in linear both;
+    .cd-reveal {
+      animation: cd-reveal-in linear both;
       animation-timeline: view();
       animation-range: entry 0% cover 22%;
     }
   }
-
-  /* Page transition — re-runs on each navigation via app/template.tsx */
-  .page-enter {
-    animation: page-fade 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
 }
 
-@keyframes reveal-in {
+@keyframes cd-reveal-in {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(22px);
   }
   to {
     opacity: 1;
