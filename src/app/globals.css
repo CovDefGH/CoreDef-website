@@ -12,14 +12,12 @@ body {
   outline-offset: 2px;
 }
 
-/* Headings use Helvetica (native system font, not on Google Fonts — no
-   self-hostable web-font version exists); body inherits Inter. */
+/* Headings use Helvetica (--font-display, tokens.css); body inherits Inter. */
 h1,
 h2,
 h3,
 h4 {
-  font-family:
-    "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-display);
   letter-spacing: -0.02em;
 }
 

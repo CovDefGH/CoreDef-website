@@ -40,7 +40,7 @@ export function Footer() {
               height={28}
               className="h-7 w-auto"
             />
-            <span className="text-ink text-sm font-bold tracking-[0.18em]">
+            <span className="font-display text-ink text-base font-bold tracking-tight">
               CORE DEFENSES
             </span>
           </div>

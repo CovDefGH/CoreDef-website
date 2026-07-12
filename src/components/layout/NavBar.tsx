@@ -42,7 +42,7 @@ export function NavBar() {
             priority
             className="h-8 w-auto"
           />
-          <span className="text-ink text-sm font-bold tracking-[0.18em]">
+          <span className="font-display text-ink text-base font-bold tracking-tight">
             CORE DEFENSES
           </span>
         </Link>

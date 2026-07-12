@@ -16,6 +16,12 @@
 
   /* Shape — sharp (0-radius) everywhere except status pips/avatars */
   --radius-none: 0;
+
+  /* Display face — Helvetica (native system font, not on Google Fonts).
+     Static value, so (unlike --font-sans below) this doesn't need `@theme
+     inline` — it generates a real `font-display` utility + CSS var. */
+  --font-display: "Helvetica Neue", Helvetica, Arial, ui-sans-serif,
+    system-ui, sans-serif;
 }
 
 /* Typography — two-family system: Space Grotesk (display/headings, geometric)
