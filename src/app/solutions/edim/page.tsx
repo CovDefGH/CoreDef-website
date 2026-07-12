@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { FeatureRow } from "@/components/sections/FeatureRow";
 import { StatCard } from "@/components/sections/StatCard";
 import { SpecTable } from "@/components/sections/SpecTable";
@@ -16,8 +18,16 @@ export const metadata: Metadata = {
 export default function EdimPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
+      <Link
+        href="/solutions"
+        className="text-ink-muted hover:text-primary inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+      >
+        <ArrowLeft aria-hidden size={14} />
+        Back to Solutions
+      </Link>
+
       {/* Header */}
-      <p className="text-primary flex items-center gap-2 text-sm font-medium">
+      <p className="text-primary mt-8 flex items-center gap-2 text-sm font-medium">
         <span
           aria-hidden
           className="bg-accent inline-block size-1.5 rounded-full"

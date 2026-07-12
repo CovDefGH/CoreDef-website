@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { FeatureRow } from "@/components/sections/FeatureRow";
 import { SpecTable } from "@/components/sections/SpecTable";
 import { CTALink } from "@/components/ui/CTALink";
@@ -15,8 +17,16 @@ export const metadata: Metadata = {
 export default function EnadoxPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
+      <Link
+        href="/solutions"
+        className="text-ink-muted hover:text-primary inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+      >
+        <ArrowLeft aria-hidden size={14} />
+        Back to Solutions
+      </Link>
+
       {/* Header */}
-      <Reveal as="section" className="max-w-3xl">
+      <Reveal as="section" className="mt-8 max-w-3xl">
         <p className="text-primary text-sm font-medium">{enadox.eyebrow}</p>
         <h1 className="text-ink mt-4 text-4xl font-bold md:text-5xl">
           {enadox.name}
