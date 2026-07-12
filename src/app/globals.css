@@ -12,15 +12,14 @@ body {
   outline-offset: 2px;
 }
 
-/* Headings use the display family (Space Grotesk); body inherits Inter.
-   One rule instead of a font-display class on every heading. Reference the
-   next/font variable directly — Tailwind's `@theme inline` inlines --font-display
-   into utilities but does NOT emit it as a referenceable custom property. */
+/* Headings use Helvetica (native system font, not on Google Fonts — no
+   self-hostable web-font version exists); body inherits Inter. */
 h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  font-family:
+    "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
   letter-spacing: -0.02em;
 }
 

@@ -41,15 +41,12 @@ playsinline>` with a poster; `prefers-reduced-motion` renders the poster still o
 
 ## Typography
 
-Loaded via `next/font/google` (self-hosted, `font-display: swap`, no external request):
+- **Display / headings:** Helvetica — native system font stack (`"Helvetica Neue", Helvetica,
+  Arial, ...`) applied to `h1`–`h4` in `globals.css`. Not on Google Fonts / no self-hostable
+  web-font version exists, so it isn't loaded via `next/font`; renders as real Helvetica on
+  macOS/iOS and Arial (metrically near-identical) elsewhere.
+- **Body:** Inter (humanist), loaded via `next/font/google` (self-hosted, `font-display: swap`)
+  — `--font-sans` (Tailwind `font-sans`).
 
-- **Display / headings:** Space Grotesk (geometric) — applied to `h1`–`h4` in `globals.css`
-  via the `--font-space-grotesk` next/font variable.
-- **Body:** Inter (humanist) — `--font-sans` (Tailwind `font-sans`).
-
-Paired on a contrast axis (geometric + humanist). NOTE: there is no `--font-display` custom
-property — Tailwind v4 `@theme inline` inlines tokens into utilities but does not emit them
-as referenceable CSS vars, so `globals.css` references `var(--font-space-grotesk)` directly.
-
-Paired on a contrast axis (geometric + humanist) per the impeccable pairing rule. Tokens live in
-`src/styles/tokens.css`; heading family is applied globally in `globals.css`, not per-component.
+Tokens live in `src/styles/tokens.css`; heading family is applied globally in `globals.css`,
+not per-component.

@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import "./globals.css";
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -34,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${spaceGrotesk.variable} ${inter.variable} font-sans antialiased`}
+        className={`${inter.variable} font-sans antialiased`}
       >
         {/* Warms the connection for the Contact page's Google Maps iframe embed */}
         <link rel="preconnect" href="https://www.google.com" />
