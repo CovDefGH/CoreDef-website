@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowUpRight, Cpu, Radio, ShieldCheck } from "lucide-react";
-import { site } from "@/content/site";
 import { jobs } from "@/content/careers";
 import { media } from "@/content/media";
 import { Reveal } from "@/components/motion/Reveal";
@@ -139,16 +138,12 @@ export default function CareersPage() {
             We move fast for the right engineer. Send your application and tell
             us what you&apos;d build — we read every one.
           </p>
-          {site.careersUrl && (
-            <a
-              href={site.careersUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-ink-muted hover:text-accent mt-3 inline-block text-xs underline underline-offset-4"
-            >
-              View on careers site
-            </a>
-          )}
+          <a
+            href="#open-roles"
+            className="text-ink-muted hover:text-accent mt-3 inline-block text-xs underline underline-offset-4"
+          >
+            View all open roles
+          </a>
         </div>
         <a
           href={applyUrl}

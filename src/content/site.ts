@@ -13,7 +13,6 @@ export const site = {
   mapEmbedUrl:
     "https://www.google.com/maps?cid=11871406629572706665&output=embed",
   mapPlaceUrl: "https://www.google.com/maps?cid=11871406629572706665",
-  careersUrl: "https://www.covertdefenses.com/careers",
   applyFormUrl:
     "https://docs.google.com/forms/d/e/1FAIpQLSeLkrtguwl4J0P9leR8Ca-GTPlPWS50pToKN6dlvk4l_HVLow/viewform",
 } as const;
