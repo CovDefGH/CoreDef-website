@@ -22,7 +22,7 @@ export function HeroVideo({ src, poster, alt }: HeroVideoProps) {
         alt={alt}
         fill
         priority
-        sizes="(min-width: 768px) 55vw, 100vw"
+        sizes="100vw"
         className="object-cover"
       />
     );

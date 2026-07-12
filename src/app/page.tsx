@@ -58,38 +58,37 @@ const TRUST_SIGNALS = [
 export default function Home() {
   return (
     <>
-      {/* Hero — FR-HOME-1/2. Large video panel as primary visual. */}
-      <section className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 md:grid-cols-2 md:px-6 md:py-24">
-        <div>
-          <h1 className="text-ink text-4xl font-bold md:text-5xl">
-            Precision analytics for critical infrastructure.
-            <span className="text-primary block">
-              Resilient comms for contested environments.
-            </span>
-          </h1>
-          <p className="text-ink-muted mt-6 max-w-xl text-lg">
-            Core Defenses builds analytics and secure communications for
-            environments where failure has physical consequences — nuclear,
-            energy, defense, and industrial operations. Two products: EDIM and
-            ENADOX.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <CTALink href="/solutions">Explore Solutions</CTALink>
-            <CTALink href="/contact" variant="secondary">
-              Contact Us
-            </CTALink>
-          </div>
-        </div>
-        <div className="border-line relative min-h-[420px] overflow-hidden border md:aspect-[4/5] md:min-h-0">
-          <HeroVideo
-            src={media.heroVideo.src}
-            poster={media.heroVideo.poster}
-            alt="Critical infrastructure operations footage."
-          />
-          <div className="from-ink/70 absolute inset-x-0 bottom-0 bg-gradient-to-t to-transparent p-5">
-            <p className="font-mono text-xs tracking-widest text-white/90 uppercase">
-              Critical infrastructure · Zero compromise
+      {/* Hero — FR-HOME-1/2. Full-bleed video with text overlaid on a gradient scrim. */}
+      <section className="relative min-h-[560px] overflow-hidden md:min-h-[680px]">
+        <HeroVideo
+          src={media.heroVideo.src}
+          poster={media.heroVideo.poster}
+          alt="Nuclear power plant operations footage."
+        />
+        {/* Scrim: darkest at bottom-left where the text sits, fading toward the top-right. */}
+        <div className="from-ink/95 via-ink/60 absolute inset-0 bg-gradient-to-t to-transparent" />
+        <div className="from-ink/80 absolute inset-0 bg-gradient-to-r to-transparent md:to-30%" />
+
+        <div className="relative mx-auto flex min-h-[560px] max-w-6xl items-end px-4 py-16 md:min-h-[680px] md:px-6 md:py-24">
+          <div>
+            <h1 className="text-4xl font-bold text-white md:text-5xl">
+              Precision analytics for critical infrastructure.
+              <span className="text-accent block">
+                Resilient comms for contested environments.
+              </span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg text-white/85">
+              Core Defenses builds analytics and secure communications for
+              environments where failure has physical consequences — nuclear,
+              energy, defense, and industrial operations. Two products: EDIM
+              and ENADOX.
             </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <CTALink href="/solutions">Explore Solutions</CTALink>
+              <CTALink href="/contact" variant="secondary">
+                Contact Us
+              </CTALink>
+            </div>
           </div>
         </div>
       </section>

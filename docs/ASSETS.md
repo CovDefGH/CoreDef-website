@@ -23,8 +23,8 @@ never by hardcoded path.
 
 | File                             | Subject                          | Source                                                         | License          |
 | -------------------------------- | -------------------------------- | -------------------------------------------------------------- | ---------------- |
-| `public/hero.mp4`                | Abstract data-network hero loop  | Pixabay (video 184489) — transcoded 1080p/12s/muted via ffmpeg | Pixabay License  |
-| `public/hero-poster.jpg`         | Hero video poster frame          | Derived from `hero.mp4`                                        | Pixabay License  |
+| `public/hero.mp4`                | Nuclear power plant footage      | Pexels (video 6534498) — transcoded 1080p/12s/muted via ffmpeg | Pexels License   |
+| `public/hero-poster.jpg`         | Hero video poster frame          | Derived from `hero.mp4`                                        | Pexels License   |
 | `public/hero-infrastructure.jpg` | Nuclear cooling towers, blue sky | Unsplash (photo-1630142895963-6996ae6b3a5b)                    | Unsplash License |
 | `public/data-center.jpg`         | Data-center network cabling      | Unsplash (photo-1744868562210-fffb7fa882d9)                    | Unsplash License |
 | `public/operations.jpg`          | Operations-center display wall   | Unsplash (photo-1762846700143-4f3a47400986)                    | Unsplash License |
@@ -34,8 +34,9 @@ never by hardcoded path.
 | `public/team.jpg`                | Engineers collaborating          | Unsplash (photo-1581091226033-d5c48150dbaa, ThisisEngineering) | Unsplash License |
 | `public/logo.png`                | Core Defenses shield mark        | Client-provided                                                | Owned            |
 
-Video note: hero source was a 4K/30s/32 MB clip, transcoded to a 1080p / 12s / muted /
-`faststart` H.264 loop (~2 MB) for web delivery. Served via `<video autoplay muted loop
+Video note: hero source was a 4K/25s/67 MB clip, transcoded to a 1080p / 12s / muted /
+`faststart` H.264 loop (~2 MB) for web delivery. Rendered full-bleed behind the Home hero
+copy, under a dark gradient scrim for text contrast. Served via `<video autoplay muted loop
 playsinline>` with a poster; `prefers-reduced-motion` renders the poster still only
 (see `src/components/sections/HeroVideo.tsx`).
 
