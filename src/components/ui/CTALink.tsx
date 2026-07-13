@@ -5,7 +5,7 @@ import Link from "next/link";
 // not an oversight, see tokens.css.
 const VARIANTS = {
   primary:
-    "border border-primary bg-primary text-white hover:border-ink hover:bg-ink",
+    "border border-primary bg-primary text-white hover:border-primary-dark hover:bg-primary-dark hover:text-white",
   secondary: "border border-line bg-white text-ink hover:border-accent",
   // For use over dark imagery (e.g. the Home hero) — glass/frosted look.
   ghost:

@@ -8,6 +8,7 @@
 @theme {
   /* Color — UX-NOTES.md §3 */
   --color-primary: #0052ff; /* Electric Blue — primary actions, critical status */
+  --color-primary-dark: #0040cc; /* Primary button hover — darker blue, not near-black */
   --color-accent: #00d1ff; /* Sentinel Cyan — data viz, highlights, interactive states */
   --color-ink: #0f172a; /* Deep Slate — high-contrast text and structure */
   --color-ink-muted: #475569; /* secondary text, ≥4.5:1 on white and surface */

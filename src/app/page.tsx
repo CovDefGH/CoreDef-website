@@ -86,7 +86,7 @@ export default function Home() {
               Mission-Critical Analytics
             </p>
 
-            <h1 className="mt-5 text-4xl leading-[1.05] font-bold text-white md:text-5xl">
+            <h1 className="mt-5 text-4xl leading-[1.05] font-semibold text-white md:text-5xl md:font-bold">
               Precision analytics
               <br />
               for critical infrastructure.
