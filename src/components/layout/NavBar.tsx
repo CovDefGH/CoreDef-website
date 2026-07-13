@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -22,9 +22,29 @@ const isActive = (pathname: string, href: string) =>
 export function NavBar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Only the Home hero is a full-bleed dark video; every other page has a
+  // white background right under the nav, so only Home gets the transparent
+  // treatment. Elsewhere (and once scrolled past the hero) the nav is solid.
+  const transparentCapable = pathname === "/";
+
+  useEffect(() => {
+    if (!transparentCapable) return;
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [transparentCapable]);
+
+  const solid = !transparentCapable || scrolled;
 
   return (
-    <header className="border-line fixed inset-x-0 top-0 z-40 border-b bg-white">
+    <header
+      className={`fixed inset-x-0 top-0 z-40 border-b transition-colors duration-300 ${
+        solid ? "border-line bg-white" : "border-transparent bg-transparent"
+      }`}
+    >
       <nav
         aria-label="Primary"
         className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6"
@@ -37,17 +57,19 @@ export function NavBar() {
           <Image
             src="/logo.png"
             alt=""
-            width={36}
-            height={31}
+            width={44}
+            height={38}
             priority
-            className="h-8 w-auto"
+            className={`h-[38px] w-auto transition-[filter] duration-300 ${solid ? "" : "brightness-0 invert"}`}
           />
-          <span className="font-display text-ink text-base font-bold tracking-tight">
+          <span
+            className={`font-display text-base font-bold tracking-tight transition-colors duration-300 ${solid ? "text-ink" : "text-white"}`}
+          >
             CORE DEFENSES
           </span>
         </Link>
 
-        <ul className="hidden items-center gap-7 md:flex">
+        <ul className="hidden items-center gap-9 md:flex">
           {LINKS.map(({ href, label }) => {
             const active = isActive(pathname, href);
             return (
@@ -57,8 +79,12 @@ export function NavBar() {
                   aria-current={active ? "page" : undefined}
                   className={`border-b-2 pb-1 text-sm transition-colors ${
                     active
-                      ? "border-primary text-primary font-medium"
-                      : "text-ink-muted hover:border-accent hover:text-ink border-transparent"
+                      ? solid
+                        ? "border-primary text-primary font-medium"
+                        : "border-accent text-white font-medium"
+                      : solid
+                        ? "text-ink-muted hover:border-accent hover:text-ink border-transparent"
+                        : "border-transparent text-white/80 hover:border-white/60 hover:text-white"
                   }`}
                 >
                   {label}
@@ -83,7 +109,7 @@ export function NavBar() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen(!open)}
-          className="text-ink p-2 md:hidden"
+          className={`p-2 transition-colors md:hidden ${solid ? "text-ink" : "text-white"}`}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>

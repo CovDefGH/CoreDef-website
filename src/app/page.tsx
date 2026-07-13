@@ -58,37 +58,63 @@ const TRUST_SIGNALS = [
 export default function Home() {
   return (
     <>
-      {/* Hero — FR-HOME-1/2. Full-bleed video with text overlaid on a gradient scrim. */}
-      <section className="relative min-h-[560px] overflow-hidden md:min-h-[680px]">
+      {/* Hero — FR-HOME-1/2. Full-bleed video, transparent nav overlaid (see
+          NavBar), text on a directional gradient scrim: darkest left, where
+          the copy sits, fading lighter to the right so the footage reads. */}
+      <section className="relative -mt-16 min-h-[90vh] overflow-hidden">
         <HeroVideo
           src={media.heroVideo.src}
           poster={media.heroVideo.poster}
           alt="Nuclear power plant operations footage."
         />
-        {/* Scrim: darkest at bottom-left where the text sits, lighter toward the top-right. */}
-        <div className="from-ink/90 absolute inset-0 bg-gradient-to-t to-transparent" />
-        <div className="from-ink/90 absolute inset-0 bg-gradient-to-r to-ink/10" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(5,10,25,.88) 0%, rgba(5,10,25,.70) 40%, rgba(5,10,25,.30) 100%)",
+          }}
+        />
+        <div className="from-ink/70 absolute inset-0 bg-gradient-to-t to-transparent" />
 
-        <div className="relative mx-auto flex min-h-[560px] max-w-6xl items-end px-4 py-16 md:min-h-[680px] md:px-6 md:py-24">
-          <div>
-            <h1 className="text-4xl font-bold text-white md:text-5xl">
-              Precision analytics for critical infrastructure.
-              <span className="text-accent block">
-                Resilient comms for contested environments.
+        <div className="relative mx-auto flex min-h-[90vh] max-w-6xl items-center px-4 md:px-6">
+          <div className="max-w-2xl">
+            <p className="text-accent flex items-center gap-2 text-sm font-medium tracking-widest uppercase">
+              <span
+                aria-hidden
+                className="bg-accent inline-block size-1.5 rounded-full"
+              />
+              Mission-Critical Analytics
+            </p>
+
+            <h1 className="mt-5 text-4xl leading-[1.05] font-bold text-white md:text-5xl">
+              Precision analytics
+              <br />
+              for critical infrastructure.
+              <span className="text-accent mt-3 block text-3xl md:text-4xl">
+                Resilient communications
+                <br />
+                for contested environments.
               </span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-white/85">
+
+            <p className="mt-6 max-w-[500px] text-lg text-white/85">
               Core Defenses builds analytics and secure communications for
               environments where failure has physical consequences — nuclear,
               energy, defense, and industrial operations. Two products: EDIM
               and ENADOX.
             </p>
+
             <div className="mt-8 flex flex-wrap gap-3">
               <CTALink href="/solutions">Explore Solutions</CTALink>
-              <CTALink href="/contact" variant="secondary">
+              <CTALink href="/contact" variant="ghost">
                 Contact Us
               </CTALink>
             </div>
+
+            <p className="mt-8 text-xs tracking-widest text-white/60 uppercase">
+              Defense &middot; Nuclear &middot; Energy &middot; Industrial
+              Operations
+            </p>
           </div>
         </div>
       </section>
