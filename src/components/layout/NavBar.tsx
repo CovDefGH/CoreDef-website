@@ -37,7 +37,9 @@ export function NavBar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [transparentCapable]);
 
-  const solid = !transparentCapable || scrolled;
+  // Also force solid while the mobile drawer is open — a transparent header
+  // let the hero bleed through behind the logo/close icon.
+  const solid = !transparentCapable || scrolled || open;
 
   return (
     <header
