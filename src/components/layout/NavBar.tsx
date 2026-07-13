@@ -67,12 +67,12 @@ export function NavBar() {
             );
           })}
           <li>
-            {/* "Secure Login" relabeled per Open Decision 3 — routes to contact */}
+            {/* "Secure Login" -> "Request Access" (Open Decision 3) -> "Contact Us" */}
             <Link
               href="/contact"
               className="border-primary bg-primary hover:border-ink hover:bg-ink border px-4 py-2 text-sm font-medium text-white transition-colors"
             >
-              Request Access
+              Contact Us
             </Link>
           </li>
         </ul>
@@ -118,7 +118,7 @@ export function NavBar() {
                 onClick={() => setOpen(false)}
                 className="border-primary bg-primary block border px-4 py-2.5 text-center text-sm font-medium text-white"
               >
-                Request Access
+                Contact Us
               </Link>
             </li>
           </ul>
