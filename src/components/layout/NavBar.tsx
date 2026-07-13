@@ -43,7 +43,10 @@ export function NavBar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-40 border-b transition-colors duration-300 ${
+      // will-change-transform: gives the fixed header its own compositor
+      // layer — prevents a Safari repaint bug where scroll-driven content
+      // underneath (.cd-reveal) can leave a stale frame behind it.
+      className={`will-change-transform fixed inset-x-0 top-0 z-40 border-b transition-colors duration-300 ${
         solid ? "border-line bg-white" : "border-transparent bg-transparent"
       }`}
     >

@@ -25,7 +25,11 @@ export const enadox: ProductPage = {
     },
   ],
   specifications: [
-    { label: "Encryption Standard", value: "AES-256" },
+    {
+      label: "Encryption",
+      value:
+        "Proprietary Core Defenses cryptographic architecture for denied and contested environments",
+    },
     { label: "Throughput", value: "Adaptive to available link budget" },
     { label: "Latency", value: "Optimized for contested, low-bandwidth links" },
   ],

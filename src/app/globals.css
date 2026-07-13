@@ -47,6 +47,11 @@ p {
       animation: cd-reveal-in linear both;
       animation-timeline: view();
       animation-range: entry 0% cover 22%;
+      /* Promotes its own compositor layer. Without this, Safari has a known
+         repaint bug where a scroll-driven animation under a `position: fixed`
+         sibling (the nav) can leave a stale mid-animation frame painted in
+         place after the page settles. */
+      will-change: opacity, transform;
     }
   }
 }
