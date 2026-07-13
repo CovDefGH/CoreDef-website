@@ -98,10 +98,10 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-[500px] text-lg text-white/85">
-              Core Defenses builds analytics and secure communications for
-              environments where failure has physical consequences — nuclear,
-              energy, defense, and industrial operations. Two products: EDIM
-              and ENADOX.
+              From advanced analytics to resilient communications, Core
+              Defenses delivers technologies that help organizations make
+              better decisions, protect critical operations, and stay
+              connected under the most demanding conditions.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
