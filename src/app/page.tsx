@@ -78,11 +78,7 @@ export default function Home() {
 
         <div className="relative mx-auto flex min-h-svh max-w-6xl items-center px-4 md:px-6">
           <div className="max-w-2xl">
-            <p className="text-accent text-sm font-medium tracking-widest uppercase">
-              Mission Critical Analytics
-            </p>
-
-            <h1 className="mt-5 text-4xl leading-[1.05] font-semibold text-white md:text-5xl md:font-bold">
+            <h1 className="text-4xl leading-[1.05] font-semibold text-white md:text-5xl md:font-bold">
               Precision analytics
               <br />
               for critical infrastructure.

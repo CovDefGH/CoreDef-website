@@ -3,7 +3,6 @@ import { Check } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 
 type FeatureRowProps = {
-  eyebrow?: string;
   heading: string;
   body: string;
   bullets?: string[];
@@ -15,7 +14,6 @@ type FeatureRowProps = {
 // Use-case block: image + explanatory copy, alternating sides. This is the
 // "use case with a picture" pattern (simple, professional — no fancy panels).
 export function FeatureRow({
-  eyebrow,
   heading,
   body,
   bullets,
@@ -28,12 +26,7 @@ export function FeatureRow({
       className="grid items-center gap-8 md:grid-cols-2 md:gap-12"
     >
       <div className={imageSide === "left" ? "md:order-2" : undefined}>
-        {eyebrow && (
-          <p className="text-primary text-sm font-medium">{eyebrow}</p>
-        )}
-        <h2 className="text-ink mt-2 text-2xl font-bold md:text-3xl">
-          {heading}
-        </h2>
+        <h2 className="text-ink text-2xl font-bold md:text-3xl">{heading}</h2>
         <p className="text-ink-muted mt-4 leading-relaxed">{body}</p>
         {bullets && bullets.length > 0 && (
           <ul className="mt-5 space-y-2.5">

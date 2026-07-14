@@ -22,8 +22,7 @@ export default function GlobalPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
       {/* Header */}
-      <p className="text-primary text-sm font-medium">Worldwide Footprint</p>
-      <h1 className="text-ink mt-4 text-4xl font-bold md:text-5xl">
+      <h1 className="text-ink text-4xl font-bold md:text-5xl">
         Global Strategy & Operations Hubs
       </h1>
       <p className="text-ink-muted mt-5 max-w-2xl text-lg leading-relaxed">

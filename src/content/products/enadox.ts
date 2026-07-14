@@ -6,7 +6,6 @@ import type { ProductPage } from "./types";
 // confirmation (TEST-PLAN.md §5) — confirm before launch.
 export const enadox: ProductPage = {
   slug: "enadox",
-  eyebrow: "Secure Communications",
   name: "ENADOX",
   tagline:
     "Secure communication for open and denied environments. ENADOX moves data between platforms with inbuilt redundancy: when one channel degrades, the mission keeps moving.",

@@ -16,10 +16,7 @@ export default function SolutionsPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
       <Reveal as="section">
-        <p className="text-primary text-sm font-medium">Platform Portfolio</p>
-        <h1 className="text-ink mt-4 text-4xl font-bold md:text-5xl">
-          Solutions
-        </h1>
+        <h1 className="text-ink text-4xl font-bold md:text-5xl">Solutions</h1>
         <p className="text-ink-muted mt-5 max-w-2xl text-lg">
           Data analytics for critical infrastructure, backed by secure
           communications for mission critical operations.

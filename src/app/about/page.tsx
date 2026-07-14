@@ -29,8 +29,7 @@ export default function AboutPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
       <Reveal as="section" className="max-w-3xl">
-        <p className="text-primary text-sm font-medium">Company</p>
-        <h1 className="text-ink mt-3 text-4xl font-bold md:text-5xl">
+        <h1 className="text-ink text-4xl font-bold md:text-5xl">
           About Core Defenses
         </h1>
         <p className="text-ink-muted mt-6 text-lg leading-relaxed">
@@ -45,7 +44,6 @@ export default function AboutPage() {
 
       <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
         <FeatureRow
-          eyebrow="Engineering-first"
           heading="Rigor before rhetoric"
           body="We are a team of engineers solving hard problems in domains where the physics are unforgiving. Our approach favors measurement over assumption, disciplined analysis over intuition, and results that hold up to independent scrutiny."
           bullets={[
@@ -58,7 +56,6 @@ export default function AboutPage() {
         />
 
         <FeatureRow
-          eyebrow="Built for consequence"
           heading="Where failure is physical"
           body="Critical infrastructure does not tolerate approximation. A conservative guess costs capacity; an optimistic one costs far more. We build for the environments where the stakes are measured in reliability and safety, and we design our systems to earn the trust that those environments demand."
           image={media.nuclear}
@@ -66,7 +63,6 @@ export default function AboutPage() {
         />
 
         <FeatureRow
-          eyebrow="Two products, one posture"
           heading="Analytics, backed by secure communications"
           body="EDIM applies a physics-based framework to nuclear predictive models, identifying and correcting calculational bias so predictions track real plant data instead of drifting from it. ENADOX delivers secure communications for denied and degraded environments, keeping mission critical operations connected when conventional links cannot be relied upon. Together they reflect a single posture: precise insight, dependable connection."
           bullets={[

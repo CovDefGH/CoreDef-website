@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <PageShell
-      eyebrow="Legal"
       title="Terms of Service"
       description="Final terms copy requires legal review before launch (TEST-PLAN.md §5)."
     />

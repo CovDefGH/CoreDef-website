@@ -6,7 +6,6 @@ import type { ProductPage } from "./types";
 // confirmation (TEST-PLAN.md §5) — confirm before launch.
 export const edim: ProductPage = {
   slug: "edim",
-  eyebrow: "Nuclear Predictive Analytics",
   name: "EDIM",
   tagline:
     "EDIM is a physics-based framework that identifies and corrects calculational bias, reducing prediction error and keeping predictive models aligned with real-time operational data for safer, more reliable decisions.",

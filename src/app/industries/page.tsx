@@ -17,10 +17,7 @@ export default function IndustriesPage() {
     <div className="bg-white">
       <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
         <header className="max-w-3xl">
-          <p className="text-accent text-sm font-medium tracking-widest uppercase">
-            Sectors Served
-          </p>
-          <h1 className="text-ink mt-3 text-4xl md:text-5xl">Industries</h1>
+          <h1 className="text-ink text-4xl md:text-5xl">Industries</h1>
           <p className="text-ink-muted mt-6 text-lg">
             The systems that power, defend, and sustain modern life are also the
             most targeted. A single compromised data point or intercepted
