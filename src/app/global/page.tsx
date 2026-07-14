@@ -22,20 +22,14 @@ export default function GlobalPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
       {/* Header */}
-      <p className="text-primary flex items-center gap-2 text-sm font-medium">
-        <span
-          aria-hidden
-          className="bg-accent inline-block size-1.5 rounded-full"
-        />
-        Worldwide Footprint
-      </p>
+      <p className="text-primary text-sm font-medium">Worldwide Footprint</p>
       <h1 className="text-ink mt-4 text-4xl font-bold md:text-5xl">
         Global Strategy & Operations Hubs
       </h1>
       <p className="text-ink-muted mt-5 max-w-2xl text-lg leading-relaxed">
         Our headquarters anchors nuclear data analytics and secure
         communications engineering, with a planned regional footprint built to
-        support critical-infrastructure operators across the Americas, EMEA, and
+        support critical infrastructure operators across the Americas, EMEA, and
         APAC.
       </p>
 
@@ -126,7 +120,7 @@ export default function GlobalPage() {
           ))}
         </ul>
         <p className="text-ink-muted mt-6 text-xs">
-          Compliance posture — status confirmed with each engagement. Framework
+          Compliance posture: status confirmed with each engagement. Framework
           alignment reflects our target posture, not a claim of held
           certification.
         </p>

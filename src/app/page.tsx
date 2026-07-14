@@ -14,7 +14,7 @@ const CAPABILITIES = [
     heading: "Nuclear Analytics",
     image: media.nuclear,
     description:
-      "EDIM narrows nuclear data uncertainty to reduce the penalty on thermal margin — recovering power output, fuel-cycle length, and operational flexibility that conservatism leaves on the table.",
+      "EDIM narrows nuclear data uncertainty to reduce the penalty on thermal margin, recovering power output, fuel cycle length, and operational flexibility that conservatism leaves on the table.",
     linkLabel: "Explore EDIM",
     href: "/solutions/edim",
   },
@@ -23,7 +23,7 @@ const CAPABILITIES = [
     heading: "Secure Communications",
     image: media.comms,
     description:
-      "ENADOX delivers resilient, secure communication across denied, degraded, intermittent, and low-bandwidth environments — with redundancy built into the data itself.",
+      "ENADOX delivers resilient, secure communication across denied, degraded, intermittent, and low-bandwidth environments, with redundancy built into the data itself.",
     linkLabel: "Explore ENADOX",
     href: "/solutions/enadox",
   },
@@ -78,12 +78,8 @@ export default function Home() {
 
         <div className="relative mx-auto flex min-h-svh max-w-6xl items-center px-4 md:px-6">
           <div className="max-w-2xl">
-            <p className="text-accent flex items-center gap-2 text-sm font-medium tracking-widest uppercase">
-              <span
-                aria-hidden
-                className="bg-accent inline-block size-1.5 rounded-full"
-              />
-              Mission-Critical Analytics
+            <p className="text-accent text-sm font-medium tracking-widest uppercase">
+              Mission Critical Analytics
             </p>
 
             <h1 className="mt-5 text-4xl leading-[1.05] font-semibold text-white md:text-5xl md:font-bold">

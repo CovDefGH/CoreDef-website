@@ -13,11 +13,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Core Defenses — Data Analytics for Critical Infrastructure",
-    template: "%s — Core Defenses",
+    default: "Core Defenses | Data Analytics for Critical Infrastructure",
+    template: "%s | Core Defenses",
   },
   description:
-    "Advanced data analytics for critical infrastructure, backed by secure communications for mission-critical operations. Home of EDIM and ENADOX.",
+    "Advanced data analytics for critical infrastructure, backed by secure communications for mission critical operations. Home of EDIM and ENADOX.",
 };
 
 export default function RootLayout({

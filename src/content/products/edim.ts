@@ -9,7 +9,7 @@ export const edim: ProductPage = {
   eyebrow: "Nuclear Data Analytics",
   name: "EDIM",
   tagline:
-    "Nuclear data carries uncertainty. EDIM identifies and narrows it — reducing the uncertainty penalty on thermal margin so operators can run closer to true capability, not worst-case assumptions.",
+    "Nuclear data carries uncertainty. EDIM identifies and narrows it, reducing the uncertainty penalty on thermal margin so operators can run closer to true capability, not worst-case assumptions.",
   stats: [
     {
       label: "Recovered Margin Value",

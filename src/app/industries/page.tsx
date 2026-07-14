@@ -9,7 +9,7 @@ import { media } from "@/content/media";
 export const metadata: Metadata = {
   title: "Industries",
   description:
-    "Core Defenses protects the sectors that underpin modern life — energy, nuclear, defense, government, and critical infrastructure — with verifiable data intelligence and assured communications.",
+    "Core Defenses protects the sectors that underpin modern life: energy, nuclear, defense, government, and critical infrastructure, with verifiable data intelligence and assured communications.",
 };
 
 export default function IndustriesPage() {

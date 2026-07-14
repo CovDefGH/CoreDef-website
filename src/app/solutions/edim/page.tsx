@@ -10,9 +10,9 @@ import { media } from "@/content/media";
 import { edim } from "@/content/products/edim";
 
 export const metadata: Metadata = {
-  title: "EDIM — Nuclear Data Analytics",
+  title: "EDIM: Nuclear Data Analytics",
   description:
-    "EDIM reduces nuclear data uncertainty to recover thermal margin — improving reactor economics through better prediction, not conservatism.",
+    "EDIM reduces nuclear data uncertainty to recover thermal margin, improving reactor economics through better prediction, not conservatism.",
 };
 
 export default function EdimPage() {
@@ -27,14 +27,7 @@ export default function EdimPage() {
       </Link>
 
       {/* Header */}
-      <p className="text-primary mt-8 flex items-center gap-2 text-sm font-medium">
-        <span
-          aria-hidden
-          className="bg-accent inline-block size-1.5 rounded-full"
-        />
-        {edim.eyebrow}
-      </p>
-      <h1 className="text-ink mt-4 text-4xl font-bold md:text-5xl">
+      <h1 className="text-ink mt-8 text-4xl font-bold md:text-5xl">
         {edim.name}
       </h1>
       <p className="text-ink-muted mt-5 max-w-2xl text-lg leading-relaxed">
@@ -46,14 +39,14 @@ export default function EdimPage() {
         <FeatureRow
           eyebrow="The problem"
           heading="The thermal margin problem"
-          body="Nuclear data carries a lot of uncertainty. That uncertainty propagates through simulation and widens the uncertainty band on predicted thermal margin. To stay on the safe side of that widened band, operators must run conservatively — leaving real capability on the table."
+          body="Nuclear data carries a lot of uncertainty. That uncertainty propagates through simulation and widens the uncertainty band on predicted thermal margin. To stay on the safe side of that widened band, operators must run conservatively, leaving real capability on the table."
           image={media.nuclear}
           imageSide="right"
         />
         <FeatureRow
           eyebrow="The approach"
           heading="How EDIM narrows uncertainty"
-          body="EDIM identifies and narrows the underlying nuclear-data uncertainty, which reduces the uncertainty penalty carried through to predicted thermal margin. The result is a better prediction of true capability rather than stacked worst-case conservatism."
+          body="EDIM identifies and narrows the underlying nuclear data uncertainty, which reduces the uncertainty penalty carried through to predicted thermal margin. The result is a better prediction of true capability rather than stacked worst-case conservatism."
           bullets={[
             "Best-estimate-plus-uncertainty methods in place of layered margins",
             "Uncertainty quantified across the full fuel cycle",

@@ -9,13 +9,13 @@ export const enadox: ProductPage = {
   eyebrow: "Secure Communications",
   name: "ENADOX",
   tagline:
-    "Secure communication for open and denied environments. ENADOX moves data between platforms with inbuilt redundancy — when one channel degrades, the mission keeps moving.",
+    "Secure communication for open and denied environments. ENADOX moves data between platforms with inbuilt redundancy: when one channel degrades, the mission keeps moving.",
   stats: [
     {
       label: "Operating Envelope",
       value: "DDIL",
       description:
-        "Built for denied, degraded, intermittent, and limited-bandwidth environments — software-defined radio, drone swarm links, and industrial networks.",
+        "Built for denied, degraded, intermittent, and limited-bandwidth environments: software-defined radio, drone swarm links, and industrial networks.",
     },
     {
       label: "Redundancy Model",

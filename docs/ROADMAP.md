@@ -42,7 +42,7 @@ theme direction. — **Met** (light theme confirmed).
 **Exit criteria:** Home, Solutions, EDIM, and ENADOX pass functional tests in `TEST-PLAN.md` §4. — Built
 and manually verified in-browser; formal `TEST-PLAN.md` §4 pass not yet run.
 
-## Phase 3 — Company & Trust Pages (content complete; contact backend outstanding)
+## Phase 3 — Company & Trust Pages (complete)
 
 - [x] Build Industries page (`content/industries.ts`, 8 sectors).
 - [x] Build About page.
@@ -50,21 +50,32 @@ and manually verified in-browser; formal `TEST-PLAN.md` §4 pass not yet run.
       (`content/locations.ts`).
 - [x] Port Careers page into real components + data-driven job listing model (`content/careers.ts`,
       inline `JobBoard` with department filter).
-- [ ] Contact page: real form validation + backend submission handler. Currently email/map only —
-      no "Transmission Details" form yet (FR-CONTACT-1/2/5). **Deferred — not currently prioritized.**
+- [x] Contact page: email + map is the confirmed final approach. A "Transmission Details" submission
+      form is not required (client confirmed) and is off the roadmap.
 
-**Exit criteria:** all site sections navigable end-to-end; contact form successfully routes a test
-submission per category. — Navigation: met. Contact-form backend: **not started, deferred.**
+**Exit criteria:** all site sections navigable end-to-end. — **Met.**
 
-## Phase 4 — Compliance, Performance, Accessibility Hardening
+## Phase 4 — SEO, Discoverability & Search Optimization
 
-- [ ] Full WCAG 2.1 AA audit and remediation (`TEST-PLAN.md` §6).
-- [ ] Lighthouse CI integrated into pipeline; tune until all pages ≥ 95 across categories.
-- [ ] Replace all placeholder/CDN-hosted imagery with owned, optimized assets.
-- [ ] Add structured data (Schema.org Organization, WebSite, Product where applicable).
-- [ ] Configure security headers (CSP, X-Frame-Options, Referrer-Policy) at the edge.
+Make the site highly discoverable by traditional search (Google, Bing, DuckDuckGo) and by AI-powered
+search, answer engines, and LLMs that read public web content.
 
-**Exit criteria:** Release Sign-off Checklist in `TEST-PLAN.md` §10 passes in full.
+- [ ] Unique page titles, descriptive meta descriptions, and canonical URLs on every route.
+- [ ] Open Graph and Twitter/X card metadata.
+- [ ] `robots.txt` and `sitemap.xml`.
+- [ ] Favicon metadata (all required sizes/formats).
+- [ ] Correct heading hierarchy (H1 → H2 → H3) and semantic HTML throughout.
+- [ ] Descriptive image alt text and optimized internal linking.
+- [ ] JSON-LD structured data: Organization, WebSite, Product (EDIM, ENADOX), breadcrumbs where
+      applicable.
+- [ ] Optimized, crawl-friendly URL structure and navigation.
+- [ ] LLM discoverability: clear semantic structure, concise factual copy, one clear primary topic per
+      page, machine-readable product and organization data.
+- [ ] Verify no regression to page speed, Core Web Vitals, or Lighthouse SEO score while implementing
+      the above.
+
+**Exit criteria:** all pages carry complete metadata and structured data; sitemap/robots live; Lighthouse
+SEO score and Core Web Vitals hold steady or improve.
 
 ## Phase 5 — Launch
 
@@ -89,8 +100,7 @@ submission per category. — Navigation: met. Contact-form backend: **not starte
 ## Sequencing Notes
 
 - Phase 2 (EDIM/ENADOX) can proceed in parallel with Phase 3 (Industries/About/Careers/Global) once
-  Phase 1's shared layout and token pipeline are in place — they don't share page-specific logic beyond
+  Phase 1's shared layout and token pipeline are in place: they don't share page-specific logic beyond
   the common component inventory in `UX-NOTES.md` §7.
-- The Contact form's backend integration (Phase 3) is the one hard dependency for a real launch — every
-  other page can go live as content-only, but Contact must have a working, tested submission path
-  before Phase 5.
+- Contact is content-only (email + map) by client confirmation. No backend submission handler is
+  planned; Phase 5 launch is not blocked on it.

@@ -46,7 +46,7 @@ export function Footer() {
           </div>
           <p className="text-ink-muted mt-4 max-w-xs text-sm">
             Advanced data analytics for critical infrastructure, backed by
-            secure communications for mission-critical operations.
+            secure communications for mission critical operations.
           </p>
           <p className="text-ink-muted mt-6 text-xs">
             © {new Date().getFullYear()} Core Defenses. All rights reserved.

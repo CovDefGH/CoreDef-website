@@ -35,10 +35,10 @@ export default function AboutPage() {
         </h1>
         <p className="text-ink-muted mt-6 text-lg leading-relaxed">
           Core Defenses is an engineering-first organization building for
-          critical infrastructure — nuclear, energy, defense, and industrial
+          critical infrastructure: nuclear, energy, defense, and industrial
           environments where failure carries physical, not merely financial,
           consequences. Our work pairs advanced data analytics with secure
-          communications so that mission-critical operations stay informed and
+          communications so that mission critical operations stay informed and
           connected under real-world conditions.
         </p>
       </Reveal>
@@ -68,10 +68,10 @@ export default function AboutPage() {
         <FeatureRow
           eyebrow="Two products, one posture"
           heading="Analytics, backed by secure communications"
-          body="EDIM applies advanced data analytics to nuclear operations, narrowing the uncertainty in plant measurements to help recover thermal margin that conservative assumptions leave on the table. ENADOX delivers secure communications for denied and degraded environments, keeping mission-critical operations connected when conventional links cannot be relied upon. Together they reflect a single posture: precise insight, dependable connection."
+          body="EDIM applies advanced data analytics to nuclear operations, narrowing the uncertainty in plant measurements to help recover thermal margin that conservative assumptions leave on the table. ENADOX delivers secure communications for denied and degraded environments, keeping mission critical operations connected when conventional links cannot be relied upon. Together they reflect a single posture: precise insight, dependable connection."
           bullets={[
-            "EDIM — data analytics for nuclear, recovering thermal margin",
-            "ENADOX — secure communications for denied and degraded environments",
+            "EDIM: data analytics for nuclear, recovering thermal margin",
+            "ENADOX: secure communications for denied and degraded environments",
           ]}
           image={media.operations}
           imageSide="right"

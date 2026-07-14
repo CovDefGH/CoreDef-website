@@ -20,7 +20,7 @@ export const hubs: OfficeHub[] = [
     country: "USA",
     regionTag: "HQ",
     description:
-      "Headquarters and primary R&D — nuclear data analytics and secure communications engineering, based at ASTeCC, University of Kentucky.",
+      "Headquarters and primary R&D for nuclear data analytics and secure communications engineering, based at ASTeCC, University of Kentucky.",
     specialties: ["Nuclear Analytics", "Secure Communications", "R&D"],
     status: "ACTIVE",
     coordinates: { lat: 38.0316, lng: -84.5045 },

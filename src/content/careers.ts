@@ -17,8 +17,8 @@ const APPLY_URL =
 export const jobs: JobListing[] = [
   {
     id: "data-scientist-cim",
-    title: "Data Scientist — Critical Infrastructure Modeling & AI/ML",
-    location: "Lexington, KY",
+    title: "Data Scientist, Critical Infrastructure Modeling & AI/ML",
+    location: "Remote",
     employmentType: "Full-Time",
     department: "Research",
     description:
@@ -27,8 +27,8 @@ export const jobs: JobListing[] = [
   },
   {
     id: "fpga-design-engineer",
-    title: "Embedded Design Engineer — FPGA Innovation",
-    location: "Lexington, KY",
+    title: "Embedded Design Engineer, FPGA Innovation",
+    location: "Remote",
     employmentType: "Full-Time",
     department: "Hardware",
     description:
@@ -37,8 +37,8 @@ export const jobs: JobListing[] = [
   },
   {
     id: "control-system-dev-scada",
-    title: "Control System Software Developer — SCADA/PLC Integration",
-    location: "Lexington, KY",
+    title: "Control System Software Developer, SCADA/PLC Integration",
+    location: "Remote",
     employmentType: "Full-Time",
     department: "Software",
     description:
@@ -47,8 +47,8 @@ export const jobs: JobListing[] = [
   },
   {
     id: "grant-writer-sbir",
-    title: "Grant Writer — SBIR/STTR Specialist",
-    location: "Lexington, KY",
+    title: "Grant Writer, SBIR/STTR Specialist",
+    location: "Remote",
     employmentType: "Full-Time",
     department: "Business Development",
     description:
@@ -57,8 +57,8 @@ export const jobs: JobListing[] = [
   },
   {
     id: "software-engineer-mobile",
-    title: "Software Engineer — Mobile Solutions Architect",
-    location: "Lexington, KY",
+    title: "Software Engineer, Mobile Solutions Architect",
+    location: "Remote",
     employmentType: "Full-Time",
     department: "Software",
     description:
@@ -67,8 +67,8 @@ export const jobs: JobListing[] = [
   },
   {
     id: "controls-engineer-netsec",
-    title: "Controls Engineer — Network Security & SCADA Systems",
-    location: "Lexington, KY",
+    title: "Controls Engineer, Network Security & SCADA Systems",
+    location: "Remote",
     employmentType: "Full-Time",
     department: "Engineering",
     description:
@@ -77,8 +77,8 @@ export const jobs: JobListing[] = [
   },
   {
     id: "simulation-software-engineer",
-    title: "Simulation Software Engineer — Nuclear and Beyond",
-    location: "Lexington, KY",
+    title: "Simulation Software Engineer, Nuclear and Beyond",
+    location: "Remote",
     employmentType: "Full-Time",
     department: "Software",
     description:
@@ -88,7 +88,7 @@ export const jobs: JobListing[] = [
   {
     id: "analog-digital-circuit-designer",
     title: "Analog & Digital Circuit Designer",
-    location: "Lexington, KY",
+    location: "Remote",
     employmentType: "Full-Time",
     department: "Hardware",
     description:

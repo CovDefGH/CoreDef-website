@@ -1,8 +1,6 @@
-// Client-provided real contact + careers data (Covert Defenses).
-// NOTE: site brand reads "Core Defenses" but these are @covertdefenses.com /
-// covertdefenses.com — brand-name vs domain mismatch flagged to stakeholders.
+// Client-provided real contact + careers data.
 export const site = {
-  email: "info@covertdefenses.com",
+  email: "info@core-defenses.com",
   address: {
     line1: "A166, ASTeCC",
     line2: "145 Graham Ave",

@@ -9,7 +9,7 @@ import { enadox } from "@/content/products/enadox";
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "EDIM nuclear data analytics and ENADOX secure communications — the Core Defenses platform portfolio.",
+    "EDIM nuclear data analytics and ENADOX secure communications: the Core Defenses platform portfolio.",
 };
 
 export default function SolutionsPage() {
@@ -22,14 +22,13 @@ export default function SolutionsPage() {
         </h1>
         <p className="text-ink-muted mt-5 max-w-2xl text-lg">
           Data analytics for critical infrastructure, backed by secure
-          communications for mission-critical operations.
+          communications for mission critical operations.
         </p>
       </Reveal>
 
       <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
         <div>
           <FeatureRow
-            eyebrow={edim.eyebrow}
             heading={edim.name}
             body={edim.tagline}
             bullets={edim.stats.map(({ label, value }) => `${label}: ${value}`)}
@@ -45,7 +44,6 @@ export default function SolutionsPage() {
 
         <div>
           <FeatureRow
-            eyebrow={enadox.eyebrow}
             heading={enadox.name}
             body={enadox.tagline}
             bullets={enadox.stats.map(
