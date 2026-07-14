@@ -1,27 +1,27 @@
 import type { ProductPage } from "./types";
 
-// Copy constraint (FR-EDIM-6): uncertainty reduction / thermal margin /
-// operational efficiency framing only — no reactor-internals or safety claims.
+// Copy constraint (FR-EDIM-6): calculational-bias-correction / predictive-
+// accuracy framing only — no reactor-internals or safety claims.
 // TODO(product): stat + spec values are illustrative pending product/legal
 // confirmation (TEST-PLAN.md §5) — confirm before launch.
 export const edim: ProductPage = {
   slug: "edim",
-  eyebrow: "Nuclear Data Analytics",
+  eyebrow: "Nuclear Predictive Analytics",
   name: "EDIM",
   tagline:
-    "Nuclear data carries uncertainty. EDIM identifies and narrows it, reducing the uncertainty penalty on thermal margin so operators can run closer to true capability, not worst-case assumptions.",
+    "EDIM is a physics-based framework that identifies and corrects calculational bias, reducing prediction error and keeping predictive models aligned with real-time operational data for safer, more reliable decisions.",
   stats: [
     {
-      label: "Recovered Margin Value",
+      label: "Economic Impact",
       value: "$200–500M",
       description:
-        "Estimated economic value per reactor over its lifetime from higher allowable power output, longer fuel cycles, and more flexible operation.",
+        "Estimated savings per plant over its operational lifetime from mitigating power derates and cycle inefficiencies.",
     },
     {
-      label: "Uncertainty Penalty",
-      value: "Reduced",
+      label: "Prediction Method",
+      value: "Physics-Based Inference",
       description:
-        "Best-estimate-plus-uncertainty methods replace stacked conservatism, quantified across the full fuel cycle.",
+        "A mathematically rigorous framework that corrects calculational bias instead of compounding conservative assumptions.",
     },
   ],
   specifications: [

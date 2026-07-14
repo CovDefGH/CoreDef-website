@@ -14,7 +14,7 @@ const CAPABILITIES = [
     heading: "Nuclear Analytics",
     image: media.nuclear,
     description:
-      "EDIM narrows nuclear data uncertainty to reduce the penalty on thermal margin, recovering power output, fuel cycle length, and operational flexibility that conservatism leaves on the table.",
+      "EDIM is a physics-based framework that identifies and corrects calculational bias in predictive models, reducing prediction error and aligning results with real-time operational data for safer, more reliable decisions.",
     linkLabel: "Explore EDIM",
     href: "/solutions/edim",
   },

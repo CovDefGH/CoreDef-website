@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 const IMPACT = [
   {
     icon: Cpu,
-    heading: "Analytics at the margin",
-    body: "Build the uncertainty engine behind EDIM, where a fraction of recovered thermal margin is worth hundreds of millions per reactor.",
+    heading: "Bias correction at scale",
+    body: "Build the inference engine behind EDIM, where correcting a single source of calculational bias is worth hundreds of millions across a plant's lifetime.",
   },
   {
     icon: Radio,

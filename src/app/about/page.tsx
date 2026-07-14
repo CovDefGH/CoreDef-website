@@ -68,9 +68,9 @@ export default function AboutPage() {
         <FeatureRow
           eyebrow="Two products, one posture"
           heading="Analytics, backed by secure communications"
-          body="EDIM applies advanced data analytics to nuclear operations, narrowing the uncertainty in plant measurements to help recover thermal margin that conservative assumptions leave on the table. ENADOX delivers secure communications for denied and degraded environments, keeping mission critical operations connected when conventional links cannot be relied upon. Together they reflect a single posture: precise insight, dependable connection."
+          body="EDIM applies a physics-based framework to nuclear predictive models, identifying and correcting calculational bias so predictions track real plant data instead of drifting from it. ENADOX delivers secure communications for denied and degraded environments, keeping mission critical operations connected when conventional links cannot be relied upon. Together they reflect a single posture: precise insight, dependable connection."
           bullets={[
-            "EDIM: data analytics for nuclear, recovering thermal margin",
+            "EDIM: physics-based framework correcting calculational bias in nuclear predictive models",
             "ENADOX: secure communications for denied and degraded environments",
           ]}
           image={media.operations}

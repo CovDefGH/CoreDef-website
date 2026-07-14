@@ -10,9 +10,9 @@ import { media } from "@/content/media";
 import { edim } from "@/content/products/edim";
 
 export const metadata: Metadata = {
-  title: "EDIM: Nuclear Data Analytics",
+  title: "EDIM: Nuclear Predictive Analytics",
   description:
-    "EDIM reduces nuclear data uncertainty to recover thermal margin, improving reactor economics through better prediction, not conservatism.",
+    "EDIM is a physics-based framework that identifies and corrects calculational bias, improving predictive accuracy for nuclear operations.",
 };
 
 export default function EdimPage() {
@@ -38,27 +38,27 @@ export default function EdimPage() {
       <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
         <FeatureRow
           eyebrow="The problem"
-          heading="The thermal margin problem"
-          body="Nuclear data carries a lot of uncertainty. That uncertainty propagates through simulation and widens the uncertainty band on predicted thermal margin. To stay on the safe side of that widened band, operators must run conservatively, leaving real capability on the table."
+          heading="Prediction accuracy has stalled"
+          body="Core monitoring and predictive modeling methods have plateaued, and current approaches to tracking values like thermal margins and eigenvalues often diverge from what plants actually measure. Left unaddressed, that gap drives operational inefficiency, poor fuel utilization, and greater regulatory scrutiny, all while raising real questions about safety and economic viability."
           image={media.nuclear}
           imageSide="right"
         />
         <FeatureRow
-          eyebrow="The approach"
-          heading="How EDIM narrows uncertainty"
-          body="EDIM identifies and narrows the underlying nuclear data uncertainty, which reduces the uncertainty penalty carried through to predicted thermal margin. The result is a better prediction of true capability rather than stacked worst-case conservatism."
+          eyebrow="The solution"
+          heading="A physics-based framework for correcting bias"
+          body="EDIM applies a mathematically rigorous inference analysis to identify and correct the sources of calculational bias in predictive models, avoiding the overfitting, underfitting, and error compensation that limit existing methods. The result is a prediction that reliably tracks measured plant data instead of drifting from it."
           bullets={[
-            "Best-estimate-plus-uncertainty methods in place of layered margins",
-            "Uncertainty quantified across the full fuel cycle",
-            "Integrates with standard nuclear data libraries and simulation toolchains",
+            "Identifies and corrects calculational bias at its source",
+            "Avoids overfitting, underfitting, and error compensation",
+            "Keeps predictions aligned with real-time operational data",
           ]}
           image={media.operations}
           imageSide="left"
         />
         <FeatureRow
-          eyebrow="The outcome"
-          heading="What recovered margin is worth"
-          body="Recovered margin translates into higher allowable power output, longer fuel cycles, and more flexible operation. Across a reactor's lifetime, that improvement in reactor economics is estimated at roughly $200M–$500M per reactor."
+          eyebrow="The benefits"
+          heading="What accurate prediction is worth"
+          body="Closing the gap between predicted and measured performance gives operators earlier warning of degraded conditions, from instrumentation drift to operational anomalies, and greater confidence in the margins they operate with. Correcting for calculational bias is estimated to save $200M–$500M per plant over its operational lifetime by mitigating power derates and cycle inefficiencies."
           image={media.dataCenter}
           imageSide="right"
         />
