@@ -1,7 +1,7 @@
 import { MotionCard } from "@/components/motion/MotionCard";
 
 type StatCardProps = {
-  label: string;
+  label?: string;
   value: string;
   description: string;
 };
@@ -10,7 +10,7 @@ type StatCardProps = {
 export function StatCard({ label, value, description }: StatCardProps) {
   return (
     <MotionCard className="border-line hover:border-accent border bg-white p-6 transition-colors">
-      <p className="text-ink-muted text-sm">{label}</p>
+      {label && <p className="text-ink-muted text-sm">{label}</p>}
       <p className="text-ink mt-2 font-mono text-3xl font-bold tabular-nums">
         {value}
       </p>

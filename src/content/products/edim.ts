@@ -21,17 +21,7 @@ export const edim: ProductPage = {
       label: "Prediction Method",
       value: "Physics-Based Inference",
       description:
-        "A mathematically rigorous framework that corrects calculational bias instead of compounding conservative assumptions.",
+        "A mathematically rigorous and information-theoretic methodology that systematically identifies and corrects calculational biases, improving predictive accuracy while avoiding issues such as overfitting, underfitting, and error compensation.",
     },
-  ],
-  specifications: [
-    { label: "Deployment", value: "On-premises or private cloud" },
-    {
-      label: "Compatibility",
-      value:
-        "Standard nuclear data libraries and industry simulation toolchains",
-    },
-    { label: "Data Residency", value: "Customer-controlled, region-locked" },
-    { label: "Integration APIs", value: "REST + file-based batch interfaces" },
   ],
 };

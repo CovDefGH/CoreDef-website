@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { FeatureRow } from "@/components/sections/FeatureRow";
 import { StatCard } from "@/components/sections/StatCard";
-import { SpecTable } from "@/components/sections/SpecTable";
 import { CTALink } from "@/components/ui/CTALink";
 import { Reveal } from "@/components/motion/Reveal";
 import { media } from "@/content/media";
@@ -37,16 +36,14 @@ export default function EdimPage() {
       {/* Use-case blocks — alternating image sides */}
       <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
         <FeatureRow
-          eyebrow="The problem"
-          heading="Prediction accuracy has stalled"
-          body="Core monitoring and predictive modeling methods have plateaued, and current approaches to tracking values like thermal margins and eigenvalues often diverge from what plants actually measure. Left unaddressed, that gap drives operational inefficiency, poor fuel utilization, and greater regulatory scrutiny, all while raising real questions about safety and economic viability."
+          heading="Improving the Best Estimate"
+          body="State-of-the-art predictive modeling paradigms used to track core observables such as thermal margins and eigenvalues are inadequate for modern operational demands in a competitive energy market. These result in operational inefficiencies, suboptimal fuel utilization, and increased regulatory scrutiny."
           image={media.nuclear}
           imageSide="right"
         />
         <FeatureRow
-          eyebrow="The solution"
-          heading="A physics-based framework for correcting bias"
-          body="EDIM applies a mathematically rigorous inference analysis to identify and correct the sources of calculational bias in predictive models, avoiding the overfitting, underfitting, and error compensation that limit existing methods. The result is a prediction that reliably tracks measured plant data instead of drifting from it."
+          heading="A Patented Physics-Based Methodology to Correct Bias"
+          body="EDIM applies a mathematically rigorous inference analysis to identify and correct the sources of calculational bias in predictive models, avoiding issues such as overfitting, underfitting, and error compensation that plague existing methods. The result is a prediction that reliably tracks measured plant data instead of drifting from it."
           bullets={[
             "Identifies and corrects calculational bias at its source",
             "Avoids overfitting, underfitting, and error compensation",
@@ -56,9 +53,8 @@ export default function EdimPage() {
           imageSide="left"
         />
         <FeatureRow
-          eyebrow="The benefits"
-          heading="What accurate prediction is worth"
-          body="Closing the gap between predicted and measured performance gives operators earlier warning of degraded conditions, from instrumentation drift to operational anomalies, and greater confidence in the margins they operate with. Correcting for calculational bias is estimated to save $200M–$500M per plant over its operational lifetime by mitigating power derates and cycle inefficiencies."
+          heading="$200M–$500M in Recovered Operational Efficiencies"
+          body="These efficiencies come from reducing power derates, improving operational margins, and mitigating cycle inefficiencies, giving operators earlier warning of degraded conditions and greater confidence in the margins they operate with."
           image={media.dataCenter}
           imageSide="right"
         />
@@ -67,20 +63,13 @@ export default function EdimPage() {
       {/* Stat band */}
       <Reveal as="section" className="mt-16 grid gap-6 sm:grid-cols-2 md:mt-24">
         {edim.stats.map((stat) => (
-          <StatCard key={stat.label} {...stat} />
+          <StatCard
+            key={stat.label}
+            value={stat.value}
+            description={stat.description}
+          />
         ))}
       </Reveal>
-
-      {/* Core Specifications */}
-      <section className="mt-16 md:mt-24">
-        <h2 className="text-ink text-2xl font-bold">Core Specifications</h2>
-        <div className="mt-6">
-          <SpecTable
-            caption="EDIM core specifications"
-            rows={edim.specifications}
-          />
-        </div>
-      </section>
 
       {/* Closing CTA */}
       <section className="border-line mt-16 flex flex-wrap items-center justify-between gap-6 border p-8 md:mt-24">

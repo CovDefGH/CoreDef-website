@@ -5,5 +5,5 @@ export type ProductPage = {
   name: string;
   tagline: string;
   stats: { label: string; value: string; description: string }[];
-  specifications: { label: string; value: string }[];
+  specifications?: { label: string; value: string }[];
 };

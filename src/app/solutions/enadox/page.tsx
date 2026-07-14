@@ -89,7 +89,7 @@ export default function EnadoxPage() {
           </dl>
           <SpecTable
             caption="ENADOX specifications"
-            rows={enadox.specifications}
+            rows={enadox.specifications ?? []}
           />
         </div>
       </Reveal>
