@@ -58,7 +58,7 @@ export default function EdimPage() {
         <FeatureRow
           eyebrow="The outcome"
           heading="What recovered margin is worth"
-          body="Recovered margin translates into higher allowable power output, longer fuel cycles, and more flexible operation. Across a reactor's lifetime, that improvement in reactor economics is estimated at roughly $300M–$500M per reactor."
+          body="Recovered margin translates into higher allowable power output, longer fuel cycles, and more flexible operation. Across a reactor's lifetime, that improvement in reactor economics is estimated at roughly $200M–$500M per reactor."
           image={media.dataCenter}
           imageSide="right"
         />

@@ -13,7 +13,7 @@ export const edim: ProductPage = {
   stats: [
     {
       label: "Recovered Margin Value",
-      value: "$300–500M",
+      value: "$200–500M",
       description:
         "Estimated economic value per reactor over its lifetime from higher allowable power output, longer fuel cycles, and more flexible operation.",
     },

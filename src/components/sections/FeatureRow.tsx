@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Check } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 
 type FeatureRowProps = {
@@ -38,9 +39,11 @@ export function FeatureRow({
           <ul className="mt-5 space-y-2.5">
             {bullets.map((b) => (
               <li key={b} className="text-ink-muted flex gap-2.5 text-sm">
-                <span aria-hidden className="text-primary mt-0.5">
-                  ▪
-                </span>
+                <Check
+                  aria-hidden
+                  size={16}
+                  className="text-primary mt-0.5 shrink-0"
+                />
                 {b}
               </li>
             ))}
