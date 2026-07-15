@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
@@ -18,6 +18,12 @@ export const metadata: Metadata = {
   },
   description:
     "Advanced data analytics for critical infrastructure, backed by secure communications for mission critical operations. Home of EDIM and ENADOX.",
+};
+
+// viewport-fit=cover: lets the hero bleed under the Dynamic Island/status bar
+// and lets env(safe-area-inset-*) resolve to real device insets instead of 0.
+export const viewport: Viewport = {
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -42,7 +48,7 @@ export default function RootLayout({
         </a>
         <MotionProvider>
           <NavBar />
-          <main id="main" className="pt-16">
+          <main id="main" className="pt-[calc(4rem+env(safe-area-inset-top))]">
             {children}
           </main>
           <Footer />

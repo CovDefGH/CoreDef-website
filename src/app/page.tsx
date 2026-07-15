@@ -61,7 +61,7 @@ export default function Home() {
       {/* Hero — FR-HOME-1/2. Full-bleed video, transparent nav overlaid (see
           NavBar), text on a directional gradient scrim: darkest left, where
           the copy sits, fading lighter to the right so the footage reads. */}
-      <section className="relative -mt-16 min-h-svh overflow-hidden">
+      <section className="relative -mt-[calc(4rem+env(safe-area-inset-top))] min-h-dvh overflow-hidden">
         <HeroVideo
           src={media.heroVideo.src}
           poster={media.heroVideo.poster}
@@ -76,34 +76,36 @@ export default function Home() {
         />
         <div className="from-ink/70 absolute inset-0 bg-gradient-to-t to-transparent" />
 
-        <div className="relative mx-auto flex min-h-svh max-w-6xl items-center px-4 md:px-6">
+        <div className="relative mx-auto flex min-h-dvh max-w-6xl items-center px-4 md:px-6">
           <div className="max-w-2xl">
-            <h1 className="text-4xl leading-[1.05] font-semibold text-white md:text-5xl md:font-bold">
+            <h1 className="text-3xl leading-[1.1] font-semibold text-white md:text-5xl md:leading-[1.05] md:font-bold">
               Precision analytics
               <br />
               for critical infrastructure.
-              <span className="text-accent mt-3 block text-3xl md:text-4xl">
+              <span className="text-accent mt-2 block text-2xl md:mt-3 md:text-4xl">
                 Resilient communications
                 <br />
                 for contested environments.
               </span>
             </h1>
 
-            <p className="mt-6 max-w-[500px] text-lg text-white/85">
+            <p className="mt-4 max-w-[500px] text-base text-white/85 md:mt-6 md:text-lg">
               From advanced analytics to resilient communications, Core
               Defenses delivers technologies that help organizations make
               better decisions, protect critical operations, and stay
               connected under the most demanding conditions.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <CTALink href="/solutions">Explore Solutions</CTALink>
-              <CTALink href="/contact" variant="ghost">
+            <div className="mt-6 flex flex-wrap gap-3 md:mt-8">
+              <CTALink href="/solutions" compact>
+                Explore Solutions
+              </CTALink>
+              <CTALink href="/contact" variant="ghost" compact>
                 Contact Us
               </CTALink>
             </div>
 
-            <p className="mt-8 text-xs tracking-widest text-white/60 uppercase">
+            <p className="mt-6 text-xs tracking-widest text-white/60 uppercase md:mt-8">
               Defense &middot; Nuclear &middot; Energy &middot; Industrial
               Operations
             </p>

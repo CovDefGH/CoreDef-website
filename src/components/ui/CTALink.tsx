@@ -15,14 +15,25 @@ const VARIANTS = {
 type CTALinkProps = {
   href: string;
   variant?: keyof typeof VARIANTS;
+  /** Smaller mobile footprint, back to the standard size at md+. Only the
+   * Home hero needs this — every other usage keeps the default size. */
+  compact?: boolean;
   children: React.ReactNode;
 };
 
-export function CTALink({ href, variant = "primary", children }: CTALinkProps) {
+export function CTALink({
+  href,
+  variant = "primary",
+  compact = false,
+  children,
+}: CTALinkProps) {
+  const size = compact
+    ? "px-5 py-2.5 text-sm md:px-7 md:py-3.5 md:text-base"
+    : "px-7 py-3.5 text-base";
   return (
     <Link
       href={href}
-      className={`inline-block px-7 py-3.5 text-base font-medium transition-colors ${VARIANTS[variant]}`}
+      className={`inline-block ${size} font-medium transition-colors ${VARIANTS[variant]}`}
     >
       {children}
     </Link>
