@@ -61,7 +61,7 @@ export default function Home() {
       {/* Hero — FR-HOME-1/2. Full-bleed video, transparent nav overlaid (see
           NavBar), text on a directional gradient scrim: darkest left, where
           the copy sits, fading lighter to the right so the footage reads. */}
-      <section className="relative -mt-[calc(4rem+env(safe-area-inset-top))] min-h-dvh overflow-hidden">
+      <section className="relative -mt-[calc(4rem_+_env(safe-area-inset-top))] min-h-dvh overflow-hidden">
         <HeroVideo
           src={media.heroVideo.src}
           poster={media.heroVideo.poster}
@@ -76,7 +76,7 @@ export default function Home() {
         />
         <div className="from-ink/70 absolute inset-0 bg-gradient-to-t to-transparent" />
 
-        <div className="relative mx-auto flex min-h-dvh max-w-6xl items-center px-4 md:px-6">
+        <div className="relative mx-auto flex min-h-dvh max-w-6xl items-center px-4 pb-[env(safe-area-inset-bottom)] md:px-6">
           <div className="max-w-2xl">
             <h1 className="text-3xl leading-[1.1] font-semibold text-white md:text-5xl md:leading-[1.05] md:font-bold">
               Precision analytics

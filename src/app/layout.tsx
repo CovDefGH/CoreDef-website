@@ -48,7 +48,10 @@ export default function RootLayout({
         </a>
         <MotionProvider>
           <NavBar />
-          <main id="main" className="pt-[calc(4rem+env(safe-area-inset-top))]">
+          <main
+            id="main"
+            className="pt-[calc(4rem_+_env(safe-area-inset-top))]"
+          >
             {children}
           </main>
           <Footer />
