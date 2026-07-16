@@ -8,15 +8,8 @@ import { hubs } from "@/content/locations";
 export const metadata: Metadata = {
   title: "Global Operations",
   description:
-    "Core Defenses global strategy and operations hubs, regional coverage, and compliance posture across a worldwide deployment footprint.",
+    "Core Defenses global strategy and operations hubs and regional coverage across a worldwide deployment footprint.",
 };
-
-const certifications = [
-  "ISO 27001",
-  "SOC 2 Type II",
-  "NIST CSF",
-  "FedRAMP High",
-];
 
 export default function GlobalPage() {
   return (
@@ -98,31 +91,6 @@ export default function GlobalPage() {
             </MotionCard>
           );
         })}
-      </Reveal>
-
-      {/* Global Compliance */}
-      <Reveal as="section" className="border-line mt-16 border p-8 md:mt-24">
-        <h2 className="text-ink text-2xl font-bold">Global Compliance</h2>
-        <p className="text-ink-muted mt-3 max-w-2xl text-sm leading-relaxed">
-          We align our security program to recognized frameworks and pursue
-          formal attestations in step with customer and regulatory requirements.
-        </p>
-        <ul className="mt-6 flex flex-wrap gap-3">
-          {certifications.map((cert) => (
-            <li
-              key={cert}
-              className="text-ink border-line flex items-center gap-2 border px-3 py-1.5 text-sm font-medium"
-            >
-              {cert}
-              <span className="text-ink-muted text-xs font-normal">Target</span>
-            </li>
-          ))}
-        </ul>
-        <p className="text-ink-muted mt-6 text-xs">
-          Compliance posture: status confirmed with each engagement. Framework
-          alignment reflects our target posture, not a claim of held
-          certification.
-        </p>
       </Reveal>
     </div>
   );
