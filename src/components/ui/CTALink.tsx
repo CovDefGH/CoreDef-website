@@ -15,8 +15,9 @@ const VARIANTS = {
 type CTALinkProps = {
   href: string;
   variant?: keyof typeof VARIANTS;
-  /** Smaller mobile footprint, back to the standard size at md+. Only the
-   * Home hero needs this — every other usage keeps the default size. */
+  /** Fluid footprint scaled by vmin (min(vw, vh)), so it shrinks on both
+   * narrow and short viewports. Only the Home hero needs this — every other
+   * usage keeps the default fixed size. */
   compact?: boolean;
   children: React.ReactNode;
 };
@@ -28,7 +29,7 @@ export function CTALink({
   children,
 }: CTALinkProps) {
   const size = compact
-    ? "px-5 py-2.5 text-sm md:px-7 md:py-3.5 md:text-base"
+    ? "px-[clamp(1rem,4vmin,1.75rem)] py-[clamp(0.5rem,2.2vmin,0.875rem)] text-[clamp(0.8rem,2.4vmin,1rem)]"
     : "px-7 py-3.5 text-base";
   return (
     <Link

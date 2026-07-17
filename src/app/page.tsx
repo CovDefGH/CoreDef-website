@@ -79,24 +79,28 @@ export default function Home() {
 
         <div className="relative mx-auto flex min-h-dvh max-w-6xl items-center px-4 pt-[calc(4rem_+_env(safe-area-inset-top))] pb-[env(safe-area-inset-bottom)] md:px-6">
           <div className="max-w-2xl">
-            <h1 className="text-3xl leading-[1.1] font-semibold text-white md:text-5xl md:leading-[1.05] md:font-bold">
+            {/* Sized with vmin (= min(vw, vh)) so the hero compresses on short
+                viewports (small laptops, resized windows) the same way it
+                already did on narrow ones — one fluid scale, no breakpoint
+                that only accounts for width. */}
+            <h1 className="text-[clamp(1.5rem,7vmin,3rem)] leading-[1.05] font-semibold text-white md:font-bold">
               Precision analytics
               <br />
               for critical infrastructure.
-              <span className="text-accent mt-2 block text-2xl md:mt-3 md:text-4xl">
+              <span className="text-accent mt-[clamp(0.375rem,1.5vmin,0.75rem)] block text-[clamp(1.125rem,5vmin,2.25rem)]">
                 Resilient communications
                 <br />
                 for contested environments.
               </span>
             </h1>
 
-            <p className="mt-4 max-w-[500px] text-base text-white/85 md:mt-6 md:text-lg">
+            <p className="mt-[clamp(0.75rem,3vmin,1.5rem)] max-w-[500px] text-[clamp(0.8rem,2.4vmin,1.125rem)] leading-snug text-white/85">
               Core Defenses builds EDIM, a predictive analytics platform for
               nuclear plants, and ENADOX, a secure communications platform for
               defense and industrial operations.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-3 md:mt-8">
+            <div className="mt-[clamp(1rem,3.5vmin,2rem)] flex flex-wrap gap-[clamp(0.5rem,2vmin,0.75rem)]">
               <CTALink href="/solutions" compact>
                 Explore Solutions
               </CTALink>
@@ -105,7 +109,7 @@ export default function Home() {
               </CTALink>
             </div>
 
-            <p className="mt-6 text-xs tracking-widest text-white/60 uppercase md:mt-8">
+            <p className="mt-[clamp(1rem,3.5vmin,2rem)] text-[clamp(0.6rem,1.8vmin,0.75rem)] tracking-widest text-white/60 uppercase">
               Defense &middot; Nuclear &middot; Energy &middot; Industrial
               Operations
             </p>

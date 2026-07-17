@@ -31,7 +31,7 @@ export function NavBar() {
 
   useEffect(() => {
     if (!transparentCapable) return;
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 64);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -46,8 +46,10 @@ export function NavBar() {
       // will-change-transform: gives the fixed header its own compositor
       // layer — prevents a Safari repaint bug where scroll-driven content
       // underneath (.cd-reveal) can leave a stale frame behind it.
-      className={`will-change-transform fixed inset-x-0 top-0 z-40 border-b pt-[env(safe-area-inset-top)] transition-colors duration-300 ${
-        solid ? "border-line bg-white" : "border-transparent bg-transparent"
+      className={`will-change-transform fixed inset-x-0 top-0 z-40 border-b pt-[env(safe-area-inset-top)] transition-[background-color,backdrop-filter,border-color] duration-300 ease-out ${
+        solid
+          ? "border-line bg-white/95 backdrop-blur-md"
+          : "border-transparent bg-transparent backdrop-blur-none"
       }`}
     >
       <nav
@@ -114,7 +116,7 @@ export function NavBar() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen(!open)}
-          className={`p-2 transition-colors md:hidden ${solid ? "text-ink" : "text-white"}`}
+          className={`-m-1.5 p-3 transition-colors md:hidden ${solid ? "text-ink" : "text-white"}`}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>

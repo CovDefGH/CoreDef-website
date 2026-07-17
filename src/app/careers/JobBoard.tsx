@@ -31,8 +31,8 @@ export function JobBoard() {
               onClick={() => setDepartment(dept)}
               className={
                 active
-                  ? "border-primary bg-primary border px-4 py-2 text-sm font-medium text-white transition-colors"
-                  : "border-line hover:border-accent text-ink border bg-white px-4 py-2 text-sm font-medium transition-colors"
+                  ? "border-primary bg-primary border px-4 py-3 text-sm font-medium text-white transition-colors"
+                  : "border-line hover:border-accent text-ink border bg-white px-4 py-3 text-sm font-medium transition-colors"
               }
             >
               {dept}

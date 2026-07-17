@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-17T00:00:00.000Z",
+  "title": "Design System: Core Defenses",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Electric Blue",
+        "canonical": "oklch(52% 0.24 264)",
+        "tonalRamp": ["#00113d", "#001f70", "#0032a3", "#0040cc", "#0052ff", "#3d78ff", "#7ca3ff", "#c2d6ff"]
+      },
+      "primary-dark": {
+        "role": "primary-hover",
+        "displayName": "Electric Blue Dark",
+        "canonical": "oklch(43% 0.22 264)",
+        "tonalRamp": ["#000d2e", "#001a5c", "#002a91", "#0040cc"]
+      },
+      "accent": {
+        "role": "secondary",
+        "displayName": "Sentinel Cyan",
+        "canonical": "oklch(80% 0.14 220)",
+        "tonalRamp": ["#003a45", "#00566a", "#00799b", "#009cc7", "#00d1ff", "#5fe0ff", "#a3edff", "#dcf9ff"]
+      },
+      "ink": {
+        "role": "tertiary",
+        "displayName": "Deep Slate",
+        "canonical": "oklch(21% 0.04 260)",
+        "tonalRamp": ["#05070d", "#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#cbd5e1"]
+      },
+      "ink-muted": {
+        "role": "text-secondary",
+        "displayName": "Ink Muted",
+        "canonical": "oklch(45% 0.02 260)",
+        "tonalRamp": ["#0f172a", "#334155", "#475569", "#64748b"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Cool Slate",
+        "canonical": "oklch(98% 0.005 250)",
+        "tonalRamp": ["#e2e8f0", "#eef2f6", "#f8fafc", "#ffffff"]
+      },
+      "line": {
+        "role": "border",
+        "displayName": "Slate Line",
+        "canonical": "oklch(93% 0.01 250)",
+        "tonalRamp": ["#cbd5e1", "#e2e8f0", "#eef2f6"]
+      },
+      "bg": {
+        "role": "neutral-bg",
+        "displayName": "White",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": ["#f8fafc", "#ffffff"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Hero Display", "purpose": "Home hero H1 only. vmin-scaled, never used elsewhere." },
+      "headline": { "displayName": "Headline", "purpose": "Page H1s and major section H2s." },
+      "body": { "displayName": "Body", "purpose": "Paragraph copy, capped ~65-75ch." },
+      "label": { "displayName": "Label", "purpose": "Tags, status badges, filters." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "card-hover-lift", "value": "spring(stiffness: 300, damping: 24), translateY(-4px)", "purpose": "MotionCard hover lift, paired with border-color shift to accent." },
+      { "name": "nav-scroll-transition", "value": "cubic-bezier(0, 0, 0.2, 1) 300ms", "purpose": "Nav background/blur crossfade on scroll threshold. No shadow." },
+      { "name": "reveal-in", "value": "linear, animation-timeline: view(), range entry 0%-22%", "purpose": "Scroll-driven section reveal (CSS-only, no JS observer), translateY(22px)+opacity." },
+      { "name": "page-fade", "value": "cubic-bezier(0.22, 1, 0.36, 1) 320ms", "purpose": "Page-level entrance fade on route change." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Default CTA. Electric Blue fill, sharp corners, darkens on hover.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Explore Solutions</a>",
+      "css": ".ds-btn-primary { display: inline-block; padding: 14px 28px; background: #0052ff; color: #fff; border: 1px solid #0052ff; border-radius: 0; font-weight: 500; font-size: 1rem; transition: background-color 0.2s, border-color 0.2s; } .ds-btn-primary:hover { background: #0040cc; border-color: #0f172a; } .ds-btn-primary:focus-visible { outline: 2px solid #0052ff; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "White-fill button for lower-emphasis actions on light backgrounds.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">View Careers</a>",
+      "css": ".ds-btn-secondary { display: inline-block; padding: 14px 28px; background: #fff; color: #0f172a; border: 1px solid #e2e8f0; border-radius: 0; font-weight: 500; font-size: 1rem; transition: border-color 0.2s; } .ds-btn-secondary:hover { border-color: #00d1ff; } .ds-btn-secondary:focus-visible { outline: 2px solid #0052ff; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Frosted button for use over dark hero imagery only. The single deliberate glassmorphism use in the system.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Contact Us</a>",
+      "css": ".ds-btn-ghost { display: inline-block; padding: 14px 28px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.4); border-radius: 0; font-weight: 500; backdrop-filter: blur(4px); transition: background-color 0.2s, border-color 0.2s; } .ds-btn-ghost:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.7); }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Flat card with border-color hover shift and a subtle transform lift. No shadow, ever.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Nuclear Analytics</h3><p class=\"ds-card-body\">EDIM is a physics-based framework that identifies and corrects calculational bias in predictive models.</p></div>",
+      "css": ".ds-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 0; padding: 24px; transition: border-color 0.2s, transform 0.2s; } .ds-card:hover { border-color: #00d1ff; transform: translateY(-4px); } .ds-card-title { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 1.125rem; color: #0f172a; letter-spacing: -0.02em; } .ds-card-body { margin-top: 8px; font-size: 0.875rem; line-height: 1.6; color: #475569; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Fixed header. Transparent-to-solid crossfade on the home hero (backdrop-blur + bg-opacity once scrolled, no shadow); solid white everywhere else.",
+      "html": "<header class=\"ds-nav\"><span class=\"ds-nav-logo\">CORE DEFENSES</span><a class=\"ds-nav-link ds-nav-link--active\" href=\"#\">Mission</a><a class=\"ds-nav-link\" href=\"#\">Solutions</a></header>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 36px; padding: 16px 24px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #e2e8f0; } .ds-nav-logo { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; color: #0f172a; letter-spacing: -0.02em; } .ds-nav-link { font-size: 0.875rem; color: #475569; border-bottom: 2px solid transparent; padding-bottom: 4px; transition: color 0.2s, border-color 0.2s; } .ds-nav-link:hover { color: #0f172a; border-color: #00d1ff; } .ds-nav-link--active { color: #0052ff; border-color: #0052ff; font-weight: 500; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Well-Lit Laboratory",
+    "overview": "Core Defenses reads like the interface of a precision instrument, not a startup's marketing site. The original brief called for a dark, stealth-ops mood in the register of Palantir or Anduril; the team deliberately rejected that in favor of a bright, high-contrast surface built for extended technical reading. The audience is security analysts and infrastructure engineers evaluating whether EDIM and ENADOX are credible for a nuclear plant, a defense program, or a utility grid, not consumers being sold excitement. Every element earns its place functionally: a well-lit lab bench, not a movie set. The system explicitly rejects AI-marketing visual and verbal clichés: gradient text, glassmorphism, hero-metric templates, tiny uppercase eyebrows above every section, drop-shadow lift cards, and copy that sounds inspirational rather than factual. It also rejects the dark stealth-ops aesthetic considered and abandoned in the original brief.",
+    "keyCharacteristics": [
+      "Sharp corners everywhere (0-radius) — rigidity and precision over friendliness",
+      "Depth via 1px border-color shift, never a shadow",
+      "Electric Blue + Sentinel Cyan on a white/cool-slate surface, not navy-and-black",
+      "Copy is factual, short-sentence, engineer-written — no philosophy, no flowery adjectives",
+      "Motion is restrained and functional: scroll reveals, hover micro-interactions, nothing choreographed"
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Electric Blue is the only saturated color used for interactive commitment (buttons, active states). Sentinel Cyan is a highlight, never a CTA fill.", "section": "colors" },
+      { "name": "The No-Flourish Rule", "body": "No italics, no serif accents, no display-font body copy. One display face, one body face, nothing decorative layered on top.", "section": "typography" },
+      { "name": "The No-Shadow Rule", "body": "box-shadow is prohibited as a depth cue anywhere in the system, including the nav. Focus rings use a 2px solid outline, never a shadow-based glow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep every corner at 0-radius — cards, buttons, images, badges.",
+      "Do use a 1px border-color shift (never a shadow) to communicate hover/focus/active depth.",
+      "Do size hero-scale type and spacing with vmin-based clamp() so short viewports compress proportionally.",
+      "Do write copy the way ams-corp.com does: short sentences, real technical facts, no meaningless adjectives.",
+      "Do gate every animation on prefers-reduced-motion: no-preference, with content visible-by-default."
+    ],
+    "donts": [
+      "Don't use box-shadow as a depth/elevation cue anywhere in the system, including the nav.",
+      "Don't write mission-critical, cutting-edge, world-class, redefining, or other flowery AI-marketing adjectives.",
+      "Don't write philosophy-voiced copy (we believe…, our philosophy…) or contrast-aphorisms (measurement over assumption).",
+      "Don't add gradient text, glassmorphism-as-default, hero-metric templates, or uppercase eyebrow labels above every section.",
+      "Don't patch short-viewport overlap with a fixed arbitrary top-padding value — use the nav-height-derived offset plus vmin-scaled hero content."
+    ]
+  }
+}
