@@ -8,7 +8,7 @@ export const enadox: ProductPage = {
   slug: "enadox",
   name: "ENADOX",
   tagline:
-    "Secure communication for open and denied environments. ENADOX moves data between platforms with inbuilt redundancy: when one channel degrades, the mission keeps moving.",
+    "Secure communication for open and denied environments. ENADOX moves data between platforms with built-in redundancy: when one channel degrades, another maintains the connection.",
   stats: [
     {
       label: "Operating Envelope",

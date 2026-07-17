@@ -10,7 +10,7 @@ import { JobBoard } from "./JobBoard";
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "Engineer the shield. Core Defenses hires engineers for analytics, secure communications, and critical infrastructure systems. All open roles listed. Apply now.",
+    "Core Defenses hires engineers for analytics, secure communications, and critical infrastructure systems. All open roles listed.",
 };
 
 // FR-CAR-2 engineering-impact cards.
@@ -18,12 +18,12 @@ const IMPACT = [
   {
     icon: Cpu,
     heading: "Bias correction at scale",
-    body: "Build the inference engine behind EDIM, where correcting a single source of calculational bias is worth hundreds of millions across a plant's lifetime.",
+    body: "Build the inference engine behind EDIM. A single corrected source of calculational bias can save a plant $200M–$500M over its lifetime.",
   },
   {
     icon: Radio,
-    heading: "Comms that don't drop",
-    body: "Engineer ENADOX for denied and degraded environments, targeting resilient links measured in single-digit milliseconds.",
+    heading: "Secure communications engineering",
+    body: "Engineer ENADOX for denied and degraded environments. Design communication links with response times in single-digit milliseconds.",
   },
   {
     icon: ShieldCheck,
@@ -39,14 +39,13 @@ export default function CareersPage() {
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
       {/* Hero — FR-CAR-1 */}
       <div className="max-w-3xl">
-        <h1 className="text-ink text-4xl font-bold md:text-5xl">
-          Engineer the Shield
-        </h1>
+        <h1 className="text-ink text-4xl font-bold md:text-5xl">Careers</h1>
         <p className="text-ink-muted mt-5 text-lg">
-          We hire engineers who hold the same bar we hold for our systems, the
-          kind that fail safely because someone refused to cut the corner. If
-          you want your work measured in consequences, not sprints, every open
-          role is listed below.
+          Core Defenses builds data analytics and secure communications
+          systems for nuclear, defense, and industrial operations.
+          We&apos;re looking for engineers to work on physics-based
+          modeling, secure communications, and embedded systems alongside
+          our engineering team. Every open role is listed below.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <a
@@ -118,8 +117,8 @@ export default function CareersPage() {
             Don&apos;t see your role?
           </h2>
           <p className="text-ink-muted mt-2 text-sm">
-            We move fast for the right engineer. Send your application and tell
-            us what you&apos;d build. We read every one.
+            Send your application and tell us what you&apos;d like to build.
+            We review every application.
           </p>
           <a
             href="#open-roles"

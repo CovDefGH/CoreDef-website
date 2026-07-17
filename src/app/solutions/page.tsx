@@ -18,8 +18,9 @@ export default function SolutionsPage() {
       <Reveal as="section">
         <h1 className="text-ink text-4xl font-bold md:text-5xl">Solutions</h1>
         <p className="text-ink-muted mt-5 max-w-2xl text-lg">
-          Data analytics for critical infrastructure, backed by secure
-          communications for mission critical operations.
+          EDIM provides predictive analytics for nuclear operations. ENADOX
+          provides secure communications for defense and industrial
+          operations.
         </p>
       </Reveal>
 
@@ -49,7 +50,7 @@ export default function SolutionsPage() {
             image={media.comms}
             imageSide="left"
           />
-          <div className="mt-6">
+          <div className="mt-6 md:flex md:justify-end">
             <CTALink href={`/solutions/${enadox.slug}`}>
               Explore {enadox.name} →
             </CTALink>

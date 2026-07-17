@@ -37,13 +37,13 @@ export default function EdimPage() {
       <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
         <FeatureRow
           heading="Improving the Best Estimate"
-          body="State-of-the-art predictive modeling paradigms used to track core observables such as thermal margins and eigenvalues are inadequate for modern operational demands in a competitive energy market. These result in operational inefficiencies, suboptimal fuel utilization, and increased regulatory scrutiny."
+          body="Predictive models used to track thermal margins and eigenvalues often carry calculational bias. This bias causes operational inefficiencies, suboptimal fuel utilization, and increased regulatory scrutiny."
           image={media.nuclear}
           imageSide="right"
         />
         <FeatureRow
           heading="A Patented Physics-Based Methodology to Correct Bias"
-          body="EDIM applies a mathematically rigorous inference analysis to identify and correct the sources of calculational bias in predictive models, avoiding issues such as overfitting, underfitting, and error compensation that plague existing methods. The result is a prediction that reliably tracks measured plant data instead of drifting from it."
+          body="EDIM applies an inference analysis to identify and correct the sources of calculational bias in predictive models. It avoids overfitting, underfitting, and error compensation. Predictions track measured plant data rather than drifting from it."
           bullets={[
             "Identifies and corrects calculational bias at its source",
             "Avoids overfitting, underfitting, and error compensation",
@@ -54,7 +54,7 @@ export default function EdimPage() {
         />
         <FeatureRow
           heading="$200M–$500M in Recovered Operational Efficiencies"
-          body="These efficiencies come from reducing power derates, improving operational margins, and mitigating cycle inefficiencies, giving operators earlier warning of degraded conditions and greater confidence in the margins they operate with."
+          body="These savings come from reduced power derates, improved operational margins, and fewer cycle inefficiencies. Operators get earlier warning of degraded conditions and more accurate operating margins."
           image={media.dataCenter}
           imageSide="right"
         />

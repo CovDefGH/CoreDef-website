@@ -11,7 +11,7 @@ import { enadox } from "@/content/products/enadox";
 export const metadata: Metadata = {
   title: "ENADOX: Secure Communications",
   description:
-    "ENADOX enables resilient, secure communication across platforms in denied, degraded, intermittent, and limited-bandwidth environments.",
+    "ENADOX enables secure communication across platforms in denied, degraded, intermittent, and limited-bandwidth environments.",
 };
 
 export default function EnadoxPage() {
@@ -39,7 +39,7 @@ export default function EnadoxPage() {
       <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
         <FeatureRow
           heading="Redundancy built into the data itself"
-          body="ENADOX enables secure communication between platforms by transforming the data they exchange, with self-healing built in. One sensor's data can be embedded within another, so if a sensor fails, the original can be reconstructed. It is a kind of inbuilt redundancy that keeps information available even as sources drop."
+          body="ENADOX enables secure communication between platforms by transforming the data they exchange. Self-healing is built in: one sensor's data can be embedded within another, so if a sensor fails, the original can be reconstructed."
           bullets={[
             "Secure data exchange across otherwise separate platforms",
             "Cross-source embedding for reconstruction when a sensor fails",
@@ -51,7 +51,7 @@ export default function EnadoxPage() {
 
         <FeatureRow
           heading="Secure communication where links are denied"
-          body="ENADOX supports secure communication in both open and denied environments, with proven military use cases. It carries traffic over software-defined radio, sustains communication in DDIL conditions, and coordinates drone-swarm navigation where conventional links break down."
+          body="ENADOX supports secure communication in open and denied environments. It carries traffic over software-defined radio, sustains communication in DDIL conditions, and coordinates drone-swarm navigation."
           bullets={[
             "Software-defined radio (SDR) links",
             "Communication in denied, degraded, intermittent, and limited-bandwidth (DDIL) environments",
@@ -63,7 +63,7 @@ export default function EnadoxPage() {
 
         <FeatureRow
           heading="Mission continuity as conditions degrade"
-          body="Critical operations cannot pause when the environment turns hostile. ENADOX is resilient by design, keeping mission critical operations connected as bandwidth narrows and links come and go, so teams stay coordinated when it matters most."
+          body="ENADOX keeps operations connected as bandwidth narrows and links become intermittent. Communication continues as individual links fail or degrade."
           image={media.operations}
           imageSide="right"
         />

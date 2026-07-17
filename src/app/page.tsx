@@ -14,7 +14,7 @@ const CAPABILITIES = [
     heading: "Nuclear Analytics",
     image: media.nuclear,
     description:
-      "EDIM is a physics-based framework that identifies and corrects calculational bias in predictive models, reducing prediction error and aligning results with real-time operational data for safer, more reliable decisions.",
+      "EDIM is a physics-based framework that identifies and corrects calculational bias in predictive models. It reduces prediction error and keeps results aligned with real-time plant data.",
     linkLabel: "Explore EDIM",
     href: "/solutions/edim",
   },
@@ -23,7 +23,7 @@ const CAPABILITIES = [
     heading: "Secure Communications",
     image: media.comms,
     description:
-      "ENADOX delivers resilient, secure communication across denied, degraded, intermittent, and low-bandwidth environments, with redundancy built into the data itself.",
+      "ENADOX provides secure communication across denied, degraded, intermittent, and low-bandwidth (DDIL) environments. Redundancy is built into the data itself.",
     linkLabel: "Explore ENADOX",
     href: "/solutions/enadox",
   },
@@ -46,12 +46,13 @@ const TRUST_SIGNALS = [
   {
     icon: Timer,
     heading: "Low-Latency Operations",
-    description: "Engineered for decisions measured in milliseconds.",
+    description: "Response times measured in single-digit milliseconds.",
   },
   {
     icon: Globe2,
-    heading: "Global Deployment",
-    description: "Operations hubs across four regions. See Global.",
+    heading: "Global Operations",
+    description:
+      "Headquarters in Lexington, KY. Expansion planned across the Americas, EMEA, and APAC.",
   },
 ];
 
@@ -76,7 +77,7 @@ export default function Home() {
         />
         <div className="from-ink/70 absolute inset-0 bg-gradient-to-t to-transparent" />
 
-        <div className="relative mx-auto flex min-h-dvh max-w-6xl items-center px-4 pb-[env(safe-area-inset-bottom)] md:px-6">
+        <div className="relative mx-auto flex min-h-dvh max-w-6xl items-center px-4 pt-[calc(4rem_+_env(safe-area-inset-top))] pb-[env(safe-area-inset-bottom)] md:px-6">
           <div className="max-w-2xl">
             <h1 className="text-3xl leading-[1.1] font-semibold text-white md:text-5xl md:leading-[1.05] md:font-bold">
               Precision analytics
@@ -90,10 +91,9 @@ export default function Home() {
             </h1>
 
             <p className="mt-4 max-w-[500px] text-base text-white/85 md:mt-6 md:text-lg">
-              From advanced analytics to resilient communications, Core
-              Defenses delivers technologies that help organizations make
-              better decisions, protect critical operations, and stay
-              connected under the most demanding conditions.
+              Core Defenses builds EDIM, a predictive analytics platform for
+              nuclear plants, and ENADOX, a secure communications platform for
+              defense and industrial operations.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3 md:mt-8">
@@ -118,8 +118,8 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
           <h2 className="text-ink text-3xl font-bold">Core Capabilities</h2>
           <p className="text-ink-muted mt-3 max-w-2xl">
-            Two platforms, one posture: understand the system precisely, and
-            keep it connected when conditions degrade.
+            Two platforms: EDIM for predictive analytics, ENADOX for secure
+            communications in degraded conditions.
           </p>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {CAPABILITIES.map(
@@ -171,8 +171,8 @@ export default function Home() {
       >
         <h2 className="text-ink text-3xl font-bold">Where we operate</h2>
         <p className="text-ink-muted mt-3 max-w-2xl">
-          Systems that cannot fail quietly. We build for the sectors that carry
-          physical consequence.
+          We build for sectors where failure has physical consequences:
+          nuclear, energy, defense, and industrial operations.
         </p>
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {INFRASTRUCTURE.map(({ image, caption }) => (
@@ -219,7 +219,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6 px-4 py-12 md:px-6">
           <div>
             <h2 className="text-ink text-2xl font-bold">
-              Built for your sector.
+              Industries we serve.
             </h2>
             <p className="text-ink-muted mt-2 text-sm">
               Energy, nuclear, defense, government, utilities, manufacturing.

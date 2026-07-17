@@ -8,7 +8,7 @@ export const edim: ProductPage = {
   slug: "edim",
   name: "EDIM",
   tagline:
-    "EDIM is a physics-based framework that identifies and corrects calculational bias, reducing prediction error and keeping predictive models aligned with real-time operational data for safer, more reliable decisions.",
+    "EDIM is a physics-based framework that identifies and corrects calculational bias. It reduces prediction error and keeps predictive models aligned with real-time operational data.",
   stats: [
     {
       label: "Economic Impact",
@@ -20,7 +20,7 @@ export const edim: ProductPage = {
       label: "Prediction Method",
       value: "Physics-Based Inference",
       description:
-        "A mathematically rigorous and information-theoretic methodology that systematically identifies and corrects calculational biases, improving predictive accuracy while avoiding issues such as overfitting, underfitting, and error compensation.",
+        "An information-theoretic methodology that identifies and corrects calculational biases. It improves predictive accuracy while avoiding overfitting, underfitting, and error compensation.",
     },
   ],
 };

@@ -19,12 +19,11 @@ export default function IndustriesPage() {
         <header className="max-w-3xl">
           <h1 className="text-ink text-4xl md:text-5xl">Industries</h1>
           <p className="text-ink-muted mt-6 text-lg">
-            The systems that power, defend, and sustain modern life are also the
-            most targeted. A single compromised data point or intercepted
-            channel can cascade into outages, safety events, or mission failure.
-            Core Defenses equips operators across the highest-consequence
-            sectors with verifiable intelligence and assured communications
-            built for adversarial conditions.
+            Energy, nuclear, defense, and industrial operators depend on
+            accurate data and secure communications. A compromised data point
+            or an intercepted channel can cause an outage, a safety incident,
+            or mission failure. Core Defenses builds verifiable analytics and
+            secure communications for these sectors.
           </p>
         </header>
 

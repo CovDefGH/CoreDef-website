@@ -7,21 +7,21 @@ import { media } from "@/content/media";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Core Defenses is an engineering-first organization building advanced data analytics and secure communications for critical infrastructure.",
+    "Core Defenses builds data analytics and secure communications systems for nuclear, energy, defense, and industrial operations.",
 };
 
 const VALUES = [
   {
     title: "Precision",
-    body: "We treat uncertainty as a quantity to be measured and reduced, not a margin to be padded. Better inputs make better decisions.",
+    body: "Uncertainty in our models is quantified and reduced through validated methods, not covered with added margin.",
   },
   {
     title: "Transparency",
-    body: "Our methods are auditable and our assumptions explicit. Operators and regulators should understand why a result holds.",
+    body: "Our methods are documented and our assumptions stated explicitly. Operators and regulators can verify how a result was produced.",
   },
   {
     title: "Reliability",
-    body: "Systems that matter must work when conditions are worst. We engineer for the degraded case, not the demonstration.",
+    body: "Systems are tested against worst-case operating conditions, including degraded sensor input and loss of individual communication links.",
   },
 ];
 
@@ -33,38 +33,36 @@ export default function AboutPage() {
           About Core Defenses
         </h1>
         <p className="text-ink-muted mt-6 text-lg leading-relaxed">
-          Core Defenses is an engineering-first organization building for
-          critical infrastructure: nuclear, energy, defense, and industrial
-          environments where failure carries physical, not merely financial,
-          consequences. Our work pairs advanced data analytics with secure
-          communications so that mission critical operations stay informed and
-          connected under real-world conditions.
+          Core Defenses builds data analytics and secure communications
+          systems for nuclear, energy, defense, and industrial operations.
+          These are environments where failure has physical consequences, not
+          just financial ones.
         </p>
       </Reveal>
 
       <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
         <FeatureRow
-          heading="Rigor before rhetoric"
-          body="We are a team of engineers solving hard problems in domains where the physics are unforgiving. Our approach favors measurement over assumption, disciplined analysis over intuition, and results that hold up to independent scrutiny."
+          heading="Methodology"
+          body="We are engineers solving problems in domains with strict physical constraints, where an error carries a real-world cost."
           bullets={[
             "Decisions grounded in data and validated models",
             "Methods documented so they can be reviewed and reproduced",
-            "Depth in the domains we serve, not breadth for its own sake",
+            "Deep experience in nuclear, defense, and industrial systems",
           ]}
           image={media.team}
           imageSide="right"
         />
 
         <FeatureRow
-          heading="Where failure is physical"
-          body="Critical infrastructure does not tolerate approximation. A conservative guess costs capacity; an optimistic one costs far more. We build for the environments where the stakes are measured in reliability and safety, and we design our systems to earn the trust that those environments demand."
+          heading="High-Consequence Environments"
+          body="Nuclear and industrial operators require accurate models to maintain safety margins and operating capacity. Core Defenses builds systems to meet those safety and reliability requirements."
           image={media.nuclear}
           imageSide="left"
         />
 
         <FeatureRow
           heading="Analytics, backed by secure communications"
-          body="EDIM applies a physics-based framework to nuclear predictive models, identifying and correcting calculational bias so predictions track real plant data instead of drifting from it. ENADOX delivers secure communications for denied and degraded environments, keeping mission critical operations connected when conventional links cannot be relied upon. Together they reflect a single posture: precise insight, dependable connection."
+          body="EDIM applies a physics-based framework to nuclear predictive models, identifying and correcting calculational bias so predictions track real plant data. ENADOX delivers secure communications for denied and degraded environments, keeping operations connected when standard links fail."
           bullets={[
             "EDIM: physics-based framework correcting calculational bias in nuclear predictive models",
             "ENADOX: secure communications for denied and degraded environments",
@@ -76,7 +74,7 @@ export default function AboutPage() {
 
       <Reveal as="section" className="mt-16 md:mt-24">
         <h2 className="text-ink text-2xl font-bold md:text-3xl">
-          What we hold to
+          How we work
         </h2>
         <div className="border-line bg-line mt-8 grid gap-px border sm:grid-cols-3">
           {VALUES.map((value) => (
@@ -95,7 +93,7 @@ export default function AboutPage() {
           Work with us
         </h2>
         <p className="text-ink-muted mt-4 max-w-2xl leading-relaxed">
-          If you build for the environments others avoid, we should talk.
+          We&apos;re hiring engineers to build these systems.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <CTALink href="/careers">Join the team</CTALink>

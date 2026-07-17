@@ -34,9 +34,8 @@ export function Footer() {
             </span>
           </div>
           <p className="text-ink-muted mt-4 max-w-sm text-sm leading-relaxed">
-            Delivering mission-critical analytics and resilient communications
-            for organizations operating in the world&apos;s most demanding
-            environments.
+            Data analytics and secure communications for nuclear, energy,
+            defense, and industrial operations.
           </p>
           <p className="text-ink-muted mt-6 text-xs leading-relaxed">
             © {new Date().getFullYear()} Core Defenses. All rights reserved.

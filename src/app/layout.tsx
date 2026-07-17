@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Core Defenses",
   },
   description:
-    "Advanced data analytics for critical infrastructure, backed by secure communications for mission critical operations. Home of EDIM and ENADOX.",
+    "Data analytics and secure communications for nuclear, energy, defense, and industrial operations. Home of EDIM and ENADOX.",
 };
 
 // viewport-fit=cover: lets the hero bleed under the Dynamic Island/status bar
