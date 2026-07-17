@@ -1,13 +1,3 @@
-# Core Defenses — Corporate Website
-
-Production-grade corporate website for **Core Defenses**, a company operating at the intersection of
-cybersecurity, Operational Technology (OT) / Industrial Control Systems (ICS), secure communications,
-and nuclear data analytics.
-
-This is not a landing page. It is a full enterprise site intended to read at the level of Palantir,
-Anduril, Microsoft Security, and CrowdStrike — engineered, precise, and credible to government,
-defense, and critical-infrastructure buyers.
-
 ## What's in this repo
 
 ```
