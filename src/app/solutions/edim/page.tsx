@@ -36,7 +36,7 @@ export default function EdimPage() {
         <FeatureRow
           heading="Improving the Best Estimate"
           body="Predictive models used to track thermal margins and eigenvalues are often biased due to their inherent assumptions and have uncertainties that can be traced back to nuclear data. This often leads to overly conservative thermal margins leading to operational inefficiencies, suboptimal fuel utilization, and increased regulatory scrutiny. EDIM substantially improves the economics of a reactor by systematically accounting for these sources of bias and uncertainties in a manner consistent with the physics of the reactor."
-          image={media.nuclear}
+          image={media.edimSupport1}
           imageSide="right"
         />
         <FeatureRow
@@ -48,7 +48,7 @@ export default function EdimPage() {
         <FeatureRow
           heading="$200M–$500M in Recovered Operational Efficiencies"
           body="Current mitigation strategies for eigenvalue and thermal margin biases often involve detuning core designs, requiring the addition of 4–12 extra fuel bundles per cycle. A 1% reduction in reactor power output due to thermal margin bias or eigenvalue uncertainties results in millions of dollars in lost annual revenue per reactor. Applying EDIM results in substantial cost savings for nuclear utilities by mitigating power derates and cycle inefficiencies."
-          image={media.energy}
+          image={media.edimSupport2}
           imageSide="right"
         />
       </div>

@@ -29,7 +29,7 @@ export default function SolutionsPage() {
           <FeatureRow
             heading={edim.name}
             body={edim.tagline}
-            image={media.nuclear}
+            image={media.edimCover}
             imageSide="right"
           />
           <div className="mt-6">
@@ -43,7 +43,7 @@ export default function SolutionsPage() {
           <FeatureRow
             heading={enadox.name}
             body={enadox.tagline}
-            image={media.comms}
+            image={media.enadoxCover}
             imageSide="left"
           />
           <div className="mt-6 md:flex md:justify-end">

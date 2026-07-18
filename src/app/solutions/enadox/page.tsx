@@ -36,14 +36,14 @@ export default function EnadoxPage() {
         <FeatureRow
           heading="Redundancy built into the data itself"
           body="ENADOX solves the problem of inherently insecure and fragile OT assets on the shopfloor that is a patchwork of legacy and modern equipment. It retrofits them with self-healing capabilities with the singular objective of maintaining system uptime during contingencies. ENADOX devices merge seamlessly into existing architecture and communication protocols by self-healing at the process data level, and software plugins integrate into existing SCADA, SIEM, and HMI interfaces to alert operators to data falsification."
-          image={media.dataCenter}
+          image={media.enadoxSupport2}
           imageSide="right"
         />
 
         <FeatureRow
           heading="Secure communication where links are denied"
           body="ENADOX augments communication systems with covert communication capabilities that maintain secure contact in adversarial, open, as well as denied, disrupted, intermittent, and limited environments. In adversarial settings, retrofitted systems can autonomously retask to transmit sensitive information embedded within a seemingly benign artificial layer—for example, drone imagery communicated through temperature sensors or pilot audio transmitted through IMU measurements. ENADOX transforms data at the source to protect communications from inspection and interception across open channels, including applications such as WhatsApp or Signal on unlocked devices and unencrypted radio communications."
-          image={media.drone}
+          image={media.enadoxSupport1}
           imageSide="left"
         />
 
