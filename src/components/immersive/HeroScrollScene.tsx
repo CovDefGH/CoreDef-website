@@ -36,27 +36,21 @@ export function HeroScrollScene() {
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (motionQuery.matches) return;
 
-    // Preload image sequence
+    // Preload image sequence and decode asynchronously
     const images: HTMLImageElement[] = [];
     for (let i = 1; i <= FRAME_COUNT; i++) {
       const img = new window.Image();
       img.src = `/immersive/hero/frame-${i.toString().padStart(3, "0")}.jpg?v=3`;
+      // Async decode prevents main thread blocking when canvas draws the image for the first time
+      img.decode().catch(() => {}); 
       images.push(img);
     }
 
     const render = (frameIndex: number) => {
       // 1-indexed frames mapped from 1 to FRAME_COUNT
       const img = images[frameIndex - 1];
-      if (img && img.complete) {
-        if (img.naturalHeight !== 0) {
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        }
-      } else if (img) {
-        img.onload = () => {
-          if (img.naturalHeight !== 0) {
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-          }
-        };
+      if (img && img.complete && img.naturalHeight !== 0) {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       }
     };
 
@@ -69,10 +63,6 @@ export function HeroScrollScene() {
        (the same reliable pattern the chapter sections use). GSAP only
        handles the scroll-scrubbed text/video animations. */
     const context = gsap.context(() => {
-      // Use GSAP's built-in scroll normalizer for buttery smoothness (prevents jitter)
-      ScrollTrigger.normalizeScroll(true);
-      ScrollTrigger.config({ ignoreMobileResize: true });
-
       const timeline = gsap.timeline({
         defaults: { ease: "none" },
       });
@@ -81,7 +71,7 @@ export function HeroScrollScene() {
         trigger: root,
         start: "top top",
         end: "bottom top",
-        scrub: 0.5, // Reduced from 1 to 0.5 to feel more responsive and less "laggy"
+        scrub: true, // 1:1 mapping (no delay) eliminates perceived input lag
         animation: timeline,
       });
 
