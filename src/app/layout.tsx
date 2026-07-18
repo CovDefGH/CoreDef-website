@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/motion/MotionProvider";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -46,16 +47,18 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <MotionProvider>
-          <NavBar />
-          <main
-            id="main"
-            className="pt-[calc(4rem_+_env(safe-area-inset-top))]"
-          >
-            {children}
-          </main>
-          <Footer />
-        </MotionProvider>
+        <SmoothScroll>
+          <MotionProvider>
+            <NavBar />
+            <main
+              id="main"
+              className="pt-[calc(4rem_+_env(safe-area-inset-top))]"
+            >
+              {children}
+            </main>
+            <Footer />
+          </MotionProvider>
+        </SmoothScroll>
       </body>
     </html>
   );

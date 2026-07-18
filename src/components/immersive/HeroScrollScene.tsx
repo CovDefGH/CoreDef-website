@@ -73,9 +73,9 @@ export function HeroScrollScene() {
         trigger: root,
         start: "top top",
         end: "bottom top",
-        // 0.15 adds a micro-smoothing effect to eliminate chunky mouse wheel steps, 
-        // while remaining fast enough to feel completely responsive.
-        scrub: 0.15, 
+        // With Lenis handling global smooth scroll, `scrub: true` locks perfectly to the 
+        // interpolated coordinates, resulting in zero GSAP lag.
+        scrub: true, 
         animation: timeline,
       });
 
