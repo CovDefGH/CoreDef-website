@@ -6,7 +6,6 @@ import Link from "next/link";
 import { ArrowUpRight, ShieldCheck, Timer, Globe2 } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { CTALink } from "@/components/ui/CTALink";
 import { HeroScrollScene } from "@/components/immersive/HeroScrollScene";
 import { media } from "@/content/media";
 
