@@ -137,11 +137,11 @@ export function HeroScrollScene() {
           <div className="max-w-3xl">
             <p className="immersive-kicker">Core Defenses</p>
             <h1
-              className="mt-5 max-w-4xl text-[clamp(2.7rem,6vw,5.5rem)] leading-[.95] font-semibold tracking-[-.04em] text-white"
+              className="mt-5 max-w-4xl text-[clamp(2rem,5vmin,3.5rem)] leading-[1.05] font-semibold tracking-[-.02em] text-white md:font-bold"
             >
-              Precision analytics for critical infrastructure.
-              <span className="block text-[#7bc8ff] mt-2">
-                Resilient communications for contested environments.
+              Precision analytics <br className="hidden md:block" /> for critical infrastructure.
+              <span className="block text-[#7bc8ff] mt-2 text-[clamp(1.5rem,4vmin,2.75rem)]">
+                Resilient communications <br className="hidden md:block" /> for contested environments.
               </span>
             </h1>
             <p
