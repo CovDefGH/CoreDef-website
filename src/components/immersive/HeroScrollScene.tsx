@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 const FRAME_COUNT = 40;
 
 export function HeroScrollScene() {
-  preload("/immersive/hero/frame-001.jpg", { as: "image" });
+  preload("/immersive/hero/frame-001.jpg?v=2", { as: "image" });
   
   const rootRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -40,7 +40,7 @@ export function HeroScrollScene() {
     const images: HTMLImageElement[] = [];
     for (let i = 1; i <= FRAME_COUNT; i++) {
       const img = new window.Image();
-      img.src = `/immersive/hero/frame-${i.toString().padStart(3, "0")}.jpg`;
+      img.src = `/immersive/hero/frame-${i.toString().padStart(3, "0")}.jpg?v=2`;
       images.push(img);
     }
 
