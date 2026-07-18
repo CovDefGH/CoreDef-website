@@ -96,21 +96,34 @@ export function ImmersiveHome() {
           );
         }
 
-        /* Copy reveal: use gsap.from so the natural CSS state (visible) is
-           the destination. immediateRender:false prevents GSAP from hiding
-           the copy before ScrollTrigger reaches its start point — content
-           remains readable even if ScrollTrigger misfires or JS is slow. */
-        if (copy) {
-          gsap.from(copy, {
-            opacity: 0,
-            y: 24,
+        const decor = chapter.querySelector(".chapter-decor");
+        if (decor) {
+          gsap.to(decor, {
+            rotation: 120,
+            yPercent: -150,
             ease: "none",
+            scrollTrigger: {
+              trigger: chapter,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          });
+        }
+
+        /* Copy reveal: use triggered stagger instead of scrub for snappier feel */
+        if (copy && copy.children.length > 0) {
+          gsap.from(copy.children, {
+            y: 50,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power4.out",
+            stagger: 0.15,
             immediateRender: false,
             scrollTrigger: {
               trigger: chapter,
-              start: "top 80%",
-              end: "top 45%",
-              scrub: true,
+              start: "top 65%",
+              toggleActions: "play none none reverse",
             },
           });
         }
@@ -151,19 +164,30 @@ export function ImmersiveHome() {
             />
             <div className="absolute inset-0 bg-[#07101a]/45" />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,10,18,.84)_0%,rgba(4,10,18,.36)_55%,rgba(4,10,18,.58)_100%)]" />
-            <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#09111d] to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-[#040a12] to-transparent" />
+
+            {/* Decorative GSAP-style shape (crosshair/target) */}
+            <div className="chapter-decor absolute top-[25%] left-[60%] h-64 w-64 opacity-[0.07] pointer-events-none mix-blend-screen md:left-[75%]">
+              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1" className="text-[#7bc8ff] w-full h-full">
+                <circle cx="50" cy="50" r="48" strokeDasharray="2 4" />
+                <circle cx="50" cy="50" r="30" />
+                <path d="M50 0 L50 100 M0 50 L100 50" />
+              </svg>
+            </div>
 
             <div
-              className={`relative mx-auto flex h-full max-w-6xl items-end px-4 py-12 md:px-6 md:py-16 ${chapter.align === "right" ? "md:justify-end" : ""}`}
+              className={`relative mx-auto flex h-full max-w-6xl items-end px-4 py-16 md:px-6 md:py-24 ${chapter.align === "right" ? "md:justify-end" : ""}`}
             >
-              <div className="immersive-copy max-w-xl">
-                <p className="immersive-kicker">
-                  {chapter.index} / {chapter.label}
+              <div className="immersive-copy max-w-2xl">
+                <p className="flex items-center gap-4 text-xs font-semibold tracking-[0.2em] uppercase">
+                  <span className="text-[#7bc8ff]">{chapter.index}</span>
+                  <span className="h-px w-8 bg-[#7bc8ff]/50"></span>
+                  <span className="text-white/60">{chapter.label}</span>
                 </p>
-                <h2 className="mt-5 text-[clamp(2.25rem,5vw,4.75rem)] leading-[.96] font-semibold tracking-[-.045em] text-white">
+                <h2 className="mt-6 text-[clamp(3rem,6.5vw,6rem)] leading-[0.92] font-semibold tracking-[-.045em] text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40">
                   {chapter.title}
                 </h2>
-                <p className="mt-6 max-w-lg text-base leading-relaxed text-white/78 md:text-lg">
+                <p className="mt-8 max-w-lg text-lg leading-relaxed text-white/80 md:text-xl font-light">
                   {chapter.copy}
                 </p>
                 <Link
