@@ -164,8 +164,8 @@ export function HeroScrollScene() {
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,28,.73)_0%,rgba(5,18,28,.38)_43%,rgba(5,18,28,.04)_72%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(5,18,28,.38)_0%,transparent_52%)]" />
 
-        <div ref={contentRef} className="relative mx-auto flex h-dvh max-w-6xl items-end px-4 pt-[calc(8rem_+_env(safe-area-inset-top))] pb-12 md:px-6 md:pb-16 will-change-[transform,opacity]">
-          <div className="max-w-3xl">
+        <div ref={contentRef} className="relative mx-auto flex h-dvh max-w-6xl flex-col px-4 pt-[calc(6rem_+_env(safe-area-inset-top))] pb-12 md:px-6 md:pb-16 will-change-[transform,opacity]">
+          <div className="mt-auto max-w-3xl">
             <p className="immersive-kicker">Core Defenses</p>
             <h1
               className="mt-5 max-w-4xl text-[clamp(2rem,5vmin,3.5rem)] leading-[1.05] font-semibold tracking-[-.02em] text-white md:font-bold"

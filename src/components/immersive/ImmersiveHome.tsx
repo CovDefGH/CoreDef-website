@@ -263,9 +263,9 @@ export function ImmersiveHome() {
             </div>
 
             <div
-              className={`relative mx-auto flex h-full max-w-6xl items-end px-4 py-16 md:px-6 md:py-24 ${chapter.align === "right" ? "md:justify-end" : ""}`}
+              className={`relative mx-auto flex h-full max-w-6xl flex-col px-4 pt-[calc(6rem_+_env(safe-area-inset-top))] pb-16 md:px-6 md:pb-24 ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
             >
-              <div className="immersive-copy max-w-2xl will-change-[transform,opacity]">
+              <div className="immersive-copy mt-auto max-w-2xl will-change-[transform,opacity]">
                 <p className="flex items-center gap-3 text-xs font-semibold tracking-[0.2em] uppercase text-white/60">
                   <span className="text-[#7bc8ff]">{chapter.index}</span>
                   <span>{chapter.label}</span>
