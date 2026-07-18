@@ -73,12 +73,14 @@ export function HeroScrollScene() {
     const context = gsap.context(() => {
       const timeline = gsap.timeline({
         defaults: { ease: "none" },
-        scrollTrigger: {
-          trigger: root,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: true,
-        },
+      });
+
+      ScrollTrigger.create({
+        trigger: root,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1,
+        animation: timeline,
       });
 
       // Scrub the image sequence for the FULL duration of the timeline (1.0)
