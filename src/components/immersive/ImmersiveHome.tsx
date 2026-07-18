@@ -319,25 +319,24 @@ export function ImmersiveHome() {
 
       <section className="relative bg-white py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <div className="mb-14 flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
-            <div className="max-w-2xl">
-              <h2 className="text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[.94] font-semibold tracking-[-.05em] text-[#0c1723]">
-                Industries we serve.
-              </h2>
-              <p className="mt-6 max-w-lg text-base leading-relaxed text-[#3b4754] md:text-lg">
-                Energy, nuclear, defense, government, utilities, manufacturing.
-              </p>
-            </div>
-            <div className="flex w-full flex-wrap gap-3 md:w-auto md:shrink-0 md:justify-end">
-              <CTALink href="/industries" variant="secondary">
+          <div className="mb-20 flex flex-col items-center text-center">
+            <h2 className="text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[.94] font-semibold tracking-[-.05em] text-[#0c1723]">
+              Industries we serve.
+            </h2>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#3b4754] md:text-lg">
+              Energy, nuclear, defense, government, utilities, manufacturing.
+            </p>
+            
+            <div className="mt-10 flex w-full max-w-3xl flex-col gap-4 sm:flex-row sm:gap-6">
+              <Link href="/industries" className="flex-1 rounded-xl border border-slate-200 bg-white py-4 px-6 text-base font-medium text-slate-700 shadow-sm transition-all hover:-translate-y-1 hover:border-[#0052ff] hover:bg-blue-50/30 hover:text-[#0052ff] hover:shadow-md">
                 Industries
-              </CTALink>
-              <CTALink href="/global" variant="secondary">
+              </Link>
+              <Link href="/global" className="flex-1 rounded-xl border border-slate-200 bg-white py-4 px-6 text-base font-medium text-slate-700 shadow-sm transition-all hover:-translate-y-1 hover:border-[#0052ff] hover:bg-blue-50/30 hover:text-[#0052ff] hover:shadow-md">
                 Global Operations
-              </CTALink>
-              <CTALink href="/careers" variant="secondary">
+              </Link>
+              <Link href="/careers" className="flex-1 rounded-xl border border-slate-200 bg-white py-4 px-6 text-base font-medium text-slate-700 shadow-sm transition-all hover:-translate-y-1 hover:border-[#0052ff] hover:bg-blue-50/30 hover:text-[#0052ff] hover:shadow-md">
                 Careers
-              </CTALink>
+              </Link>
             </div>
           </div>
 
