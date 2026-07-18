@@ -9,7 +9,7 @@ import { CTALink } from "@/components/ui/CTALink";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FRAME_COUNT = 40;
+const FRAME_COUNT = 48;
 
 export function HeroScrollScene() {
   preload("/immersive/hero/frame-001.jpg", { as: "image" });
