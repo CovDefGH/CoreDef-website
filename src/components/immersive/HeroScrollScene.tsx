@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { preload } from "react-dom";
 import { ArrowDown } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,6 +13,8 @@ const VIDEO_START_SECONDS = 4;
 const VIDEO_END_SECONDS = 16;
 
 export function HeroScrollScene() {
+  preload("/immersive/hero/hero-v2.jpg", { as: "image" });
+  
   const rootRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
