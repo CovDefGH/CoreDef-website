@@ -12,7 +12,7 @@ const CAPABILITIES = [
   {
     icon: Atom,
     heading: "Nuclear Analytics",
-    image: media.nuclear,
+    image: media.edimCover,
     description:
       "EDIM is a physics-based framework that identifies and corrects calculational bias in predictive models. It reduces prediction error and keeps results aligned with real-time plant data.",
     linkLabel: "Explore EDIM",
@@ -21,7 +21,7 @@ const CAPABILITIES = [
   {
     icon: Radio,
     heading: "Secure Communications",
-    image: media.comms,
+    image: media.enadoxCover,
     description:
       "ENADOX provides secure communication across denied, degraded, intermittent, and low-bandwidth (DDIL) environments. Redundancy is built into the data itself.",
     linkLabel: "Explore ENADOX",
@@ -31,10 +31,10 @@ const CAPABILITIES = [
 
 // FR-HOME-6 — critical infrastructure visual strip.
 const INFRASTRUCTURE = [
-  { image: media.nuclear, caption: "Energy" },
-  { image: media.drone, caption: "Defense" },
-  { image: media.operations, caption: "Finance" },
-  { image: media.dataCenter, caption: "AI" },
+  { image: media.homeEnergy, caption: "Energy" },
+  { image: media.homeDefense, caption: "Defense" },
+  { image: media.homeFinance, caption: "Finance" },
+  { image: media.homeAi, caption: "AI" },
 ];
 
 const TRUST_SIGNALS = [
