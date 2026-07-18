@@ -28,9 +28,9 @@ const chapters: Chapter[] = [
   {
     id: "edim",
     index: "01",
-    label: "Predictive analytics",
-    title: "Bring the model closer to the operation.",
-    copy: "EDIM identifies and corrects calculational bias, helping predictive models remain aligned with operational data.",
+    label: "Data Analytics",
+    title: "Better data for better decisions.",
+    copy: "Our EDIM platform helps you find issues in your data before they affect your operations. It makes your models more accurate and reliable.",
     image: media.operations,
     href: "/solutions/edim",
     action: "Explore EDIM",
@@ -38,9 +38,9 @@ const chapters: Chapter[] = [
   {
     id: "enadox",
     index: "02",
-    label: "Secure communications",
-    title: "Keep the connection when conditions change.",
-    copy: "ENADOX moves data across denied, degraded, intermittent, and limited-bandwidth environments with redundancy built into the data itself.",
+    label: "Secure Networks",
+    title: "Stay connected when it matters most.",
+    copy: "ENADOX keeps your network running even in the toughest environments. We make sure your data gets exactly where it needs to go, safely and securely.",
     image: media.comms,
     href: "/solutions/enadox",
     action: "Explore ENADOX",
@@ -49,9 +49,9 @@ const chapters: Chapter[] = [
   {
     id: "industries",
     index: "03",
-    label: "Operational environments",
-    title: "Engineering for systems with physical consequences.",
-    copy: "Our work spans nuclear, energy, defense, and industrial operations—where accuracy, continuity, and disciplined engineering matter.",
+    label: "Industry Solutions",
+    title: "Built for critical operations.",
+    copy: "We partner with leaders in nuclear energy, defense, and heavy industry to keep their most important systems running smoothly.",
     image: media.energy,
     href: "/industries",
     action: "View industries",
@@ -143,11 +143,10 @@ export function ImmersiveHome() {
       <section className="border-y border-white/15 bg-[#0d1724]">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-[1fr_auto] md:items-end md:px-6 md:py-14">
           <p className="max-w-2xl text-lg leading-relaxed text-white/82 md:text-2xl">
-            Core Defenses develops tools for people who have to make sound
-            decisions in complex, consequential operating environments.
+            We build software for teams who manage complex, high-stakes environments.
           </p>
           <p className="font-mono text-[.66rem] leading-relaxed tracking-[.12em] text-[#7bc8ff] uppercase">
-            Analytics / Communications / Infrastructure
+            Analytics • Communications • Infrastructure
           </p>
         </div>
       </section>
@@ -166,12 +165,14 @@ export function ImmersiveHome() {
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,10,18,.84)_0%,rgba(4,10,18,.36)_55%,rgba(4,10,18,.58)_100%)]" />
             <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-[#040a12] to-transparent" />
 
-            {/* Decorative GSAP-style shape (crosshair/target) */}
-            <div className="chapter-decor absolute top-[25%] left-[60%] h-64 w-64 opacity-[0.07] pointer-events-none mix-blend-screen md:left-[75%]">
-              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1" className="text-[#7bc8ff] w-full h-full">
-                <circle cx="50" cy="50" r="48" strokeDasharray="2 4" />
-                <circle cx="50" cy="50" r="30" />
-                <path d="M50 0 L50 100 M0 50 L100 50" />
+            {/* Decorative GSAP-style shape (technical/nuclear artifact) */}
+            <div className="chapter-decor absolute top-[25%] left-[60%] h-64 w-64 opacity-[0.04] pointer-events-none mix-blend-screen md:left-[75%]">
+              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-[#7bc8ff] w-full h-full">
+                <ellipse cx="50" cy="50" rx="45" ry="15" transform="rotate(30 50 50)" />
+                <ellipse cx="50" cy="50" rx="45" ry="15" transform="rotate(90 50 50)" />
+                <ellipse cx="50" cy="50" rx="45" ry="15" transform="rotate(150 50 50)" />
+                <circle cx="50" cy="50" r="4" fill="currentColor" />
+                <circle cx="50" cy="50" r="8" strokeDasharray="2 2" />
               </svg>
             </div>
 
@@ -179,10 +180,9 @@ export function ImmersiveHome() {
               className={`relative mx-auto flex h-full max-w-6xl items-end px-4 py-16 md:px-6 md:py-24 ${chapter.align === "right" ? "md:justify-end" : ""}`}
             >
               <div className="immersive-copy max-w-2xl">
-                <p className="flex items-center gap-4 text-xs font-semibold tracking-[0.2em] uppercase">
+                <p className="flex items-center gap-3 text-xs font-semibold tracking-[0.2em] uppercase text-white/60">
                   <span className="text-[#7bc8ff]">{chapter.index}</span>
-                  <span className="h-px w-8 bg-[#7bc8ff]/50"></span>
-                  <span className="text-white/60">{chapter.label}</span>
+                  <span>{chapter.label}</span>
                 </p>
                 <h2 className="mt-6 text-[clamp(3rem,6.5vw,6rem)] leading-[0.92] font-semibold tracking-[-.045em] text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40">
                   {chapter.title}
@@ -211,14 +211,12 @@ export function ImmersiveHome() {
           <div>
             <p className="immersive-kicker text-[#0052ff]">Operating context</p>
             <h2 className="mt-5 max-w-3xl text-4xl leading-[.98] font-semibold tracking-[-.045em] md:text-6xl">
-              The environment changes. The engineering has to hold.
+              Built to work everywhere.
             </h2>
           </div>
           <div className="border-l border-[#0c1723]/15 pl-6 md:pt-14">
             <p className="text-base leading-relaxed text-[#405063]">
-              Our platforms support people working across interconnected
-              physical systems—from plant operations to distributed
-              communication links.
+              Whether you are running a power plant or managing a global communications network, our tools give your team the confidence to do their best work.
             </p>
             <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-[#0c1723]/15 pt-6 font-mono text-[.7rem] tracking-[.12em] uppercase">
               {industries.map((industry) => (
@@ -241,14 +239,13 @@ export function ImmersiveHome() {
         <div className="relative mx-auto flex min-h-[68vh] max-w-6xl items-end px-4 py-16 md:px-6 md:py-24">
           <div className="max-w-2xl">
             <p className="immersive-kicker">
-              Lexington, Kentucky / Global operations
+              Lexington, Kentucky
             </p>
             <h2 className="mt-5 text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[.94] font-semibold tracking-[-.05em]">
-              Start with the system in front of you.
+              Ready to get started?
             </h2>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-white/75 md:text-lg">
-              Talk with Core Defenses about predictive analytics, secure
-              communications, or the engineering work behind them.
+              Get in touch with our team today to learn how we can help secure and optimize your critical infrastructure.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <CTALink href="/contact">Contact us</CTALink>

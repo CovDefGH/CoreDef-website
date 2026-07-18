@@ -135,17 +135,16 @@ export function HeroScrollScene() {
 
         <div ref={contentRef} className="relative mx-auto flex h-dvh max-w-6xl items-end px-4 pt-[calc(8rem_+_env(safe-area-inset-top))] pb-12 md:px-6 md:pb-16">
           <div className="max-w-3xl">
-            <p className="immersive-kicker">Core Defenses / Field systems</p>
+            <p className="immersive-kicker">Core Defenses</p>
             <h1
               className="mt-5 max-w-3xl text-[clamp(2.7rem,7.5vw,6.5rem)] leading-[.92] font-semibold tracking-[-.055em] text-white"
             >
-              Engineering for the conditions that do not simplify.
+              Software built for the real world.
             </h1>
             <p
               className="mt-7 max-w-xl text-base leading-relaxed text-white/82 md:text-lg"
             >
-              Precision analytics for critical infrastructure. Resilient
-              communications for contested environments.
+              We build predictive tools and secure networks for critical infrastructure.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <CTALink href="/solutions">Explore solutions</CTALink>
