@@ -50,6 +50,8 @@ export function HeroScrollScene() {
       // 1-indexed frames mapped from 1 to FRAME_COUNT
       const img = images[frameIndex - 1];
       if (img && img.complete && img.naturalHeight !== 0) {
+        // Disable smoothing for maximum raw drawing performance (GPU handles the CSS object-cover smoothing)
+        ctx.imageSmoothingEnabled = false;
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       }
     };
@@ -71,7 +73,9 @@ export function HeroScrollScene() {
         trigger: root,
         start: "top top",
         end: "bottom top",
-        scrub: true, // 1:1 mapping (no delay) eliminates perceived input lag
+        // 0.15 adds a micro-smoothing effect to eliminate chunky mouse wheel steps, 
+        // while remaining fast enough to feel completely responsive.
+        scrub: 0.15, 
         animation: timeline,
       });
 
@@ -109,7 +113,7 @@ export function HeroScrollScene() {
       >
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 h-full w-full object-cover object-[58%_45%] will-change-[transform]"
+          className="absolute inset-0 h-full w-full object-cover object-[58%_45%] will-change-[transform] transform-gpu"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,28,.73)_0%,rgba(5,18,28,.38)_43%,rgba(5,18,28,.04)_72%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(5,18,28,.38)_0%,transparent_52%)]" />
