@@ -42,7 +42,7 @@ p {
 }
 
 .immersive-chapter {
-  height: 185vh;
+  height: 125vh;
 }
 
 .immersive-chapter-sticky {
@@ -58,7 +58,7 @@ p {
 
 @media (max-width: 767px) {
   .immersive-chapter {
-    height: 135vh;
+    height: 110vh;
   }
 }
 
