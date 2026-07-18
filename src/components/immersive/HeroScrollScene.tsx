@@ -9,26 +9,59 @@ import { CTALink } from "@/components/ui/CTALink";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VIDEO_START_SECONDS = 4;
-const VIDEO_END_SECONDS = 16;
+const FRAME_COUNT = 48;
 
 export function HeroScrollScene() {
-  preload("/immersive/hero/hero-v2.jpg", { as: "image" });
+  preload("/immersive/hero/frame-001.jpg", { as: "image" });
   
   const rootRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   /* useEffect (not useLayoutEffect) — runs after paint so DOM measurements
      are stable and the CSS sticky layout is already committed. */
   useEffect(() => {
     const root = rootRef.current;
-    const video = videoRef.current;
+    const canvas = canvasRef.current;
     const content = contentRef.current;
-    if (!root || !video || !content) return;
+    if (!root || !canvas || !content) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    // Set high-res canvas dimensions
+    canvas.width = 1920;
+    canvas.height = 1080;
 
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (motionQuery.matches) return;
+
+    // Preload image sequence
+    const images: HTMLImageElement[] = [];
+    for (let i = 1; i <= FRAME_COUNT; i++) {
+      const img = new window.Image();
+      img.src = `/immersive/hero/frame-${i.toString().padStart(3, "0")}.jpg`;
+      images.push(img);
+    }
+
+    const render = (frameIndex: number) => {
+      // 1-indexed frames mapped from 1 to FRAME_COUNT
+      const img = images[frameIndex - 1];
+      if (img && img.complete) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      } else if (img) {
+        img.onload = () => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        };
+      }
+    };
+
+    // Draw initial frame
+    render(1);
+
+    const frameObj = { frame: 1 };
 
     /* No GSAP pin — the stage div uses CSS `position: sticky; top: 0`
        (the same reliable pattern the chapter sections use). GSAP only
@@ -44,37 +77,22 @@ export function HeroScrollScene() {
         },
       });
 
+      // Scrub the image sequence
+      timeline.to(
+        frameObj,
+        {
+          frame: FRAME_COUNT,
+          snap: "frame",
+          onUpdate: () => render(frameObj.frame),
+        },
+        0
+      );
+
+      // Scale and move the canvas
       timeline
-        .to(video, { scale: 1.13, xPercent: -5, yPercent: -2 }, 0)
+        .to(canvas, { scale: 1.13, xPercent: -5, yPercent: -2 }, 0)
         .to(content, { yPercent: -12, opacity: 0 }, 0.3);
 
-      const scrubVideo = () => {
-        const duration = Math.min(
-          video.duration || VIDEO_END_SECONDS,
-          VIDEO_END_SECONDS,
-        );
-        const from = Math.min(VIDEO_START_SECONDS, duration);
-        const to = Math.max(from, duration);
-
-        video.currentTime = from;
-        gsap.to(video, {
-          currentTime: to,
-          duration: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: root,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: true,
-          },
-        });
-      };
-
-      if (video.readyState >= HTMLMediaElement.HAVE_METADATA) {
-        scrubVideo();
-      } else {
-        video.addEventListener("loadedmetadata", scrubVideo, { once: true });
-      }
     }, root);
 
     return () => context.revert();
@@ -89,17 +107,10 @@ export function HeroScrollScene() {
       <div
         className="sticky top-0 h-dvh overflow-hidden bg-[#dcebf1]"
       >
-        <video
-          ref={videoRef}
-          muted
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-          poster="/immersive/hero/hero-v2.jpg"
+        <canvas
+          ref={canvasRef}
           className="absolute inset-0 h-full w-full object-cover object-[58%_45%] will-change-[transform]"
-        >
-          <source src="/immersive/hero/watts-bar-hero.mp4" type="video/mp4" />
-        </video>
+        />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,28,.73)_0%,rgba(5,18,28,.38)_43%,rgba(5,18,28,.04)_72%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(5,18,28,.38)_0%,transparent_52%)]" />
 
