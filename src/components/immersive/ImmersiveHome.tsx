@@ -78,10 +78,10 @@ const GridArtifact = (
 );
 
 const gridItems = [
-  { image: media.nuclear, caption: "Nuclear" },
-  { image: media.energy, caption: "Energy" },
-  { image: media.comms, caption: "Communications" },
-  { image: media.dataCenter, caption: "Industrial" },
+  { image: media.nuclear, caption: "Nuclear", href: "/industries" },
+  { image: media.energy, caption: "Energy", href: "/industries" },
+  { image: media.comms, caption: "Communications", href: "/industries" },
+  { image: media.dataCenter, caption: "Industrial", href: "/industries" },
 ];
 
 const chapters: Chapter[] = [
@@ -341,9 +341,10 @@ export function ImmersiveHome() {
 
           <div className="grid-cards-container grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6">
             {gridItems.map((item) => (
-              <div
+              <Link
+                href={item.href}
                 key={item.caption}
-                className="grid-card-reveal group relative h-[280px] md:h-[360px] overflow-hidden rounded-2xl bg-slate-100 will-change-[transform,opacity] shadow-sm"
+                className="grid-card-reveal group relative block h-[280px] md:h-[360px] overflow-hidden rounded-2xl bg-slate-100 shadow-sm will-change-[transform,opacity]"
               >
                 <div className="image-reveal-container absolute inset-0 will-change-[transform]">
                   <Image
@@ -365,7 +366,7 @@ export function ImmersiveHome() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
