@@ -12,7 +12,6 @@ const LINKS = [
   { href: "/", label: "Mission" },
   { href: "/solutions", label: "Solutions" },
   { href: "/about", label: "About" },
-  { href: "/global", label: "Global" },
   { href: "/careers", label: "Careers" },
 ];
 

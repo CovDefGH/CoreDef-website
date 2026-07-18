@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { FeatureRow } from "@/components/sections/FeatureRow";
-import { StatCard } from "@/components/sections/StatCard";
 import { CTALink } from "@/components/ui/CTALink";
-import { Reveal } from "@/components/motion/Reveal";
 import { media } from "@/content/media";
 import { edim } from "@/content/products/edim";
 
@@ -37,39 +35,23 @@ export default function EdimPage() {
       <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
         <FeatureRow
           heading="Improving the Best Estimate"
-          body="Predictive models used to track thermal margins and eigenvalues often carry calculational bias. This bias causes operational inefficiencies, suboptimal fuel utilization, and increased regulatory scrutiny."
+          body="Predictive models used to track thermal margins and eigenvalues are often biased due to their inherent assumptions and have uncertainties that can be traced back to nuclear data. This often leads to overly conservative thermal margins leading to operational inefficiencies, suboptimal fuel utilization, and increased regulatory scrutiny. EDIM substantially improves the economics of a reactor by systematically accounting for these sources of bias and uncertainties in a manner consistent with the physics of the reactor."
           image={media.nuclear}
           imageSide="right"
         />
         <FeatureRow
           heading="A Patented Physics-Based Methodology to Correct Bias"
-          body="EDIM applies an inference analysis to identify and correct the sources of calculational bias in predictive models. It avoids overfitting, underfitting, and error compensation. Predictions track measured plant data rather than drifting from it."
-          bullets={[
-            "Identifies and corrects calculational bias at its source",
-            "Avoids overfitting, underfitting, and error compensation",
-            "Keeps predictions aligned with real-time operational data",
-          ]}
-          image={media.operations}
+          body="EDIM applies information-theoretic tools to analyze, identify and correct the sources of calculational bias in predictive models. The mathematical rigor of information theory allows EDIM to solve the phenomena of underfitting, overfitting, and error compensation often encountered in extant methods. EDIM operates within established NRC-licensed methodologies, ensuring that our innovations are not only technically superior but also commercially viable and regulatory-compliant."
+          image={media.controlRoom}
           imageSide="left"
         />
         <FeatureRow
           heading="$200M–$500M in Recovered Operational Efficiencies"
-          body="These savings come from reduced power derates, improved operational margins, and fewer cycle inefficiencies. Operators get earlier warning of degraded conditions and more accurate operating margins."
-          image={media.dataCenter}
+          body="Current mitigation strategies for eigenvalue and thermal margin biases often involve detuning core designs, requiring the addition of 4–12 extra fuel bundles per cycle. A 1% reduction in reactor power output due to thermal margin bias or eigenvalue uncertainties results in millions of dollars in lost annual revenue per reactor. Applying EDIM results in substantial cost savings for nuclear utilities by mitigating power derates and cycle inefficiencies."
+          image={media.energy}
           imageSide="right"
         />
       </div>
-
-      {/* Stat band */}
-      <Reveal as="section" className="mt-16 grid gap-6 sm:grid-cols-2 md:mt-24">
-        {edim.stats.map((stat) => (
-          <StatCard
-            key={stat.label}
-            value={stat.value}
-            description={stat.description}
-          />
-        ))}
-      </Reveal>
 
       {/* Closing CTA */}
       <section className="border-line mt-16 flex flex-wrap items-center justify-between gap-6 border p-8 md:mt-24">

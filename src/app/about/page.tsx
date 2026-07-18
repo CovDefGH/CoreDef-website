@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { FeatureRow } from "@/components/sections/FeatureRow";
+import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { CTALink } from "@/components/ui/CTALink";
 import { media } from "@/content/media";
@@ -7,23 +7,8 @@ import { media } from "@/content/media";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Core Defenses builds data analytics and secure communications systems for nuclear, energy, defense, and industrial operations.",
+    "Core Defenses is a technology-driven small business specializing in advanced analytics, artificial intelligence, and cybersecurity solutions for high-reliability industries, including nuclear energy.",
 };
-
-const VALUES = [
-  {
-    title: "Precision",
-    body: "Uncertainty in our models is quantified and reduced through validated methods, not covered with added margin.",
-  },
-  {
-    title: "Transparency",
-    body: "Our methods are documented and our assumptions stated explicitly. Operators and regulators can verify how a result was produced.",
-  },
-  {
-    title: "Reliability",
-    body: "Systems are tested against worst-case operating conditions, including degraded sensor input and loss of individual communication links.",
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -33,60 +18,40 @@ export default function AboutPage() {
           About Core Defenses
         </h1>
         <p className="text-ink-muted mt-6 text-lg leading-relaxed">
-          Core Defenses builds data analytics and secure communications
-          systems for nuclear, energy, defense, and industrial operations.
-          These are environments where failure has physical consequences, not
-          just financial ones.
+          At Core Defenses, we are a technology-driven small business
+          specializing in advanced analytics, artificial intelligence, and
+          cybersecurity solutions for high-reliability industries, including
+          nuclear energy. Our mission is to bridge the gap between
+          calculational modeling and real-world decision-making by delivering
+          scalable, explainable, and regulatory-compliant technologies. With
+          expertise in physics-based modeling, uncertainty quantification, and
+          AI/ML-driven predictive intelligence, we develop cutting-edge
+          software solutions that enhance operational safety, performance, and
+          security.
+        </p>
+        <p className="text-ink-muted mt-6 text-lg leading-relaxed">
+          We believe our products embody our commitment to the goal of energy
+          resilience—the strategic approach to anticipate, absorb, adapt to,
+          and rapidly recover from severe disruptions. Since our founding, we
+          have raised over $5M to develop our products, using a combination of
+          non-dilutive grants, pilot projects, and revenue from our extensive
+          network of customers and collaborators including national
+          laboratories, nuclear fuel vendors, and federal agencies. We are
+          also advised by a team of business and technical experts from
+          industry and academia, who facilitate our breakthroughs and expand
+          our outreach into the broader energy sector.
         </p>
       </Reveal>
 
-      <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
-        <FeatureRow
-          heading="Methodology"
-          body="We are engineers solving problems in domains with strict physical constraints, where an error carries a real-world cost."
-          bullets={[
-            "Decisions grounded in data and validated models",
-            "Methods documented so they can be reviewed and reproduced",
-            "Deep experience in nuclear, defense, and industrial systems",
-          ]}
-          image={media.team}
-          imageSide="right"
-        />
-
-        <FeatureRow
-          heading="High-Consequence Environments"
-          body="Nuclear and industrial operators require accurate models to maintain safety margins and operating capacity. Core Defenses builds systems to meet those safety and reliability requirements."
-          image={media.nuclear}
-          imageSide="left"
-        />
-
-        <FeatureRow
-          heading="Analytics, backed by secure communications"
-          body="EDIM applies a physics-based framework to nuclear predictive models, identifying and correcting calculational bias so predictions track real plant data. ENADOX delivers secure communications for denied and degraded environments, keeping operations connected when standard links fail."
-          bullets={[
-            "EDIM: physics-based framework correcting calculational bias in nuclear predictive models",
-            "ENADOX: secure communications for denied and degraded environments",
-          ]}
-          image={media.operations}
-          imageSide="right"
+      <div className="border-line relative mt-12 aspect-[21/9] overflow-hidden border md:mt-16">
+        <Image
+          src={media.controlRoom.src}
+          alt={media.controlRoom.alt}
+          fill
+          sizes="(min-width: 1024px) 1152px, 100vw"
+          className="object-cover"
         />
       </div>
-
-      <Reveal as="section" className="mt-16 md:mt-24">
-        <h2 className="text-ink text-2xl font-bold md:text-3xl">
-          How we work
-        </h2>
-        <div className="border-line bg-line mt-8 grid gap-px border sm:grid-cols-3">
-          {VALUES.map((value) => (
-            <div key={value.title} className="bg-white p-6">
-              <h3 className="text-ink text-lg font-semibold">{value.title}</h3>
-              <p className="text-ink-muted mt-3 text-sm leading-relaxed">
-                {value.body}
-              </p>
-            </div>
-          ))}
-        </div>
-      </Reveal>
 
       <Reveal as="section" className="mt-16 md:mt-24">
         <h2 className="text-ink text-2xl font-bold md:text-3xl">

@@ -8,7 +8,7 @@ export const edim: ProductPage = {
   slug: "edim",
   name: "EDIM",
   tagline:
-    "EDIM is a physics-based framework that identifies and corrects calculational bias. It reduces prediction error and keeps predictive models aligned with real-time operational data.",
+    "EDIM is a physics-based methodology for data assimilation that identifies, corrects and traces the source of discrepancies between calculational and measured observations. It reduces prediction error and keeps predictive models aligned with real-time operational data in a mathematically sound and scientifically defendable manner. EDIM is estimated to create $200M–500M in operational savings per nuclear reactor over its lifetime.",
   stats: [
     {
       label: "Economic Impact",

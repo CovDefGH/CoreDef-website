@@ -31,10 +31,10 @@ const CAPABILITIES = [
 
 // FR-HOME-6 — critical infrastructure visual strip.
 const INFRASTRUCTURE = [
-  { image: media.nuclear, caption: "Nuclear" },
-  { image: media.energy, caption: "Energy" },
-  { image: media.comms, caption: "Communications" },
-  { image: media.dataCenter, caption: "Industrial" },
+  { image: media.nuclear, caption: "Energy" },
+  { image: media.drone, caption: "Defense" },
+  { image: media.operations, caption: "Finance" },
+  { image: media.dataCenter, caption: "AI" },
 ];
 
 const TRUST_SIGNALS = [
@@ -110,8 +110,7 @@ export default function Home() {
             </div>
 
             <p className="mt-[clamp(1rem,3.5vmin,2rem)] text-[clamp(0.6rem,1.8vmin,0.75rem)] tracking-widest text-white/60 uppercase">
-              Defense &middot; Nuclear &middot; Energy &middot; Industrial
-              Operations
+              Energy &middot; Defense &middot; Finance &middot; AI
             </p>
           </div>
         </div>
@@ -175,8 +174,8 @@ export default function Home() {
       >
         <h2 className="text-ink text-3xl font-bold">Where we operate</h2>
         <p className="text-ink-muted mt-3 max-w-2xl">
-          We build for sectors where failure has physical consequences:
-          nuclear, energy, defense, and industrial operations.
+          We build for sectors that depend on accurate data and secure
+          operations: energy, defense, finance, and AI.
         </p>
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {INFRASTRUCTURE.map(({ image, caption }) => (
@@ -232,9 +231,6 @@ export default function Home() {
           <div className="flex flex-wrap gap-3">
             <CTALink href="/industries" variant="secondary">
               Industries
-            </CTALink>
-            <CTALink href="/global" variant="secondary">
-              Global Operations
             </CTALink>
             <CTALink href="/careers" variant="secondary">
               Careers

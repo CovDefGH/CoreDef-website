@@ -14,6 +14,10 @@ export const media = {
     src: "/operations.jpg",
     alt: "Operations center with a wall of illuminated data displays.",
   },
+  controlRoom: {
+    src: "/nuclear-control-room.jpg",
+    alt: "Nuclear power plant control room with analyst workstations and instrumentation panels.",
+  },
   comms: {
     src: "/comms.jpg",
     alt: "Satellite communications dish under an open sky.",

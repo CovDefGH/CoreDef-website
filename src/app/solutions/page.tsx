@@ -29,7 +29,6 @@ export default function SolutionsPage() {
           <FeatureRow
             heading={edim.name}
             body={edim.tagline}
-            bullets={edim.stats.map(({ label, value }) => `${label}: ${value}`)}
             image={media.nuclear}
             imageSide="right"
           />
@@ -44,9 +43,6 @@ export default function SolutionsPage() {
           <FeatureRow
             heading={enadox.name}
             body={enadox.tagline}
-            bullets={enadox.stats.map(
-              ({ label, value }) => `${label}: ${value}`,
-            )}
             image={media.comms}
             imageSide="left"
           />
