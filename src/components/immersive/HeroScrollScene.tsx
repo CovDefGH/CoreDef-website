@@ -9,11 +9,30 @@ import { CTALink } from "@/components/ui/CTALink";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FRAME_COUNT = 40;
+// 96 frames extracted at fps=96/14 from the 14s source clip, at the source's
+// native 1920x1080 (no upscaling — the source master is 1080p, not 4K/1440p,
+// so extracting higher would just be upscaling in a different place).
+const FRAME_COUNT = 96;
+const FRAME_W = 1920;
+const FRAME_H = 1080;
+// First N frames load eagerly (covers the dwell + early-scrub range); the rest
+// load on browser idle time so they don't compete with the eager ones for
+// bandwidth/decode time on initial page load.
+const EAGER_FRAMES = 16;
+const frameSrc = (i: number) =>
+  `/immersive/hero/frame-${i.toString().padStart(3, "0")}.jpg?v=5`;
+
+const scheduleIdle = (cb: () => void) => {
+  if (typeof window.requestIdleCallback === "function") {
+    window.requestIdleCallback(cb, { timeout: 2000 });
+  } else {
+    setTimeout(cb, 200);
+  }
+};
 
 export function HeroScrollScene() {
-  preload("/immersive/hero/frame-001.jpg?v=3", { as: "image" });
-  
+  preload(frameSrc(1), { as: "image" });
+
   const rootRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -29,37 +48,67 @@ export function HeroScrollScene() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Set high-res canvas dimensions
-    canvas.width = 1920;
-    canvas.height = 1080;
+    canvas.width = FRAME_W;
+    canvas.height = FRAME_H;
 
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (motionQuery.matches) return;
+    const images: HTMLImageElement[] = new Array(FRAME_COUNT);
+    const frameObj = { frame: 1 };
 
-    // Preload image sequence and decode asynchronously
-    const images: HTMLImageElement[] = [];
-    for (let i = 1; i <= FRAME_COUNT; i++) {
-      const img = new window.Image();
-      img.src = `/immersive/hero/frame-${i.toString().padStart(3, "0")}.jpg?v=3`;
-      // Async decode prevents main thread blocking when canvas draws the image for the first time
-      img.decode().catch(() => {}); 
-      images.push(img);
-    }
+    let lastDrawn = -1;
+    const render = (frameValue: number) => {
+      const clamped = Math.min(Math.max(frameValue, 1), FRAME_COUNT);
+      // Skip redundant redraws — onUpdate can fire without the frame value
+      // having meaningfully changed.
+      if (Math.abs(clamped - lastDrawn) < 0.001) return;
 
-    const render = (frameIndex: number) => {
-      // 1-indexed frames mapped from 1 to FRAME_COUNT
-      const img = images[frameIndex - 1];
-      if (img && img.complete && img.naturalHeight !== 0) {
-        // Disable smoothing for maximum raw drawing performance (GPU handles the CSS object-cover smoothing)
-        ctx.imageSmoothingEnabled = false;
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      const lower = Math.floor(clamped);
+      const upper = Math.min(lower + 1, FRAME_COUNT);
+      const frac = clamped - lower;
+
+      // Bail without marking drawn if the frame isn't loaded yet — lets a
+      // later retry (see loadFrame's decode callback) actually redraw once
+      // it's ready, instead of the dedup guard silently swallowing it.
+      const lowerImg = images[lower - 1];
+      if (!(lowerImg?.complete && lowerImg.naturalHeight !== 0)) return;
+      lastDrawn = clamped;
+
+      ctx.globalAlpha = 1;
+      ctx.drawImage(lowerImg, 0, 0, canvas.width, canvas.height);
+
+      // Sub-frame interpolation: cross-fade toward the next frame using the
+      // tween's fractional progress instead of hard-cutting on whole frames.
+      const upperImg = images[upper - 1];
+      if (frac > 0.001 && upper !== lower && upperImg?.complete && upperImg.naturalHeight !== 0) {
+        ctx.globalAlpha = frac;
+        ctx.drawImage(upperImg, 0, 0, canvas.width, canvas.height);
+        ctx.globalAlpha = 1;
       }
     };
 
-    // Draw initial frame
-    render(1);
+    const loadFrame = (i: number) => {
+      const img = new window.Image();
+      img.src = frameSrc(i);
+      // Once this frame actually finishes loading, retry drawing whatever
+      // frame is currently needed — covers the very first paint (frame 1
+      // hasn't loaded yet when render(1) first runs) and any frame still
+      // in flight when the scrub reaches it.
+      img.decode().then(() => render(frameObj.frame)).catch(() => {});
+      images[i - 1] = img;
+    };
 
-    const frameObj = { frame: 1 };
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (motionQuery.matches) {
+      // Static hero: draw frame 1 once it loads, no scrub, no fade — never ship blank.
+      loadFrame(1);
+      return;
+    }
+
+    for (let i = 1; i <= EAGER_FRAMES; i++) loadFrame(i);
+    for (let i = EAGER_FRAMES + 1; i <= FRAME_COUNT; i++) {
+      scheduleIdle(() => loadFrame(i));
+    }
+
+    render(1);
 
     /* No GSAP pin — the stage div uses CSS `position: sticky; top: 0`
        (the same reliable pattern the chapter sections use). GSAP only
@@ -73,30 +122,27 @@ export function HeroScrollScene() {
         trigger: root,
         start: "top top",
         end: "bottom top",
-        // With Lenis handling global smooth scroll, `scrub: true` locks perfectly to the 
-        // interpolated coordinates, resulting in zero GSAP lag.
-        scrub: true, 
+        scrub: true,
         animation: timeline,
       });
 
-      // Scrub the image sequence for the FULL duration of the timeline (1.0)
+      // 0 -> 0.12 is a deliberate dead zone: the hero holds still so the
+      // page never feels like it drops the visitor mid-sequence.
+      // Hero copy starts fading shortly after scroll begins.
+      timeline.to(content, { yPercent: -12, opacity: 0, duration: 0.22 }, 0.12);
+
+      // Image sequence begins just after the copy starts fading, and scrubs
+      // across the rest of the hero's scroll range.
       timeline.to(
         frameObj,
         {
           frame: FRAME_COUNT,
-          snap: "frame",
           onUpdate: () => render(frameObj.frame),
-          duration: 1
+          duration: 0.85,
         },
-        0
+        0.15,
       );
-
-      // Scale and move the canvas, also taking the full duration (1.0)
-      timeline.to(canvas, { scale: 1.13, xPercent: -5, yPercent: -2, duration: 1 }, 0);
-      
-      // Fade out the text starting at 0.3 and taking 0.7 (ending at 1.0)
-      timeline.to(content, { yPercent: -12, opacity: 0, duration: 0.7 }, 0.3);
-
+      timeline.to(canvas, { scale: 1.13, xPercent: -5, yPercent: -2, duration: 0.85 }, 0.15);
     }, root);
 
     return () => context.revert();

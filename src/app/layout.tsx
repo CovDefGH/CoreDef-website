@@ -35,12 +35,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} antialiased`} suppressHydrationWarning>
       <body>
+        {/* Blocking, runs before the browser's own scroll restoration: without
+            this, refreshing mid-scroll on the tall immersive page reloads
+            already scrolled down, dropping visitors into the middle of the
+            hero sequence instead of at the top. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }",
+          }}
+        />
         {/* Warms the connection for the Contact page's Google Maps iframe embed */}
         <link rel="preconnect" href="https://www.google.com" />
         <link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="" />
         <link rel="preconnect" href="https://maps.googleapis.com" />
-        {/* Preload the hero video to improve LCP / initial load times */}
-        <link rel="preload" as="video" href="/immersive/hero/watts-bar-hero.mp4" type="video/mp4" />
         <a
           href="#main"
           className="focus:bg-primary sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:text-white"

@@ -44,7 +44,9 @@ p {
 .immersive-hero {
   position: relative;
   margin-top: calc(-4rem - env(safe-area-inset-top));
-  height: 125vh;
+  /* 300vh gives the hero room to breathe: a dwell phase before anything
+     moves, then a gradual scrub — see HeroScrollScene's timeline positions. */
+  height: 300vh;
 }
 
 .immersive-chapter {
