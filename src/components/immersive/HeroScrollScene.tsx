@@ -48,12 +48,16 @@ export function HeroScrollScene() {
       // 1-indexed frames mapped from 1 to FRAME_COUNT
       const img = images[frameIndex - 1];
       if (img && img.complete) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      } else if (img) {
-        img.onload = () => {
+        if (img.naturalHeight !== 0) {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        }
+      } else if (img) {
+        img.onload = () => {
+          if (img.naturalHeight !== 0) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          }
         };
       }
     };
