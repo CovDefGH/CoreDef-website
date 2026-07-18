@@ -275,23 +275,23 @@ export function ImmersiveHome() {
         </div>
       </section>
 
-      <section className="relative bg-[#09111d] py-24 md:py-32">
+      <section className="relative bg-white py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <div className="mb-16 max-w-2xl">
-            <p className="immersive-kicker">Global Operations</p>
-            <h2 className="mt-5 text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[.94] font-semibold tracking-[-.05em] text-white">
+          <div className="mb-14 max-w-2xl">
+            <p className="immersive-kicker text-[#0052ff]">Global Operations</p>
+            <h2 className="mt-5 text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[.94] font-semibold tracking-[-.05em] text-[#0c1723]">
               Industries we serve.
             </h2>
-            <p className="mt-6 max-w-lg text-base leading-relaxed text-white/75 md:text-lg">
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-[#3b4754] md:text-lg">
               Energy, nuclear, defense, government, utilities, manufacturing. Headquarters in Lexington, KY. Expansion planned across the Americas, EMEA, and APAC.
             </p>
           </div>
 
-          <div className="grid-cards-container grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8">
+          <div className="grid-cards-container grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6">
             {gridItems.map((item) => (
               <div
                 key={item.caption}
-                className="grid-card-reveal group relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#0d1724] will-change-[transform,opacity]"
+                className="grid-card-reveal group relative h-[280px] md:h-[360px] overflow-hidden rounded-2xl bg-slate-100 will-change-[transform,opacity] shadow-sm"
               >
                 <div className="image-reveal-container absolute inset-0 will-change-[transform]">
                   <Image
@@ -301,14 +301,15 @@ export function ImmersiveHome() {
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover transition-transform duration-700 will-change-[transform] group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#040a12]/90 via-[#040a12]/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-60" />
+                  {/* Lighter, subtler gradient so the image pops but text remains readable */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-75" />
                 </div>
                 <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
                   <div className="flex items-center justify-between">
                     <h3 className="text-2xl font-medium tracking-tight text-white md:text-3xl">
                       {item.caption}
                     </h3>
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 opacity-0 backdrop-blur transition-all duration-500 group-hover:opacity-100">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 opacity-0 backdrop-blur-md transition-all duration-500 group-hover:opacity-100">
                       <ArrowUpRight className="h-5 w-5 text-white" />
                     </div>
                   </div>
@@ -317,9 +318,9 @@ export function ImmersiveHome() {
             ))}
           </div>
 
-          <div className="mt-16 flex flex-wrap gap-3">
+          <div className="mt-14 flex flex-wrap gap-3">
             <CTALink href="/contact">Contact us</CTALink>
-            <CTALink href="/careers" variant="ghost">
+            <CTALink href="/careers" variant="secondary">
               Join the team
             </CTALink>
           </div>
