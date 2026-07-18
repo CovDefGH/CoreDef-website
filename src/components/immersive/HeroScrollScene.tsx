@@ -18,6 +18,20 @@ export function HeroScrollScene() {
   const contentRef = useRef<HTMLDivElement>(null);
   const [videoReady, setVideoReady] = useState(false);
 
+  /* On mount, check if the video is already playable (cached / fast network).
+     The onCanPlay JSX handler only fires for events AFTER hydration; if the
+     browser loaded the video before React mounted, the event is missed. */
+  useEffect(() => {
+    const video = videoRef.current;
+    if (
+      video &&
+      video.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setVideoReady(true);
+    }
+  }, []);
+
   /* useEffect (not useLayoutEffect) — runs after paint so DOM measurements
      are stable and the CSS sticky layout is already committed. */
   useEffect(() => {
@@ -92,7 +106,6 @@ export function HeroScrollScene() {
           src="/immersive/hero/hero-v2.jpg"
           alt="Nuclear power plant cooling towers releasing steam against a blue sky."
           fill
-          priority
           sizes="100vw"
           className={`object-cover transition-opacity duration-500 ${
             videoReady ? "opacity-0" : "opacity-100"
@@ -119,7 +132,6 @@ export function HeroScrollScene() {
         </video>
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,28,.73)_0%,rgba(5,18,28,.38)_43%,rgba(5,18,28,.04)_72%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(5,18,28,.38)_0%,transparent_52%)]" />
-        <div className="pointer-events-none absolute top-0 right-[14%] h-full w-px bg-white/30" />
 
         <div ref={contentRef} className="relative mx-auto flex h-dvh max-w-6xl items-end px-4 pt-[calc(8rem_+_env(safe-area-inset-top))] pb-12 md:px-6 md:pb-16">
           <div className="max-w-3xl">
