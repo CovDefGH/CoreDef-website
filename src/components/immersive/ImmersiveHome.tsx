@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, Zap, Lock } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CTALink } from "@/components/ui/CTALink";
@@ -22,7 +22,61 @@ type Chapter = {
   href: string;
   action: string;
   align?: "left" | "right";
+  artifact: React.ReactNode;
 };
+
+const trustSignals = [
+  {
+    icon: ShieldCheck,
+    title: "Zero-Trust Architecture",
+    description: "Every channel authenticated, every payload verified. No implicit trust within the perimeter.",
+  },
+  {
+    icon: Zap,
+    title: "Microsecond Latency",
+    description: "Response times measured in single-digit milliseconds for critical infrastructure operations.",
+  },
+  {
+    icon: Lock,
+    title: "Air-Gapped Deployments",
+    description: "Built to run in completely isolated environments without external dependencies.",
+  },
+];
+
+const AtomArtifact = (
+  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-[#7bc8ff] w-full h-full">
+    <ellipse cx="50" cy="50" rx="45" ry="15" transform="rotate(30 50 50)" />
+    <ellipse cx="50" cy="50" rx="45" ry="15" transform="rotate(90 50 50)" />
+    <ellipse cx="50" cy="50" rx="45" ry="15" transform="rotate(150 50 50)" />
+    <circle cx="50" cy="50" r="4" fill="currentColor" />
+    <circle cx="50" cy="50" r="8" strokeDasharray="2 2" />
+  </svg>
+);
+
+const RadarArtifact = (
+  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-[#7bc8ff] w-full h-full">
+    <circle cx="50" cy="50" r="45" strokeDasharray="2 4" />
+    <circle cx="50" cy="50" r="30" />
+    <circle cx="50" cy="50" r="15" strokeDasharray="4 2" />
+    <line x1="50" y1="5" x2="50" y2="95" strokeDasharray="1 3" />
+    <line x1="5" y1="50" x2="95" y2="50" strokeDasharray="1 3" />
+    <circle cx="50" cy="50" r="2" fill="currentColor" />
+  </svg>
+);
+
+const GridArtifact = (
+  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-[#7bc8ff] w-full h-full">
+    <rect x="10" y="10" width="80" height="80" strokeDasharray="4 4" />
+    <line x1="30" y1="10" x2="30" y2="90" opacity="0.5" />
+    <line x1="50" y1="10" x2="50" y2="90" opacity="0.5" />
+    <line x1="70" y1="10" x2="70" y2="90" opacity="0.5" />
+    <line x1="10" y1="30" x2="90" y2="30" opacity="0.5" />
+    <line x1="10" y1="50" x2="90" y2="50" opacity="0.5" />
+    <line x1="10" y1="70" x2="90" y2="70" opacity="0.5" />
+    <circle cx="50" cy="50" r="10" />
+    <circle cx="50" cy="50" r="2" fill="currentColor" />
+  </svg>
+);
 
 const gridItems = [
   { image: media.nuclear, caption: "Nuclear" },
@@ -41,6 +95,7 @@ const chapters: Chapter[] = [
     image: media.operations,
     href: "/solutions/edim",
     action: "Explore EDIM",
+    artifact: AtomArtifact,
   },
   {
     id: "enadox",
@@ -52,6 +107,7 @@ const chapters: Chapter[] = [
     href: "/solutions/enadox",
     action: "Explore ENADOX",
     align: "right",
+    artifact: RadarArtifact,
   },
   {
     id: "industries",
@@ -62,10 +118,9 @@ const chapters: Chapter[] = [
     image: media.energy,
     href: "/industries",
     action: "View industries",
+    artifact: GridArtifact,
   },
 ];
-
-const industries = ["Nuclear", "Energy", "Defense", "Industrial"];
 
 export function ImmersiveHome() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -215,13 +270,7 @@ export function ImmersiveHome() {
 
             {/* Decorative GSAP-style shape (technical/nuclear artifact) */}
             <div className="chapter-decor absolute top-[25%] left-[60%] h-64 w-64 opacity-[0.04] pointer-events-none mix-blend-screen md:left-[75%] will-change-[transform]">
-              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-[#7bc8ff] w-full h-full">
-                <ellipse cx="50" cy="50" rx="45" ry="15" transform="rotate(30 50 50)" />
-                <ellipse cx="50" cy="50" rx="45" ry="15" transform="rotate(90 50 50)" />
-                <ellipse cx="50" cy="50" rx="45" ry="15" transform="rotate(150 50 50)" />
-                <circle cx="50" cy="50" r="4" fill="currentColor" />
-                <circle cx="50" cy="50" r="8" strokeDasharray="2 2" />
-              </svg>
+              {chapter.artifact}
             </div>
 
             <div
@@ -254,23 +303,24 @@ export function ImmersiveHome() {
         </section>
       ))}
 
-      <section className="border-y border-white/15 bg-[#eaf0f5] text-[#0c1723]">
-        <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 md:grid-cols-[1.2fr_.8fr] md:px-6 md:py-28">
-          <div>
+      <section className="border-y border-slate-200 bg-[#eaf0f5] text-[#0c1723]">
+        <div className="mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-28">
+          <div className="mb-16 max-w-3xl">
             <p className="immersive-kicker text-[#0052ff]">Core Capabilities</p>
-            <h2 className="mt-5 max-w-3xl text-4xl leading-[.98] font-semibold tracking-[-.045em] md:text-6xl">
-              Zero-Trust Architecture & Low-Latency Operations.
+            <h2 className="mt-5 text-4xl leading-[.98] font-semibold tracking-[-.045em] md:text-5xl">
+              Engineered for environments where failure is not an option.
             </h2>
           </div>
-          <div className="border-l border-[#0c1723]/15 pl-6 md:pt-14">
-            <p className="text-base leading-relaxed text-[#405063]">
-              Every channel authenticated, every payload verified. Response times measured in single-digit milliseconds.
-            </p>
-            <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-[#0c1723]/15 pt-6 font-mono text-[.7rem] tracking-[.12em] uppercase">
-              {industries.map((industry) => (
-                <li key={industry}>{industry}</li>
-              ))}
-            </ul>
+          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 md:gap-12">
+            {trustSignals.map((signal) => (
+              <div key={signal.title} className="border-t border-[#0c1723]/15 pt-6">
+                <signal.icon className="mb-5 h-8 w-8 text-[#0052ff]" />
+                <h3 className="text-xl font-semibold tracking-tight">{signal.title}</h3>
+                <p className="mt-3 text-base leading-relaxed text-[#405063]">
+                  {signal.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -278,7 +328,6 @@ export function ImmersiveHome() {
       <section className="relative bg-white py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="mb-14 max-w-2xl">
-            <p className="immersive-kicker text-[#0052ff]">Global Operations</p>
             <h2 className="mt-5 text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[.94] font-semibold tracking-[-.05em] text-[#0c1723]">
               Industries we serve.
             </h2>
