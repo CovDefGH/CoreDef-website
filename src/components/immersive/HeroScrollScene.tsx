@@ -53,7 +53,7 @@ export function HeroScrollScene() {
           trigger: root,
           start: "top top",
           end: "bottom bottom",
-          scrub: 0.2,
+          scrub: 0.6,
         },
       });
 
@@ -96,7 +96,7 @@ export function HeroScrollScene() {
   return (
     <section
       ref={rootRef}
-      className="relative -mt-[calc(4rem_+_env(safe-area-inset-top))] h-[120vh]"
+      className="relative -mt-[calc(4rem_+_env(safe-area-inset-top))] h-[140vh]"
     >
       {/* CSS sticky pin — reliable across all browsers, no GSAP spacer issues */}
       <div
@@ -137,14 +137,17 @@ export function HeroScrollScene() {
           <div className="max-w-3xl">
             <p className="immersive-kicker">Core Defenses</p>
             <h1
-              className="mt-5 max-w-3xl text-[clamp(2.7rem,7.5vw,6.5rem)] leading-[.92] font-semibold tracking-[-.055em] text-white"
+              className="mt-5 max-w-4xl text-[clamp(2.7rem,6vw,5.5rem)] leading-[.95] font-semibold tracking-[-.04em] text-white"
             >
-              Software built for the real world.
+              Precision analytics for critical infrastructure.
+              <span className="block text-[#7bc8ff] mt-2">
+                Resilient communications for contested environments.
+              </span>
             </h1>
             <p
               className="mt-7 max-w-xl text-base leading-relaxed text-white/82 md:text-lg"
             >
-              We build predictive tools and secure networks for critical infrastructure.
+              Core Defenses builds EDIM, a predictive analytics platform for nuclear plants, and ENADOX, a secure communications platform for defense and industrial operations.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <CTALink href="/solutions">Explore solutions</CTALink>

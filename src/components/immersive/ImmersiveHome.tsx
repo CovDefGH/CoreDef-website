@@ -28,9 +28,9 @@ const chapters: Chapter[] = [
   {
     id: "edim",
     index: "01",
-    label: "Data Analytics",
-    title: "Better data for better decisions.",
-    copy: "Our EDIM platform helps you find issues in your data before they affect your operations. It makes your models more accurate and reliable.",
+    label: "Nuclear Analytics",
+    title: "Improving the Best Estimate.",
+    copy: "EDIM is a physics-based framework that identifies and corrects calculational bias. It reduces prediction error and keeps predictive models aligned with real-time operational data.",
     image: media.operations,
     href: "/solutions/edim",
     action: "Explore EDIM",
@@ -38,9 +38,9 @@ const chapters: Chapter[] = [
   {
     id: "enadox",
     index: "02",
-    label: "Secure Networks",
-    title: "Stay connected when it matters most.",
-    copy: "ENADOX keeps your network running even in the toughest environments. We make sure your data gets exactly where it needs to go, safely and securely.",
+    label: "Secure Communications",
+    title: "Redundancy built into the data itself.",
+    copy: "ENADOX provides secure communication across denied, degraded, intermittent, and low-bandwidth (DDIL) environments.",
     image: media.comms,
     href: "/solutions/enadox",
     action: "Explore ENADOX",
@@ -49,9 +49,9 @@ const chapters: Chapter[] = [
   {
     id: "industries",
     index: "03",
-    label: "Industry Solutions",
-    title: "Built for critical operations.",
-    copy: "We partner with leaders in nuclear energy, defense, and heavy industry to keep their most important systems running smoothly.",
+    label: "Where we operate",
+    title: "Sectors where failure has physical consequences.",
+    copy: "We build for nuclear, energy, defense, and industrial operations—environments where accuracy, continuity, and disciplined engineering matter.",
     image: media.energy,
     href: "/industries",
     action: "View industries",
@@ -143,10 +143,10 @@ export function ImmersiveHome() {
       <section className="border-y border-white/15 bg-[#0d1724]">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-[1fr_auto] md:items-end md:px-6 md:py-14">
           <p className="max-w-2xl text-lg leading-relaxed text-white/82 md:text-2xl">
-            We build software for teams who manage complex, high-stakes environments.
+            Two platforms: EDIM for predictive analytics, ENADOX for secure communications in degraded conditions.
           </p>
           <p className="font-mono text-[.66rem] leading-relaxed tracking-[.12em] text-[#7bc8ff] uppercase">
-            Analytics • Communications • Infrastructure
+            Defense • Nuclear • Energy • Industrial Operations
           </p>
         </div>
       </section>
@@ -209,14 +209,14 @@ export function ImmersiveHome() {
       <section className="border-y border-white/15 bg-[#eaf0f5] text-[#0c1723]">
         <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 md:grid-cols-[1.2fr_.8fr] md:px-6 md:py-28">
           <div>
-            <p className="immersive-kicker text-[#0052ff]">Operating context</p>
+            <p className="immersive-kicker text-[#0052ff]">Core Capabilities</p>
             <h2 className="mt-5 max-w-3xl text-4xl leading-[.98] font-semibold tracking-[-.045em] md:text-6xl">
-              Built to work everywhere.
+              Zero-Trust Architecture & Low-Latency Operations.
             </h2>
           </div>
           <div className="border-l border-[#0c1723]/15 pl-6 md:pt-14">
             <p className="text-base leading-relaxed text-[#405063]">
-              Whether you are running a power plant or managing a global communications network, our tools give your team the confidence to do their best work.
+              Every channel authenticated, every payload verified. Response times measured in single-digit milliseconds.
             </p>
             <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-[#0c1723]/15 pt-6 font-mono text-[.7rem] tracking-[.12em] uppercase">
               {industries.map((industry) => (
@@ -239,13 +239,13 @@ export function ImmersiveHome() {
         <div className="relative mx-auto flex min-h-[68vh] max-w-6xl items-end px-4 py-16 md:px-6 md:py-24">
           <div className="max-w-2xl">
             <p className="immersive-kicker">
-              Lexington, Kentucky
+              Global Operations
             </p>
             <h2 className="mt-5 text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[.94] font-semibold tracking-[-.05em]">
-              Ready to get started?
+              Industries we serve.
             </h2>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-white/75 md:text-lg">
-              Get in touch with our team today to learn how we can help secure and optimize your critical infrastructure.
+              Energy, nuclear, defense, government, utilities, manufacturing. Headquarters in Lexington, KY. Expansion planned across the Americas, EMEA, and APAC.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <CTALink href="/contact">Contact us</CTALink>
