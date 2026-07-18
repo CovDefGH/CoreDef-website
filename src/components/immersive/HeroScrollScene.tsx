@@ -49,13 +49,11 @@ export function HeroScrollScene() {
       const img = images[frameIndex - 1];
       if (img && img.complete) {
         if (img.naturalHeight !== 0) {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         }
       } else if (img) {
         img.onload = () => {
           if (img.naturalHeight !== 0) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
           }
         };
@@ -71,6 +69,10 @@ export function HeroScrollScene() {
        (the same reliable pattern the chapter sections use). GSAP only
        handles the scroll-scrubbed text/video animations. */
     const context = gsap.context(() => {
+      // Use GSAP's built-in scroll normalizer for buttery smoothness (prevents jitter)
+      ScrollTrigger.normalizeScroll(true);
+      ScrollTrigger.config({ ignoreMobileResize: true });
+
       const timeline = gsap.timeline({
         defaults: { ease: "none" },
       });
@@ -79,7 +81,7 @@ export function HeroScrollScene() {
         trigger: root,
         start: "top top",
         end: "bottom top",
-        scrub: 1,
+        scrub: 0.5, // Reduced from 1 to 0.5 to feel more responsive and less "laggy"
         animation: timeline,
       });
 
