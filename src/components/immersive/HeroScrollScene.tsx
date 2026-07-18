@@ -53,7 +53,7 @@ export function HeroScrollScene() {
           trigger: root,
           start: "top top",
           end: "bottom bottom",
-          scrub: 0.6,
+          scrub: true,
         },
       });
 
@@ -78,7 +78,7 @@ export function HeroScrollScene() {
             trigger: root,
             start: "top top",
             end: "bottom bottom",
-            scrub: 0.2,
+            scrub: true,
           },
         });
       };

@@ -328,7 +328,7 @@ export function ImmersiveHome() {
                 Energy, nuclear, defense, government, utilities, manufacturing.
               </p>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex w-full flex-wrap gap-3 md:w-auto md:shrink-0 md:justify-end">
               <CTALink href="/industries" variant="secondary">
                 Industries
               </CTALink>
