@@ -53,7 +53,7 @@ export function HeroScrollScene() {
           trigger: root,
           start: "top top",
           end: "bottom bottom",
-          scrub: 0.75,
+          scrub: 0.2,
         },
       });
 
@@ -78,7 +78,7 @@ export function HeroScrollScene() {
             trigger: root,
             start: "top top",
             end: "bottom bottom",
-            scrub: 0.75,
+            scrub: 0.2,
           },
         });
       };
@@ -96,7 +96,7 @@ export function HeroScrollScene() {
   return (
     <section
       ref={rootRef}
-      className="relative -mt-[calc(4rem_+_env(safe-area-inset-top))] h-[220vh]"
+      className="relative -mt-[calc(4rem_+_env(safe-area-inset-top))] h-[150vh]"
     >
       {/* CSS sticky pin — reliable across all browsers, no GSAP spacer issues */}
       <div
