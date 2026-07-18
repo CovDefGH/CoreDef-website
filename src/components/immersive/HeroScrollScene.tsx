@@ -166,7 +166,6 @@ export function HeroScrollScene() {
 
         <div ref={contentRef} className="relative mx-auto flex h-dvh max-w-6xl flex-col px-4 pt-[calc(6rem_+_env(safe-area-inset-top))] pb-12 md:px-6 md:pb-16 will-change-[transform,opacity]">
           <div className="mt-auto max-w-3xl">
-            <p className="immersive-kicker">Core Defenses</p>
             <h1
               className="mt-5 max-w-4xl text-[clamp(2rem,5vmin,3.5rem)] leading-[1.05] font-semibold tracking-[-.02em] text-white md:font-bold"
             >

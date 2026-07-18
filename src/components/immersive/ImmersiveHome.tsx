@@ -13,8 +13,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 type Chapter = {
   id: string;
-  index: string;
-  label: string;
   title: string;
   copy: string;
   image: { src: string; alt: string };
@@ -87,8 +85,6 @@ const gridItems = [
 const chapters: Chapter[] = [
   {
     id: "edim",
-    index: "01",
-    label: "Nuclear Analytics",
     title: "Improving the Best Estimate.",
     copy: "EDIM is a physics-based framework that identifies and corrects calculational bias. It reduces prediction error and keeps predictive models aligned with real-time operational data.",
     image: media.operations,
@@ -98,8 +94,6 @@ const chapters: Chapter[] = [
   },
   {
     id: "enadox",
-    index: "02",
-    label: "Secure Communications",
     title: "Redundancy built into the data itself.",
     copy: "ENADOX provides secure communication across denied, degraded, intermittent, and low-bandwidth (DDIL) environments.",
     image: media.comms,
@@ -107,17 +101,6 @@ const chapters: Chapter[] = [
     action: "Explore ENADOX",
     align: "right",
     artifact: RadarArtifact,
-  },
-  {
-    id: "industries",
-    index: "03",
-    label: "Where we operate",
-    title: "Sectors where failure has physical consequences.",
-    copy: "We build for nuclear, energy, defense, and industrial operations—environments where accuracy, continuity, and disciplined engineering matter.",
-    image: media.energy,
-    href: "/industries",
-    action: "View industries",
-    artifact: GridArtifact,
   },
 ];
 
@@ -266,10 +249,6 @@ export function ImmersiveHome() {
               className={`relative mx-auto flex h-full max-w-6xl flex-col px-4 pt-[calc(6rem_+_env(safe-area-inset-top))] pb-16 md:px-6 md:pb-24 ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
             >
               <div className="immersive-copy mt-auto max-w-2xl will-change-[transform,opacity]">
-                <p className="flex items-center gap-3 text-xs font-semibold tracking-[0.2em] uppercase text-white/60">
-                  <span className="text-[#7bc8ff]">{chapter.index}</span>
-                  <span>{chapter.label}</span>
-                </p>
                 <h2 className="mt-6 text-[clamp(3rem,6.5vw,6rem)] leading-[0.92] font-semibold tracking-[-.045em] text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40">
                   {chapter.title}
                 </h2>
