@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { useEffect, useRef } from "react";
 import { ArrowDown } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -16,21 +15,6 @@ export function HeroScrollScene() {
   const rootRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const [videoReady, setVideoReady] = useState(false);
-
-  /* On mount, check if the video is already playable (cached / fast network).
-     The onCanPlay JSX handler only fires for events AFTER hydration; if the
-     browser loaded the video before React mounted, the event is missed. */
-  useEffect(() => {
-    const video = videoRef.current;
-    if (
-      video &&
-      video.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA &&
-      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      setVideoReady(true);
-    }
-  }, []);
 
   /* useEffect (not useLayoutEffect) — runs after paint so DOM measurements
      are stable and the CSS sticky layout is already committed. */
@@ -102,31 +86,14 @@ export function HeroScrollScene() {
       <div
         className="sticky top-0 h-dvh overflow-hidden bg-[#dcebf1]"
       >
-        <Image
-          src="/immersive/hero/hero-v2.jpg"
-          alt="Nuclear power plant cooling towers releasing steam against a blue sky."
-          fill
-          sizes="100vw"
-          className={`object-cover transition-opacity duration-500 will-change-[opacity] ${
-            videoReady ? "opacity-0" : "opacity-100"
-          }`}
-        />
         <video
           ref={videoRef}
           muted
           playsInline
           preload="auto"
           aria-hidden="true"
-          onCanPlay={() => {
-            if (
-              !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-            ) {
-              setVideoReady(true);
-            }
-          }}
-          className={`absolute inset-0 h-full w-full object-cover object-[58%_45%] transition-opacity duration-500 will-change-[opacity] ${
-            videoReady ? "opacity-100" : "opacity-0"
-          }`}
+          poster="/immersive/hero/hero-v2.jpg"
+          className="absolute inset-0 h-full w-full object-cover object-[58%_45%] will-change-[transform]"
         >
           <source src="/immersive/hero/watts-bar-hero.mp4" type="video/mp4" />
         </video>
