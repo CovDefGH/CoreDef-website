@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ShieldCheck, Zap, Lock } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, Timer, Globe2 } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CTALink } from "@/components/ui/CTALink";
@@ -29,17 +29,17 @@ const trustSignals = [
   {
     icon: ShieldCheck,
     title: "Zero-Trust Architecture",
-    description: "Every channel authenticated, every payload verified. No implicit trust within the perimeter.",
+    description: "Every channel authenticated, every payload verified.",
   },
   {
-    icon: Zap,
-    title: "Microsecond Latency",
-    description: "Response times measured in single-digit milliseconds for critical infrastructure operations.",
+    icon: Timer,
+    title: "Low-Latency Operations",
+    description: "Response times measured in single-digit milliseconds.",
   },
   {
-    icon: Lock,
-    title: "Air-Gapped Deployments",
-    description: "Built to run in completely isolated environments without external dependencies.",
+    icon: Globe2,
+    title: "Global Operations",
+    description: "Headquarters in Lexington, KY. Expansion planned across the Americas, EMEA, and APAC.",
   },
 ];
 
@@ -296,8 +296,7 @@ export function ImmersiveHome() {
       <section className="border-y border-slate-200 bg-[#eaf0f5] text-[#0c1723]">
         <div className="mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-28">
           <div className="mb-16 max-w-3xl">
-            <p className="immersive-kicker text-[#0052ff]">Core Capabilities</p>
-            <h2 className="mt-5 text-4xl leading-[.98] font-semibold tracking-[-.045em] md:text-5xl">
+            <h2 className="text-4xl leading-[.98] font-semibold tracking-[-.045em] md:text-5xl">
               Engineered for environments where failure is not an option.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-[#405063] md:text-xl">
@@ -320,13 +319,26 @@ export function ImmersiveHome() {
 
       <section className="relative bg-white py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <div className="mb-14 max-w-2xl">
-            <h2 className="mt-5 text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[.94] font-semibold tracking-[-.05em] text-[#0c1723]">
-              Industries we serve.
-            </h2>
-            <p className="mt-6 max-w-lg text-base leading-relaxed text-[#3b4754] md:text-lg">
-              Energy, nuclear, defense, government, utilities, manufacturing. Headquarters in Lexington, KY. Expansion planned across the Americas, EMEA, and APAC.
-            </p>
+          <div className="mb-14 flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
+            <div className="max-w-2xl">
+              <h2 className="text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[.94] font-semibold tracking-[-.05em] text-[#0c1723]">
+                Industries we serve.
+              </h2>
+              <p className="mt-6 max-w-lg text-base leading-relaxed text-[#3b4754] md:text-lg">
+                Energy, nuclear, defense, government, utilities, manufacturing.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <CTALink href="/industries" variant="secondary">
+                Industries
+              </CTALink>
+              <CTALink href="/global" variant="secondary">
+                Global Operations
+              </CTALink>
+              <CTALink href="/careers" variant="secondary">
+                Careers
+              </CTALink>
+            </div>
           </div>
 
           <div className="grid-cards-container grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6">
@@ -343,7 +355,6 @@ export function ImmersiveHome() {
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover transition-transform duration-700 will-change-[transform] group-hover:scale-105"
                   />
-                  {/* Lighter, subtler gradient so the image pops but text remains readable */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-75" />
                 </div>
                 <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
@@ -358,13 +369,6 @@ export function ImmersiveHome() {
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="mt-14 flex flex-wrap gap-3">
-            <CTALink href="/contact">Contact us</CTALink>
-            <CTALink href="/careers" variant="secondary">
-              Join the team
-            </CTALink>
           </div>
         </div>
       </section>
