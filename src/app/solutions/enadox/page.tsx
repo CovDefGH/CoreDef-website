@@ -39,11 +39,10 @@ export default function EnadoxPage() {
       <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
         <FeatureRow
           heading="Redundancy built into the data itself"
-          body="ENADOX enables secure communication between platforms by transforming the data they exchange. Self-healing is built in: one sensor's data can be embedded within another, so if a sensor fails, the original can be reconstructed."
+          body="ENADOX solves the problem of inherently insecure and fragile OT assets on the shopfloor that is a patchwork of legacy and modern equipment. It retrofits them with self-healing capabilities with the singular objective of maintaining system uptime during contingencies."
           bullets={[
-            "Secure data exchange across otherwise separate platforms",
-            "Cross-source embedding for reconstruction when a sensor fails",
-            "Redundancy that lives in the data, not just the network",
+            "ENADOX devices merge seamlessly into existing architecture and communication protocols by self-healing at the process data level.",
+            "Software plugins integrate into existing SCADA, SIEM, and HMI interfaces to alert operators to data falsification.",
           ]}
           image={media.dataCenter}
           imageSide="right"
@@ -51,11 +50,10 @@ export default function EnadoxPage() {
 
         <FeatureRow
           heading="Secure communication where links are denied"
-          body="ENADOX supports secure communication in open and denied environments. It carries traffic over software-defined radio, sustains communication in DDIL conditions, and coordinates drone-swarm navigation."
+          body="ENADOX augments communication systems with covert communication capabilities that maintain secure contact in adversarial, open, as well as denied, disrupted, intermittent, and limited environments."
           bullets={[
-            "Software-defined radio (SDR) links",
-            "Communication in denied, degraded, intermittent, and limited-bandwidth (DDIL) environments",
-            "Drone-swarm navigation in denied environments",
+            "In adversarial settings, retrofitted systems can autonomously retask to transmit sensitive information embedded within a seemingly benign artificial layer—for example, drone imagery communicated through temperature sensors or pilot audio transmitted through IMU measurements.",
+            "ENADOX transforms data at the source to protect communications from inspection and interception across open channels, including applications such as WhatsApp or Signal on unlocked devices and unencrypted radio communications.",
           ]}
           image={media.comms}
           imageSide="left"
