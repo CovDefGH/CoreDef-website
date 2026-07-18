@@ -107,7 +107,7 @@ export function HeroScrollScene() {
           alt="Nuclear power plant cooling towers releasing steam against a blue sky."
           fill
           sizes="100vw"
-          className={`object-cover transition-opacity duration-500 ${
+          className={`object-cover transition-opacity duration-500 will-change-[opacity] ${
             videoReady ? "opacity-0" : "opacity-100"
           }`}
         />
@@ -124,7 +124,7 @@ export function HeroScrollScene() {
               setVideoReady(true);
             }
           }}
-          className={`absolute inset-0 h-full w-full object-cover object-[58%_45%] transition-opacity duration-500 ${
+          className={`absolute inset-0 h-full w-full object-cover object-[58%_45%] transition-opacity duration-500 will-change-[opacity] ${
             videoReady ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -133,7 +133,7 @@ export function HeroScrollScene() {
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,28,.73)_0%,rgba(5,18,28,.38)_43%,rgba(5,18,28,.04)_72%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(5,18,28,.38)_0%,transparent_52%)]" />
 
-        <div ref={contentRef} className="relative mx-auto flex h-dvh max-w-6xl items-end px-4 pt-[calc(8rem_+_env(safe-area-inset-top))] pb-12 md:px-6 md:pb-16">
+        <div ref={contentRef} className="relative mx-auto flex h-dvh max-w-6xl items-end px-4 pt-[calc(8rem_+_env(safe-area-inset-top))] pb-12 md:px-6 md:pb-16 will-change-[transform,opacity]">
           <div className="max-w-3xl">
             <p className="immersive-kicker">Core Defenses</p>
             <h1

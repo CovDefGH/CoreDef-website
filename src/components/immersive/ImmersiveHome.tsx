@@ -159,14 +159,14 @@ export function ImmersiveHome() {
               alt={chapter.image.alt}
               fill
               sizes="100vw"
-              className="immersive-chapter-image object-cover"
+              className="immersive-chapter-image object-cover will-change-[transform]"
             />
             <div className="absolute inset-0 bg-[#07101a]/45" />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,10,18,.84)_0%,rgba(4,10,18,.36)_55%,rgba(4,10,18,.58)_100%)]" />
             <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-[#040a12] to-transparent" />
 
             {/* Decorative GSAP-style shape (technical/nuclear artifact) */}
-            <div className="chapter-decor absolute top-[25%] left-[60%] h-64 w-64 opacity-[0.04] pointer-events-none mix-blend-screen md:left-[75%]">
+            <div className="chapter-decor absolute top-[25%] left-[60%] h-64 w-64 opacity-[0.04] pointer-events-none mix-blend-screen md:left-[75%] will-change-[transform]">
               <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-[#7bc8ff] w-full h-full">
                 <ellipse cx="50" cy="50" rx="45" ry="15" transform="rotate(30 50 50)" />
                 <ellipse cx="50" cy="50" rx="45" ry="15" transform="rotate(90 50 50)" />
@@ -179,7 +179,7 @@ export function ImmersiveHome() {
             <div
               className={`relative mx-auto flex h-full max-w-6xl items-end px-4 py-16 md:px-6 md:py-24 ${chapter.align === "right" ? "md:justify-end" : ""}`}
             >
-              <div className="immersive-copy max-w-2xl">
+              <div className="immersive-copy max-w-2xl will-change-[transform,opacity]">
                 <p className="flex items-center gap-3 text-xs font-semibold tracking-[0.2em] uppercase text-white/60">
                   <span className="text-[#7bc8ff]">{chapter.index}</span>
                   <span>{chapter.label}</span>
