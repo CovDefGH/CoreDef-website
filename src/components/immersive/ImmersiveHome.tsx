@@ -243,16 +243,6 @@ export function ImmersiveHome() {
     <div ref={containerRef} className="immersive-page bg-[#09111d] text-white">
       <HeroScrollScene />
 
-      <section className="border-y border-white/15 bg-[#0d1724]">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-[1fr_auto] md:items-end md:px-6 md:py-14">
-          <p className="max-w-2xl text-lg leading-relaxed text-white/82 md:text-2xl">
-            Two platforms: EDIM for predictive analytics, ENADOX for secure communications in degraded conditions.
-          </p>
-          <p className="font-mono text-[.66rem] leading-relaxed tracking-[.12em] text-[#7bc8ff] uppercase">
-            Defense • Nuclear • Energy • Industrial Operations
-          </p>
-        </div>
-      </section>
 
       {chapters.map((chapter) => (
         <section id={chapter.id} key={chapter.id} className="immersive-chapter">
@@ -310,6 +300,9 @@ export function ImmersiveHome() {
             <h2 className="mt-5 text-4xl leading-[.98] font-semibold tracking-[-.045em] md:text-5xl">
               Engineered for environments where failure is not an option.
             </h2>
+            <p className="mt-6 text-lg leading-relaxed text-[#405063] md:text-xl">
+              Two platforms: EDIM for predictive analytics, ENADOX for secure communications in degraded conditions.
+            </p>
           </div>
           <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 md:gap-12">
             {trustSignals.map((signal) => (
