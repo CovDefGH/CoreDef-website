@@ -96,7 +96,7 @@ export function HeroScrollScene() {
   return (
     <section
       ref={rootRef}
-      className="relative -mt-[calc(4rem_+_env(safe-area-inset-top))] h-[140vh]"
+      className="immersive-hero"
     >
       {/* CSS sticky pin — reliable across all browsers, no GSAP spacer issues */}
       <div

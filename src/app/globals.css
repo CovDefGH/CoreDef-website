@@ -41,6 +41,12 @@ p {
   text-transform: uppercase;
 }
 
+.immersive-hero {
+  position: relative;
+  margin-top: calc(-4rem - env(safe-area-inset-top));
+  height: 140vh;
+}
+
 .immersive-chapter {
   height: 125vh;
 }
