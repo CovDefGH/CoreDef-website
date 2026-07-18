@@ -24,6 +24,13 @@ type Chapter = {
   align?: "left" | "right";
 };
 
+const gridItems = [
+  { image: media.nuclear, caption: "Nuclear" },
+  { image: media.energy, caption: "Energy" },
+  { image: media.comms, caption: "Communications" },
+  { image: media.dataCenter, caption: "Industrial" },
+];
+
 const chapters: Chapter[] = [
   {
     id: "edim",
@@ -129,6 +136,47 @@ export function ImmersiveHome() {
         }
       });
 
+      // Grid cards reveal (skiper104 style)
+      const gridCards = gsap.utils.toArray<HTMLElement>(".grid-card-reveal");
+      if (gridCards.length) {
+        gsap.fromTo(
+          gridCards,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            stagger: 0.15,
+            scrollTrigger: {
+              trigger: ".grid-cards-container",
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+
+      // Image reveal (skiper71 style)
+      const imageReveals = gsap.utils.toArray<HTMLElement>(".image-reveal-container");
+      imageReveals.forEach((container) => {
+        gsap.fromTo(
+          container,
+          { clipPath: "inset(15% 10% 15% 10%)", scale: 1.1 },
+          {
+            clipPath: "inset(0% 0% 0% 0%)",
+            scale: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: container,
+              start: "top 90%",
+              end: "center 60%",
+              scrub: 1,
+            },
+          }
+        );
+      });
+
       /* Re-measure after all triggers exist so pin offsets are accurate. */
       ScrollTrigger.sort();
       ScrollTrigger.refresh();
@@ -227,32 +275,53 @@ export function ImmersiveHome() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#09111d]">
-        <Image
-          src={media.drone.src}
-          alt=""
-          fill
-          sizes="100vw"
-          className="absolute inset-0 object-cover opacity-25"
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(0,82,255,.24),transparent_35%),linear-gradient(90deg,#09111d_12%,rgba(9,17,29,.76))]" />
-        <div className="relative mx-auto flex min-h-[68vh] max-w-6xl items-end px-4 py-16 md:px-6 md:py-24">
-          <div className="max-w-2xl">
-            <p className="immersive-kicker">
-              Global Operations
-            </p>
-            <h2 className="mt-5 text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[.94] font-semibold tracking-[-.05em]">
+      <section className="relative bg-[#09111d] py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-4 md:px-6">
+          <div className="mb-16 max-w-2xl">
+            <p className="immersive-kicker">Global Operations</p>
+            <h2 className="mt-5 text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[.94] font-semibold tracking-[-.05em] text-white">
               Industries we serve.
             </h2>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-white/75 md:text-lg">
               Energy, nuclear, defense, government, utilities, manufacturing. Headquarters in Lexington, KY. Expansion planned across the Americas, EMEA, and APAC.
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <CTALink href="/contact">Contact us</CTALink>
-              <CTALink href="/careers" variant="ghost">
-                Join the team
-              </CTALink>
-            </div>
+          </div>
+
+          <div className="grid-cards-container grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8">
+            {gridItems.map((item) => (
+              <div
+                key={item.caption}
+                className="grid-card-reveal group relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#0d1724] will-change-[transform,opacity]"
+              >
+                <div className="image-reveal-container absolute inset-0 will-change-[transform]">
+                  <Image
+                    src={item.image.src}
+                    alt={item.image.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 will-change-[transform] group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#040a12]/90 via-[#040a12]/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-60" />
+                </div>
+                <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-2xl font-medium tracking-tight text-white md:text-3xl">
+                      {item.caption}
+                    </h3>
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 opacity-0 backdrop-blur transition-all duration-500 group-hover:opacity-100">
+                      <ArrowUpRight className="h-5 w-5 text-white" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 flex flex-wrap gap-3">
+            <CTALink href="/contact">Contact us</CTALink>
+            <CTALink href="/careers" variant="ghost">
+              Join the team
+            </CTALink>
           </div>
         </div>
       </section>
