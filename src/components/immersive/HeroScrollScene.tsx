@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 const FRAME_COUNT = 40;
 
 export function HeroScrollScene() {
-  preload("/immersive/hero/frame-001.jpg?v=2", { as: "image" });
+  preload("/immersive/hero/frame-001.jpg?v=3", { as: "image" });
   
   const rootRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -40,7 +40,7 @@ export function HeroScrollScene() {
     const images: HTMLImageElement[] = [];
     for (let i = 1; i <= FRAME_COUNT; i++) {
       const img = new window.Image();
-      img.src = `/immersive/hero/frame-${i.toString().padStart(3, "0")}.jpg?v=2`;
+      img.src = `/immersive/hero/frame-${i.toString().padStart(3, "0")}.jpg?v=3`;
       images.push(img);
     }
 
@@ -81,21 +81,23 @@ export function HeroScrollScene() {
         },
       });
 
-      // Scrub the image sequence
+      // Scrub the image sequence for the FULL duration of the timeline (1.0)
       timeline.to(
         frameObj,
         {
           frame: FRAME_COUNT,
           snap: "frame",
           onUpdate: () => render(frameObj.frame),
+          duration: 1
         },
         0
       );
 
-      // Scale and move the canvas
-      timeline
-        .to(canvas, { scale: 1.13, xPercent: -5, yPercent: -2 }, 0)
-        .to(content, { yPercent: -12, opacity: 0 }, 0.3);
+      // Scale and move the canvas, also taking the full duration (1.0)
+      timeline.to(canvas, { scale: 1.13, xPercent: -5, yPercent: -2, duration: 1 }, 0);
+      
+      // Fade out the text starting at 0.3 and taking 0.7 (ending at 1.0)
+      timeline.to(content, { yPercent: -12, opacity: 0, duration: 0.7 }, 0.3);
 
     }, root);
 
