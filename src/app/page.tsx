@@ -6,6 +6,8 @@ import { Reveal } from "@/components/motion/Reveal";
 import { MotionCard } from "@/components/motion/MotionCard";
 import { HeroVideo } from "@/components/sections/HeroVideo";
 import { media } from "@/content/media";
+import { edim } from "@/content/products/edim";
+import { enadox } from "@/content/products/enadox";
 
 // FR-HOME-3 — EDIM featured first per PRD §7 product priority.
 const CAPABILITIES = [
@@ -13,8 +15,7 @@ const CAPABILITIES = [
     icon: Atom,
     heading: "Nuclear Analytics",
     image: media.edimCover,
-    description:
-      "EDIM is a physics-based framework that identifies and corrects calculational bias in predictive models. It reduces prediction error and keeps results aligned with real-time plant data.",
+    description: edim.tagline,
     linkLabel: "Explore EDIM",
     href: "/solutions/edim",
   },
@@ -22,8 +23,7 @@ const CAPABILITIES = [
     icon: Radio,
     heading: "Secure Communications",
     image: media.enadoxCover,
-    description:
-      "ENADOX provides secure communication across denied, degraded, intermittent, and low-bandwidth (DDIL) environments. Redundancy is built into the data itself.",
+    description: enadox.tagline,
     linkLabel: "Explore ENADOX",
     href: "/solutions/enadox",
   },
@@ -106,45 +106,43 @@ export default function Home() {
             Two platforms: EDIM for predictive analytics, ENADOX for secure
             communications in degraded conditions.
           </p>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {CAPABILITIES.map(
-              ({
-                icon: Icon,
-                heading,
-                image,
-                description,
-                linkLabel,
-                href,
-              }) => (
-                <MotionCard
-                  key={heading}
-                  className="border-line hover:border-accent border bg-white p-8 transition-colors"
+          <div className="mt-10 space-y-6">
+            {CAPABILITIES.map(({ heading, description }) => (
+              <p
+                key={heading}
+                className="text-ink-muted text-justify leading-relaxed"
+              >
+                {description}
+              </p>
+            ))}
+          </div>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {CAPABILITIES.map(({ icon: Icon, heading, image, linkLabel, href }) => (
+              <MotionCard
+                key={heading}
+                className="border-line hover:border-accent border bg-white p-8 transition-colors"
+              >
+                <div className="border-line relative mb-6 aspect-[16/9] overflow-hidden border">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(min-width: 768px) 45vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                <span className="bg-surface border-line inline-flex border p-3">
+                  <Icon aria-hidden size={22} className="text-primary" />
+                </span>
+                <h3 className="text-ink mt-5 text-xl font-bold">{heading}</h3>
+                <Link
+                  href={href}
+                  className="text-primary hover:text-ink mt-5 inline-block text-sm font-medium transition-colors"
                 >
-                  <div className="border-line relative mb-6 aspect-[16/9] overflow-hidden border">
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      fill
-                      sizes="(min-width: 768px) 45vw, 100vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <span className="bg-surface border-line inline-flex border p-3">
-                    <Icon aria-hidden size={22} className="text-primary" />
-                  </span>
-                  <h3 className="text-ink mt-5 text-xl font-bold">{heading}</h3>
-                  <p className="text-ink-muted mt-3 text-sm leading-relaxed">
-                    {description}
-                  </p>
-                  <Link
-                    href={href}
-                    className="text-primary hover:text-ink mt-5 inline-block text-sm font-medium transition-colors"
-                  >
-                    {linkLabel} →
-                  </Link>
-                </MotionCard>
-              ),
-            )}
+                  {linkLabel} →
+                </Link>
+              </MotionCard>
+            ))}
           </div>
         </div>
       </Reveal>
