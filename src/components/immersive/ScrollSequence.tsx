@@ -113,6 +113,11 @@ export function ScrollSequence({ className, sequence }: ScrollSequenceProps) {
       imagesRef.current.set(validIndex, image);
     };
 
+    // Preload the initial frames immediately to ensure frame 0 renders before scrolling
+    for (let index = 0; index <= preloadRadius; index += 1) {
+      load(index);
+    }
+
     const playhead = { frame: 0 };
     const ctx = gsap.context(() => {
       gsap.to(playhead, {
