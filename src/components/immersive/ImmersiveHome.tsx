@@ -23,6 +23,7 @@ type Chapter = {
 };
 
 
+
 const AtomArtifact = (
   <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-[#7bc8ff] w-full h-full">
     <ellipse cx="50" cy="50" rx="45" ry="15" transform="rotate(30 50 50)" />
@@ -254,7 +255,18 @@ export function ImmersiveHome() {
         </section>
       ))}
 
-
+      <section className="border-y border-slate-200 bg-[#eaf0f5] text-[#0c1723]">
+        <div className="mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-28">
+          <div className="mb-16 max-w-3xl">
+            <h2 className="text-4xl leading-[.98] font-semibold tracking-[-.045em] md:text-5xl">
+              Engineered for environments where failure is not an option.
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-[#405063] md:text-xl">
+              Two platforms: EDIM for predictive analytics, ENADOX for secure communications in degraded conditions.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section className="relative bg-white py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
