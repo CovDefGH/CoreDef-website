@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 // 200 frames extracted natively at 24fps from the 4K source clip.
 // We used heavy JPEG compression to keep the sequence small while retaining 4K native resolution.
 const FRAME_START = 50;
-const FRAME_COUNT = 250;
+const FRAME_COUNT = 200;
 const FRAME_W = 3840;
 const FRAME_H = 2160;
 // First N frames load eagerly (covers the dwell + early-scrub range); the rest
