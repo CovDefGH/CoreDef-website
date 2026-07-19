@@ -20,7 +20,6 @@ const GROUPS = [
     links: [
       { href: "/about", label: "About" },
       { href: "/industries", label: "Industries" },
-      { href: "/global", label: "Global Operations" },
       { href: "/careers", label: "Careers" },
     ],
   },
@@ -81,10 +80,7 @@ export function Footer() {
               <div className="mt-8">
                 <CTALink href="/contact">Contact Us</CTALink>
               </div>
-              <p className="text-ink-muted mt-10 text-xs leading-relaxed">
-                Made with ❤️ by the Core Defenses Team
-              </p>
-              <p className="text-ink-muted/50 mt-1 text-xs">
+              <p className="text-ink-muted/50 mt-10 text-xs">
                 © {new Date().getFullYear()} Core Defenses. All rights reserved.
               </p>
             </div>
