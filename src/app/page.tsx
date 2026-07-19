@@ -11,7 +11,7 @@ const outfit = Outfit({
 
 export default function Home() {
   return (
-    <div className={`${outfit.variable} font-sans`}>
+    <div className={`${outfit.variable} immersive-font-outfit`}>
       <script
         dangerouslySetInnerHTML={{
           __html:

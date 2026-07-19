@@ -34,3 +34,7 @@
     height: 110vh;
   }
 }
+
+.immersive-font-outfit {
+  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+}
