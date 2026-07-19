@@ -53,10 +53,10 @@ export default function Home() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(90deg, rgba(5,10,25,.88) 0%, rgba(5,10,25,.70) 40%, rgba(5,10,25,.30) 100%)",
+              "linear-gradient(90deg, rgba(5,10,25,.72) 0%, rgba(5,10,25,.55) 40%, rgba(5,10,25,.18) 100%)",
           }}
         />
-        <div className="from-ink/70 absolute inset-0 bg-gradient-to-t to-transparent" />
+        <div className="from-ink/50 absolute inset-0 bg-gradient-to-t to-transparent" />
 
         <div className="relative mx-auto flex min-h-dvh max-w-6xl items-center px-4 pt-[calc(4rem_+_env(safe-area-inset-top))] pb-[env(safe-area-inset-bottom)] md:px-6">
           <div className="max-w-2xl">
@@ -68,21 +68,21 @@ export default function Home() {
               Precision analytics
               <br />
               for critical infrastructure.
-              <span className="text-accent mt-[clamp(0.375rem,1.5vmin,0.75rem)] block text-[clamp(1.125rem,5vmin,2.25rem)]">
+              <span className="text-accent mt-[clamp(0.5rem,2vmin,1rem)] block text-[clamp(1.125rem,5vmin,2.25rem)]">
                 Resilient communications
                 <br />
                 for contested environments.
               </span>
             </h1>
 
-            <p className="mt-[clamp(0.75rem,3vmin,1.5rem)] max-w-[500px] text-justify text-[clamp(0.8rem,2.4vmin,1.125rem)] leading-snug text-white/85">
+            <p className="mt-[clamp(1.25rem,4.5vmin,2.25rem)] max-w-[60ch] text-justify text-[clamp(0.8rem,2.4vmin,1.125rem)] leading-snug text-white/85">
               Core Defenses builds EDIM, a physics-based data assimilation
               platform for nuclear operations, and ENADOX, a self-healing data
               protection layer for secure communications in contested and
               degraded environments.
             </p>
 
-            <div className="mt-[clamp(1rem,3.5vmin,2rem)] flex flex-wrap gap-[clamp(0.5rem,2vmin,0.75rem)]">
+            <div className="mt-[clamp(1.5rem,5vmin,2.75rem)] flex flex-wrap gap-[clamp(0.5rem,2vmin,0.75rem)]">
               <CTALink href="/solutions" compact>
                 Explore Solutions
               </CTALink>
