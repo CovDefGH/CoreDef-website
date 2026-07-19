@@ -74,8 +74,8 @@ export function Footer() {
                 Core Defenses
               </h2>
               <p className="text-ink-muted mt-4 max-w-sm text-sm leading-relaxed">
-                Data analytics and secure communications for nuclear, energy,
-                defense, and industrial operations.
+                Data analytics and secure communications for Energy, Defense,
+                Finance, and AI operations.
               </p>
               <div className="mt-8">
                 <CTALink href="/contact">Contact Us</CTALink>
