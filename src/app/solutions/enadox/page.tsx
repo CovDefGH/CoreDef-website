@@ -27,7 +27,7 @@ export default function EnadoxPage() {
       <h1 className="text-ink mt-8 text-4xl font-bold md:text-5xl">
         {enadox.name}
       </h1>
-      <p className="text-ink-muted mt-5 max-w-2xl text-justify text-lg leading-relaxed">
+      <p className="text-ink-muted mt-5 text-justify text-lg leading-relaxed">
         {enadox.tagline}
       </p>
 
