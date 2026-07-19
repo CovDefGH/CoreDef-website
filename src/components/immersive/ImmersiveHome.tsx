@@ -22,23 +22,6 @@ type Chapter = {
   artifact: React.ReactNode;
 };
 
-const trustSignals = [
-  {
-    icon: ShieldCheck,
-    title: "Zero-Trust Architecture",
-    description: "Every channel authenticated, every payload verified.",
-  },
-  {
-    icon: Timer,
-    title: "Low-Latency Operations",
-    description: "Response times measured in single-digit milliseconds.",
-  },
-  {
-    icon: Globe2,
-    title: "Global Operations",
-    description: "Headquarters in Lexington, KY. Expansion planned across the Americas, EMEA, and APAC.",
-  },
-];
 
 const AtomArtifact = (
   <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-[#7bc8ff] w-full h-full">
@@ -271,29 +254,7 @@ export function ImmersiveHome() {
         </section>
       ))}
 
-      <section className="border-y border-slate-200 bg-[#eaf0f5] text-[#0c1723]">
-        <div className="mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-28">
-          <div className="mb-16 max-w-3xl">
-            <h2 className="text-4xl leading-[.98] font-semibold tracking-[-.045em] md:text-5xl">
-              Engineered for environments where failure is not an option.
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-[#405063] md:text-xl">
-              Two platforms: EDIM for predictive analytics, ENADOX for secure communications in degraded conditions.
-            </p>
-          </div>
-          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 md:gap-12">
-            {trustSignals.map((signal) => (
-              <div key={signal.title} className="border-t border-[#0c1723]/15 pt-6">
-                <signal.icon className="mb-5 h-8 w-8 text-[#0052ff]" />
-                <h3 className="text-xl font-semibold tracking-tight">{signal.title}</h3>
-                <p className="mt-3 text-base leading-relaxed text-[#405063]">
-                  {signal.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       <section className="relative bg-white py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
