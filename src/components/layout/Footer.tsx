@@ -47,7 +47,7 @@ export function Footer() {
       
       <footer
         ref={ref}
-        className="fixed bottom-0 left-0 -z-10 w-full border-t border-line bg-surface overflow-hidden"
+        className="fixed bottom-0 left-0 z-0 w-full border-t border-line bg-surface overflow-hidden"
       >
         {/* Oversized brand mark bleeding off the corner — just like the Zen browser logo in the reference image */}
         <Image
