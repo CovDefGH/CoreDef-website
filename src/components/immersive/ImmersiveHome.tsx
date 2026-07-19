@@ -60,10 +60,10 @@ const GridArtifact = (
 );
 
 const gridItems = [
-  { image: media.nuclear, caption: "Nuclear", href: "/industries" },
-  { image: media.energy, caption: "Energy", href: "/industries" },
-  { image: media.comms, caption: "Communications", href: "/industries" },
-  { image: media.dataCenter, caption: "Industrial", href: "/industries" },
+  { image: media.homeEnergy, caption: "Energy", href: "/industries" },
+  { image: media.homeDefense, caption: "Defense", href: "/industries" },
+  { image: media.homeFinance, caption: "Finance", href: "/industries" },
+  { image: media.homeAi, caption: "AI", href: "/industries" },
 ];
 
 const chapters: Chapter[] = [
@@ -275,7 +275,8 @@ export function ImmersiveHome() {
               Industries we serve.
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#3b4754] md:text-lg text-justify">
-              Energy, nuclear, defense, government, utilities, manufacturing.
+              We build for sectors that depend on accurate data and secure
+              operations: energy, defense, finance, and AI.
             </p>
             
             <div className="mt-10 flex flex-wrap justify-center gap-3 sm:gap-4">
