@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { CTALink } from "@/components/ui/CTALink";
@@ -27,28 +26,9 @@ const GROUPS = [
 
 export function Footer() {
   const { email } = site;
-  const [height, setHeight] = useState(0);
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    setHeight(ref.current.offsetHeight);
-    const ro = new ResizeObserver(() => {
-      if (ref.current) setHeight(ref.current.offsetHeight);
-    });
-    ro.observe(ref.current);
-    return () => ro.disconnect();
-  }, []);
 
   return (
-    <>
-      {/* Spacer that allows main content to scroll past, revealing the fixed footer behind */}
-      <div style={{ height: `${height}px` }} className="w-full shrink-0 pointer-events-none" aria-hidden="true" />
-      
-      <footer
-        ref={ref}
-        className="fixed bottom-0 left-0 z-0 w-full border-t border-line bg-surface overflow-hidden"
-      >
+    <footer className="relative border-t border-line bg-surface overflow-hidden">
         {/* Oversized brand mark bleeding off the corner — just like the Zen browser logo in the reference image */}
         <Image
           src="/logo.png"
@@ -134,6 +114,5 @@ export function Footer() {
           </div>
         </div>
       </footer>
-    </>
   );
 }
