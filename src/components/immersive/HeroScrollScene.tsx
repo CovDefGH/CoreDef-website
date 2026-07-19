@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { preload } from "react-dom";
 import Image from "next/image";
+import { useLenis } from "lenis/react";
 import { ArrowDown } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -36,6 +37,7 @@ export function HeroScrollScene() {
   const rootRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const lenis = useLenis();
 
   /* useEffect (not useLayoutEffect) — runs after paint so DOM measurements
      are stable and the CSS sticky layout is already committed. */
@@ -206,6 +208,10 @@ export function HeroScrollScene() {
 
           <a
             href="#edim"
+            onClick={(e) => {
+              e.preventDefault();
+              lenis?.scrollTo("#edim", { duration: 1.5, offset: 0 });
+            }}
             className="group absolute right-4 bottom-6 hidden items-center gap-3 text-xs tracking-[.18em] text-white/70 uppercase hover:text-white md:right-6 md:flex"
           >
             Scroll to enter
