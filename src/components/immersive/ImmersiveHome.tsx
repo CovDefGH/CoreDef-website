@@ -278,14 +278,14 @@ export function ImmersiveHome() {
               Energy, nuclear, defense, government, utilities, manufacturing.
             </p>
             
-            <div className="mt-10 flex w-full max-w-3xl flex-col gap-4 sm:flex-row sm:gap-6">
-              <Link href="/industries" className="flex-1 rounded-xl border border-slate-200 bg-white py-4 px-6 text-base font-medium text-slate-700 shadow-sm transition-all hover:-translate-y-1 hover:border-[#0052ff] hover:bg-blue-50/30 hover:text-[#0052ff] hover:shadow-md">
+            <div className="mt-10 flex flex-wrap justify-center gap-3 sm:gap-4">
+              <Link href="/industries" className="rounded-xl border border-slate-200 bg-white py-3 px-6 text-base font-medium text-slate-700 shadow-sm transition-all hover:-translate-y-1 hover:border-[#0052ff] hover:bg-blue-50/30 hover:text-[#0052ff] hover:shadow-md">
                 Industries
               </Link>
-              <Link href="/global" className="flex-1 rounded-xl border border-slate-200 bg-white py-4 px-6 text-base font-medium text-slate-700 shadow-sm transition-all hover:-translate-y-1 hover:border-[#0052ff] hover:bg-blue-50/30 hover:text-[#0052ff] hover:shadow-md">
+              <Link href="/global" className="rounded-xl border border-slate-200 bg-white py-3 px-6 text-base font-medium text-slate-700 shadow-sm transition-all hover:-translate-y-1 hover:border-[#0052ff] hover:bg-blue-50/30 hover:text-[#0052ff] hover:shadow-md">
                 Global Operations
               </Link>
-              <Link href="/careers" className="flex-1 rounded-xl border border-slate-200 bg-white py-4 px-6 text-base font-medium text-slate-700 shadow-sm transition-all hover:-translate-y-1 hover:border-[#0052ff] hover:bg-blue-50/30 hover:text-[#0052ff] hover:shadow-md">
+              <Link href="/careers" className="rounded-xl border border-slate-200 bg-white py-3 px-6 text-base font-medium text-slate-700 shadow-sm transition-all hover:-translate-y-1 hover:border-[#0052ff] hover:bg-blue-50/30 hover:text-[#0052ff] hover:shadow-md">
                 Careers
               </Link>
             </div>
