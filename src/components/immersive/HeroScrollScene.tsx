@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { preload } from "react-dom";
+import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -166,10 +167,12 @@ export function HeroScrollScene() {
       <div
         className="sticky top-0 h-dvh overflow-hidden bg-[#dcebf1]"
       >
-        <img
+        <Image
           src={frameSrc(1)}
           alt="Hero background"
-          className="absolute inset-0 h-full w-full object-cover object-[58%_45%] will-change-[transform] transform-gpu"
+          fill
+          priority
+          className="object-cover object-[58%_45%] will-change-[transform] transform-gpu"
         />
         <canvas
           ref={canvasRef}
