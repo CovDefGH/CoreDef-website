@@ -141,10 +141,9 @@ export function HeroScrollScene() {
         animation: timeline,
       });
 
-      // 0 -> 0.12 is a deliberate dead zone: the hero holds still so the
-      // page never feels like it drops the visitor mid-sequence.
-      // Hero copy starts fading shortly after scroll begins.
-      timeline.to(content, { yPercent: -12, opacity: 0, duration: 0.22 }, 0.12);
+      // 0 -> 0.02 is a tiny dead zone to prevent accidental micro-scrolls.
+      // Hero copy starts fading almost immediately after scroll begins.
+      timeline.to(content, { yPercent: -12, opacity: 0, duration: 0.22 }, 0.02);
 
       // Image sequence begins just after the copy starts fading, and scrubs
       // across the rest of the hero's scroll range.
@@ -153,11 +152,11 @@ export function HeroScrollScene() {
         {
           frame: FRAME_COUNT,
           onUpdate: () => render(frameObj.frame),
-          duration: 0.85,
+          duration: 0.97,
         },
-        0.15,
+        0.03,
       );
-      timeline.to(canvas, { scale: 1.13, xPercent: -5, yPercent: -2, duration: 0.85 }, 0.15);
+      timeline.to(canvas, { scale: 1.13, xPercent: -5, yPercent: -2, duration: 0.97 }, 0.03);
     }, root);
 
     return () => context.revert();
