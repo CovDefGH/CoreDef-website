@@ -20,7 +20,7 @@ const FRAME_H = 2160;
 // bandwidth/decode time on initial page load.
 const EAGER_FRAMES = 24;
 const frameSrc = (i: number) =>
-  `/immersive/hero/frame-${i.toString().padStart(3, "0")}.jpg?v=5`;
+  `/immersive/hero/frame-${i.toString().padStart(3, "0")}.jpg`;
 
 const scheduleIdle = (cb: () => void) => {
   if (typeof window.requestIdleCallback === "function") {
