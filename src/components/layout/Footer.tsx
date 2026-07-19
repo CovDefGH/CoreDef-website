@@ -43,7 +43,7 @@ export function Footer() {
   return (
     <>
       {/* Spacer that allows main content to scroll past, revealing the fixed footer behind */}
-      <div style={{ height: `${height}px` }} className="w-full shrink-0" aria-hidden="true" />
+      <div style={{ height: `${height}px` }} className="w-full shrink-0 pointer-events-none" aria-hidden="true" />
       
       <footer
         ref={ref}
