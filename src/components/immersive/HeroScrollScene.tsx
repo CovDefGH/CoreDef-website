@@ -178,18 +178,18 @@ export function HeroScrollScene() {
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,28,.73)_0%,rgba(5,18,28,.38)_43%,rgba(5,18,28,.04)_72%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(5,18,28,.38)_0%,transparent_52%)]" />
 
-        <div ref={contentRef} className="relative mx-auto flex h-dvh max-w-6xl flex-col px-4 pt-[calc(clamp(2rem,10vh,6rem)_+_env(safe-area-inset-top))] pb-[clamp(1rem,6vh,4rem)] md:px-6 md:pb-[clamp(2rem,8vh,4rem)] will-change-[transform,opacity]">
+        <div ref={contentRef} className="relative mx-auto flex h-dvh max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-[clamp(2rem,8vh,10rem)] md:px-8 will-change-[transform,opacity]">
           <div className="mt-auto max-w-3xl">
             <h1
-              className="mt-5 max-w-4xl text-[clamp(2rem,5vmin,3.5rem)] leading-[1.05] font-semibold tracking-[-.02em] text-white md:font-bold"
+              className="mt-5 max-w-5xl text-[clamp(2rem,5vmin,6rem)] leading-[1.05] font-semibold tracking-[-.02em] text-white md:font-bold"
             >
               Precision analytics <br className="hidden md:block" /> for critical infrastructure.
-              <span className="block text-[#7bc8ff] mt-2 text-[clamp(1.5rem,4vmin,2.75rem)]">
+              <span className="block text-[#7bc8ff] mt-2 text-[clamp(1.5rem,4vmin,4.5rem)]">
                 Resilient communications <br className="hidden md:block" /> for contested environments.
               </span>
             </h1>
             <p
-              className="mt-7 max-w-xl text-base leading-relaxed text-white/82 md:text-lg text-justify"
+              className="mt-7 max-w-2xl text-[clamp(1rem,2vmin,1.5rem)] leading-relaxed text-white/82 text-justify"
             >
               Core Defenses builds EDIM, a physics-based data assimilation platform for nuclear operations, and ENADOX, a self-healing data protection layer for secure communications in contested and degraded environments.
             </p>

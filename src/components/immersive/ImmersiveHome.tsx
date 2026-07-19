@@ -230,13 +230,13 @@ export function ImmersiveHome() {
             </div>
 
             <div
-              className={`relative mx-auto flex h-full max-w-6xl flex-col px-4 pt-[calc(clamp(2rem,10vh,6rem)_+_env(safe-area-inset-top))] pb-[clamp(1rem,8vh,6rem)] ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
+              className={`relative mx-auto flex h-full max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-[clamp(2rem,8vh,10rem)] md:px-8 ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
             >
-              <div className="immersive-copy mt-auto max-w-2xl will-change-[transform,opacity]">
-                <h2 className="text-[clamp(2rem,min(6.5vw,12vh),6rem)] leading-[0.92] font-semibold tracking-[-.045em] text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40">
+              <div className="immersive-copy mt-auto max-w-3xl will-change-[transform,opacity]">
+                <h2 className="text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40">
                   {chapter.title}
                 </h2>
-                <p className="mt-[clamp(1rem,4vh,2rem)] max-w-lg text-[clamp(1rem,2.5vh,1.125rem)] leading-relaxed text-white/80 font-light text-justify">
+                <p className="mt-[clamp(1rem,4vh,3rem)] max-w-2xl text-[clamp(1rem,2.5vmin,1.5rem)] leading-relaxed text-white/80 font-light text-justify">
                   {chapter.copy}
                 </p>
                 <Link
