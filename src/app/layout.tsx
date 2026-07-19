@@ -4,6 +4,7 @@ import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import "./globals.css";
 
 const inter = Inter({
@@ -56,6 +57,7 @@ export default function RootLayout({
             >
               {children}
             </main>
+            <ScrollToTop />
             <Footer />
           </SmoothScroll>
         </MotionProvider>
