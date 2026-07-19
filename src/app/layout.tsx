@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/motion/MotionProvider";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
 const inter = Inter({
@@ -47,14 +48,16 @@ export default function RootLayout({
           Skip to content
         </a>
         <MotionProvider>
-          <NavBar />
-          <main
-            id="main"
-            className="relative z-10 bg-surface pt-[calc(4rem_+_env(safe-area-inset-top))]"
-          >
-            {children}
-          </main>
-          <Footer />
+          <SmoothScroll>
+            <NavBar />
+            <main
+              id="main"
+              className="relative z-10 bg-surface pt-[calc(4rem_+_env(safe-area-inset-top))]"
+            >
+              {children}
+            </main>
+            <Footer />
+          </SmoothScroll>
         </MotionProvider>
       </body>
     </html>

@@ -1,6 +1,5 @@
 import { Outfit } from "next/font/google";
 import { ImmersiveHome } from "@/components/immersive/ImmersiveHome";
-import { SmoothScroll } from "@/components/SmoothScroll";
 import "./immersive.css";
 
 const outfit = Outfit({
@@ -18,9 +17,7 @@ export default function Home() {
             "if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }",
         }}
       />
-      <SmoothScroll>
         <ImmersiveHome />
-      </SmoothScroll>
     </div>
   );
 }
