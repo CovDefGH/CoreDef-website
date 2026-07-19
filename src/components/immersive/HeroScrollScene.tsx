@@ -13,7 +13,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 // 200 frames extracted natively at 24fps from the 4K source clip.
 // We used heavy JPEG compression to keep the sequence small while retaining 4K native resolution.
-const FRAME_COUNT = 200;
+const FRAME_START = 50;
+const FRAME_COUNT = 250;
 const FRAME_W = 3840;
 const FRAME_H = 2160;
 // First N frames load eagerly (covers the dwell + early-scrub range); the rest
@@ -32,7 +33,7 @@ const scheduleIdle = (cb: () => void) => {
 };
 
 export function HeroScrollScene() {
-  preload(frameSrc(1), { as: "image" });
+  preload(frameSrc(FRAME_START), { as: "image" });
 
   const rootRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -54,16 +55,15 @@ export function HeroScrollScene() {
     canvas.height = FRAME_H;
 
     const images: HTMLImageElement[] = new Array(FRAME_COUNT);
-    const frameObj = { frame: 1 };
+    const frameObj = { frame: FRAME_START };
 
     let lastDrawn = -1;
     const render = (frameValue: number) => {
-      console.log(`[Hero] render(${frameValue}) called. lastDrawn=${lastDrawn}`);
-      const clamped = Math.min(Math.max(frameValue, 1), FRAME_COUNT);
+      // Remove console.log for clean output
+      const clamped = Math.min(Math.max(frameValue, FRAME_START), FRAME_COUNT);
       // Skip redundant redraws — onUpdate can fire without the frame value
       // having meaningfully changed.
       if (Math.abs(clamped - lastDrawn) < 0.001) {
-        console.log(`[Hero] Skipping duplicate render. clamped=${clamped}, lastDrawn=${lastDrawn}`);
         return;
       }
 
@@ -76,11 +76,9 @@ export function HeroScrollScene() {
       // it's ready, instead of the dedup guard silently swallowing it.
       const lowerImg = images[lower - 1];
       if (!(lowerImg?.complete && lowerImg.naturalHeight !== 0)) {
-        console.log(`[Hero] Frame ${lower} not ready. complete=${lowerImg?.complete}, height=${lowerImg?.naturalHeight}`);
         return;
       }
       lastDrawn = clamped;
-      console.log(`[Hero] Drawing frame ${lower}`);
 
       ctx.globalAlpha = 1;
       ctx.drawImage(lowerImg, 0, 0, canvas.width, canvas.height);
@@ -92,16 +90,13 @@ export function HeroScrollScene() {
     };
 
     const loadFrame = (i: number) => {
-      console.log(`[Hero] Loading frame ${i}`);
       const img = new window.Image();
       img.src = frameSrc(i);
       // Fallback for browsers where img.decode() might fail or isn't supported.
       img.onload = () => {
-        console.log(`[Hero] Frame ${i} loaded via onload`);
         render(frameObj.frame);
       };
       img.decode().then(() => {
-        console.log(`[Hero] Frame ${i} loaded via decode`);
         render(frameObj.frame);
       }).catch((e) => {
         console.warn(`[Hero] Frame ${i} decode failed`, e);
@@ -111,17 +106,17 @@ export function HeroScrollScene() {
 
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (motionQuery.matches) {
-      // Static hero: draw frame 1 once it loads, no scrub, no fade — never ship blank.
-      loadFrame(1);
+      // Static hero: draw first frame once it loads, no scrub, no fade.
+      loadFrame(FRAME_START);
       return;
     }
 
-    for (let i = 1; i <= EAGER_FRAMES; i++) loadFrame(i);
-    for (let i = EAGER_FRAMES + 1; i <= FRAME_COUNT; i++) {
+    for (let i = FRAME_START; i <= FRAME_START + EAGER_FRAMES; i++) loadFrame(i);
+    for (let i = FRAME_START + EAGER_FRAMES + 1; i <= FRAME_COUNT; i++) {
       scheduleIdle(() => loadFrame(i));
     }
 
-    render(1);
+    render(FRAME_START);
 
     /* No GSAP pin — the stage div uses CSS `position: sticky; top: 0`
        (the same reliable pattern the chapter sections use). GSAP only
@@ -170,7 +165,7 @@ export function HeroScrollScene() {
         className="sticky top-0 h-dvh overflow-hidden bg-[#dcebf1]"
       >
         <Image
-          src={frameSrc(1)}
+          src={frameSrc(FRAME_START)}
           alt="Hero background"
           fill
           priority
