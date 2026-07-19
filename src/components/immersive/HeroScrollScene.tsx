@@ -56,10 +56,14 @@ export function HeroScrollScene() {
 
     let lastDrawn = -1;
     const render = (frameValue: number) => {
+      console.log(`[Hero] render(${frameValue}) called. lastDrawn=${lastDrawn}`);
       const clamped = Math.min(Math.max(frameValue, 1), FRAME_COUNT);
       // Skip redundant redraws — onUpdate can fire without the frame value
       // having meaningfully changed.
-      if (Math.abs(clamped - lastDrawn) < 0.001) return;
+      if (Math.abs(clamped - lastDrawn) < 0.001) {
+        console.log(`[Hero] Skipping duplicate render. clamped=${clamped}, lastDrawn=${lastDrawn}`);
+        return;
+      }
 
       const lower = Math.floor(clamped);
       const upper = Math.min(lower + 1, FRAME_COUNT);
@@ -69,8 +73,12 @@ export function HeroScrollScene() {
       // later retry (see loadFrame's decode callback) actually redraw once
       // it's ready, instead of the dedup guard silently swallowing it.
       const lowerImg = images[lower - 1];
-      if (!(lowerImg?.complete && lowerImg.naturalHeight !== 0)) return;
+      if (!(lowerImg?.complete && lowerImg.naturalHeight !== 0)) {
+        console.log(`[Hero] Frame ${lower} not ready. complete=${lowerImg?.complete}, height=${lowerImg?.naturalHeight}`);
+        return;
+      }
       lastDrawn = clamped;
+      console.log(`[Hero] Drawing frame ${lower}`);
 
       ctx.globalAlpha = 1;
       ctx.drawImage(lowerImg, 0, 0, canvas.width, canvas.height);
@@ -86,11 +94,20 @@ export function HeroScrollScene() {
     };
 
     const loadFrame = (i: number) => {
+      console.log(`[Hero] Loading frame ${i}`);
       const img = new window.Image();
       img.src = frameSrc(i);
       // Fallback for browsers where img.decode() might fail or isn't supported.
-      img.onload = () => render(frameObj.frame);
-      img.decode().then(() => render(frameObj.frame)).catch(() => {});
+      img.onload = () => {
+        console.log(`[Hero] Frame ${i} loaded via onload`);
+        render(frameObj.frame);
+      };
+      img.decode().then(() => {
+        console.log(`[Hero] Frame ${i} loaded via decode`);
+        render(frameObj.frame);
+      }).catch((e) => {
+        console.warn(`[Hero] Frame ${i} decode failed`, e);
+      });
       images[i - 1] = img;
     };
 
@@ -155,6 +172,11 @@ export function HeroScrollScene() {
       <div
         className="sticky top-0 h-dvh overflow-hidden bg-[#dcebf1]"
       >
+        <img
+          src={frameSrc(1)}
+          alt="Hero background"
+          className="absolute inset-0 h-full w-full object-cover object-[58%_45%] will-change-[transform] transform-gpu"
+        />
         <canvas
           ref={canvasRef}
           className="absolute inset-0 h-full w-full object-cover object-[58%_45%] will-change-[transform] transform-gpu"
