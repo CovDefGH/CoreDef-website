@@ -31,45 +31,6 @@ p {
   text-wrap: pretty;
 }
 
-.immersive-kicker {
-  font-family:
-    var(--font-inter), ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
-.immersive-hero {
-  position: relative;
-  margin-top: calc(-4rem - env(safe-area-inset-top));
-  /* 300vh gives the hero room to breathe: a dwell phase before anything
-     moves, then a gradual scrub — see HeroScrollScene's timeline positions. */
-  height: 300vh;
-}
-
-.immersive-chapter {
-  height: 125vh;
-}
-
-.immersive-chapter-sticky {
-  position: sticky;
-  top: 0;
-  height: 100dvh;
-  overflow: hidden;
-}
-
-.immersive-chapter-image {
-  transform: scale(1.04);
-}
-
-@media (max-width: 767px) {
-  .immersive-chapter {
-    height: 110vh;
-  }
-}
-
 /* Motion — CSS handles scroll reveals + page fade (visible by default, so
    nothing ships blank in headless/SEO/no-JS renderers, SRS §2.3). Hover
    micro-interactions use motion.dev (MotionCard). All gated on

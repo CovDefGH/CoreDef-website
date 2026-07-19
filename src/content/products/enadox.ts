@@ -8,7 +8,7 @@ export const enadox: ProductPage = {
   slug: "enadox",
   name: "ENADOX",
   tagline:
-    "Secure communication for open and denied environments. ENADOX moves data between platforms with built-in redundancy: when one channel degrades, another maintains the connection.",
+    "ENADOX is a data-centric transformative layer beyond encryption that is embedded at the source. ENADOX augments autonomous systems, AI models, websites, emails, industrial control systems, and other digital platforms with shapeshifting and self-healing abilities. ENADOXed data appear benign to external users while revealing the real content only to the intended recipient. If corrupted, they regenerate the embedded content by exploiting the inherent redundancy of data.",
   stats: [
     {
       label: "Operating Envelope",

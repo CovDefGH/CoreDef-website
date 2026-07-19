@@ -18,7 +18,7 @@ export default function IndustriesPage() {
       <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
         <header className="max-w-3xl">
           <h1 className="text-ink text-4xl md:text-5xl">Industries</h1>
-          <p className="text-ink-muted mt-6 text-lg">
+          <p className="text-ink-muted mt-6 text-justify text-lg">
             Energy, nuclear, defense, and industrial operators depend on
             accurate data and secure communications. A compromised data point
             or an intercepted channel can cause an outage, a safety incident,
@@ -47,7 +47,7 @@ export default function IndustriesPage() {
                 className="border-line bg-surface hover:border-accent flex h-full flex-col border p-6 transition-colors"
               >
                 <h3 className="text-ink text-xl">{industry.name}</h3>
-                <p className="text-ink-muted mt-3 flex-1">
+                <p className="text-ink-muted mt-3 flex-1 text-justify">
                   {industry.description}
                 </p>
                 <Link

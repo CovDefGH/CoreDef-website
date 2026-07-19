@@ -6,13 +6,9 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
-// FR-NAV-1 primary links. "About" chosen over prototype's "Defense Tech"
-// (UX-NOTES §9 open question — flagged for stakeholder confirmation).
 const LINKS = [
   { href: "/", label: "Mission" },
   { href: "/solutions", label: "Solutions" },
-  { href: "/about", label: "About" },
-  { href: "/global", label: "Global" },
   { href: "/careers", label: "Careers" },
 ];
 
@@ -31,7 +27,7 @@ export function NavBar() {
 
   useEffect(() => {
     if (!transparentCapable) return;
-    const onScroll = () => setScrolled(window.scrollY > 72);
+    const onScroll = () => setScrolled(window.scrollY > 64);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -46,7 +42,7 @@ export function NavBar() {
       // will-change-transform: gives the fixed header its own compositor
       // layer — prevents a Safari repaint bug where scroll-driven content
       // underneath (.cd-reveal) can leave a stale frame behind it.
-      className={`fixed inset-x-0 top-0 z-40 border-b pt-[env(safe-area-inset-top)] transition-[background-color,backdrop-filter,border-color] duration-300 ease-out will-change-transform ${
+      className={`will-change-transform fixed inset-x-0 top-0 z-40 border-b pt-[env(safe-area-inset-top)] transition-[background-color,backdrop-filter,border-color] duration-300 ease-out ${
         solid
           ? "border-line bg-white/95 backdrop-blur-md"
           : "border-transparent bg-transparent backdrop-blur-none"
@@ -88,7 +84,7 @@ export function NavBar() {
                     active
                       ? solid
                         ? "border-primary text-primary font-medium"
-                        : "border-accent font-medium text-white"
+                        : "border-accent text-white font-medium"
                       : solid
                         ? "text-ink-muted hover:border-accent hover:text-ink border-transparent"
                         : "border-transparent text-white/80 hover:border-white/60 hover:text-white"

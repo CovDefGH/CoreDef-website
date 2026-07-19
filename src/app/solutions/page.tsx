@@ -17,11 +17,6 @@ export default function SolutionsPage() {
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
       <Reveal as="section">
         <h1 className="text-ink text-4xl font-bold md:text-5xl">Solutions</h1>
-        <p className="text-ink-muted mt-5 max-w-2xl text-lg">
-          EDIM provides predictive analytics for nuclear operations. ENADOX
-          provides secure communications for defense and industrial
-          operations.
-        </p>
       </Reveal>
 
       <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
@@ -29,8 +24,7 @@ export default function SolutionsPage() {
           <FeatureRow
             heading={edim.name}
             body={edim.tagline}
-            bullets={edim.stats.map(({ label, value }) => `${label}: ${value}`)}
-            image={media.nuclear}
+            image={media.edimCover}
             imageSide="right"
           />
           <div className="mt-6">
@@ -44,10 +38,7 @@ export default function SolutionsPage() {
           <FeatureRow
             heading={enadox.name}
             body={enadox.tagline}
-            bullets={enadox.stats.map(
-              ({ label, value }) => `${label}: ${value}`,
-            )}
-            image={media.comms}
+            image={media.enadoxCover}
             imageSide="left"
           />
           <div className="mt-6 md:flex md:justify-end">

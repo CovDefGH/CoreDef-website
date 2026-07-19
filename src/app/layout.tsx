@@ -1,13 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit } from "next/font/google";
+import { Inter } from "next/font/google";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/motion/MotionProvider";
-import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
@@ -33,18 +32,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} antialiased`} suppressHydrationWarning>
-      <body>
-        {/* Blocking, runs before the browser's own scroll restoration: without
-            this, refreshing mid-scroll on the tall immersive page reloads
-            already scrolled down, dropping visitors into the middle of the
-            hero sequence instead of at the top. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }",
-          }}
-        />
+    <html lang="en">
+      <body
+        className={`${inter.variable} font-sans antialiased`}
+      >
         {/* Warms the connection for the Contact page's Google Maps iframe embed */}
         <link rel="preconnect" href="https://www.google.com" />
         <link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="" />
@@ -55,18 +46,16 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <SmoothScroll>
-          <MotionProvider>
-            <NavBar />
-            <main
-              id="main"
-              className="pt-[calc(4rem_+_env(safe-area-inset-top))]"
-            >
-              {children}
-            </main>
-            <Footer />
-          </MotionProvider>
-        </SmoothScroll>
+        <MotionProvider>
+          <NavBar />
+          <main
+            id="main"
+            className="pt-[calc(4rem_+_env(safe-area-inset-top))]"
+          >
+            {children}
+          </main>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

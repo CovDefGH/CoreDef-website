@@ -1,0 +1,36 @@
+.immersive-kicker {
+  font-family:
+    var(--font-outfit), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.immersive-hero {
+  position: relative;
+  margin-top: calc(-4rem - env(safe-area-inset-top));
+  height: 300vh;
+}
+
+.immersive-chapter {
+  height: 125vh;
+}
+
+.immersive-chapter-sticky {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.immersive-chapter-image {
+  transform: scale(1.04);
+}
+
+@media (max-width: 767px) {
+  .immersive-chapter {
+    height: 110vh;
+  }
+}
