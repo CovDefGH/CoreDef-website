@@ -194,7 +194,7 @@ export function HeroScrollScene() {
               </span>
             </h1>
             <p
-              className="mt-7 max-w-xl text-base leading-relaxed text-white/82 md:text-lg"
+              className="mt-7 max-w-xl text-base leading-relaxed text-white/82 md:text-lg text-justify"
             >
               Core Defenses builds EDIM, a physics-based data assimilation platform for nuclear operations, and ENADOX, a self-healing data protection layer for secure communications in contested and degraded environments.
             </p>

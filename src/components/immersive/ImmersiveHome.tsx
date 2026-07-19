@@ -236,7 +236,7 @@ export function ImmersiveHome() {
                 <h2 className="mt-6 text-[clamp(3rem,6.5vw,6rem)] leading-[0.92] font-semibold tracking-[-.045em] text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40">
                   {chapter.title}
                 </h2>
-                <p className="mt-8 max-w-lg text-lg leading-relaxed text-white/80 md:text-xl font-light">
+                <p className="mt-8 max-w-lg text-lg leading-relaxed text-white/80 md:text-xl font-light text-justify">
                   {chapter.copy}
                 </p>
                 <Link
@@ -261,7 +261,7 @@ export function ImmersiveHome() {
             <h2 className="text-4xl leading-[.98] font-semibold tracking-[-.045em] md:text-5xl">
               Engineered for environments where failure is not an option.
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-[#405063] md:text-xl">
+            <p className="mt-6 text-lg leading-relaxed text-[#405063] md:text-xl text-justify">
               Two platforms: EDIM for predictive analytics, ENADOX for secure communications in degraded conditions.
             </p>
           </div>
@@ -274,7 +274,7 @@ export function ImmersiveHome() {
             <h2 className="text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[.94] font-semibold tracking-[-.05em] text-[#0c1723]">
               Industries we serve.
             </h2>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#3b4754] md:text-lg">
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#3b4754] md:text-lg text-justify">
               Energy, nuclear, defense, government, utilities, manufacturing.
             </p>
             
