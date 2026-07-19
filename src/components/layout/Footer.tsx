@@ -17,7 +17,6 @@ const GROUPS = [
   {
     heading: "Company",
     links: [
-      { href: "/about", label: "About" },
       { href: "/industries", label: "Industries" },
       { href: "/careers", label: "Careers" },
     ],
