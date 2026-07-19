@@ -97,6 +97,13 @@ export function ImmersiveHome() {
      and copy stays invisible. useEffect fires after paint, so the hero
      spacer is settled and measurements are correct. */
   useEffect(() => {
+    // Force scroll to top on first load to prevent browser or GSAP from
+    // restoring scroll position or jumping to a hash (like #edim).
+    window.scrollTo(0, 0);
+    if (window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+
     const ctx = gsap.context(() => {
       const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
       if (motionQuery.matches) return;
