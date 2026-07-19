@@ -59,7 +59,7 @@ export default function EdimPage() {
           <h2 className="text-ink text-xl font-bold">
             Evaluate EDIM for your program.
           </h2>
-          <p className="text-ink-muted mt-1 text-sm">
+          <p className="text-ink-muted mt-1 text-justify text-sm">
             Business and government inquiries route directly to the EDIM team.
           </p>
         </div>

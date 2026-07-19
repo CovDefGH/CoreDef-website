@@ -61,7 +61,7 @@ export default function EnadoxPage() {
           <h2 className="text-ink text-xl font-bold">
             Talk through your mission requirements
           </h2>
-          <p className="text-ink-muted mt-1 max-w-2xl text-sm">
+          <p className="text-ink-muted mt-1 max-w-2xl text-justify text-sm">
             Tell us about the environments you operate in and the platforms
             you need to keep connected. Our team will walk you through how
             ENADOX fits.

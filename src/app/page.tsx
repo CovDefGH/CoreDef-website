@@ -75,7 +75,7 @@ export default function Home() {
               </span>
             </h1>
 
-            <p className="mt-[clamp(0.75rem,3vmin,1.5rem)] max-w-[500px] text-[clamp(0.8rem,2.4vmin,1.125rem)] leading-snug text-white/85">
+            <p className="mt-[clamp(0.75rem,3vmin,1.5rem)] max-w-[500px] text-justify text-[clamp(0.8rem,2.4vmin,1.125rem)] leading-snug text-white/85">
               Core Defenses builds EDIM, a physics-based data assimilation
               platform for nuclear operations, and ENADOX, a self-healing data
               protection layer for secure communications in contested and
@@ -102,7 +102,7 @@ export default function Home() {
       <Reveal as="section" className="border-line bg-surface border-y">
         <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
           <h2 className="text-ink text-3xl font-bold">Core Capabilities</h2>
-          <p className="text-ink-muted mt-3 max-w-2xl">
+          <p className="text-ink-muted mt-3 max-w-2xl text-justify">
             Two platforms: EDIM for predictive analytics, ENADOX for secure
             communications in degraded conditions.
           </p>
@@ -126,7 +126,7 @@ export default function Home() {
                     <Icon aria-hidden size={22} className="text-primary" />
                   </span>
                   <h3 className="text-ink mt-5 text-xl font-bold">{heading}</h3>
-                  <p className="text-ink-muted mt-3 text-sm leading-relaxed">
+                  <p className="text-ink-muted mt-3 text-justify text-sm leading-relaxed">
                     {description}
                   </p>
                   <Link
@@ -148,7 +148,7 @@ export default function Home() {
         className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24"
       >
         <h2 className="text-ink text-3xl font-bold">Where we operate</h2>
-        <p className="text-ink-muted mt-3 max-w-2xl">
+        <p className="text-ink-muted mt-3 max-w-2xl text-justify">
           We build for sectors that depend on accurate data and secure
           operations: energy, defense, finance, and AI.
         </p>
@@ -180,7 +180,7 @@ export default function Home() {
             <h2 className="text-ink text-2xl font-bold">
               Industries we serve.
             </h2>
-            <p className="text-ink-muted mt-2 text-sm">
+            <p className="text-ink-muted mt-2 text-justify text-sm">
               Energy, nuclear, defense, government, utilities, manufacturing.
             </p>
           </div>

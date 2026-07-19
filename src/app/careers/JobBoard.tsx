@@ -68,7 +68,7 @@ export function JobBoard() {
                   {job.employmentType}
                 </span>
               </p>
-              <p className="text-ink-muted mt-3 text-sm leading-relaxed">
+              <p className="text-ink-muted mt-3 text-justify text-sm leading-relaxed">
                 {job.description}
               </p>
             </div>

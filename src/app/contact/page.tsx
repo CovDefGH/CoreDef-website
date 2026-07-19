@@ -16,7 +16,7 @@ export default function ContactPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
       <h1 className="text-ink text-4xl font-bold md:text-5xl">Contact</h1>
-      <p className="text-ink-muted mt-5 max-w-2xl text-lg">
+      <p className="text-ink-muted mt-5 max-w-2xl text-justify text-lg">
         Reach the Core Defenses team. Tell us about your program or inquiry and
         we&apos;ll route it to the right group.
       </p>
@@ -108,7 +108,7 @@ export default function ContactPage() {
               <h2 className="text-ink text-sm font-semibold">
                 Looking to join?
               </h2>
-              <p className="text-ink-muted mt-1 text-sm">
+              <p className="text-ink-muted mt-1 text-justify text-sm">
                 We&apos;re hiring across engineering.
               </p>
               <div className="mt-3">

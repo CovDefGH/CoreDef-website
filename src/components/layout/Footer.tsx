@@ -32,7 +32,7 @@ export function Footer() {
               CORE DEFENSES
             </span>
           </div>
-          <p className="text-ink-muted mt-4 max-w-sm text-sm leading-relaxed">
+          <p className="text-ink-muted mt-4 max-w-sm text-justify text-sm leading-relaxed">
             Data analytics and secure communications for nuclear, energy,
             defense, and industrial operations.
           </p>

@@ -18,7 +18,7 @@ export default function CareersPage() {
       {/* Open roles — inline, filterable (US-10) */}
       <Reveal as="section" id="open-roles" className="scroll-mt-24">
         <h1 className="text-ink text-3xl font-bold">Open Roles</h1>
-        <p className="text-ink-muted mt-3 max-w-2xl">
+        <p className="text-ink-muted mt-3 max-w-2xl text-justify">
           Every current opening, listed here. Filter by department, then apply
           directly.
         </p>
@@ -34,7 +34,7 @@ export default function CareersPage() {
           <h2 className="text-ink text-2xl font-bold">
             Don&apos;t see your role?
           </h2>
-          <p className="text-ink-muted mt-2 text-sm">
+          <p className="text-ink-muted mt-2 text-justify text-sm">
             Send your application and tell us what you&apos;d like to build.
             We review every application.
           </p>
