@@ -9,17 +9,17 @@ export default function NotFound() {
         </h1>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <h2 className="font-display text-2xl font-bold tracking-tight text-ink md:text-3xl">
-            Signal Lost
+            Page not found
           </h2>
         </div>
       </div>
       
       <p className="mt-6 max-w-md text-base leading-relaxed text-ink-muted md:text-lg">
-        The node you are looking for has been moved, deleted, or never existed in this sector.
+        The page you are looking for does not exist or has been moved.
       </p>
       
       <div className="mt-10">
-        <CTALink href="/">Return to Mission Control</CTALink>
+        <CTALink href="/">Go to Homepage</CTALink>
       </div>
     </div>
   );
