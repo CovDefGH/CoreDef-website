@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ShieldCheck, Timer, Globe2, Atom, Radio } from "lucide-react";
+import { Atom, Radio } from "lucide-react";
 import { CTALink } from "@/components/ui/CTALink";
 import { Reveal } from "@/components/motion/Reveal";
 import { MotionCard } from "@/components/motion/MotionCard";
@@ -35,25 +35,6 @@ const INFRASTRUCTURE = [
   { image: media.homeDefense, caption: "Defense" },
   { image: media.homeFinance, caption: "Finance" },
   { image: media.homeAi, caption: "AI" },
-];
-
-const TRUST_SIGNALS = [
-  {
-    icon: ShieldCheck,
-    heading: "Zero-Trust Architecture",
-    description: "Every channel authenticated, every payload verified.",
-  },
-  {
-    icon: Timer,
-    heading: "Low-Latency Operations",
-    description: "Response times measured in single-digit milliseconds.",
-  },
-  {
-    icon: Globe2,
-    heading: "Global Operations",
-    description:
-      "Headquarters in Lexington, KY. Expansion planned across the Americas, EMEA, and APAC.",
-  },
 ];
 
 export default function Home() {
@@ -95,9 +76,10 @@ export default function Home() {
             </h1>
 
             <p className="mt-[clamp(0.75rem,3vmin,1.5rem)] max-w-[500px] text-[clamp(0.8rem,2.4vmin,1.125rem)] leading-snug text-white/85">
-              Core Defenses builds EDIM, a predictive analytics platform for
-              nuclear plants, and ENADOX, a secure communications platform for
-              defense and industrial operations.
+              Core Defenses builds EDIM, a physics-based data assimilation
+              platform for nuclear operations, and ENADOX, a self-healing data
+              protection layer for secure communications in contested and
+              degraded environments.
             </p>
 
             <div className="mt-[clamp(1rem,3.5vmin,2rem)] flex flex-wrap gap-[clamp(0.5rem,2vmin,0.75rem)]">
@@ -192,25 +174,6 @@ export default function Home() {
               />
               <div className="from-ink/70 absolute inset-x-0 bottom-0 bg-gradient-to-t to-transparent p-4">
                 <p className="text-sm font-semibold text-white">{caption}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </Reveal>
-
-      {/* Trust row — FR-HOME-7 */}
-      <Reveal as="section" className="border-line bg-surface border-y">
-        <ul className="mx-auto grid max-w-6xl gap-8 px-4 py-14 md:grid-cols-3 md:px-6">
-          {TRUST_SIGNALS.map(({ icon: Icon, heading, description }) => (
-            <li key={heading} className="flex items-start gap-4">
-              <Icon
-                aria-hidden
-                size={22}
-                className="text-primary mt-0.5 shrink-0"
-              />
-              <div>
-                <h3 className="text-ink text-base font-semibold">{heading}</h3>
-                <p className="text-ink-muted mt-1 text-sm">{description}</p>
               </div>
             </li>
           ))}

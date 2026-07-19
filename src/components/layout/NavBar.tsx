@@ -6,12 +6,9 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
-// FR-NAV-1 primary links. "About" chosen over prototype's "Defense Tech"
-// (UX-NOTES §9 open question — flagged for stakeholder confirmation).
 const LINKS = [
   { href: "/", label: "Mission" },
   { href: "/solutions", label: "Solutions" },
-  { href: "/about", label: "About" },
   { href: "/careers", label: "Careers" },
 ];
 

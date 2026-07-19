@@ -17,11 +17,6 @@ export default function SolutionsPage() {
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
       <Reveal as="section">
         <h1 className="text-ink text-4xl font-bold md:text-5xl">Solutions</h1>
-        <p className="text-ink-muted mt-5 max-w-2xl text-lg">
-          EDIM provides predictive analytics for nuclear operations. ENADOX
-          provides secure communications for defense and industrial
-          operations.
-        </p>
       </Reveal>
 
       <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">

@@ -44,5 +44,4 @@ export const media = {
   homeDefense: { src: "/home-defense.jpg", alt: "Stealthy military drone in flight over mountains." },
   homeFinance: { src: "/home-finance.jpg", alt: "Abstract digital financial data visualization." },
   homeAi: { src: "/home-ai.jpg", alt: "AI supercomputer data center with glowing lights." },
-  aboutHero: { src: "/about-hero.jpg", alt: "Engineers discussing analytical data in a high-tech lab." },
 } as const;

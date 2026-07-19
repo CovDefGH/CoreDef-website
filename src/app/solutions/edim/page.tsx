@@ -27,7 +27,7 @@ export default function EdimPage() {
       <h1 className="text-ink mt-8 text-4xl font-bold md:text-5xl">
         {edim.name}
       </h1>
-      <p className="text-ink-muted mt-5 max-w-2xl text-lg leading-relaxed">
+      <p className="text-ink-muted mt-5 max-w-2xl text-justify text-lg leading-relaxed">
         {edim.tagline}
       </p>
 

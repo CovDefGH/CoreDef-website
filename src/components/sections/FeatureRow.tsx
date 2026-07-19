@@ -27,7 +27,7 @@ export function FeatureRow({
     >
       <div className={imageSide === "left" ? "md:order-2" : undefined}>
         <h2 className="text-ink text-2xl font-bold md:text-3xl">{heading}</h2>
-        <p className="text-ink-muted mt-4 leading-relaxed">{body}</p>
+        <p className="text-ink-muted mt-4 text-justify leading-relaxed">{body}</p>
         {bullets && bullets.length > 0 && (
           <ul className="mt-5 space-y-2.5">
             {bullets.map((b) => (
