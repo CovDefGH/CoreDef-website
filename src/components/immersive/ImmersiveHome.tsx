@@ -70,7 +70,7 @@ const chapters: Chapter[] = [
   {
     id: "edim",
     title: "Improving the Best Estimate.",
-    copy: "EDIM is a physics-based framework that identifies and corrects calculational bias. It reduces prediction error and keeps predictive models aligned with real-time operational data.",
+    copy: "EDIM is a physics-based methodology for data assimilation that identifies, corrects, and traces discrepancies between calculational and measured observations, improving prediction accuracy and operational efficiency.",
     image: media.operations,
     href: "/solutions/edim",
     action: "Explore EDIM",
@@ -79,7 +79,7 @@ const chapters: Chapter[] = [
   {
     id: "enadox",
     title: "Redundancy built into the data itself.",
-    copy: "ENADOX provides secure communication across denied, degraded, intermittent, and low-bandwidth (DDIL) environments.",
+    copy: "ENADOX is a data-centric transformative layer that embeds redundancy into the data itself, enabling resilient, self-healing communications across autonomous systems and contested environments.",
     image: media.comms,
     href: "/solutions/enadox",
     action: "Explore ENADOX",
