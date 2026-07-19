@@ -59,13 +59,10 @@ export function Footer() {
               <div className="mt-8">
                 <CTALink href="/contact">Contact Us</CTALink>
               </div>
-              <p className="text-ink-muted/50 mt-10 text-xs">
-                © {new Date().getFullYear()} Core Defenses. All rights reserved.
-              </p>
             </div>
 
             {/* Navigation columns */}
-            <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:flex-1">
+            <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:flex-1 lg:justify-end">
               {GROUPS.map(({ heading, links }) => (
                 <nav key={heading} aria-label={heading}>
                   <h3 className="text-ink-muted text-xs font-semibold tracking-[0.08em] uppercase">
@@ -110,6 +107,12 @@ export function Footer() {
                 </ul>
               </nav>
             </div>
+          </div>
+          
+          <div className="mt-16 flex flex-col justify-between gap-4 border-t border-line/20 pt-8 sm:flex-row sm:items-center lg:mt-20">
+            <p className="text-ink-muted/50 text-xs">
+              © {new Date().getFullYear()} Core Defenses. All rights reserved.
+            </p>
           </div>
         </div>
       </footer>
