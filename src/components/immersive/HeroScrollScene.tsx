@@ -88,10 +88,8 @@ export function HeroScrollScene() {
     const loadFrame = (i: number) => {
       const img = new window.Image();
       img.src = frameSrc(i);
-      // Once this frame actually finishes loading, retry drawing whatever
-      // frame is currently needed — covers the very first paint (frame 1
-      // hasn't loaded yet when render(1) first runs) and any frame still
-      // in flight when the scrub reaches it.
+      // Fallback for browsers where img.decode() might fail or isn't supported.
+      img.onload = () => render(frameObj.frame);
       img.decode().then(() => render(frameObj.frame)).catch(() => {});
       images[i - 1] = img;
     };
