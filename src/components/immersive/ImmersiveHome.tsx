@@ -259,9 +259,13 @@ export function ImmersiveHome() {
             >
               <div className="immersive-copy relative z-10 mt-auto max-w-3xl will-change-[transform,opacity]">
                 <h2 className="skiper-text-reveal text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] flex flex-wrap text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40 overflow-visible pb-4">
-                  {chapter.title.split(" ").map((word, i) => (
-                    <span key={i} className="skiper-word opacity-20 mr-[0.25em] will-change-opacity">
-                      {word}
+                  {chapter.title.split(" ").map((word, wordIndex) => (
+                    <span key={wordIndex} className="inline-block whitespace-nowrap mr-[0.25em]">
+                      {word.split("").map((char, charIndex) => (
+                        <span key={charIndex} className="skiper-word opacity-20 will-change-opacity">
+                          {char}
+                        </span>
+                      ))}
                     </span>
                   ))}
                 </h2>
