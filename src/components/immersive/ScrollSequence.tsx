@@ -68,7 +68,8 @@ export function ScrollSequence({ className, sequence }: ScrollSequenceProps) {
       if (!image?.complete || !image.naturalWidth) return;
 
       const bounds = container.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      // Optimize for mobile: force a lower DPR on small screens to prevent GPU lag
+      const dpr = window.innerWidth <= 768 ? 1 : Math.min(window.devicePixelRatio || 1, 2);
       const width = Math.max(1, Math.round(bounds.width * dpr));
       const height = Math.max(1, Math.round(bounds.height * dpr));
 
@@ -128,7 +129,7 @@ export function ScrollSequence({ className, sequence }: ScrollSequenceProps) {
           trigger: scrollRoot,
           start: "top top",
           end: "bottom bottom",
-          scrub: 0,
+          scrub: 0.5,
         },
         onUpdate: () => {
           const nextFrame = playhead.frame;
