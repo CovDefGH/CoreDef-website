@@ -320,17 +320,7 @@ export function ImmersiveHome() {
               operations: energy, defense, finance, and AI.
             </p>
             
-            <div className="mt-10 flex flex-wrap justify-center gap-3 sm:gap-4">
-              <Link href="/industries" className="rounded-xl border border-slate-200 bg-white py-3 px-6 text-base font-medium text-slate-700 shadow-sm transition-all hover:-translate-y-1 hover:border-[#0052ff] hover:bg-blue-50/30 hover:text-[#0052ff] hover:shadow-md">
-                Industries
-              </Link>
-              <Link href="/global" className="rounded-xl border border-slate-200 bg-white py-3 px-6 text-base font-medium text-slate-700 shadow-sm transition-all hover:-translate-y-1 hover:border-[#0052ff] hover:bg-blue-50/30 hover:text-[#0052ff] hover:shadow-md">
-                Global Operations
-              </Link>
-              <Link href="/careers" className="rounded-xl border border-slate-200 bg-white py-3 px-6 text-base font-medium text-slate-700 shadow-sm transition-all hover:-translate-y-1 hover:border-[#0052ff] hover:bg-blue-50/30 hover:text-[#0052ff] hover:shadow-md">
-                Careers
-              </Link>
-            </div>
+
           </div>
 
           <div className="grid-cards-container grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6">
