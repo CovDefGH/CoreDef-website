@@ -8,6 +8,16 @@
   text-transform: uppercase;
 }
 
+@keyframes scroll-dot {
+  0% { transform: translateY(8px); opacity: 0; }
+  25% { opacity: 1; }
+  100% { transform: translateY(-4px); opacity: 0; }
+}
+
+.animate-scroll-dot {
+  animation: scroll-dot 1.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
 .immersive-hero {
   position: relative;
   margin-top: calc(-4rem - env(safe-area-inset-top));

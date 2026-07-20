@@ -210,10 +210,9 @@ export function HeroScrollScene() {
             className="group absolute right-4 bottom-[8rem] hidden items-center gap-3 text-xs tracking-[.18em] text-white/70 uppercase hover:text-white md:right-6 md:flex"
           >
             Scroll to enter
-            <ArrowDown
-              size={15}
-              className="transition-transform group-hover:translate-y-1"
-            />
+            <div className="relative flex h-[1.3rem] w-[0.8rem] justify-center rounded-full border border-white/40">
+              <span className="animate-scroll-dot absolute bottom-1 h-1 w-[2px] rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+            </div>
           </a>
         </div>
       </div>
