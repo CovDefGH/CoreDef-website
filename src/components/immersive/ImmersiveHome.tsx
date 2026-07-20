@@ -233,7 +233,7 @@ export function ImmersiveHome() {
   return (
     <div ref={containerRef} className="immersive-page bg-[#09111d] text-white">
       {/* Global Vignette Blur Effects */}
-      <GradualBlur preset="page-footer" zIndex={40} opacity={0.9} />
+      <GradualBlur preset="page-footer" height="20rem" strength={4} divCount={8} zIndex={40} opacity={1} />
 
       <HeroScrollScene />
 
