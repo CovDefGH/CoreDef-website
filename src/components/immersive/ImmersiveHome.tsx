@@ -8,6 +8,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HeroScrollScene } from "@/components/immersive/HeroScrollScene";
 import { media } from "@/content/media";
+import GradualBlur from "@/components/ui/GradualBlur";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -231,8 +232,11 @@ export function ImmersiveHome() {
 
   return (
     <div ref={containerRef} className="immersive-page bg-[#09111d] text-white">
-      <HeroScrollScene />
+      {/* Premium Vignette Blur Effects */}
+      <GradualBlur preset="page-header" zIndex={40} opacity={0.85} />
+      <GradualBlur preset="page-footer" zIndex={40} opacity={0.85} />
 
+      <HeroScrollScene />
 
       {chapters.map((chapter) => (
         <section id={chapter.id} key={chapter.id} className="immersive-chapter" data-align={chapter.align}>

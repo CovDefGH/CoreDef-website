@@ -1,3 +1,5 @@
+"use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 
 import './GradualBlur.css';
@@ -46,12 +48,14 @@ const CURVE_FUNCTIONS = {
 
 const mergeConfigs = (...configs: any[]) => configs.reduce((acc, c) => ({ ...acc, ...c }), {});
 const getGradientDirection = (position: any) =>
-  ({
-    top: 'to top',
-    bottom: 'to bottom',
-    left: 'to left',
-    right: 'to right'
-  })[position] || 'to bottom';
+  (
+    ({
+      top: 'to top',
+      bottom: 'to bottom',
+      left: 'to left',
+      right: 'to right'
+    }) as any
+  )[position] || 'to bottom';
 
 const debounce = (fn: any, wait: any) => {
   let t: any;
