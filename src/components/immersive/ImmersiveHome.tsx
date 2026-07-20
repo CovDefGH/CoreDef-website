@@ -164,6 +164,25 @@ export function ImmersiveHome() {
         }
       });
 
+      // Text reveal effect (skiper72 style) for chapter titles
+      const revealContainers = gsap.utils.toArray<HTMLElement>(".skiper-text-reveal");
+      revealContainers.forEach((container) => {
+        const words = container.querySelectorAll(".skiper-word");
+        if (words.length) {
+          gsap.to(words, {
+            opacity: 1,
+            stagger: 0.1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: container,
+              start: "top 75%",
+              end: "center 45%",
+              scrub: true,
+            },
+          });
+        }
+      });
+
       // Grid cards reveal (skiper104 style)
       const gridCards = gsap.utils.toArray<HTMLElement>(".grid-card-reveal");
       if (gridCards.length) {
@@ -242,8 +261,12 @@ export function ImmersiveHome() {
               className={`relative mx-auto flex h-full max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-[clamp(2rem,8vh,10rem)] md:px-8 ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
             >
               <div className="immersive-copy mt-auto max-w-3xl will-change-[transform,opacity]">
-                <h2 className="text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40">
-                  {chapter.title}
+                <h2 className="skiper-text-reveal text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40 flex flex-wrap">
+                  {chapter.title.split(" ").map((word, i) => (
+                    <span key={i} className="skiper-word opacity-20 mr-[0.25em] will-change-[opacity]">
+                      {word}
+                    </span>
+                  ))}
                 </h2>
                 <p className="mt-[clamp(1rem,4vh,3rem)] max-w-2xl text-[clamp(1rem,2.5vmin,1.5rem)] leading-relaxed text-white/80 font-light">
                   {chapter.copy}
