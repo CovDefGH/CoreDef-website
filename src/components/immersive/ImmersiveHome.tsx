@@ -246,9 +246,9 @@ export function ImmersiveHome() {
                 className="immersive-chapter-image object-cover will-change-[transform]"
               />
             </div>
-            <div className="absolute inset-0 bg-[#07101a]/40" />
-            <div className="absolute inset-0 hidden md:block bg-[linear-gradient(90deg,rgba(4,10,18,.84)_0%,rgba(4,10,18,.36)_55%,rgba(4,10,18,.58)_100%)]" />
-            <div className="absolute inset-x-0 bottom-0 h-[80%] md:h-[60%] bg-gradient-to-t from-[#040a12] via-[#040a12]/70 to-transparent" />
+            <div className="absolute inset-0 bg-[#07101a]/30" />
+            <div className="absolute inset-0 hidden md:block bg-[linear-gradient(90deg,rgba(4,10,18,.74)_0%,rgba(4,10,18,.26)_55%,rgba(4,10,18,.48)_100%)]" />
+            <div className="absolute inset-x-0 bottom-0 h-[80%] md:h-[60%] bg-gradient-to-t from-[#040a12]/90 via-[#040a12]/60 to-transparent" />
 
             {/* Decorative GSAP-style shape (technical/nuclear artifact) */}
             <div className="chapter-decor absolute top-[25%] left-[60%] h-64 w-64 opacity-[0.04] pointer-events-none mix-blend-screen md:left-[75%] will-change-[transform]">
