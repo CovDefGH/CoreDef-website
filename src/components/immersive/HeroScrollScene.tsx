@@ -207,7 +207,7 @@ export function HeroScrollScene() {
               e.preventDefault();
               lenis?.scrollTo("#edim", { duration: 1.5, offset: 0 });
             }}
-            className="group absolute right-4 bottom-6 hidden items-center gap-3 text-xs tracking-[.18em] text-white/70 uppercase hover:text-white md:right-6 md:flex"
+            className="group absolute right-4 bottom-[8rem] hidden items-center gap-3 text-xs tracking-[.18em] text-white/70 uppercase hover:text-white md:right-6 md:flex"
           >
             Scroll to enter
             <ArrowDown

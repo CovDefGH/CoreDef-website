@@ -13,11 +13,12 @@ export function GlobalHomepageBlur() {
     <div className="absolute inset-0 z-[5] pointer-events-none">
       <div className="sticky top-0 left-0 w-full h-screen flex flex-col justify-end">
         <GradualBlur
-          preset="page-footer"
+          position="bottom"
           target="parent"
-          height="4rem"
+          height="6rem"
           strength={2}
-          divCount={15}
+          divCount={5}
+          exponential={false}
           zIndex={5}
           opacity={1}
         />
