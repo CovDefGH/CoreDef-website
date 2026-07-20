@@ -1,7 +1,6 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useRef, useState, useMemo } from 'react';
-import { createPortal } from 'react-dom';
 
 import './GradualBlur.css';
 
@@ -107,11 +106,6 @@ const useIntersectionObserver = (ref: any, shouldObserve = false) => {
 function GradualBlur(props: any) {
   const containerRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const config = useMemo(() => {
     const presetConfig = props.preset && (PRESETS as any)[props.preset] ? (PRESETS as any)[props.preset] : {};
@@ -183,7 +177,7 @@ function GradualBlur(props: any) {
       pointerEvents: config.hoverIntensity ? 'auto' : 'none',
       opacity: isVisible ? 1 : 0,
       transition: config.animated ? `opacity ${config.duration} ${config.easing}` : undefined,
-      zIndex: config.zIndex,
+      zIndex: isPageTarget ? config.zIndex + 100 : config.zIndex,
       ...config.style
     };
 
@@ -214,7 +208,7 @@ function GradualBlur(props: any) {
     }
   }, [isVisible, animated, onAnimationComplete, duration]);
 
-  const content = (
+  return (
     <div
       ref={containerRef}
       className={`gradual-blur ${config.target === 'page' ? 'gradual-blur-page' : 'gradual-blur-parent'} ${config.className}`}
@@ -234,13 +228,6 @@ function GradualBlur(props: any) {
       </div>
     </div>
   );
-
-  if (config.target === 'page') {
-    if (!mounted) return null;
-    return createPortal(content, document.body);
-  }
-
-  return content;
 }
 
 const GradualBlurMemo = React.memo(GradualBlur);

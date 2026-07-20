@@ -232,8 +232,7 @@ export function ImmersiveHome() {
 
   return (
     <div ref={containerRef} className="immersive-page bg-[#09111d] text-white">
-      {/* Global Vignette Blur Effects (Portals to body to escape Lenis scroll traps) */}
-      <GradualBlur preset="page-header" zIndex={40} opacity={0.8} />
+      {/* Global Vignette Blur Effects */}
       <GradualBlur preset="page-footer" zIndex={40} opacity={0.9} />
 
       <HeroScrollScene />
