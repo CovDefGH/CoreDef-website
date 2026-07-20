@@ -41,6 +41,9 @@
 }
 
 @media (max-width: 767px) {
+  .immersive-hero {
+    height: 110vh;
+  }
   .immersive-chapter {
     height: 110vh;
   }
