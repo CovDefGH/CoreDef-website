@@ -177,21 +177,33 @@ export function ImmersiveHome() {
           let currentLineTop = -1;
           let lineIndex = -1;
           words.forEach((word) => {
-            // Use 5px threshold to account for subpixel rendering differences
-            if (Math.abs(word.offsetTop - currentLineTop) > 5) {
+            // Use 15px threshold to reliably detect line breaks
+            if (Math.abs(word.offsetTop - currentLineTop) > 15) {
               currentLineTop = word.offsetTop;
               lineIndex++;
             }
-            // Even lines start from left (-50), Odd lines start from right (50)
-            const startX = lineIndex % 2 === 0 ? -50 : 50;
+            // Even lines start from left (-80), Odd lines start from right (80)
+            const startX = lineIndex % 2 === 0 ? -80 : 80;
             gsap.set(word, { x: startX });
           });
 
+          // Animate opacity with a stagger so words light up one by one
           gsap.to(words, {
             opacity: 1,
-            x: 0,
             stagger: 0.05,
-            ease: "power2.out",
+            ease: "none",
+            scrollTrigger: {
+              trigger: container.closest(".immersive-chapter"),
+              start: "top 50%",
+              end: "bottom bottom",
+              scrub: true,
+            },
+          });
+
+          // Animate X translation WITHOUT stagger so lines move as solid blocks
+          gsap.to(words, {
+            x: 0,
+            ease: "none",
             scrollTrigger: {
               trigger: container.closest(".immersive-chapter"),
               start: "top 50%",
