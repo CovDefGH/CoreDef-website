@@ -96,19 +96,29 @@ export function ScrollSequence({ className, sequence }: ScrollSequenceProps) {
       setHasDrawnFrame(true);
     };
 
+    let drawPending = false;
+    const queueDraw = () => {
+      if (drawPending) return;
+      drawPending = true;
+      window.requestAnimationFrame(() => {
+        drawPending = false;
+        draw(frameRef.current);
+      });
+    };
+
     const load = (index: number) => {
       const validIndex = clamp(index, 0, sequence.frameCount - 1);
       const existing = imagesRef.current.get(validIndex);
 
       if (existing) {
-        if (existing.complete) draw(validIndex);
+        if (existing.complete && validIndex === frameRef.current) queueDraw();
         return;
       }
 
       const image = new window.Image();
       image.decoding = "async";
       image.onload = () => {
-        if (validIndex === frameRef.current) draw(validIndex);
+        if (validIndex === frameRef.current) queueDraw();
       };
       image.src = sequence.frames[validIndex];
       imagesRef.current.set(validIndex, image);
@@ -141,7 +151,20 @@ export function ScrollSequence({ className, sequence }: ScrollSequenceProps) {
           ) {
             load(index);
           }
-          draw(nextFrame);
+          
+          // LRU Cleanup to prevent memory bloat on mobile
+          const maxRadius = preloadRadius * 2;
+          for (const key of imagesRef.current.keys()) {
+            if (Math.abs(key - nextFrame) > maxRadius) {
+              const img = imagesRef.current.get(key);
+              if (img) {
+                img.src = ""; // Abort any pending network request
+              }
+              imagesRef.current.delete(key);
+            }
+          }
+          
+          queueDraw();
         },
       });
     }, container);
@@ -183,6 +206,7 @@ export function ScrollSequence({ className, sequence }: ScrollSequenceProps) {
         <canvas
           ref={canvasRef}
           aria-hidden="true"
+          style={{ willChange: "transform" }}
           className={`absolute inset-0 h-full w-full transition-opacity duration-300 ${
             hasDrawnFrame ? "opacity-100" : "opacity-0"
           }`}
