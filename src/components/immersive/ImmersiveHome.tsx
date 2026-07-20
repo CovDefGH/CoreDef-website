@@ -146,19 +146,20 @@ export function ImmersiveHome() {
           });
         }
 
-        /* Copy reveal: use triggered stagger instead of scrub for snappier feel */
+        /* Copy reveal: alternating horizontal slide-in */
         if (copy && copy.children.length > 0) {
-          gsap.from(copy.children, {
-            y: 50,
-            opacity: 0,
-            duration: 1.2,
-            ease: "power4.out",
-            stagger: 0.15,
-            scrollTrigger: {
-              trigger: chapter,
-              start: "top 50%",
-              toggleActions: "play none none reverse",
-            },
+          Array.from(copy.children).forEach((child, index) => {
+            gsap.from(child, {
+              x: index % 2 === 0 ? 100 : -100,
+              opacity: 0,
+              duration: 1.2,
+              ease: "power4.out",
+              scrollTrigger: {
+                trigger: chapter,
+                start: "top 50%",
+                toggleActions: "play none none reverse",
+              },
+            });
           });
         }
       });
