@@ -2,7 +2,7 @@
 @import "../styles/tokens.css";
 
 body {
-  background: #ffffff;
+  background-color: transparent;
   color: var(--color-ink);
 }
 
