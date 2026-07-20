@@ -125,15 +125,17 @@ function GradualBlur(props: any) {
 
     const curveFunc = (CURVE_FUNCTIONS as any)[config.curve] || CURVE_FUNCTIONS.linear;
 
-    for (let i = 1; i <= config.divCount; i++) {
-      let progress = i / config.divCount;
+    for (let i = 0; i < config.divCount; i++) {
+      let progress = i / (config.divCount - 1);
       progress = curveFunc(progress);
 
-      let blurValue;
-      if (config.exponential) {
-        blurValue = Math.pow(2, progress * 4) * 0.0625 * currentStrength;
-      } else {
-        blurValue = 0.0625 * (progress * config.divCount + 1) * currentStrength;
+      let blurValue = 0;
+      if (progress > 0) {
+        if (config.exponential) {
+          blurValue = Math.pow(2, progress * 4) * 0.0625 * currentStrength;
+        } else {
+          blurValue = 0.0625 * (progress * config.divCount) * currentStrength;
+        }
       }
 
       const p1 = Math.round((increment * i - increment) * 10) / 10;

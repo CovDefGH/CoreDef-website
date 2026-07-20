@@ -15,7 +15,7 @@ export function GlobalHomepageBlur() {
         <GradualBlur
           preset="page-footer"
           target="parent"
-          height="6rem"
+          height="4rem"
           strength={2}
           divCount={15}
           zIndex={5}
