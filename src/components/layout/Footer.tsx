@@ -28,7 +28,7 @@ export function Footer() {
 
   return (
 
-    <footer className="relative border-t border-line overflow-hidden bg-surface">
+    <footer className="relative border-t border-line overflow-hidden">
         {/* Oversized brand mark bleeding off the corner — just like the Zen browser logo in the reference image */}
         <Image
           src="/logo.png"
