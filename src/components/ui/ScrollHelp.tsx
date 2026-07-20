@@ -43,7 +43,7 @@ export function ScrollHelp() {
             className="w-64 overflow-hidden rounded-2xl border border-white/10 bg-[#040a12]/90 shadow-2xl backdrop-blur-xl"
           >
             <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-4 py-3">
-              <span className="text-xs font-medium text-white/80">How to navigate</span>
+              <span className="immersive-kicker text-[#7bc8ff]/70 text-[0.65rem] tracking-[0.2em]">NAVIGATION</span>
               <button
                 onClick={() => setIsOpen(false)}
                 className="rounded-full p-1 text-slate-400 transition-colors hover:bg-white/10 hover:text-white"

@@ -8,7 +8,18 @@ import React from "react";
 // (autoRaf: false below), so ScrollTrigger reads scroll position on the exact
 // same frame Lenis updates it — no drift/lag between the two.
 function GsapTicker() {
-  const lenis = useLenis();
+  const lastHapticScrollRef = React.useRef(0);
+
+  const lenis = useLenis(({ scroll }) => {
+    // Fire a very light haptic tick every 400px of scroll.
+    // (Note: navigator.vibrate is supported on Android, but disabled by Apple on iOS Safari)
+    if (Math.abs(scroll - lastHapticScrollRef.current) > 400) {
+      lastHapticScrollRef.current = scroll;
+      if (typeof navigator !== "undefined" && navigator.vibrate) {
+        navigator.vibrate(2);
+      }
+    }
+  });
 
   useEffect(() => {
     if (!lenis) return;
