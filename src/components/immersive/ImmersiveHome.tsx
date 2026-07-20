@@ -147,22 +147,20 @@ export function ImmersiveHome() {
           });
         }
 
-      /* Copy reveal for non-scrub elements (like the Link button) */
-      if (copy) {
-        const nonRevealChildren = Array.from(copy.querySelectorAll("a"));
-        if (nonRevealChildren.length > 0) {
-          gsap.from(nonRevealChildren, {
-            x: 40,
-            opacity: 0,
-            duration: 1.2,
-            ease: "power4.out",
-            scrollTrigger: {
-              trigger: chapter,
-              start: "top 50%",
-              toggleActions: "play none none reverse",
-            },
-          });
-        }
+      /* Copy block entrance: slide in from right */
+      if (copy && copy.children.length > 0) {
+        gsap.from(copy.children, {
+          x: 40,
+          opacity: 0,
+          duration: 1.2,
+          ease: "power4.out",
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: chapter,
+            start: "top 50%",
+            toggleActions: "play none none reverse",
+          },
+        });
       }
 
       // Text reveal effect (skiper72 style) for chapter titles and paragraphs
@@ -170,29 +168,19 @@ export function ImmersiveHome() {
       revealContainers.forEach((container) => {
         const words = Array.from(container.querySelectorAll(".skiper-word")) as HTMLElement[];
         if (words.length) {
-          // Diagonal fly-in creates a beautiful word-by-word scatter without breaking layout
-          // All text slides in from the right (x: 40)
-          
-          gsap.fromTo(words,
-            {
-              opacity: 0.2,
-              x: 40,
-              y: 20
+          // Word-by-word opacity scrub (highlighting effect)
+          // Removing transforms from the words prevents Safari from bugging out on the title gradients
+          gsap.to(words, {
+            opacity: 1,
+            stagger: 0.05,
+            ease: "none",
+            scrollTrigger: {
+              trigger: chapter,
+              start: "top 50%",
+              end: "bottom bottom",
+              scrub: true,
             },
-            {
-              opacity: 1,
-              x: 0,
-              y: 0,
-              stagger: 0.05,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: chapter,
-                start: "top 50%",
-                end: "bottom bottom",
-                scrub: true,
-              },
-            }
-          );
+          });
         }
       });
       });
@@ -277,7 +265,7 @@ export function ImmersiveHome() {
               <div className="immersive-copy mt-auto max-w-3xl will-change-[transform,opacity]">
                 <h2 className="skiper-text-reveal text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] flex flex-wrap text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40 overflow-visible pb-4">
                   {chapter.title.split(" ").map((word, i) => (
-                    <span key={i} className="skiper-word opacity-20 mr-[0.25em] will-change-[transform,opacity]">
+                    <span key={i} className="skiper-word opacity-20 mr-[0.25em] will-change-opacity">
                       {word}
                     </span>
                   ))}
@@ -285,7 +273,7 @@ export function ImmersiveHome() {
                 <p className="skiper-text-reveal mt-[clamp(1rem,4vh,3rem)] max-w-2xl text-[clamp(1rem,2.5vmin,1.5rem)] leading-relaxed text-white/80 font-light text-justify">
                   {chapter.copy.split(" ").map((word, i, arr) => (
                     <span key={i}>
-                      <span className="skiper-word opacity-20 will-change-[transform,opacity] inline-block">
+                      <span className="skiper-word opacity-20 will-change-opacity inline-block">
                         {word}
                       </span>
                       {i < arr.length - 1 ? " " : ""}
