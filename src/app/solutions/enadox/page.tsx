@@ -48,8 +48,8 @@ export default function EnadoxPage() {
         />
 
         <FeatureRow
-          heading="Mission continuity as conditions degrade"
-          body="ENADOX keeps operations connected as bandwidth narrows and links become intermittent. Communication continues as individual links fail or degrade."
+          heading="Maintaining Mission Uptime"
+          body="ENADOX places a premium on the availability and integrity of networked systems in cyber-contested and adversarial environments. As the communication environment faces degradation, denial, and spoofing, ENADOX quietly retasks connected devices on the network to repurpose their data to store copies of each other without additional overhead or network reconfiguration, enabling local reproduction and self-healing of mission-critical data on demand."
           image={media.comms}
           imageSide="right"
         />
