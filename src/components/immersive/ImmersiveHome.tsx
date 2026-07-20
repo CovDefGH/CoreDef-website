@@ -161,9 +161,9 @@ export function ImmersiveHome() {
     <div ref={containerRef} className="immersive-page relative bg-[#09111d] text-white">
       <HeroScrollScene />
 
-      <ScrollStack useWindowScroll={true}>
+      <ScrollStack useWindowScroll={true} className="relative z-20 max-w-7xl mx-auto px-4 md:px-8 pb-32">
         {chapters.map((chapter) => (
-          <ScrollStackItem key={chapter.id} itemClassName="!p-0 border-none overflow-hidden">
+          <ScrollStackItem key={chapter.id} itemClassName="!p-0 overflow-hidden">
             <div className="absolute inset-0">
               <Image
                 src={chapter.image.src}
