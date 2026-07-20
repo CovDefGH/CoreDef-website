@@ -52,3 +52,12 @@
 .immersive-font-outfit {
   font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
 }
+
+/* Force dark root backgrounds ONLY on the immersive homepage so Safari's translucent bottom bar and overscroll blend perfectly, without breaking light pages. */
+body:has(.immersive-page) {
+  background-color: #000000;
+}
+
+#main:has(.immersive-page) {
+  background-color: transparent !important;
+}
