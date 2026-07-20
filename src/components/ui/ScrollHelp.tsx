@@ -56,7 +56,7 @@ export function ScrollHelp() {
               {/* Technical scroll indicator */}
               <div className="relative flex h-14 w-8 justify-center rounded-full border border-[#7bc8ff]/40 bg-[#040a12]">
                 <m.div
-                  animate={{ y: [0, 16], opacity: [0, 1, 0] }}
+                  animate={{ y: [16, 0], opacity: [0, 1, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "circInOut" }}
                   className="absolute top-2 h-2 w-1.5 rounded-full bg-[#7bc8ff] shadow-[0_0_8px_#7bc8ff]"
                 />
