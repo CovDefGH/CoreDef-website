@@ -232,10 +232,6 @@ export function ImmersiveHome() {
 
   return (
     <div ref={containerRef} className="immersive-page bg-[#09111d] text-white">
-      {/* Premium Vignette Blur Effects */}
-      <GradualBlur preset="page-header" zIndex={40} opacity={0.85} />
-      <GradualBlur preset="page-footer" zIndex={40} opacity={0.85} />
-
       <HeroScrollScene />
 
       {chapters.map((chapter) => (
@@ -253,6 +249,9 @@ export function ImmersiveHome() {
             <div className="absolute inset-0 bg-[#07101a]/40" />
             <div className="absolute inset-0 hidden md:block bg-[linear-gradient(90deg,rgba(4,10,18,.84)_0%,rgba(4,10,18,.36)_55%,rgba(4,10,18,.58)_100%)]" />
             <div className="absolute inset-x-0 bottom-0 h-[80%] md:h-[60%] bg-gradient-to-t from-[#040a12] via-[#040a12]/70 to-transparent" />
+
+            <GradualBlur preset="top" height="8rem" zIndex={20} opacity={0.8} />
+            <GradualBlur preset="bottom" height="12rem" zIndex={20} opacity={0.8} />
 
             {/* Decorative GSAP-style shape (technical/nuclear artifact) */}
             <div className="chapter-decor absolute top-[25%] left-[60%] h-64 w-64 opacity-[0.04] pointer-events-none mix-blend-screen md:left-[75%] will-change-[transform]">
