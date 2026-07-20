@@ -6,7 +6,7 @@ export function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
     <LoaderIcon
       role="status"
       aria-label="Loading"
-      className={`size-4 animate-spin ${className || ""}`}
+      className={`animate-spin ${className || ""}`}
       {...props}
     />
   );
@@ -15,7 +15,7 @@ export function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
 export function SpinnerCustom() {
   return (
     <div className="flex items-center gap-4">
-      <Spinner />
+      <Spinner className="size-4" />
     </div>
   );
 }

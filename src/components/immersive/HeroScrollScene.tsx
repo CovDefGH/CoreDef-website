@@ -8,7 +8,7 @@ import { ArrowDown } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CTALink } from "@/components/ui/CTALink";
-import { SpinnerCustom } from "@/components/ui/Spinner";
+import { Spinner } from "@/components/ui/Spinner";
 import { useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -184,13 +184,11 @@ export function HeroScrollScene() {
 
         {/* Loading Spinner overlay */}
         <div
-          className={`absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-500 pointer-events-none ${
+          className={`absolute inset-0 z-20 flex items-center justify-center bg-[#05121c] text-[#7bc8ff] transition-opacity duration-700 pointer-events-none ${
             isLoaded ? "opacity-0" : "opacity-100"
           }`}
         >
-          <div className="rounded-full bg-white/80 p-3 shadow-lg backdrop-blur-sm">
-            <SpinnerCustom />
-          </div>
+          <Spinner className="w-10 h-10" />
         </div>
 
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,28,.73)_0%,rgba(5,18,28,.38)_43%,rgba(5,18,28,.04)_72%)]" />
