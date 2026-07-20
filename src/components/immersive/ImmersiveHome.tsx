@@ -157,7 +157,7 @@ export function ImmersiveHome() {
             immediateRender: false,
             scrollTrigger: {
               trigger: chapter,
-              start: "top 65%",
+              start: "top top",
               toggleActions: "play none none reverse",
             },
           });
@@ -175,8 +175,8 @@ export function ImmersiveHome() {
             ease: "none",
             scrollTrigger: {
               trigger: container.closest(".immersive-chapter"),
-              start: "top 40%",
-              end: "bottom 80%",
+              start: "top top",
+              end: "bottom bottom",
               scrub: true,
             },
           });
