@@ -8,6 +8,7 @@ import { ArrowDown } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CTALink } from "@/components/ui/CTALink";
+import GradualBlur from "@/components/ui/GradualBlur";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -215,6 +216,17 @@ export function HeroScrollScene() {
               className="transition-transform group-hover:translate-y-1"
             />
           </a>
+
+          <GradualBlur
+            position="bottom"
+            target="parent"
+            height="6rem"
+            strength={2}
+            divCount={5}
+            exponential={false}
+            zIndex={5}
+            opacity={1}
+          />
         </div>
       </div>
     </section>
