@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
+import { ScrollHelp } from "@/components/ui/ScrollHelp";
 import { GlobalHomepageBlur } from "@/components/ui/GlobalHomepageBlur";
 import "./globals.css";
 
@@ -60,6 +61,7 @@ export default function RootLayout({
               {children}
             </main>
             <ScrollToTop />
+            <ScrollHelp />
             <Footer />
           </SmoothScroll>
         </MotionProvider>
