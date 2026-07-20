@@ -27,6 +27,7 @@ export const metadata: Metadata = {
 // and lets env(safe-area-inset-*) resolve to real device insets instead of 0.
 export const viewport: Viewport = {
   viewportFit: "cover",
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
