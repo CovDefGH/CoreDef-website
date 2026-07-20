@@ -221,7 +221,8 @@ function GradualBlur(props: any) {
         style={{
           position: 'relative',
           width: '100%',
-          height: '100%'
+          height: '100%',
+          backgroundColor: 'rgba(255, 0, 0, 0.5)'
         }}
       >
         {blurDivs}
