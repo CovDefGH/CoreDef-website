@@ -92,16 +92,34 @@ export function HeroScrollScene() {
       // instantly eliminating the "laggy" scroll feeling.
     };
 
+    let backgroundLoadingStarted = false;
+    const startBackgroundLoading = () => {
+      if (backgroundLoadingStarted) return;
+      backgroundLoadingStarted = true;
+      for (let i = FRAME_START + 1; i <= FRAME_START + EAGER_FRAMES; i++) {
+        if (i <= FRAME_COUNT) loadFrame(i);
+      }
+      for (let i = FRAME_START + EAGER_FRAMES + 1; i <= FRAME_COUNT; i++) {
+        scheduleIdle(() => loadFrame(i));
+      }
+    };
+
     const loadFrame = (i: number) => {
       const img = new window.Image();
       img.src = frameSrc(i);
       // Fallback for browsers where img.decode() might fail or isn't supported.
       img.onload = () => {
-        if (i === FRAME_START) setIsLoaded(true);
+        if (i === FRAME_START) {
+          setIsLoaded(true);
+          startBackgroundLoading();
+        }
         render(frameObj.frame);
       };
       img.decode().then(() => {
-        if (i === FRAME_START) setIsLoaded(true);
+        if (i === FRAME_START) {
+          setIsLoaded(true);
+          startBackgroundLoading();
+        }
         render(frameObj.frame);
       }).catch((e) => {
         console.warn(`[Hero] Frame ${i} decode failed`, e);
@@ -116,10 +134,10 @@ export function HeroScrollScene() {
       return;
     }
 
-    for (let i = FRAME_START; i <= FRAME_START + EAGER_FRAMES; i++) loadFrame(i);
-    for (let i = FRAME_START + EAGER_FRAMES + 1; i <= FRAME_COUNT; i++) {
-      scheduleIdle(() => loadFrame(i));
-    }
+    // Only load the very first frame initially. 
+    // This gives it 100% of network bandwidth so the loader dismisses instantly.
+    // The rest will queue sequentially once this first frame completes.
+    loadFrame(FRAME_START);
 
     render(FRAME_START);
 
