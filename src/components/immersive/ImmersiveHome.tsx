@@ -169,8 +169,9 @@ export function ImmersiveHome() {
       if (allWords.length > 0) {
         gsap.to(allWords, {
           opacity: 1,
-          stagger: 0.05,
-          ease: "none",
+          duration: 2,
+          stagger: 0.1,
+          ease: "power2.inOut",
           scrollTrigger: {
             trigger: chapter,
             start: "top 50%",
