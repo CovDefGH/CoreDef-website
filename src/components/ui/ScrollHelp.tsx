@@ -40,33 +40,33 @@ export function ScrollHelp() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="w-64 overflow-hidden rounded-2xl border border-white/10 bg-[#040a12]/90 shadow-2xl backdrop-blur-xl"
+            className="w-64 overflow-hidden rounded-2xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur-xl"
           >
-            <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-4 py-3">
-              <span className="immersive-kicker text-[#7bc8ff]/70 text-[0.65rem] tracking-[0.2em]">NAVIGATION</span>
+            <div className="flex items-center justify-between border-b border-white/10 bg-white/10 px-4 py-3">
+              <span className="immersive-kicker text-white/90 text-[0.65rem] tracking-[0.2em]">NAVIGATION</span>
               <button
                 onClick={() => setIsOpen(false)}
-                className="rounded-full p-1 text-slate-400 transition-colors hover:bg-white/10 hover:text-white"
+                className="rounded-full p-1 text-white/60 transition-colors hover:bg-white/20 hover:text-white"
               >
                 <X size={14} />
               </button>
             </div>
             
-            <div className="flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-transparent to-[#7bc8ff]/[0.02]">
+            <div className="flex flex-col items-center justify-center p-8 text-center">
               {/* Technical scroll indicator */}
-              <div className="relative flex h-14 w-8 justify-center rounded-full border border-[#7bc8ff]/40 bg-[#040a12]">
+              <div className="relative flex h-14 w-8 justify-center rounded-full border border-white/40 bg-black/10 shadow-inner">
                 <m.div
                   animate={{ y: [16, 0], opacity: [0, 1, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "circInOut" }}
-                  className="absolute top-2 h-2 w-1.5 rounded-full bg-[#7bc8ff] shadow-[0_0_8px_#7bc8ff]"
+                  className="absolute top-2 h-2 w-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"
                 />
               </div>
               
-              <p className="mt-6 text-xs tracking-wider text-slate-400 uppercase font-mono">
+              <p className="mt-6 text-xs tracking-wider text-white/90 uppercase font-mono">
                 Initiate Scroll <br /> to proceed
               </p>
               
-              <div className="mt-4 text-[#7bc8ff]/40">
+              <div className="mt-4 text-white/50">
                 <m.div
                   animate={{ y: [0, 4, 0], opacity: [0.3, 1, 0.3] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
