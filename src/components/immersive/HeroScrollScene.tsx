@@ -8,21 +8,19 @@ import { ArrowDown } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CTALink } from "@/components/ui/CTALink";
-import { Spinner } from "@/components/ui/Spinner";
-import { useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 // 200 frames extracted natively at 24fps from the 4K source clip.
 // We used heavy JPEG compression to keep the sequence small while retaining 4K native resolution.
 const FRAME_START = 75;
-const FRAME_COUNT = 120;
+const FRAME_COUNT = 150;
 const FRAME_W = 3840;
 const FRAME_H = 2160;
 // First N frames load eagerly (covers the dwell + early-scrub range); the rest
 // load on browser idle time so they don't compete with the eager ones for
 // bandwidth/decode time on initial page load.
-const EAGER_FRAMES = 60;
+const EAGER_FRAMES = 24;
 const frameSrc = (i: number) =>
   `/immersive/hero/frame-${i.toString().padStart(3, "0")}.jpg`;
 
@@ -41,7 +39,6 @@ export function HeroScrollScene() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const lenis = useLenis();
-  const [isLoaded, setIsLoaded] = useState(false);
 
   /* useEffect (not useLayoutEffect) — runs after paint so DOM measurements
      are stable and the CSS sticky layout is already committed. */
@@ -85,23 +82,11 @@ export function HeroScrollScene() {
 
       ctx.globalAlpha = 1;
       ctx.drawImage(lowerImg, 0, 0, canvas.width, canvas.height);
-
+      
       // Removed sub-frame cross-fade interpolation: At 24fps native, 
       // frame pacing is tight enough that hard cuts look buttery smooth,
       // and it cuts our GPU canvas drawing operations in exactly half, 
       // instantly eliminating the "laggy" scroll feeling.
-    };
-
-    let backgroundLoadingStarted = false;
-    const startBackgroundLoading = () => {
-      if (backgroundLoadingStarted) return;
-      backgroundLoadingStarted = true;
-      for (let i = FRAME_START + 1; i <= FRAME_START + EAGER_FRAMES; i++) {
-        if (i <= FRAME_COUNT) loadFrame(i);
-      }
-      for (let i = FRAME_START + EAGER_FRAMES + 1; i <= FRAME_COUNT; i++) {
-        scheduleIdle(() => loadFrame(i));
-      }
     };
 
     const loadFrame = (i: number) => {
@@ -109,17 +94,9 @@ export function HeroScrollScene() {
       img.src = frameSrc(i);
       // Fallback for browsers where img.decode() might fail or isn't supported.
       img.onload = () => {
-        if (i === FRAME_START) {
-          setIsLoaded(true);
-          startBackgroundLoading();
-        }
         render(frameObj.frame);
       };
       img.decode().then(() => {
-        if (i === FRAME_START) {
-          setIsLoaded(true);
-          startBackgroundLoading();
-        }
         render(frameObj.frame);
       }).catch((e) => {
         console.warn(`[Hero] Frame ${i} decode failed`, e);
@@ -134,10 +111,10 @@ export function HeroScrollScene() {
       return;
     }
 
-    // Only load the very first frame initially. 
-    // This gives it 100% of network bandwidth so the loader dismisses instantly.
-    // The rest will queue sequentially once this first frame completes.
-    loadFrame(FRAME_START);
+    for (let i = FRAME_START; i <= FRAME_START + EAGER_FRAMES; i++) loadFrame(i);
+    for (let i = FRAME_START + EAGER_FRAMES + 1; i <= FRAME_COUNT; i++) {
+      scheduleIdle(() => loadFrame(i));
+    }
 
     render(FRAME_START);
 
@@ -193,22 +170,11 @@ export function HeroScrollScene() {
           fill
           priority
           className="object-cover object-[58%_45%] will-change-[transform] transform-gpu"
-          onLoad={() => setIsLoaded(true)}
         />
         <canvas
           ref={canvasRef}
           className="absolute inset-0 h-full w-full object-cover object-[58%_45%] will-change-[transform] transform-gpu"
         />
-
-        {/* Loading Spinner overlay */}
-        <div
-          className={`absolute inset-0 z-20 flex items-center justify-center bg-[#05121c] text-[#7bc8ff] transition-opacity duration-700 pointer-events-none ${
-            isLoaded ? "opacity-0" : "opacity-100"
-          }`}
-        >
-          <Spinner className="w-10 h-10" />
-        </div>
-
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,28,.73)_0%,rgba(5,18,28,.38)_43%,rgba(5,18,28,.04)_72%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(5,18,28,.38)_0%,transparent_52%)]" />
 
