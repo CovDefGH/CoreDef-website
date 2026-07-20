@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { preload } from "react-dom";
 import Image from "next/image";
 import { useLenis } from "lenis/react";
-import { Pointer } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CTALink } from "@/components/ui/CTALink";
@@ -207,14 +207,23 @@ export function HeroScrollScene() {
               e.preventDefault();
               lenis?.scrollTo("#edim", { duration: 1.5, offset: 0 });
             }}
-            className="group absolute right-4 bottom-[8rem] hidden items-center gap-3 text-xs tracking-[.18em] text-white/70 uppercase hover:text-white md:right-6 md:flex"
+            className="group absolute right-4 bottom-[8rem] hidden items-center justify-center text-white/70 transition-colors hover:text-white md:right-8 md:flex"
           >
-            Scroll to enter
-            <div className="relative flex h-10 w-6 items-center justify-center overflow-hidden">
-              <Pointer
-                size={16}
+            <div className="relative flex items-center justify-center">
+              <svg viewBox="0 0 100 100" className="h-[100px] w-[100px] animate-[spin_8s_linear_infinite] opacity-70 transition-opacity group-hover:opacity-100">
+                <defs>
+                  <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
+                </defs>
+                <text className="fill-current text-[11.5px] font-bold uppercase tracking-widest">
+                  <textPath href="#circlePath" startOffset="0" textLength="212" lengthAdjust="spacing">
+                    Scroll Down • Scroll Down •
+                  </textPath>
+                </text>
+              </svg>
+              <ArrowDown
+                size={24}
                 strokeWidth={1.5}
-                className="animate-swipe-up text-white"
+                className="absolute animate-bounce"
               />
             </div>
           </a>
