@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { HelpCircle, X, Mouse, ChevronDown } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 
 export function ScrollHelp() {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +36,7 @@ export function ScrollHelp() {
     <div className="fixed left-6 bottom-6 z-50">
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <m.div
             ref={popupRef}
             initial={{ opacity: 0, y: 10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -56,7 +56,7 @@ export function ScrollHelp() {
             
             <div className="flex flex-col items-center justify-center p-6 text-center">
               <div className="relative flex h-16 w-10 items-center justify-center rounded-full border-2 border-slate-300">
-                <motion.div
+                <m.div
                   animate={{ y: [0, 15, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute top-2 h-3 w-1.5 rounded-full bg-[#0052ff]"
@@ -67,27 +67,27 @@ export function ScrollHelp() {
               </p>
               
               <div className="mt-4 flex gap-1 text-[#0052ff]">
-                <motion.div
+                <m.div
                   animate={{ y: [0, 5, 0] }}
                   transition={{ duration: 1, repeat: Infinity, delay: 0 }}
                 >
                   <ChevronDown size={20} />
-                </motion.div>
-                <motion.div
+                </m.div>
+                <m.div
                   animate={{ y: [0, 5, 0] }}
                   transition={{ duration: 1, repeat: Infinity, delay: 0.15 }}
                 >
                   <ChevronDown size={20} />
-                </motion.div>
-                <motion.div
+                </m.div>
+                <m.div
                   animate={{ y: [0, 5, 0] }}
                   transition={{ duration: 1, repeat: Infinity, delay: 0.3 }}
                 >
                   <ChevronDown size={20} />
-                </motion.div>
+                </m.div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
