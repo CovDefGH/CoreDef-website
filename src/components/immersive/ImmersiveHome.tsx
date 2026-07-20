@@ -245,7 +245,7 @@ export function ImmersiveHome() {
                 <h2 className="text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40">
                   {chapter.title}
                 </h2>
-                <p className="mt-[clamp(1rem,4vh,3rem)] max-w-2xl text-[clamp(1rem,2.5vmin,1.5rem)] leading-relaxed text-white/80 font-light text-justify">
+                <p className="mt-[clamp(1rem,4vh,3rem)] max-w-2xl text-[clamp(1rem,2.5vmin,1.5rem)] leading-relaxed text-white/80 font-light">
                   {chapter.copy}
                 </p>
                 <Link
@@ -270,7 +270,7 @@ export function ImmersiveHome() {
             <h2 className="text-4xl leading-[.98] font-semibold tracking-[-.045em] md:text-5xl">
               Engineered for environments where failure is not an option.
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-[#405063] md:text-xl text-justify">
+            <p className="mt-6 text-lg leading-relaxed text-[#405063] md:text-xl">
               Two platforms: EDIM for predictive analytics, ENADOX for secure communications in degraded conditions.
             </p>
           </div>
@@ -283,7 +283,7 @@ export function ImmersiveHome() {
             <h2 className="text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[.94] font-semibold tracking-[-.05em] text-[#0c1723]">
               Industries we serve.
             </h2>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#3b4754] md:text-lg text-justify">
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#3b4754] md:text-lg">
               We build for sectors that depend on accurate data and secure
               operations: energy, defense, finance, and AI.
             </p>
