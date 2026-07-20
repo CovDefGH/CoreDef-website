@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { preload } from "react-dom";
 import Image from "next/image";
 import { useLenis } from "lenis/react";
-import { ArrowDown } from "lucide-react";
+import { Pointer } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CTALink } from "@/components/ui/CTALink";
@@ -210,8 +210,12 @@ export function HeroScrollScene() {
             className="group absolute right-4 bottom-[8rem] hidden items-center gap-3 text-xs tracking-[.18em] text-white/70 uppercase hover:text-white md:right-6 md:flex"
           >
             Scroll to enter
-            <div className="relative flex h-[1.3rem] w-[0.8rem] justify-center rounded-full border border-white/40">
-              <span className="animate-scroll-dot absolute bottom-1 h-1 w-[2px] rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+            <div className="relative flex h-10 w-6 items-center justify-center overflow-hidden">
+              <Pointer
+                size={16}
+                strokeWidth={1.5}
+                className="animate-swipe-up text-white"
+              />
             </div>
           </a>
         </div>
