@@ -154,10 +154,9 @@ export function ImmersiveHome() {
             duration: 1.2,
             ease: "power4.out",
             stagger: 0.15,
-            immediateRender: false,
             scrollTrigger: {
               trigger: chapter,
-              start: "top top",
+              start: "top 50%",
               toggleActions: "play none none reverse",
             },
           });
@@ -175,7 +174,7 @@ export function ImmersiveHome() {
             ease: "none",
             scrollTrigger: {
               trigger: container.closest(".immersive-chapter"),
-              start: "top top",
+              start: "top 50%",
               end: "bottom bottom",
               scrub: true,
             },
