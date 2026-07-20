@@ -155,6 +155,7 @@ function GradualBlur(props: any) {
         backdropFilter: `blur(${blurValue.toFixed(3)}rem)`,
         WebkitBackdropFilter: `blur(${blurValue.toFixed(3)}rem)`,
         opacity: config.opacity,
+        transform: 'translateZ(0)',
         transition:
           config.animated && config.animated !== 'scroll'
             ? `backdrop-filter ${config.duration} ${config.easing}`
@@ -221,8 +222,7 @@ function GradualBlur(props: any) {
         style={{
           position: 'relative',
           width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(255, 0, 0, 0.5)'
+          height: '100%'
         }}
       >
         {blurDivs}
