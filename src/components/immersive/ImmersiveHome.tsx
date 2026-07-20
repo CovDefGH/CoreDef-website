@@ -231,9 +231,14 @@ export function ImmersiveHome() {
   }, []);
 
   return (
-    <div ref={containerRef} className="immersive-page bg-[#09111d] text-white">
-      {/* Global Vignette Blur Effects */}
-      <GradualBlur preset="page-footer" height="20rem" strength={4} divCount={8} zIndex={40} opacity={1} />
+    <div ref={containerRef} className="immersive-page relative bg-[#09111d] text-white">
+      {/* Global Vignette Blur Effect - Sticky wrapper ensures it stays on screen without fixed positioning bugs */}
+      {/* z-[5] places it perfectly ABOVE background images (z-auto) and BELOW text content (z-10) */}
+      <div className="absolute inset-0 z-[5] pointer-events-none">
+        <div className="sticky top-0 left-0 w-full h-screen">
+          <GradualBlur preset="page-footer" target="parent" height="15rem" strength={4} divCount={8} zIndex={5} opacity={1} />
+        </div>
+      </div>
 
       <HeroScrollScene />
 
