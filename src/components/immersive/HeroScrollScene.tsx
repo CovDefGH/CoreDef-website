@@ -216,18 +216,18 @@ export function HeroScrollScene() {
               className="transition-transform group-hover:translate-y-1"
             />
           </a>
-
-          <GradualBlur
-            position="bottom"
-            target="parent"
-            height="6rem"
-            strength={2}
-            divCount={5}
-            exponential={false}
-            zIndex={5}
-            opacity={1}
-          />
         </div>
+
+        <GradualBlur
+          position="bottom"
+          target="parent"
+          height="6rem"
+          strength={2}
+          divCount={5}
+          exponential={false}
+          zIndex={5}
+          opacity={1}
+        />
       </div>
     </section>
   );
