@@ -1,14 +1,13 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { HelpCircle, X, Mouse, ChevronDown } from "lucide-react";
+import { Mouse, X, ChevronsDown } from "lucide-react";
 import { AnimatePresence, m } from "framer-motion";
 
 export function ScrollHelp() {
   const [isOpen, setIsOpen] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);
 
-  // Close when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
@@ -21,7 +20,6 @@ export function ScrollHelp() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  // Close automatically after user scrolls significantly
   useEffect(() => {
     const handleScroll = () => {
       if (isOpen && window.scrollY > 300) {
@@ -33,57 +31,47 @@ export function ScrollHelp() {
   }, [isOpen]);
 
   return (
-    <div className="fixed left-6 bottom-6 z-50">
+    <div className="fixed left-6 bottom-6 z-50 flex flex-col items-start gap-4">
       <AnimatePresence>
         {isOpen && (
           <m.div
             ref={popupRef}
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            initial={{ opacity: 0, y: 10, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="absolute bottom-14 left-0 w-64 overflow-hidden rounded-2xl bg-[#09111d]/95 backdrop-blur-xl border border-white/10 shadow-2xl"
+            exit={{ opacity: 0, y: 10, scale: 0.98 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="w-64 overflow-hidden rounded-none border border-[#7bc8ff]/20 bg-[#040a12]/95 p-px shadow-[0_0_40px_rgba(123,200,255,0.05)] backdrop-blur-xl"
           >
-            <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
-              <h3 className="text-sm font-semibold text-white">How to navigate</h3>
+            <div className="flex items-center justify-between border-b border-[#7bc8ff]/10 bg-[#07101a]/50 px-4 py-2.5">
+              <span className="immersive-kicker text-[#7bc8ff]/70 text-[0.65rem] tracking-[0.2em]">NAVIGATION</span>
               <button
                 onClick={() => setIsOpen(false)}
-                className="rounded-full p-1 text-slate-400 hover:bg-white/10 hover:text-white transition-colors"
+                className="text-[#7bc8ff]/50 transition-colors hover:text-[#7bc8ff]"
               >
-                <X size={16} />
+                <X size={14} />
               </button>
             </div>
             
-            <div className="flex flex-col items-center justify-center p-6 text-center">
-              <div className="relative flex h-16 w-10 items-center justify-center rounded-full border-2 border-slate-300">
+            <div className="flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-transparent to-[#7bc8ff]/[0.02]">
+              {/* Technical scroll indicator */}
+              <div className="relative flex h-14 w-8 justify-center rounded-full border border-[#7bc8ff]/40 bg-[#040a12]">
                 <m.div
-                  animate={{ y: [0, 15, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-2 h-3 w-1.5 rounded-full bg-[#0052ff]"
+                  animate={{ y: [0, 16], opacity: [0, 1, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "circInOut" }}
+                  className="absolute top-2 h-2 w-1.5 rounded-full bg-[#7bc8ff] shadow-[0_0_8px_#7bc8ff]"
                 />
               </div>
-              <p className="mt-4 text-sm font-medium text-slate-300">
-                Scroll down to explore <br /> the immersive experience
+              
+              <p className="mt-6 text-xs tracking-wider text-slate-400 uppercase font-mono">
+                Initiate Scroll <br /> to proceed
               </p>
               
-              <div className="mt-4 flex gap-1 text-[#0052ff]">
+              <div className="mt-4 text-[#7bc8ff]/40">
                 <m.div
-                  animate={{ y: [0, 5, 0] }}
-                  transition={{ duration: 1, repeat: Infinity, delay: 0 }}
+                  animate={{ y: [0, 4, 0], opacity: [0.3, 1, 0.3] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <ChevronDown size={20} />
-                </m.div>
-                <m.div
-                  animate={{ y: [0, 5, 0] }}
-                  transition={{ duration: 1, repeat: Infinity, delay: 0.15 }}
-                >
-                  <ChevronDown size={20} />
-                </m.div>
-                <m.div
-                  animate={{ y: [0, 5, 0] }}
-                  transition={{ duration: 1, repeat: Infinity, delay: 0.3 }}
-                >
-                  <ChevronDown size={20} />
+                  <ChevronsDown size={18} strokeWidth={1.5} />
                 </m.div>
               </div>
             </div>
@@ -94,14 +82,20 @@ export function ScrollHelp() {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Help"
-        className={`flex h-10 w-10 items-center justify-center rounded-full border shadow-sm transition-all duration-300 ${
+        aria-label="Toggle Navigation Help"
+        className={`group relative flex h-10 w-10 items-center justify-center border transition-all duration-500 overflow-hidden ${
           isOpen 
-            ? "bg-[#0052ff] border-[#0052ff] text-white shadow-md shadow-blue-900/20" 
-            : "bg-white/10 backdrop-blur-md border-white/20 text-white/80 hover:bg-white/20 hover:text-white hover:border-white/40"
+            ? "border-[#7bc8ff] bg-[#7bc8ff]/10 text-[#7bc8ff] shadow-[0_0_15px_rgba(123,200,255,0.2)]" 
+            : "border-white/10 bg-[#040a12]/80 text-white/50 hover:border-[#7bc8ff]/40 hover:text-[#7bc8ff] backdrop-blur-md"
         }`}
       >
-        <HelpCircle size={18} />
+        {/* Corner accents for the button */}
+        <div className="absolute top-0 left-0 h-1 w-1 border-t border-l border-current opacity-50"></div>
+        <div className="absolute top-0 right-0 h-1 w-1 border-t border-r border-current opacity-50"></div>
+        <div className="absolute bottom-0 left-0 h-1 w-1 border-b border-l border-current opacity-50"></div>
+        <div className="absolute bottom-0 right-0 h-1 w-1 border-b border-r border-current opacity-50"></div>
+        
+        <Mouse size={16} strokeWidth={1.5} className={`transition-transform duration-500 ${isOpen ? "scale-90" : "group-hover:scale-110"}`} />
       </button>
     </div>
   );
