@@ -174,9 +174,9 @@ export function ImmersiveHome() {
             stagger: 0.1,
             ease: "none",
             scrollTrigger: {
-              trigger: container,
-              start: "top 75%",
-              end: "center 45%",
+              trigger: container.closest(".immersive-chapter"),
+              start: "top 40%",
+              end: "bottom 80%",
               scrub: true,
             },
           });
