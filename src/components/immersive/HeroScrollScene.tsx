@@ -13,14 +13,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 // 200 frames extracted natively at 24fps from the 4K source clip.
 // We used heavy JPEG compression to keep the sequence small while retaining 4K native resolution.
-const FRAME_START = 75;
-const FRAME_COUNT = 150;
+const FRAME_START = 60;
+const FRAME_COUNT = 120;
 const FRAME_W = 3840;
 const FRAME_H = 2160;
 // First N frames load eagerly (covers the dwell + early-scrub range); the rest
 // load on browser idle time so they don't compete with the eager ones for
 // bandwidth/decode time on initial page load.
-const EAGER_FRAMES = 24;
+const EAGER_FRAMES = 60;
 const frameSrc = (i: number) =>
   `/immersive/hero/frame-${i.toString().padStart(3, "0")}.jpg`;
 
@@ -82,7 +82,7 @@ export function HeroScrollScene() {
 
       ctx.globalAlpha = 1;
       ctx.drawImage(lowerImg, 0, 0, canvas.width, canvas.height);
-      
+
       // Removed sub-frame cross-fade interpolation: At 24fps native, 
       // frame pacing is tight enough that hard cuts look buttery smooth,
       // and it cuts our GPU canvas drawing operations in exactly half, 
@@ -129,7 +129,7 @@ export function HeroScrollScene() {
       ScrollTrigger.create({
         trigger: root,
         start: "top top",
-        end: "bottom top",
+        end: "bottom bottom",
         scrub: true,
         animation: timeline,
       });
