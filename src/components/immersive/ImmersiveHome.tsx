@@ -173,40 +173,29 @@ export function ImmersiveHome() {
       revealContainers.forEach((container) => {
         const words = Array.from(container.querySelectorAll(".skiper-word")) as HTMLElement[];
         if (words.length) {
-          // Apply unified starting offset based on section alignment
-          gsap.set(words, { x: startX });
-
-          // Animate opacity with a stagger so words light up one by one
-          gsap.to(words, {
-            opacity: 1,
-            stagger: 0.05,
-            ease: "none",
-            scrollTrigger: {
-              trigger: chapter,
-              start: "top 50%",
-              end: "bottom bottom",
-              scrub: true,
+          // Diagonal fly-in creates a beautiful word-by-word scatter without breaking layout
+          const startX = isRight ? 40 : -40;
+          
+          gsap.fromTo(words,
+            {
+              opacity: 0.2,
+              x: startX,
+              y: 20
             },
-          });
-
-          // Animate X translation WITH an elastic stagger.
-          // To prevent overlapping when moving from left to right, we stagger from the end.
-          // When moving from right to left, we stagger from the start.
-          // This causes the sentence to beautifully stretch and snap together word-by-word.
-          gsap.to(words, {
-            x: 0,
-            stagger: {
-              each: 0.05,
-              from: isRight ? "start" : "end",
-            },
-            ease: "none",
-            scrollTrigger: {
-              trigger: chapter,
-              start: "top 50%",
-              end: "bottom bottom",
-              scrub: true,
-            },
-          });
+            {
+              opacity: 1,
+              x: 0,
+              y: 0,
+              stagger: 0.05,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: chapter,
+                start: "top 50%",
+                end: "bottom bottom",
+                scrub: true,
+              },
+            }
+          );
         }
       });
       });
@@ -289,9 +278,9 @@ export function ImmersiveHome() {
               className={`relative mx-auto flex h-full max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-[clamp(2rem,8vh,10rem)] md:px-8 ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
             >
               <div className="immersive-copy mt-auto max-w-3xl will-change-[transform,opacity]">
-                <h2 className="skiper-text-reveal text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40 flex flex-wrap">
+                <h2 className="skiper-text-reveal text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] flex flex-wrap">
                   {chapter.title.split(" ").map((word, i) => (
-                    <span key={i} className="skiper-word opacity-20 mr-[0.25em] will-change-[transform,opacity]">
+                    <span key={i} className="skiper-word opacity-20 mr-[0.25em] will-change-[transform,opacity] text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40">
                       {word}
                     </span>
                   ))}
