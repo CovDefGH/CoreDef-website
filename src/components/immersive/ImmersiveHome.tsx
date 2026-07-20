@@ -174,7 +174,7 @@ export function ImmersiveHome() {
           ease: "power2.inOut",
           scrollTrigger: {
             trigger: chapter,
-            start: "top 50%",
+            start: "top 75%",
             end: "bottom bottom",
             scrub: true,
           },
