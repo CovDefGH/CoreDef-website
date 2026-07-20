@@ -7,6 +7,7 @@ import { ArrowUpRight, ShieldCheck, Timer, Globe2 } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HeroScrollScene } from "@/components/immersive/HeroScrollScene";
+import { ScrollStack, ScrollStackItem } from "@/components/ui/ScrollStack";
 import { media } from "@/content/media";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -108,80 +109,7 @@ export function ImmersiveHome() {
       const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
       if (motionQuery.matches) return;
 
-      const chapterEls =
-        gsap.utils.toArray<HTMLElement>(".immersive-chapter");
-      chapterEls.forEach((chapter) => {
-        
-        const image = chapter.querySelector(".immersive-chapter-image");
-        const copy = chapter.querySelector(".immersive-copy");
-
-        if (image) {
-          gsap.fromTo(
-            image,
-            { scale: 1.06 },
-            {
-              scale: 1,
-              ease: "none",
-              scrollTrigger: {
-                trigger: chapter,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true,
-              },
-            },
-          );
-        }
-
-        const decor = chapter.querySelector(".chapter-decor");
-        if (decor) {
-          gsap.to(decor, {
-            rotation: 120,
-            yPercent: -150,
-            ease: "none",
-            scrollTrigger: {
-              trigger: chapter,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-            },
-          });
-        }
-
-      /* Copy block entrance: slide in from right */
-      if (copy && copy.children.length > 0) {
-        gsap.from(copy.children, {
-          x: 40,
-          opacity: 0,
-          duration: 1.2,
-          ease: "power4.out",
-          stagger: 0.15,
-          scrollTrigger: {
-            trigger: chapter,
-            start: "top 50%",
-            toggleActions: "play none none reverse",
-          },
-        });
-      }
-
-      // Word-by-word opacity scrub (highlighting effect)
-      // Query all words across the entire chapter so they highlight in sequence (title first, then paragraph)
-      const allWords = Array.from(chapter.querySelectorAll(".skiper-word")) as HTMLElement[];
-      if (allWords.length > 0) {
-        gsap.to(allWords, {
-          opacity: 1,
-          stagger: 0.05,
-          ease: "none",
-          scrollTrigger: {
-            trigger: chapter,
-            start: "top 50%",
-            end: "bottom bottom",
-            scrub: true,
-          },
-        });
-      }
-      });
-
-      // Grid cards reveal (skiper104 style)
+      // GSAP logic for grid and images remains
       const gridCards = gsap.utils.toArray<HTMLElement>(".grid-card-reveal");
       if (gridCards.length) {
         gsap.fromTo(
@@ -233,51 +161,37 @@ export function ImmersiveHome() {
     <div ref={containerRef} className="immersive-page relative bg-[#09111d] text-white">
       <HeroScrollScene />
 
-      {chapters.map((chapter) => (
-        <section id={chapter.id} key={chapter.id} className="immersive-chapter" data-align={chapter.align}>
-          <div className="immersive-chapter-sticky">
+      <ScrollStack useWindowScroll={true}>
+        {chapters.map((chapter) => (
+          <ScrollStackItem key={chapter.id} itemClassName="!p-0 border-none overflow-hidden">
             <div className="absolute inset-0">
               <Image
                 src={chapter.image.src}
                 alt={chapter.image.alt}
                 fill
                 sizes="100vw"
-                className="immersive-chapter-image object-cover will-change-[transform]"
+                className="object-cover"
               />
             </div>
             <div className="absolute inset-0 bg-[#07101a]/40" />
-            <div className="absolute inset-0 hidden md:block bg-[linear-gradient(90deg,rgba(4,10,18,.84)_0%,rgba(4,10,18,.36)_55%,rgba(4,10,18,.58)_100%)]" />
-            <div className="absolute inset-x-0 bottom-0 h-[80%] md:h-[60%] bg-gradient-to-t from-[#040a12] via-[#040a12]/70 to-transparent" />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,10,18,.9)_0%,rgba(4,10,18,.5)_55%,rgba(4,10,18,.7)_100%)]" />
 
-            {/* Decorative GSAP-style shape (technical/nuclear artifact) */}
-            <div className="chapter-decor absolute top-[25%] left-[60%] h-64 w-64 opacity-[0.04] pointer-events-none mix-blend-screen md:left-[75%] will-change-[transform]">
+            {/* Decorative shape */}
+            <div className="absolute top-[10%] right-[10%] h-64 w-64 opacity-5 pointer-events-none mix-blend-screen">
               {chapter.artifact}
             </div>
 
-            <div
-              className={`relative mx-auto flex h-full max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-[clamp(10rem,15vh,16rem)] md:px-8 ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
-            >
-              <div className="immersive-copy relative z-10 mt-auto max-w-3xl will-change-[transform,opacity]">
-                <h2 className="skiper-text-reveal text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] flex flex-wrap text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40 overflow-visible pb-4">
-                  {chapter.title.split(" ").map((word, i) => (
-                    <span key={i} className="skiper-word opacity-20 mr-[0.25em] will-change-opacity">
-                      {word}
-                    </span>
-                  ))}
+            <div className="relative z-10 flex h-full flex-col justify-end p-8 md:p-16">
+              <div className="max-w-3xl">
+                <h2 className="text-4xl md:text-6xl font-semibold tracking-[-.045em] text-white">
+                  {chapter.title}
                 </h2>
-                <p className="skiper-text-reveal mt-[clamp(1rem,4vh,3rem)] max-w-2xl text-[clamp(1rem,2.5vmin,1.5rem)] leading-relaxed text-white/80 font-light text-justify">
-                  {chapter.copy.split(" ").map((word, i, arr) => (
-                    <span key={i}>
-                      <span className="skiper-word opacity-20 will-change-opacity inline-block">
-                        {word}
-                      </span>
-                      {i < arr.length - 1 ? " " : ""}
-                    </span>
-                  ))}
+                <p className="mt-6 text-lg md:text-xl leading-relaxed text-white/80 font-light text-justify">
+                  {chapter.copy}
                 </p>
                 <Link
                   href={chapter.href}
-                  className="group mt-[clamp(1rem,4vh,2rem)] inline-flex items-center gap-3 border-b border-[#7bc8ff] pb-2 text-sm font-medium text-white transition-colors hover:border-white"
+                  className="group mt-10 inline-flex items-center gap-3 border-b border-[#7bc8ff] pb-2 text-sm font-medium text-white transition-colors hover:border-white"
                 >
                   {chapter.action}
                   <ArrowUpRight
@@ -287,9 +201,9 @@ export function ImmersiveHome() {
                 </Link>
               </div>
             </div>
-          </div>
-        </section>
-      ))}
+          </ScrollStackItem>
+        ))}
+      </ScrollStack>
 
       <section className="border-y border-slate-200 bg-[#eaf0f5] text-[#0c1723]">
         <div className="mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-28">
