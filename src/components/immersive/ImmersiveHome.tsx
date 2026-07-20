@@ -163,26 +163,22 @@ export function ImmersiveHome() {
         });
       }
 
-      // Text reveal effect (skiper72 style) for chapter titles and paragraphs
-      const revealContainers = chapter.querySelectorAll(".skiper-text-reveal");
-      revealContainers.forEach((container) => {
-        const words = Array.from(container.querySelectorAll(".skiper-word")) as HTMLElement[];
-        if (words.length) {
-          // Word-by-word opacity scrub (highlighting effect)
-          // Removing transforms from the words prevents Safari from bugging out on the title gradients
-          gsap.to(words, {
-            opacity: 1,
-            stagger: 0.05,
-            ease: "none",
-            scrollTrigger: {
-              trigger: chapter,
-              start: "top 50%",
-              end: "bottom bottom",
-              scrub: true,
-            },
-          });
-        }
-      });
+      // Word-by-word opacity scrub (highlighting effect)
+      // Query all words across the entire chapter so they highlight in sequence (title first, then paragraph)
+      const allWords = Array.from(chapter.querySelectorAll(".skiper-word")) as HTMLElement[];
+      if (allWords.length > 0) {
+        gsap.to(allWords, {
+          opacity: 1,
+          stagger: 0.05,
+          ease: "none",
+          scrollTrigger: {
+            trigger: chapter,
+            start: "top 50%",
+            end: "bottom bottom",
+            scrub: true,
+          },
+        });
+      }
       });
 
       // Grid cards reveal (skiper104 style)
