@@ -11,7 +11,7 @@
 .immersive-hero {
   position: relative;
   margin-top: calc(-4rem - env(safe-area-inset-top));
-  height: 130vh;
+  height: calc(100vh + 800px);
 }
 
 .immersive-chapter {
