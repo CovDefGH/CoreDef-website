@@ -189,9 +189,16 @@ export function ImmersiveHome() {
             },
           });
 
-          // Animate X translation WITHOUT stagger so the paragraph moves as a solid block
+          // Animate X translation WITH an elastic stagger.
+          // To prevent overlapping when moving from left to right, we stagger from the end.
+          // When moving from right to left, we stagger from the start.
+          // This causes the sentence to beautifully stretch and snap together word-by-word.
           gsap.to(words, {
             x: 0,
+            stagger: {
+              each: 0.05,
+              from: isRight ? "start" : "end",
+            },
             ease: "none",
             scrollTrigger: {
               trigger: chapter,
