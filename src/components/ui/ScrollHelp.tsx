@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Mouse, X, ChevronsDown } from "lucide-react";
+import { HelpCircle, X, ChevronsDown } from "lucide-react";
 import { AnimatePresence, m } from "framer-motion";
 
 export function ScrollHelp() {
@@ -36,17 +36,17 @@ export function ScrollHelp() {
         {isOpen && (
           <m.div
             ref={popupRef}
-            initial={{ opacity: 0, y: 10, scale: 0.98 }}
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.98 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="w-64 overflow-hidden rounded-none border border-[#7bc8ff]/20 bg-[#040a12]/95 p-px shadow-[0_0_40px_rgba(123,200,255,0.05)] backdrop-blur-xl"
+            className="w-64 overflow-hidden rounded-2xl border border-white/10 bg-[#040a12]/90 shadow-2xl backdrop-blur-xl"
           >
-            <div className="flex items-center justify-between border-b border-[#7bc8ff]/10 bg-[#07101a]/50 px-4 py-2.5">
-              <span className="immersive-kicker text-[#7bc8ff]/70 text-[0.65rem] tracking-[0.2em]">NAVIGATION</span>
+            <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-4 py-3">
+              <span className="text-xs font-medium text-white/80">How to navigate</span>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-[#7bc8ff]/50 transition-colors hover:text-[#7bc8ff]"
+                className="rounded-full p-1 text-slate-400 transition-colors hover:bg-white/10 hover:text-white"
               >
                 <X size={14} />
               </button>
@@ -83,19 +83,14 @@ export function ScrollHelp() {
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle Navigation Help"
-        className={`group relative flex h-10 w-10 items-center justify-center border transition-all duration-500 overflow-hidden ${
+        className={`flex h-10 w-10 items-center justify-center rounded-full border shadow-sm transition-all duration-300 ${
           isOpen 
-            ? "border-[#7bc8ff] bg-[#7bc8ff]/10 text-[#7bc8ff] shadow-[0_0_15px_rgba(123,200,255,0.2)]" 
-            : "border-white/10 bg-[#040a12]/80 text-white/50 hover:border-[#7bc8ff]/40 hover:text-[#7bc8ff] backdrop-blur-md"
+            ? "bg-[#0052ff] border-[#0052ff] text-white shadow-md shadow-blue-900/20" 
+            : "border-white/20 bg-white/10 text-white/80 hover:border-white/40 hover:bg-white/20 hover:text-white backdrop-blur-md"
         }`}
       >
-        {/* Corner accents for the button */}
-        <div className="absolute top-0 left-0 h-1 w-1 border-t border-l border-current opacity-50"></div>
-        <div className="absolute top-0 right-0 h-1 w-1 border-t border-r border-current opacity-50"></div>
-        <div className="absolute bottom-0 left-0 h-1 w-1 border-b border-l border-current opacity-50"></div>
-        <div className="absolute bottom-0 right-0 h-1 w-1 border-b border-r border-current opacity-50"></div>
-        
-        <Mouse size={16} strokeWidth={1.5} className={`transition-transform duration-500 ${isOpen ? "scale-90" : "group-hover:scale-110"}`} />
+        <HelpCircle size={18} className={`transition-transform duration-500 ${isOpen ? "rotate-90 scale-90 opacity-0" : "rotate-0 scale-100 opacity-100"}`} />
+        <X size={18} className={`absolute transition-transform duration-500 ${isOpen ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-90 opacity-0"}`} />
       </button>
     </div>
   );
