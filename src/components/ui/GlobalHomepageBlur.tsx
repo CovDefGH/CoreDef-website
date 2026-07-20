@@ -17,7 +17,7 @@ export function GlobalHomepageBlur() {
           target="parent"
           height="6rem"
           strength={2}
-          divCount={5}
+          divCount={15}
           zIndex={5}
           opacity={1}
         />

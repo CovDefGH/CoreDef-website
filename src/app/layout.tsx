@@ -55,7 +55,7 @@ export default function RootLayout({
             <NavBar />
             <main
               id="main"
-              className="relative z-10 bg-surface pt-[calc(4rem_+_env(safe-area-inset-top))]"
+              className="relative bg-surface pt-[calc(4rem_+_env(safe-area-inset-top))]"
             >
               {children}
             </main>
