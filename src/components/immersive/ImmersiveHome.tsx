@@ -111,6 +111,10 @@ export function ImmersiveHome() {
       const chapterEls =
         gsap.utils.toArray<HTMLElement>(".immersive-chapter");
       chapterEls.forEach((chapter) => {
+        const align = chapter.getAttribute("data-align") || "left";
+        const isRight = align === "right";
+        const startX = isRight ? 80 : -80;
+        
         const image = chapter.querySelector(".immersive-chapter-image");
         const copy = chapter.querySelector(".immersive-copy");
 
@@ -147,17 +151,14 @@ export function ImmersiveHome() {
         }
 
       /* Copy reveal for non-scrub elements (like the Link button) */
-      if (copy && copy.children.length > 0) {
-        const nonRevealChildren = Array.from(copy.children).filter(
-          (child) => !child.classList.contains("skiper-text-reveal")
-        );
+      if (copy) {
+        const nonRevealChildren = Array.from(copy.querySelectorAll("a"));
         if (nonRevealChildren.length > 0) {
           gsap.from(nonRevealChildren, {
-            y: 50,
+            x: startX,
             opacity: 0,
             duration: 1.2,
             ease: "power4.out",
-            stagger: 0.15,
             scrollTrigger: {
               trigger: chapter,
               start: "top 50%",
@@ -166,26 +167,14 @@ export function ImmersiveHome() {
           });
         }
       }
-      });
 
       // Text reveal effect (skiper72 style) for chapter titles and paragraphs
-      const revealContainers = gsap.utils.toArray<HTMLElement>(".skiper-text-reveal");
+      const revealContainers = chapter.querySelectorAll(".skiper-text-reveal");
       revealContainers.forEach((container) => {
         const words = Array.from(container.querySelectorAll(".skiper-word")) as HTMLElement[];
         if (words.length) {
-          // Group words by their physical line based on offsetTop
-          let currentLineTop = -1;
-          let lineIndex = -1;
-          words.forEach((word) => {
-            // Use 15px threshold to reliably detect line breaks
-            if (Math.abs(word.offsetTop - currentLineTop) > 15) {
-              currentLineTop = word.offsetTop;
-              lineIndex++;
-            }
-            // Even lines start from left (-80), Odd lines start from right (80)
-            const startX = lineIndex % 2 === 0 ? -80 : 80;
-            gsap.set(word, { x: startX });
-          });
+          // Apply unified starting offset based on section alignment
+          gsap.set(words, { x: startX });
 
           // Animate opacity with a stagger so words light up one by one
           gsap.to(words, {
@@ -193,25 +182,26 @@ export function ImmersiveHome() {
             stagger: 0.05,
             ease: "none",
             scrollTrigger: {
-              trigger: container.closest(".immersive-chapter"),
+              trigger: chapter,
               start: "top 50%",
               end: "bottom bottom",
               scrub: true,
             },
           });
 
-          // Animate X translation WITHOUT stagger so lines move as solid blocks
+          // Animate X translation WITHOUT stagger so the paragraph moves as a solid block
           gsap.to(words, {
             x: 0,
             ease: "none",
             scrollTrigger: {
-              trigger: container.closest(".immersive-chapter"),
+              trigger: chapter,
               start: "top 50%",
               end: "bottom bottom",
               scrub: true,
             },
           });
         }
+      });
       });
 
       // Grid cards reveal (skiper104 style)
@@ -268,7 +258,7 @@ export function ImmersiveHome() {
 
 
       {chapters.map((chapter) => (
-        <section id={chapter.id} key={chapter.id} className="immersive-chapter">
+        <section id={chapter.id} key={chapter.id} className="immersive-chapter" data-align={chapter.align}>
           <div className="immersive-chapter-sticky">
             <div className="absolute inset-0">
               <Image
