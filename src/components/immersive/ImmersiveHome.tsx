@@ -255,9 +255,9 @@ export function ImmersiveHome() {
             </div>
 
             <div
-              className={`relative mx-auto flex h-full max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-[clamp(2rem,8vh,10rem)] md:px-8 ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
+              className={`relative mx-auto flex h-full max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-[clamp(10rem,15vh,16rem)] md:px-8 ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
             >
-              <div className="immersive-copy mt-auto max-w-3xl will-change-[transform,opacity]">
+              <div className="immersive-copy relative z-10 mt-auto max-w-3xl will-change-[transform,opacity]">
                 <h2 className="skiper-text-reveal text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] flex flex-wrap text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40 overflow-visible pb-4">
                   {chapter.title.split(" ").map((word, i) => (
                     <span key={i} className="skiper-word opacity-20 mr-[0.25em] will-change-opacity">

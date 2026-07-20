@@ -178,7 +178,7 @@ export function HeroScrollScene() {
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,28,.73)_0%,rgba(5,18,28,.38)_43%,rgba(5,18,28,.04)_72%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(5,18,28,.38)_0%,transparent_52%)]" />
 
-        <div ref={contentRef} className="relative mx-auto flex h-dvh max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-[clamp(2rem,8vh,10rem)] md:px-8 will-change-[transform,opacity]">
+        <div ref={contentRef} className="relative z-10 mx-auto flex h-dvh max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-[clamp(10rem,15vh,16rem)] md:px-8 will-change-[transform,opacity]">
           <div className="mt-auto max-w-3xl">
             <h1
               className="mt-5 max-w-5xl text-[clamp(2rem,5vmin,6rem)] leading-[1.05] font-semibold tracking-[-.02em] text-white md:font-bold"
