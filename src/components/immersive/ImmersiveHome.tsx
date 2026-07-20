@@ -282,13 +282,10 @@ export function ImmersiveHome() {
               className={`relative mx-auto flex h-full max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-[clamp(2rem,8vh,10rem)] md:px-8 ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
             >
               <div className="immersive-copy mt-auto max-w-3xl will-change-[transform,opacity]">
-                <h2 className="skiper-text-reveal text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40">
-                  {chapter.title.split(" ").map((word, i, arr) => (
-                    <span key={i}>
-                      <span className="skiper-word opacity-20 will-change-[transform,opacity] inline-block">
-                        {word}
-                      </span>
-                      {i < arr.length - 1 ? " " : ""}
+                <h2 className="skiper-text-reveal text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40 flex flex-wrap">
+                  {chapter.title.split(" ").map((word, i) => (
+                    <span key={i} className="skiper-word opacity-20 mr-[0.25em] will-change-[transform,opacity]">
+                      {word}
                     </span>
                   ))}
                 </h2>
