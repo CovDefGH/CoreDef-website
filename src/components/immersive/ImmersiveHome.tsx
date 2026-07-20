@@ -111,9 +111,6 @@ export function ImmersiveHome() {
       const chapterEls =
         gsap.utils.toArray<HTMLElement>(".immersive-chapter");
       chapterEls.forEach((chapter) => {
-        const align = chapter.getAttribute("data-align") || "left";
-        const isRight = align === "right";
-        const startX = isRight ? 80 : -80;
         
         const image = chapter.querySelector(".immersive-chapter-image");
         const copy = chapter.querySelector(".immersive-copy");
@@ -155,7 +152,7 @@ export function ImmersiveHome() {
         const nonRevealChildren = Array.from(copy.querySelectorAll("a"));
         if (nonRevealChildren.length > 0) {
           gsap.from(nonRevealChildren, {
-            x: startX,
+            x: 40,
             opacity: 0,
             duration: 1.2,
             ease: "power4.out",
@@ -174,12 +171,12 @@ export function ImmersiveHome() {
         const words = Array.from(container.querySelectorAll(".skiper-word")) as HTMLElement[];
         if (words.length) {
           // Diagonal fly-in creates a beautiful word-by-word scatter without breaking layout
-          const startX = isRight ? 40 : -40;
+          // All text slides in from the right (x: 40)
           
           gsap.fromTo(words,
             {
               opacity: 0.2,
-              x: startX,
+              x: 40,
               y: 20
             },
             {
@@ -278,9 +275,9 @@ export function ImmersiveHome() {
               className={`relative mx-auto flex h-full max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-[clamp(2rem,8vh,10rem)] md:px-8 ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
             >
               <div className="immersive-copy mt-auto max-w-3xl will-change-[transform,opacity]">
-                <h2 className="skiper-text-reveal text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] flex flex-wrap">
+                <h2 className="skiper-text-reveal text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] flex flex-wrap text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40 overflow-visible pb-4">
                   {chapter.title.split(" ").map((word, i) => (
-                    <span key={i} className="skiper-word opacity-20 mr-[0.25em] will-change-[transform,opacity] text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40">
+                    <span key={i} className="skiper-word opacity-20 mr-[0.25em] will-change-[transform,opacity]">
                       {word}
                     </span>
                   ))}
