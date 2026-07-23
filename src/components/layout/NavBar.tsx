@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useLenis } from "lenis/react";
 import { Menu, X } from "lucide-react";
 
 const LINKS = [
@@ -17,8 +18,21 @@ const isActive = (pathname: string, href: string) =>
 
 export function NavBar() {
   const pathname = usePathname();
+  const lenis = useLenis();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  // Clicking a link to the page you're already on isn't a real navigation
+  // to Next's router (the URL doesn't change), so nothing normally happens —
+  // including no scroll-to-top. Intercept that case and do it ourselves.
+  const handleNavClick =
+    (href: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (pathname === href) {
+        e.preventDefault();
+        lenis?.scrollTo(0, { duration: 1.5 });
+      }
+      setOpen(false);
+    };
 
   // Only the Home hero is a full-bleed dark video; every other page has a
   // white background right under the nav, so only Home gets the transparent
@@ -55,7 +69,7 @@ export function NavBar() {
         <Link
           href="/"
           className="flex items-center gap-2.5"
-          onClick={() => setOpen(false)}
+          onClick={handleNavClick("/")}
         >
           <Image
             src="/logo.png"
@@ -80,6 +94,7 @@ export function NavBar() {
                 <Link
                   href={href}
                   aria-current={active ? "page" : undefined}
+                  onClick={handleNavClick(href)}
                   className={`border-b-2 pb-1 text-sm transition-colors ${
                     active
                       ? solid
@@ -99,6 +114,7 @@ export function NavBar() {
             {/* "Secure Login" -> "Request Access" (Open Decision 3) -> "Contact Us" */}
             <Link
               href="/contact"
+              onClick={handleNavClick("/contact")}
               className="border-primary bg-primary hover:border-ink hover:bg-ink border px-4 py-2 text-sm font-medium text-white transition-colors"
             >
               Contact Us
@@ -131,7 +147,7 @@ export function NavBar() {
                   <Link
                     href={href}
                     aria-current={active ? "page" : undefined}
-                    onClick={() => setOpen(false)}
+                    onClick={handleNavClick(href)}
                     className={`block py-3 text-sm ${
                       active ? "text-primary font-medium" : "text-ink-muted"
                     }`}
@@ -144,7 +160,7 @@ export function NavBar() {
             <li className="pt-3">
               <Link
                 href="/contact"
-                onClick={() => setOpen(false)}
+                onClick={handleNavClick("/contact")}
                 className="border-primary bg-primary block border px-4 py-2.5 text-center text-sm font-medium text-white"
               >
                 Contact Us
