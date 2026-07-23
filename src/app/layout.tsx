@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   },
   description:
     "Data analytics and secure communications for nuclear, energy, defense, and industrial operations. Home of EDIM and ENADOX.",
+  verification: { google: "UuTw9cncG44EELkIwHlPGDlYQkfcboqEc-ZJQ-rc2x4" },
 };
 
 // viewport-fit=cover: lets the hero bleed under the Dynamic Island/status bar
