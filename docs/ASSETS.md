@@ -43,7 +43,7 @@ playsinline>` with a poster; `prefers-reduced-motion` renders the poster still o
 ## Typography
 
 - **Display / headings:** Helvetica — native system font stack (`"Helvetica Neue", Helvetica,
-  Arial, ...`) applied to `h1`–`h4` in `globals.css`. Not on Google Fonts / no self-hostable
+Arial, ...`) applied to `h1`–`h4` in `globals.css`. Not on Google Fonts / no self-hostable
   web-font version exists, so it isn't loaded via `next/font`; renders as real Helvetica on
   macOS/iOS and Arial (metrically near-identical) elsewhere.
 - **Body:** Inter (humanist), loaded via `next/font/google` (self-hosted, `font-display: swap`)

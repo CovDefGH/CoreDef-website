@@ -22,10 +22,14 @@ type Chapter = {
   artifact: React.ReactNode;
 };
 
-
-
 const AtomArtifact = (
-  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-[#7bc8ff] w-full h-full">
+  <svg
+    viewBox="0 0 100 100"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="0.5"
+    className="h-full w-full text-[#7bc8ff]"
+  >
     <ellipse cx="50" cy="50" rx="45" ry="15" transform="rotate(30 50 50)" />
     <ellipse cx="50" cy="50" rx="45" ry="15" transform="rotate(90 50 50)" />
     <ellipse cx="50" cy="50" rx="45" ry="15" transform="rotate(150 50 50)" />
@@ -35,7 +39,13 @@ const AtomArtifact = (
 );
 
 const RadarArtifact = (
-  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-[#7bc8ff] w-full h-full">
+  <svg
+    viewBox="0 0 100 100"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="0.5"
+    className="h-full w-full text-[#7bc8ff]"
+  >
     <circle cx="50" cy="50" r="45" strokeDasharray="2 4" />
     <circle cx="50" cy="50" r="30" />
     <circle cx="50" cy="50" r="15" strokeDasharray="4 2" />
@@ -46,7 +56,13 @@ const RadarArtifact = (
 );
 
 const GridArtifact = (
-  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-[#7bc8ff] w-full h-full">
+  <svg
+    viewBox="0 0 100 100"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="0.5"
+    className="h-full w-full text-[#7bc8ff]"
+  >
     <rect x="10" y="10" width="80" height="80" strokeDasharray="4 4" />
     <line x1="30" y1="10" x2="30" y2="90" opacity="0.5" />
     <line x1="50" y1="10" x2="50" y2="90" opacity="0.5" />
@@ -108,10 +124,8 @@ export function ImmersiveHome() {
       const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
       if (motionQuery.matches) return;
 
-      const chapterEls =
-        gsap.utils.toArray<HTMLElement>(".immersive-chapter");
+      const chapterEls = gsap.utils.toArray<HTMLElement>(".immersive-chapter");
       chapterEls.forEach((chapter) => {
-        
         const image = chapter.querySelector(".immersive-chapter-image");
         const copy = chapter.querySelector(".immersive-copy");
 
@@ -147,39 +161,41 @@ export function ImmersiveHome() {
           });
         }
 
-      /* Copy block entrance: slide in from right */
-      if (copy && copy.children.length > 0) {
-        gsap.from(copy.children, {
-          x: 40,
-          opacity: 0,
-          duration: 1.2,
-          ease: "power4.out",
-          stagger: 0.15,
-          scrollTrigger: {
-            trigger: chapter,
-            start: "top 50%",
-            toggleActions: "play none none reverse",
-          },
-        });
-      }
+        /* Copy block entrance: slide in from right */
+        if (copy && copy.children.length > 0) {
+          gsap.from(copy.children, {
+            x: 40,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power4.out",
+            stagger: 0.15,
+            scrollTrigger: {
+              trigger: chapter,
+              start: "top 50%",
+              toggleActions: "play none none reverse",
+            },
+          });
+        }
 
-      // Word-by-word opacity scrub (highlighting effect)
-      // Query all words across the entire chapter so they highlight in sequence (title first, then paragraph)
-      const allWords = Array.from(chapter.querySelectorAll(".skiper-word")) as HTMLElement[];
-      if (allWords.length > 0) {
-        gsap.to(allWords, {
-          opacity: 1,
-          duration: 2,
-          stagger: 0.1,
-          ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: chapter,
-            start: "top 75%",
-            end: "bottom bottom",
-            scrub: true,
-          },
-        });
-      }
+        // Word-by-word opacity scrub (highlighting effect)
+        // Query all words across the entire chapter so they highlight in sequence (title first, then paragraph)
+        const allWords = Array.from(
+          chapter.querySelectorAll(".skiper-word"),
+        ) as HTMLElement[];
+        if (allWords.length > 0) {
+          gsap.to(allWords, {
+            opacity: 1,
+            duration: 2,
+            stagger: 0.1,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: chapter,
+              start: "top 75%",
+              end: "bottom bottom",
+              scrub: true,
+            },
+          });
+        }
       });
 
       // Grid cards reveal (skiper104 style)
@@ -199,12 +215,14 @@ export function ImmersiveHome() {
               start: "top 80%",
               toggleActions: "play none none reverse",
             },
-          }
+          },
         );
       }
 
       // Image reveal (skiper71 style)
-      const imageReveals = gsap.utils.toArray<HTMLElement>(".image-reveal-container");
+      const imageReveals = gsap.utils.toArray<HTMLElement>(
+        ".image-reveal-container",
+      );
       imageReveals.forEach((container) => {
         gsap.fromTo(
           container,
@@ -219,7 +237,7 @@ export function ImmersiveHome() {
               end: "center 60%",
               scrub: 1,
             },
-          }
+          },
         );
       });
 
@@ -231,11 +249,19 @@ export function ImmersiveHome() {
   }, []);
 
   return (
-    <div ref={containerRef} className="immersive-page relative bg-[#09111d] text-white">
+    <div
+      ref={containerRef}
+      className="immersive-page relative bg-[#09111d] text-white"
+    >
       <HeroScrollScene />
 
       {chapters.map((chapter) => (
-        <section id={chapter.id} key={chapter.id} className="immersive-chapter" data-align={chapter.align}>
+        <section
+          id={chapter.id}
+          key={chapter.id}
+          className="immersive-chapter"
+          data-align={chapter.align}
+        >
           <div className="immersive-chapter-sticky">
             <div className="absolute inset-0">
               <Image
@@ -247,11 +273,11 @@ export function ImmersiveHome() {
               />
             </div>
             <div className="absolute inset-0 bg-[#07101a]/30" />
-            <div className="absolute inset-0 hidden md:block bg-[linear-gradient(90deg,rgba(4,10,18,.74)_0%,rgba(4,10,18,.26)_55%,rgba(4,10,18,.48)_100%)]" />
-            <div className="absolute inset-x-0 bottom-0 h-[80%] md:h-[60%] bg-gradient-to-t from-[#040a12]/90 via-[#040a12]/60 to-transparent" />
+            <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(4,10,18,.74)_0%,rgba(4,10,18,.26)_55%,rgba(4,10,18,.48)_100%)] md:block" />
+            <div className="absolute inset-x-0 bottom-0 h-[80%] bg-gradient-to-t from-[#040a12]/90 via-[#040a12]/60 to-transparent md:h-[60%]" />
 
             {/* Decorative GSAP-style shape (technical/nuclear artifact) */}
-            <div className="chapter-decor absolute top-[25%] left-[60%] h-64 w-64 opacity-[0.04] pointer-events-none mix-blend-screen md:left-[75%] will-change-[transform]">
+            <div className="chapter-decor pointer-events-none absolute top-[25%] left-[60%] h-64 w-64 opacity-[0.04] mix-blend-screen will-change-[transform] md:left-[75%]">
               {chapter.artifact}
             </div>
 
@@ -259,21 +285,27 @@ export function ImmersiveHome() {
               className={`relative mx-auto flex h-full max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-[clamp(10rem,15vh,16rem)] md:px-8 ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
             >
               <div className="immersive-copy relative z-10 mt-auto max-w-3xl will-change-[transform,opacity]">
-                <h2 className="skiper-text-reveal text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] flex flex-wrap text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#7bc8ff]/40 overflow-visible pb-4">
+                <h2 className="skiper-text-reveal flex flex-wrap overflow-visible bg-gradient-to-br from-white via-white to-[#7bc8ff]/40 bg-clip-text pb-4 text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] text-transparent">
                   {chapter.title.split(" ").map((word, wordIndex) => (
-                    <span key={wordIndex} className="inline-block whitespace-nowrap mr-[0.25em]">
+                    <span
+                      key={wordIndex}
+                      className="mr-[0.25em] inline-block whitespace-nowrap"
+                    >
                       {word.split("").map((char, charIndex) => (
-                        <span key={charIndex} className="skiper-word opacity-20 will-change-opacity">
+                        <span
+                          key={charIndex}
+                          className="skiper-word will-change-opacity opacity-20"
+                        >
                           {char}
                         </span>
                       ))}
                     </span>
                   ))}
                 </h2>
-                <p className="skiper-text-reveal mt-[clamp(1rem,4vh,3rem)] max-w-2xl text-[clamp(1rem,2.5vmin,1.5rem)] leading-relaxed text-white/80 font-light text-justify">
+                <p className="skiper-text-reveal mt-[clamp(1rem,4vh,3rem)] max-w-2xl text-justify text-[clamp(1rem,2.5vmin,1.5rem)] leading-relaxed font-light text-white/80">
                   {chapter.copy.split(" ").map((word, i, arr) => (
                     <span key={i}>
-                      <span className="skiper-word opacity-20 will-change-opacity inline-block">
+                      <span className="skiper-word will-change-opacity inline-block opacity-20">
                         {word}
                       </span>
                       {i < arr.length - 1 ? " " : ""}
@@ -303,7 +335,8 @@ export function ImmersiveHome() {
               Engineered for environments where failure is not an option.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-[#405063] md:text-xl">
-              Two platforms: EDIM for predictive analytics, ENADOX for secure communications in degraded conditions.
+              Two platforms: EDIM for predictive analytics, ENADOX for secure
+              communications in degraded conditions.
             </p>
           </div>
         </div>
@@ -319,8 +352,6 @@ export function ImmersiveHome() {
               We build for sectors that depend on accurate data and secure
               operations: energy, defense, finance, and AI.
             </p>
-            
-
           </div>
 
           <div className="grid-cards-container grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6">
@@ -328,7 +359,7 @@ export function ImmersiveHome() {
               <Link
                 href={item.href}
                 key={item.caption}
-                className="grid-card-reveal group relative block h-[280px] md:h-[360px] overflow-hidden rounded-2xl bg-slate-100 shadow-sm will-change-[transform,opacity]"
+                className="grid-card-reveal group relative block h-[280px] overflow-hidden rounded-2xl bg-slate-100 shadow-sm will-change-[transform,opacity] md:h-[360px]"
               >
                 <div className="image-reveal-container absolute inset-0 will-change-[transform]">
                   <Image

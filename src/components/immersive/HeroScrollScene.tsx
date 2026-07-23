@@ -92,10 +92,10 @@ export function HeroScrollScene() {
 
       ctx.globalAlpha = 1;
       ctx.drawImage(lowerImg, 0, 0, canvas.width, canvas.height);
-      
-      // Removed sub-frame cross-fade interpolation: At 24fps native, 
+
+      // Removed sub-frame cross-fade interpolation: At 24fps native,
       // frame pacing is tight enough that hard cuts look buttery smooth,
-      // and it cuts our GPU canvas drawing operations in exactly half, 
+      // and it cuts our GPU canvas drawing operations in exactly half,
       // instantly eliminating the "laggy" scroll feeling.
     };
 
@@ -106,11 +106,14 @@ export function HeroScrollScene() {
       img.onload = () => {
         render(frameObj.frame);
       };
-      img.decode().then(() => {
-        render(frameObj.frame);
-      }).catch((e) => {
-        console.warn(`[Hero] Frame ${i} decode failed`, e);
-      });
+      img
+        .decode()
+        .then(() => {
+          render(frameObj.frame);
+        })
+        .catch((e) => {
+          console.warn(`[Hero] Frame ${i} decode failed`, e);
+        });
       images[i - 1] = img;
     };
 
@@ -121,7 +124,8 @@ export function HeroScrollScene() {
       return;
     }
 
-    for (let i = FRAME_START; i <= FRAME_START + EAGER_FRAMES; i++) loadFrame(i);
+    for (let i = FRAME_START; i <= FRAME_START + EAGER_FRAMES; i++)
+      loadFrame(i);
     // Track cancellers so unmounting stops not-yet-fired idle loads instead
     // of letting them keep decoding (and retaining) frames after the fact.
     const idleCancels: Array<() => void> = [];
@@ -162,7 +166,11 @@ export function HeroScrollScene() {
         },
         0.03,
       );
-      timeline.to(canvas, { scale: 1.13, xPercent: -5, yPercent: -2, duration: 0.97 }, 0.03);
+      timeline.to(
+        canvas,
+        { scale: 1.13, xPercent: -5, yPercent: -2, duration: 0.97 },
+        0.03,
+      );
     }, root);
 
     return () => {
@@ -172,42 +180,39 @@ export function HeroScrollScene() {
   }, []);
 
   return (
-    <section
-      ref={rootRef}
-      className="immersive-hero"
-    >
+    <section ref={rootRef} className="immersive-hero">
       {/* CSS sticky pin — reliable across all browsers, no GSAP spacer issues */}
-      <div
-        className="sticky top-0 h-screen overflow-hidden bg-[#09111d]"
-      >
+      <div className="sticky top-0 h-screen overflow-hidden bg-[#09111d]">
         <Image
           src={fallbackSrc}
           alt="Hero background"
           fill
           priority
           onError={() => setFallbackSrc("/hero-poster.jpg")}
-          className="object-cover object-[58%_45%] will-change-[transform] transform-gpu"
+          className="transform-gpu object-cover object-[58%_45%] will-change-[transform]"
         />
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 h-full w-full object-cover object-[58%_45%] will-change-[transform] transform-gpu"
+          className="absolute inset-0 h-full w-full transform-gpu object-cover object-[58%_45%] will-change-[transform]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,28,.73)_0%,rgba(5,18,28,.38)_43%,rgba(5,18,28,.04)_72%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(5,18,28,.38)_0%,transparent_52%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent md:hidden" />
 
-        <div ref={contentRef} className="relative z-10 mx-auto flex h-screen max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-[calc(clamp(10rem,15vh,16rem)_+_env(safe-area-inset-bottom))] md:px-8 will-change-[transform,opacity]">
+        <div
+          ref={contentRef}
+          className="relative z-10 mx-auto flex h-screen max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-[calc(clamp(10rem,15vh,16rem)_+_env(safe-area-inset-bottom))] will-change-[transform,opacity] md:px-8"
+        >
           <div className="mt-auto max-w-3xl">
-            <h1
-              className="mt-5 max-w-5xl text-[clamp(2rem,5vmin,6rem)] leading-[1.05] font-semibold tracking-[-.02em] text-white md:font-bold"
-            >
-              Precision analytics <br className="hidden md:block" /> for critical infrastructure.
-
+            <h1 className="mt-5 max-w-5xl text-[clamp(2rem,5vmin,6rem)] leading-[1.05] font-semibold tracking-[-.02em] text-white md:font-bold">
+              Precision analytics <br className="hidden md:block" /> for
+              critical infrastructure.
             </h1>
-            <p
-              className="mt-7 max-w-2xl text-[clamp(1rem,2vmin,1.5rem)] leading-relaxed text-white/82 text-justify"
-            >
-              Core Defenses builds EDIM, a physics-based data assimilation platform for nuclear operations, and ENADOX, a self-healing data protection layer for secure communications in contested and degraded environments.
+            <p className="mt-7 max-w-2xl text-justify text-[clamp(1rem,2vmin,1.5rem)] leading-relaxed text-white/82">
+              Core Defenses builds EDIM, a physics-based data assimilation
+              platform for nuclear operations, and ENADOX, a self-healing data
+              protection layer for secure communications in contested and
+              degraded environments.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <CTALink href="/solutions">Explore Solutions</CTALink>

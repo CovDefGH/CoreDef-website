@@ -62,9 +62,9 @@ export default function EnadoxPage() {
             Talk through your mission requirements
           </h2>
           <p className="text-ink-muted mt-1 max-w-2xl text-justify text-sm">
-            Tell us about the environments you operate in and the platforms
-            you need to keep connected. Our team will walk you through how
-            ENADOX fits.
+            Tell us about the environments you operate in and the platforms you
+            need to keep connected. Our team will walk you through how ENADOX
+            fits.
           </p>
         </div>
         <CTALink href="/contact">Contact the ENADOX Team</CTALink>

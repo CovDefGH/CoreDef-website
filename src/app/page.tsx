@@ -17,7 +17,7 @@ export default function Home() {
             "if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }",
         }}
       />
-        <ImmersiveHome />
+      <ImmersiveHome />
     </div>
   );
 }

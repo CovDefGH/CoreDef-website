@@ -69,7 +69,10 @@ export function ScrollSequence({ className, sequence }: ScrollSequenceProps) {
 
       const bounds = container.getBoundingClientRect();
       // Optimize for mobile: force a lower DPR on small screens to prevent GPU lag
-      const dpr = window.innerWidth <= 768 ? 1 : Math.min(window.devicePixelRatio || 1, 2);
+      const dpr =
+        window.innerWidth <= 768
+          ? 1
+          : Math.min(window.devicePixelRatio || 1, 2);
       const width = Math.max(1, Math.round(bounds.width * dpr));
       const height = Math.max(1, Math.round(bounds.height * dpr));
 
@@ -151,7 +154,7 @@ export function ScrollSequence({ className, sequence }: ScrollSequenceProps) {
           ) {
             load(index);
           }
-          
+
           // LRU Cleanup to prevent memory bloat on mobile
           const maxRadius = preloadRadius * 2;
           for (const key of imagesRef.current.keys()) {
@@ -163,7 +166,7 @@ export function ScrollSequence({ className, sequence }: ScrollSequenceProps) {
               imagesRef.current.delete(key);
             }
           }
-          
+
           queueDraw();
         },
       });

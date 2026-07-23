@@ -86,6 +86,7 @@ copy that sounds inspirational rather than factual. It also rejects the dark ste
 considered and abandoned in the original brief.
 
 **Key Characteristics:**
+
 - Sharp corners everywhere (0-radius) — rigidity and precision over friendliness
 - Depth via 1px border-color shift, never a shadow
 - Electric Blue + Sentinel Cyan on a white/cool-slate surface, not navy-and-black
@@ -98,20 +99,24 @@ A light, high-contrast palette: white and cool-slate surfaces carry the reading 
 Electric Blue reserved for action and Sentinel Cyan for data/interactive accents.
 
 ### Primary
+
 - **Electric Blue** (`#0052ff`): primary actions (buttons, active nav state, links) and critical
   status. Darkens to **Electric Blue Dark** (`#0040cc`) on hover — never a tint, always a deeper
   shade of the same hue.
 
 ### Secondary
+
 - **Sentinel Cyan** (`#00d1ff`): data visualization, the hero's secondary headline, hover border
   states, and interactive highlights. Used sparingly — it marks "this is live/interactive/data," not
   decoration.
 
 ### Tertiary
+
 - **Deep Slate** (`#0f172a`): high-contrast body text (`ink`) and structural elements (logo wordmark,
   headings).
 
 ### Neutral
+
 - **Cool Slate** (`#f8fafc`): surface layering — alternating section backgrounds (`bg-surface`) that
   separate content bands without a border or shadow.
 - **Slate Line** (`#e2e8f0`): the single border color used for every outline, card edge, and divider
@@ -121,6 +126,7 @@ Electric Blue reserved for action and Sentinel Cyan for data/interactive accents
   surface backgrounds (NFR-A11Y-3).
 
 ### Named Rules
+
 **The One Accent Rule.** Electric Blue is the only saturated color used for interactive commitment
 (buttons, active states). Sentinel Cyan is a highlight, never a CTA fill. Nothing else in the palette
 competes for attention.
@@ -135,6 +141,7 @@ as neutral and technical for headings; Inter carries long-form body copy at high
 sit on the same `-0.02em` heading letter-spacing for a tightened, engineered feel without crowding.
 
 ### Hierarchy
+
 - **Display** (700, `clamp(1.5rem, 7vmin, 3rem)`, 1.05 line-height): hero H1 only. Sized off `vmin`
   (the smaller of viewport width/height) so it compresses proportionally on short viewports instead
   of overflowing under the nav — not a fixed-breakpoint jump.
@@ -145,6 +152,7 @@ sit on the same `-0.02em` heading letter-spacing for a tightened, engineered fee
 - **Label** (500, 0.75rem, 0.1em tracking, uppercase): tags, status badges, department filters.
 
 ### Named Rules
+
 **The No-Flourish Rule.** No italics, no serif accents, no display-font body copy. One display face,
 one body face, nothing decorative layered on top.
 
@@ -157,6 +165,7 @@ and — on interactive cards only (`MotionCard`) — a subtle `-4px` `translateY
 from `transform`, never from shadow. Both are no-ops under `prefers-reduced-motion: reduce`.
 
 ### Named Rules
+
 **The No-Shadow Rule.** `box-shadow` is prohibited as a depth cue anywhere in the system. Focus rings
 use a 2px solid outline (`:focus-visible`), not a shadow-based glow. If a component currently uses a
 shadow for elevation or focus, that is a bug against this spec, not a style choice.
@@ -164,6 +173,7 @@ shadow for elevation or focus, that is a bug against this spec, not a style choi
 ## 5. Components
 
 ### Buttons (`CTALink`)
+
 - **Shape:** sharp corners, 0-radius, always.
 - **Primary:** Electric Blue fill, white text, border in the same blue; hover darkens fill+border to
   Electric Blue Dark. Padding scales fluidly via `clamp()` in the hero (compact variant) or fixed
@@ -174,6 +184,7 @@ shadow for elevation or focus, that is a bug against this spec, not a style choi
   glassmorphism in the system — never applied to cards or nav.
 
 ### Cards (`MotionCard`, `StatCard`)
+
 - **Corner Style:** 0-radius.
 - **Background:** white, or `surface` when nested on a white section for contrast.
 - **Shadow Strategy:** none, ever — see Elevation.
@@ -182,6 +193,7 @@ shadow for elevation or focus, that is a bug against this spec, not a style choi
 - **Internal Padding:** 24px (`p-6`) standard, 32px (`p-8`) for feature-level cards.
 
 ### Navigation (`NavBar`)
+
 - Fixed, full-bleed header. On the home hero only, starts fully transparent (logo/links in white,
   brightness-inverted mark) and crossfades to solid `bg-white/95` + `line` border + `backdrop-blur-md`
   once scrolled past ~64px — blur and opacity alone carry the separation from the page; no shadow.
@@ -189,6 +201,7 @@ shadow for elevation or focus, that is a bug against this spec, not a style choi
 - Mobile: full-width drawer, always solid white, same link treatment stacked vertically.
 
 ### Hero (`HeroVideo` + fluid hero block)
+
 - Full-bleed looping video (static poster under reduced motion) with a directional dark scrim, just
   legible enough for white text. All hero typography, spacing, and button padding are sized via
   `clamp(min, Nvmin, max)` so the whole composition compresses together on short viewports rather than
@@ -197,6 +210,7 @@ shadow for elevation or focus, that is a bug against this spec, not a style choi
 ## 6. Do's and Don'ts
 
 ### Do:
+
 - **Do** keep every corner at 0-radius (`--radius-none`) — cards, buttons, images, badges.
 - **Do** use a 1px `--color-line` border and a color shift (never a shadow) to communicate hover/focus/active depth.
 - **Do** size hero-scale type and spacing with `vmin`-based `clamp()` so short viewports compress proportionally instead of overflowing or requiring a new breakpoint.
@@ -204,6 +218,7 @@ shadow for elevation or focus, that is a bug against this spec, not a style choi
 - **Do** gate every animation on `prefers-reduced-motion: no-preference`, with content visible-by-default so nothing ships blank.
 
 ### Don't:
+
 - **Don't** use `box-shadow` as a depth/elevation cue anywhere in the system, including the nav.
 - **Don't** write "mission-critical", "cutting-edge", "world-class", "redefining", or other flowery/AI-marketing adjectives — flagged and removed from this site's copy already.
 - **Don't** write philosophy-voiced copy ("we believe…", "our philosophy…") or contrast-aphorisms ("measurement over assumption") — state the fact directly instead.

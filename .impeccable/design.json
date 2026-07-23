@@ -8,7 +8,16 @@
         "role": "primary",
         "displayName": "Electric Blue",
         "canonical": "oklch(52% 0.24 264)",
-        "tonalRamp": ["#00113d", "#001f70", "#0032a3", "#0040cc", "#0052ff", "#3d78ff", "#7ca3ff", "#c2d6ff"]
+        "tonalRamp": [
+          "#00113d",
+          "#001f70",
+          "#0032a3",
+          "#0040cc",
+          "#0052ff",
+          "#3d78ff",
+          "#7ca3ff",
+          "#c2d6ff"
+        ]
       },
       "primary-dark": {
         "role": "primary-hover",
@@ -20,13 +29,31 @@
         "role": "secondary",
         "displayName": "Sentinel Cyan",
         "canonical": "oklch(80% 0.14 220)",
-        "tonalRamp": ["#003a45", "#00566a", "#00799b", "#009cc7", "#00d1ff", "#5fe0ff", "#a3edff", "#dcf9ff"]
+        "tonalRamp": [
+          "#003a45",
+          "#00566a",
+          "#00799b",
+          "#009cc7",
+          "#00d1ff",
+          "#5fe0ff",
+          "#a3edff",
+          "#dcf9ff"
+        ]
       },
       "ink": {
         "role": "tertiary",
         "displayName": "Deep Slate",
         "canonical": "oklch(21% 0.04 260)",
-        "tonalRamp": ["#05070d", "#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#cbd5e1"]
+        "tonalRamp": [
+          "#05070d",
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1"
+        ]
       },
       "ink-muted": {
         "role": "text-secondary",
@@ -54,17 +81,45 @@
       }
     },
     "typographyMeta": {
-      "display": { "displayName": "Hero Display", "purpose": "Home hero H1 only. vmin-scaled, never used elsewhere." },
-      "headline": { "displayName": "Headline", "purpose": "Page H1s and major section H2s." },
-      "body": { "displayName": "Body", "purpose": "Paragraph copy, capped ~65-75ch." },
-      "label": { "displayName": "Label", "purpose": "Tags, status badges, filters." }
+      "display": {
+        "displayName": "Hero Display",
+        "purpose": "Home hero H1 only. vmin-scaled, never used elsewhere."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Page H1s and major section H2s."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraph copy, capped ~65-75ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Tags, status badges, filters."
+      }
     },
     "shadows": [],
     "motion": [
-      { "name": "card-hover-lift", "value": "spring(stiffness: 300, damping: 24), translateY(-4px)", "purpose": "MotionCard hover lift, paired with border-color shift to accent." },
-      { "name": "nav-scroll-transition", "value": "cubic-bezier(0, 0, 0.2, 1) 300ms", "purpose": "Nav background/blur crossfade on scroll threshold. No shadow." },
-      { "name": "reveal-in", "value": "linear, animation-timeline: view(), range entry 0%-22%", "purpose": "Scroll-driven section reveal (CSS-only, no JS observer), translateY(22px)+opacity." },
-      { "name": "page-fade", "value": "cubic-bezier(0.22, 1, 0.36, 1) 320ms", "purpose": "Page-level entrance fade on route change." }
+      {
+        "name": "card-hover-lift",
+        "value": "spring(stiffness: 300, damping: 24), translateY(-4px)",
+        "purpose": "MotionCard hover lift, paired with border-color shift to accent."
+      },
+      {
+        "name": "nav-scroll-transition",
+        "value": "cubic-bezier(0, 0, 0.2, 1) 300ms",
+        "purpose": "Nav background/blur crossfade on scroll threshold. No shadow."
+      },
+      {
+        "name": "reveal-in",
+        "value": "linear, animation-timeline: view(), range entry 0%-22%",
+        "purpose": "Scroll-driven section reveal (CSS-only, no JS observer), translateY(22px)+opacity."
+      },
+      {
+        "name": "page-fade",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1) 320ms",
+        "purpose": "Page-level entrance fade on route change."
+      }
     ],
     "breakpoints": [
       { "name": "sm", "value": "640px" },
@@ -125,9 +180,21 @@
       "Motion is restrained and functional: scroll reveals, hover micro-interactions, nothing choreographed"
     ],
     "rules": [
-      { "name": "The One Accent Rule", "body": "Electric Blue is the only saturated color used for interactive commitment (buttons, active states). Sentinel Cyan is a highlight, never a CTA fill.", "section": "colors" },
-      { "name": "The No-Flourish Rule", "body": "No italics, no serif accents, no display-font body copy. One display face, one body face, nothing decorative layered on top.", "section": "typography" },
-      { "name": "The No-Shadow Rule", "body": "box-shadow is prohibited as a depth cue anywhere in the system, including the nav. Focus rings use a 2px solid outline, never a shadow-based glow.", "section": "elevation" }
+      {
+        "name": "The One Accent Rule",
+        "body": "Electric Blue is the only saturated color used for interactive commitment (buttons, active states). Sentinel Cyan is a highlight, never a CTA fill.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Flourish Rule",
+        "body": "No italics, no serif accents, no display-font body copy. One display face, one body face, nothing decorative layered on top.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Shadow Rule",
+        "body": "box-shadow is prohibited as a depth cue anywhere in the system, including the nav. Focus rings use a 2px solid outline, never a shadow-based glow.",
+        "section": "elevation"
+      }
     ],
     "dos": [
       "Do keep every corner at 0-radius — cards, buttons, images, badges.",

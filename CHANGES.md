@@ -1,33 +1,42 @@
 # Revision Pass — Client Feedback (2026-07-17)
 
 ## 1. Hero overlap fix
+
 `src/app/page.tsx` — code change, no copy change. Hero wrapper `<div>` className:
 
 Before:
+
 ```
 "relative mx-auto flex min-h-dvh max-w-6xl items-center px-4 pb-[env(safe-area-inset-bottom)] md:px-6"
 ```
+
 After:
+
 ```
 "relative mx-auto flex min-h-dvh max-w-6xl items-center px-4 pt-[calc(4rem_+_env(safe-area-inset-top))] pb-[env(safe-area-inset-bottom)] md:px-6"
 ```
 
 ## 2. Solutions page layout
+
 `src/app/solutions/page.tsx` — ENADOX CTA wrapper className:
 
 Before: `"mt-6"`
 After: `"mt-6 md:flex md:justify-end"`
 
 ## 3. Global page rebuild
+
 `src/app/global/page.tsx` — structural rebuild, not a sentence-level copy edit. See file diff.
 
 ## 4. Careers page copy
+
 `src/app/careers/page.tsx`
 
 Before:
+
 > "We hire engineers who hold the same bar we hold for our systems, the kind that fail safely because someone refused to cut the corner. If you want your work measured in consequences, not sprints, every open role is listed below."
 
 After:
+
 > "Core Defenses builds data analytics and secure communications systems for critical infrastructure. We're looking for engineers who want to solve hard technical problems at the leading edge of engineering and communications technology. Every open role is listed below."
 
 ## 5. AI-sounding copy removed
@@ -81,6 +90,7 @@ Before: "The systems that power, defend, and sustain modern life are also the mo
 After: "Energy, nuclear, defense, and industrial operators depend on accurate data and secure communications. A compromised data point or an intercepted channel can cause an outage, a safety incident, or mission failure. Core Defenses builds verifiable analytics and secure communications for these sectors."
 
 ## Verification
+
 - `tsc --noEmit` — clean
 - `eslint` on all touched files — clean
 - `npm run build` — 13/13 static pages, no errors
@@ -95,6 +105,7 @@ Content-only rewrite. Reference: ams-corp.com writing style (facts, no adjective
 no philosophy). No layout/design changes.
 
 ## `src/app/layout.tsx`
+
 Before: "Advanced data analytics for critical infrastructure, backed by secure communications for mission critical operations. Home of EDIM and ENADOX."
 After: "Data analytics and secure communications for nuclear, energy, defense, and industrial operations. Home of EDIM and ENADOX."
 
@@ -117,7 +128,7 @@ Before: "Engineered for decisions measured in milliseconds."
 After: "Response times measured in single-digit milliseconds."
 
 **Trust signal — Global Deployment:**
-Before heading: "Global Deployment" / body: "Operations hubs across four regions. See Global." *(inaccurate — only 1 hub exists)*
+Before heading: "Global Deployment" / body: "Operations hubs across four regions. See Global." _(inaccurate — only 1 hub exists)_
 After heading: "Global Operations" / body: "Headquarters in Lexington, KY. Expansion planned across the Americas, EMEA, and APAC."
 
 **"Built for your sector" heading:**
@@ -125,6 +136,7 @@ Before: "Built for your sector."
 After: "Industries we serve."
 
 ## `src/app/solutions/page.tsx`
+
 Before: "Data analytics for critical infrastructure, backed by secure communications for mission critical operations."
 After: "EDIM provides predictive analytics for nuclear operations. ENADOX provides secure communications for defense and industrial operations."
 
@@ -171,6 +183,7 @@ Before: "A mathematically rigorous and information-theoretic methodology that sy
 After: "An information-theoretic methodology that identifies and corrects calculational biases. It improves predictive accuracy while avoiding overfitting, underfitting, and error compensation."
 
 ## `src/content/products/enadox.ts`
+
 Before: "Secure communication for open and denied environments. ENADOX moves data between platforms with inbuilt redundancy: when one channel degrades, the mission keeps moving."
 After: "Secure communication for open and denied environments. ENADOX moves data between platforms with built-in redundancy: when one channel degrades, another maintains the connection."
 
@@ -209,6 +222,7 @@ Before: "Connected manufacturing lines generate vast operational data that must 
 After: "Connected manufacturing lines generate operational data used to manage throughput and quality. EDIM verifies that data is accurate and traceable."
 
 ## `src/components/layout/Footer.tsx`
+
 Before: "Delivering mission-critical analytics and resilient communications for organizations operating in the world's most demanding environments."
 After: "Data analytics and secure communications for nuclear, energy, defense, and industrial operations."
 
@@ -273,6 +287,7 @@ Before: "We design for the worst operating conditions, not the demo. Systems hav
 After: "Systems are tested against worst-case operating conditions, including degraded sensor input and loss of individual communication links."
 
 ## Verification (Iteration 2)
+
 - `tsc --noEmit` — clean
 - `eslint src` — clean
 - `npm run build` — 13/13 static pages, no errors

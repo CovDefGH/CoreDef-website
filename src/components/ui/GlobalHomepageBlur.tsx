@@ -10,8 +10,8 @@ export function GlobalHomepageBlur() {
   if (pathname !== "/") return null;
 
   return (
-    <div className="absolute inset-0 z-[5] pointer-events-none">
-      <div className="sticky top-0 left-0 w-full h-screen flex flex-col justify-end">
+    <div className="pointer-events-none absolute inset-0 z-[5]">
+      <div className="sticky top-0 left-0 flex h-screen w-full flex-col justify-end">
         <GradualBlur
           position="bottom"
           target="parent"

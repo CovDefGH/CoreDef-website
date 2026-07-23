@@ -35,8 +35,8 @@ export default function CareersPage() {
             Don&apos;t see your role?
           </h2>
           <p className="text-ink-muted mt-2 text-justify text-sm">
-            Send your application and tell us what you&apos;d like to build.
-            We review every application.
+            Send your application and tell us what you&apos;d like to build. We
+            review every application.
           </p>
         </div>
         <a

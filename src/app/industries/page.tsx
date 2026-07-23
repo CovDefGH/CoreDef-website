@@ -20,9 +20,9 @@ export default function IndustriesPage() {
           <h1 className="text-ink text-4xl md:text-5xl">Industries</h1>
           <p className="text-ink-muted mt-6 text-justify text-lg">
             Energy, nuclear, defense, and industrial operators depend on
-            accurate data and secure communications. A compromised data point
-            or an intercepted channel can cause an outage, a safety incident,
-            or mission failure. Core Defenses builds verifiable analytics and
+            accurate data and secure communications. A compromised data point or
+            an intercepted channel can cause an outage, a safety incident, or
+            mission failure. Core Defenses builds verifiable analytics and
             secure communications for these sectors.
           </p>
         </header>

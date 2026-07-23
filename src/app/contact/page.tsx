@@ -29,25 +29,24 @@ export default function ContactPage() {
           At Core Defenses, we are a technology-driven small business
           specializing in advanced analytics, artificial intelligence, and
           cybersecurity solutions for high-reliability industries, including
-          nuclear energy. Our mission is to bridge the gap between
-          calculational modeling and real-world decision-making by delivering
-          scalable, explainable, and regulatory-compliant technologies. With
-          expertise in physics-based modeling, uncertainty quantification, and
-          AI/ML-driven predictive intelligence, we develop cutting-edge
-          software solutions that enhance operational safety, performance, and
-          security.
+          nuclear energy. Our mission is to bridge the gap between calculational
+          modeling and real-world decision-making by delivering scalable,
+          explainable, and regulatory-compliant technologies. With expertise in
+          physics-based modeling, uncertainty quantification, and AI/ML-driven
+          predictive intelligence, we develop cutting-edge software solutions
+          that enhance operational safety, performance, and security.
         </p>
         <p className="text-ink-muted mt-6 text-justify text-lg leading-relaxed">
           We believe our products embody our commitment to the goal of energy
-          resilience—the strategic approach to anticipate, absorb, adapt to,
-          and rapidly recover from severe disruptions. Since our founding, we
-          have raised over $5M to develop our products, using a combination of
+          resilience—the strategic approach to anticipate, absorb, adapt to, and
+          rapidly recover from severe disruptions. Since our founding, we have
+          raised over $5M to develop our products, using a combination of
           non-dilutive grants, pilot projects, and revenue from our extensive
           network of customers and collaborators including national
-          laboratories, nuclear fuel vendors, and federal agencies. We are
-          also advised by a team of business and technical experts from
-          industry and academia, who facilitate our breakthroughs and expand
-          our outreach into the broader energy sector.
+          laboratories, nuclear fuel vendors, and federal agencies. We are also
+          advised by a team of business and technical experts from industry and
+          academia, who facilitate our breakthroughs and expand our outreach
+          into the broader energy sector.
         </p>
       </Reveal>
 

@@ -34,14 +34,44 @@ export const media = {
     src: "/team.jpg",
     alt: "Two engineers collaborating at a workstation.",
   },
-  edimCover: { src: "/edim-cover.jpg", alt: "Modern nuclear power plant control room at dusk with advanced analytical displays." },
-  edimSupport1: { src: "/edim-support-1.jpg", alt: "Glowing nuclear reactor core in blue Cherenkov radiation." },
-  edimSupport2: { src: "/edim-support-2.jpg", alt: "Sophisticated data analytics software on a sleek control room monitor." },
-  enadoxCover: { src: "/enadox-cover.jpg", alt: "Dark, sleek 3D visualization of secure communications and cybersecurity." },
-  enadoxSupport1: { src: "/enadox-support-1.jpg", alt: "Ruggedized tactical communications device in a dark defense environment." },
-  enadoxSupport2: { src: "/enadox-support-2.jpg", alt: "Glowing blue fiber optic cables representing secure network infrastructure." },
-  homeEnergy: { src: "/home-energy.jpg", alt: "Modern energy infrastructure facility at night." },
-  homeDefense: { src: "/home-defense.jpg", alt: "Stealthy military drone in flight over mountains." },
-  homeFinance: { src: "/home-finance.jpg", alt: "Abstract digital financial data visualization." },
-  homeAi: { src: "/home-ai.jpg", alt: "AI supercomputer data center with glowing lights." },
+  edimCover: {
+    src: "/edim-cover.jpg",
+    alt: "Modern nuclear power plant control room at dusk with advanced analytical displays.",
+  },
+  edimSupport1: {
+    src: "/edim-support-1.jpg",
+    alt: "Glowing nuclear reactor core in blue Cherenkov radiation.",
+  },
+  edimSupport2: {
+    src: "/edim-support-2.jpg",
+    alt: "Sophisticated data analytics software on a sleek control room monitor.",
+  },
+  enadoxCover: {
+    src: "/enadox-cover.jpg",
+    alt: "Dark, sleek 3D visualization of secure communications and cybersecurity.",
+  },
+  enadoxSupport1: {
+    src: "/enadox-support-1.jpg",
+    alt: "Ruggedized tactical communications device in a dark defense environment.",
+  },
+  enadoxSupport2: {
+    src: "/enadox-support-2.jpg",
+    alt: "Glowing blue fiber optic cables representing secure network infrastructure.",
+  },
+  homeEnergy: {
+    src: "/home-energy.jpg",
+    alt: "Modern energy infrastructure facility at night.",
+  },
+  homeDefense: {
+    src: "/home-defense.jpg",
+    alt: "Stealthy military drone in flight over mountains.",
+  },
+  homeFinance: {
+    src: "/home-finance.jpg",
+    alt: "Abstract digital financial data visualization.",
+  },
+  homeAi: {
+    src: "/home-ai.jpg",
+    alt: "AI supercomputer data center with glowing lights.",
+  },
 } as const;

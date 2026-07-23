@@ -54,9 +54,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.variable} font-sans antialiased relative`}
-      >
+      <body className={`${inter.variable} relative font-sans antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -87,7 +85,7 @@ export default function RootLayout({
             <NavBar />
             <main
               id="main"
-              className="relative bg-surface pt-[calc(4rem_+_env(safe-area-inset-top))]"
+              className="bg-surface relative pt-[calc(4rem_+_env(safe-area-inset-top))]"
             >
               {children}
             </main>
