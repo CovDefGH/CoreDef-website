@@ -14,14 +14,31 @@ const inter = Inter({
   display: "swap",
 });
 
+const title = "Core Defenses | Data Analytics for Critical Infrastructure";
+const description =
+  "Data analytics and secure communications for nuclear, energy, defense, and industrial operations. Home of EDIM and ENADOX.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://core-defenses.com"),
   title: {
-    default: "Core Defenses | Data Analytics for Critical Infrastructure",
+    default: title,
     template: "%s | Core Defenses",
   },
-  description:
-    "Data analytics and secure communications for nuclear, energy, defense, and industrial operations. Home of EDIM and ENADOX.",
+  description,
   verification: { google: "UuTw9cncG44EELkIwHlPGDlYQkfcboqEc-ZJQ-rc2x4" },
+  openGraph: {
+    title,
+    description,
+    siteName: "Core Defenses",
+    type: "website",
+    images: ["/hero-poster.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/hero-poster.jpg"],
+  },
 };
 
 // viewport-fit=cover: lets the hero bleed under the Dynamic Island/status bar
@@ -40,6 +57,20 @@ export default function RootLayout({
       <body
         className={`${inter.variable} font-sans antialiased relative`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Core Defenses",
+              url: "https://core-defenses.com",
+              logo: "https://core-defenses.com/logo.png",
+              description,
+              email: "info@core-defenses.com",
+            }),
+          }}
+        />
         {/* Warms the connection for the Contact page's Google Maps iframe embed */}
         <link rel="preconnect" href="https://www.google.com" />
         <link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="" />
