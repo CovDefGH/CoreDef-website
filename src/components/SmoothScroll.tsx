@@ -1,8 +1,26 @@
 "use client";
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { ReactLenis, useLenis } from "lenis/react";
 import { gsap } from "gsap";
 import React from "react";
+
+// Next's App Router swaps page content in place on client-side navigation —
+// it never reloads, so Lenis (which owns the actual scroll position) keeps
+// whatever position it had on the previous route instead of resetting.
+// Without this, the first click on a nav link fights Next's own
+// scroll-to-top against Lenis's stale position (visible as a flicker that
+// then snaps back), and only "sticks" on a second click/interaction.
+function ResetScrollOnNavigate() {
+  const pathname = usePathname();
+  const lenis = useLenis();
+
+  useEffect(() => {
+    lenis?.scrollTo(0, { immediate: true });
+  }, [pathname, lenis]);
+
+  return null;
+}
 
 // Drives Lenis from GSAP's own ticker instead of Lenis's independent rAF loop
 // (autoRaf: false below), so ScrollTrigger reads scroll position on the exact
@@ -39,6 +57,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       options={{ lerp: 0.08, duration: 1.2, smoothWheel: true, autoRaf: false }}
     >
       <GsapTicker />
+      <ResetScrollOnNavigate />
       {children}
     </ReactLenis>
   );
