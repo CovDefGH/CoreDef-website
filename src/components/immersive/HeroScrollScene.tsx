@@ -183,14 +183,19 @@ export function HeroScrollScene() {
     <section ref={rootRef} className="immersive-hero">
       {/* CSS sticky pin — reliable across all browsers, no GSAP spacer issues */}
       <div className="sticky top-0 h-screen overflow-hidden bg-[#09111d]">
-        <Image
-          src={fallbackSrc}
-          alt="Hero background"
-          fill
-          priority
-          onError={() => setFallbackSrc("/hero-poster.jpg")}
-          className="transform-gpu object-cover object-[58%_45%] will-change-[transform]"
-        />
+        {/* Next's `fill` prop only accepts absolute/fixed/relative on the
+            direct parent — `sticky` (the section above) doesn't qualify
+            even though it works as a containing block in practice. */}
+        <div className="relative h-full w-full">
+          <Image
+            src={fallbackSrc}
+            alt="Hero background"
+            fill
+            priority
+            onError={() => setFallbackSrc("/hero-poster.jpg")}
+            className="transform-gpu object-cover object-[58%_45%] will-change-[transform]"
+          />
+        </div>
         <canvas
           ref={canvasRef}
           className="absolute inset-0 h-full w-full transform-gpu object-cover object-[58%_45%] will-change-[transform]"
