@@ -186,7 +186,7 @@ export function HeroScrollScene() {
         {/* Next's `fill` prop only accepts absolute/fixed/relative on the
             direct parent — `sticky` (the section above) doesn't qualify
             even though it works as a containing block in practice. */}
-        <div className="relative h-full w-full">
+        <div className="absolute inset-0">
           <Image
             src={fallbackSrc}
             alt="Hero background"
