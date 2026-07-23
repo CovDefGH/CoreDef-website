@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { preload } from "react-dom";
 import Image from "next/image";
 import { useLenis } from "lenis/react";
@@ -11,12 +11,14 @@ import { CTALink } from "@/components/ui/CTALink";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// 200 frames extracted natively at 24fps from the 4K source clip.
-// We used heavy JPEG compression to keep the sequence small while retaining 4K native resolution.
+// 200 frames extracted natively at 24fps from the 4K source clip, downsampled
+// to 1920x1080 — decoding the full native 4K frame set held ~1.3GB of bitmap
+// data in memory at once, over iOS Safari's per-tab budget and the likely
+// cause of the "A problem repeatedly occurred" crash loop on iPhone.
 const FRAME_START = 75;
 const FRAME_COUNT = 115;
-const FRAME_W = 3840;
-const FRAME_H = 2160;
+const FRAME_W = 1920;
+const FRAME_H = 1080;
 // First N frames load eagerly (covers the dwell + early-scrub range); the rest
 // load on browser idle time so they don't compete with the eager ones for
 // bandwidth/decode time on initial page load.
@@ -24,12 +26,16 @@ const EAGER_FRAMES = 24;
 const frameSrc = (i: number) =>
   `/immersive/hero/frame-${i.toString().padStart(3, "0")}.jpg`;
 
+// Cancellable idle scheduling — returns a canceller so unmount can stop
+// pending decodes instead of letting them keep firing (and retaining
+// decoded images) after the component's gone.
 const scheduleIdle = (cb: () => void) => {
   if (typeof window.requestIdleCallback === "function") {
-    window.requestIdleCallback(cb, { timeout: 2000 });
-  } else {
-    setTimeout(cb, 200);
+    const id = window.requestIdleCallback(cb, { timeout: 2000 });
+    return () => window.cancelIdleCallback(id);
   }
+  const id = setTimeout(cb, 200);
+  return () => clearTimeout(id);
 };
 
 export function HeroScrollScene() {
@@ -39,6 +45,10 @@ export function HeroScrollScene() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const lenis = useLenis();
+  // Independent fallback asset — if frame-075.jpg itself fails to load, the
+  // canvas's first frame fails the same way, so the fallback must not share
+  // that single point of failure. Falls back to a separately-hosted poster.
+  const [fallbackSrc, setFallbackSrc] = useState(frameSrc(FRAME_START));
 
   /* useEffect (not useLayoutEffect) — runs after paint so DOM measurements
      are stable and the CSS sticky layout is already committed. */
@@ -112,8 +122,11 @@ export function HeroScrollScene() {
     }
 
     for (let i = FRAME_START; i <= FRAME_START + EAGER_FRAMES; i++) loadFrame(i);
+    // Track cancellers so unmounting stops not-yet-fired idle loads instead
+    // of letting them keep decoding (and retaining) frames after the fact.
+    const idleCancels: Array<() => void> = [];
     for (let i = FRAME_START + EAGER_FRAMES + 1; i <= FRAME_COUNT; i++) {
-      scheduleIdle(() => loadFrame(i));
+      idleCancels.push(scheduleIdle(() => loadFrame(i)));
     }
 
     render(FRAME_START);
@@ -152,7 +165,10 @@ export function HeroScrollScene() {
       timeline.to(canvas, { scale: 1.13, xPercent: -5, yPercent: -2, duration: 0.97 }, 0.03);
     }, root);
 
-    return () => context.revert();
+    return () => {
+      idleCancels.forEach((cancel) => cancel());
+      context.revert();
+    };
   }, []);
 
   return (
@@ -165,10 +181,11 @@ export function HeroScrollScene() {
         className="sticky top-0 h-screen overflow-hidden bg-[#09111d]"
       >
         <Image
-          src={frameSrc(FRAME_START)}
+          src={fallbackSrc}
           alt="Hero background"
           fill
           priority
+          onError={() => setFallbackSrc("/hero-poster.jpg")}
           className="object-cover object-[58%_45%] will-change-[transform] transform-gpu"
         />
         <canvas
