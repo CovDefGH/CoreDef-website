@@ -177,22 +177,20 @@ export function ImmersiveHome() {
           });
         }
 
-        // Word-by-word opacity scrub (highlighting effect)
-        // Query all words across the entire chapter so they highlight in sequence (title first, then paragraph)
+        // Word-by-word opacity reveal (no scrub, just play on enter)
         const allWords = Array.from(
           chapter.querySelectorAll(".skiper-word"),
         ) as HTMLElement[];
         if (allWords.length > 0) {
           gsap.to(allWords, {
             opacity: 1,
-            duration: 2,
-            stagger: 0.1,
-            ease: "power2.inOut",
+            duration: 0.6,
+            stagger: 0.015,
+            ease: "power2.out",
             scrollTrigger: {
               trigger: chapter,
-              start: "top 75%",
-              end: "bottom bottom",
-              scrub: true,
+              start: "top 60%",
+              toggleActions: "play none none reverse",
             },
           });
         }
