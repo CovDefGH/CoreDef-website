@@ -14,12 +14,12 @@ export const metadata: Metadata = {
 
 export default function SolutionsPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
+    <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
       <Reveal as="section">
-        <h1 className="text-ink text-4xl font-bold md:text-5xl">Solutions</h1>
+        <h1 className="text-ink text-3xl font-bold md:text-4xl">Solutions</h1>
       </Reveal>
 
-      <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
+      <div className="mt-12 space-y-12 md:mt-16 md:space-y-16">
         <div>
           <FeatureRow
             heading={edim.name}

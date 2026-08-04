@@ -15,9 +15,10 @@ export const metadata: Metadata = {
 export default function IndustriesPage() {
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
-        <header className="max-w-3xl">
-          <h1 className="text-ink text-4xl md:text-5xl">Industries</h1>
+      <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
+        <Reveal as="section">
+          <h1 className="text-ink text-3xl font-bold md:text-4xl">
+            Industries</h1>
           <p className="text-ink-muted mt-6 text-justify text-lg">
             Energy, nuclear, defense, and industrial operators depend on
             accurate data and secure communications. A compromised data point or
@@ -25,7 +26,7 @@ export default function IndustriesPage() {
             mission failure. Core Defenses builds verifiable analytics and
             secure communications for these sectors.
           </p>
-        </header>
+        </Reveal>
 
         <div className="border-line relative mt-12 aspect-[21/9] overflow-hidden border">
           <Image
@@ -38,9 +39,11 @@ export default function IndustriesPage() {
           />
         </div>
 
-        <Reveal as="section" className="mt-16 md:mt-24">
-          <h2 className="sr-only">Sectors we serve</h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <Reveal as="section" className="mt-12 md:mt-16">
+          <h2 className="text-ink text-2xl font-semibold">
+            Use Cases
+          </h2>
+          <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {industries.map((industry) => (
               <MotionCard
                 key={industry.name}
@@ -61,7 +64,7 @@ export default function IndustriesPage() {
           </div>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 md:mt-24 md:grid-cols-2">
+        <div className="mt-12 grid gap-6 md:mt-16 md:grid-cols-2">
           <div className="border-line relative aspect-[4/3] overflow-hidden border">
             <Image
               src={media.energy.src}

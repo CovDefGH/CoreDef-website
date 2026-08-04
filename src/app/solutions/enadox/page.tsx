@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function EnadoxPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
+    <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
       <Link
         href="/solutions"
         className="text-ink-muted hover:text-primary inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
@@ -24,7 +24,7 @@ export default function EnadoxPage() {
       </Link>
 
       {/* Header */}
-      <h1 className="text-ink mt-8 text-4xl font-bold md:text-5xl">
+      <h1 className="text-ink mt-8 text-3xl font-bold md:text-4xl">
         {enadox.name}
       </h1>
       <p className="text-ink-muted mt-5 text-justify text-lg leading-relaxed">
@@ -32,7 +32,7 @@ export default function EnadoxPage() {
       </p>
 
       {/* Use cases */}
-      <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
+      <div className="mt-12 space-y-12 md:mt-16 md:space-y-16">
         <FeatureRow
           heading="Redundancy built into the data itself"
           body="ENADOX solves the problem of inherently insecure and fragile OT assets on the shopfloor that is a patchwork of legacy and modern equipment. It retrofits them with self-healing capabilities with the singular objective of maintaining system uptime during contingencies. ENADOX devices merge seamlessly into existing architecture and communication protocols by self-healing at the process data level, and software plugins integrate into existing SCADA, SIEM, and HMI interfaces to alert operators to data falsification."
@@ -56,7 +56,7 @@ export default function EnadoxPage() {
       </div>
 
       {/* Closing CTA */}
-      <section className="border-line mt-16 flex flex-wrap items-center justify-between gap-6 border p-8 md:mt-24">
+      <section className="border-line mt-12 flex flex-wrap items-center justify-between gap-6 border p-8 md:mt-16">
         <div>
           <h2 className="text-ink text-xl font-bold">
             Talk through your mission requirements

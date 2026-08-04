@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function EdimPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
+    <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
       <Link
         href="/solutions"
         className="text-ink-muted hover:text-primary inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
@@ -24,15 +24,15 @@ export default function EdimPage() {
       </Link>
 
       {/* Header */}
-      <h1 className="text-ink mt-8 text-4xl font-bold md:text-5xl">
+      <h1 className="text-ink mt-8 text-3xl font-bold md:text-4xl">
         {edim.name}
       </h1>
       <p className="text-ink-muted mt-5 text-justify text-lg leading-relaxed">
         {edim.tagline}
       </p>
 
-      {/* Use-case blocks — alternating image sides */}
-      <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
+      {/* Use cases */}
+      <div className="mt-12 space-y-12 md:mt-16 md:space-y-16">
         <FeatureRow
           heading="Improving the Best Estimate"
           body="Predictive models used to track thermal margins and eigenvalues are often biased due to their inherent assumptions and have uncertainties that can be traced back to nuclear data. This often leads to overly conservative thermal margins leading to operational inefficiencies, suboptimal fuel utilization, and increased regulatory scrutiny. EDIM substantially improves the economics of a reactor by systematically accounting for these sources of bias and uncertainties in a manner consistent with the physics of the reactor."
@@ -54,7 +54,7 @@ export default function EdimPage() {
       </div>
 
       {/* Closing CTA */}
-      <section className="border-line mt-16 flex flex-wrap items-center justify-between gap-6 border p-8 md:mt-24">
+      <section className="border-line mt-12 flex flex-wrap items-center justify-between gap-6 border p-8 md:mt-16">
         <div>
           <h2 className="text-ink text-xl font-bold">
             Evaluate EDIM for your program.

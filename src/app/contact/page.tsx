@@ -14,12 +14,14 @@ export default function ContactPage() {
   const { email, address, mapEmbedUrl, mapPlaceUrl } = site;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
-      <h1 className="text-ink text-4xl font-bold md:text-5xl">Contact</h1>
-      <p className="text-ink-muted mt-5 max-w-2xl text-justify text-lg">
-        Reach the Core Defenses team. Tell us about your program or inquiry and
-        we&apos;ll route it to the right group.
-      </p>
+    <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
+      <Reveal as="section">
+        <h1 className="text-ink text-3xl font-bold md:text-4xl">Contact Us</h1>
+        <p className="text-ink-muted mt-5 max-w-2xl text-justify text-lg">
+          Reach the Core Defenses team. Tell us about your program or inquiry and
+          we&apos;ll route it to the right group.
+        </p>
+      </Reveal>
 
       <Reveal as="section" className="mt-14 max-w-3xl">
         <h2 className="text-ink text-2xl font-bold md:text-3xl">

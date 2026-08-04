@@ -8,8 +8,8 @@ type PageShellProps = {
 
 export function PageShell({ title, description, children }: PageShellProps) {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
-      <h1 className="text-ink max-w-3xl text-4xl font-bold md:text-5xl">
+    <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
+      <h1 className="text-ink max-w-3xl text-3xl font-bold md:text-4xl">
         {title}
       </h1>
       <p className="text-ink-muted mt-5 max-w-2xl text-lg">{description}</p>

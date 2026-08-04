@@ -37,7 +37,7 @@ export function Footer() {
         height={551}
         className="pointer-events-none absolute -right-32 -bottom-40 h-auto w-[560px] max-w-none opacity-[0.05] select-none"
       />
-      <div className="relative z-10 mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-24">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
         <div className="flex flex-col gap-16 lg:flex-row lg:gap-20">
           {/* Brand column — the strong identity anchor */}
           <div className="lg:max-w-sm lg:shrink-0">

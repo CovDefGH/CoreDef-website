@@ -14,11 +14,11 @@ export default function CareersPage() {
   const applyUrl = jobs[0].applyUrl;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
+    <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
       {/* Open roles — inline, filterable (US-10) */}
       <Reveal as="section" id="open-roles" className="scroll-mt-24">
-        <h1 className="text-ink text-3xl font-bold">Open Roles</h1>
-        <p className="text-ink-muted mt-3 max-w-2xl text-justify">
+        <h1 className="text-ink text-2xl font-bold">Open Roles</h1>
+        <p className="text-ink-muted mt-2 max-w-2xl text-justify text-sm">
           Every current opening, listed here. Filter by department, then apply
           directly.
         </p>
