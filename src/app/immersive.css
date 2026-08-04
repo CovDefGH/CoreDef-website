@@ -34,11 +34,11 @@
 .immersive-hero {
   position: relative;
   margin-top: calc(-4rem - env(safe-area-inset-top));
-  height: 150vh;
+  height: 120vh;
 }
 
 .immersive-chapter {
-  height: 150vh;
+  height: 120vh;
 }
 
 .immersive-chapter-sticky {
@@ -54,10 +54,10 @@
 
 @media (max-width: 767px) {
   .immersive-hero {
-    height: 110vh;
+    height: 100vh;
   }
   .immersive-chapter {
-    height: 110vh;
+    height: 100vh;
   }
 }
 

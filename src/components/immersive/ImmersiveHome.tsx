@@ -282,10 +282,10 @@ export function ImmersiveHome() {
             </div>
 
             <div
-              className={`relative mx-auto flex h-full max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-[clamp(10rem,15vh,16rem)] md:px-8 ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
+              className={`relative mx-auto flex h-full max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-16 md:pb-24 md:px-8 ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
             >
-              <div className="immersive-copy relative z-10 mt-auto max-w-3xl will-change-[transform,opacity]">
-                <h2 className="skiper-text-reveal flex flex-wrap overflow-visible bg-gradient-to-br from-white via-white to-[#7bc8ff]/40 bg-clip-text pb-4 text-[clamp(2rem,min(6.5vw,12vh),8rem)] leading-[0.92] font-semibold tracking-[-.045em] text-transparent">
+              <div className="immersive-copy relative z-10 mt-auto max-w-2xl will-change-[transform,opacity]">
+                <h2 className="skiper-text-reveal flex flex-wrap overflow-visible bg-gradient-to-br from-white via-white to-[#7bc8ff]/40 bg-clip-text pb-2 text-4xl leading-tight font-semibold tracking-tight text-transparent md:text-5xl lg:text-6xl">
                   {chapter.title.split(" ").map((word, wordIndex) => (
                     <span
                       key={wordIndex}
@@ -302,7 +302,7 @@ export function ImmersiveHome() {
                     </span>
                   ))}
                 </h2>
-                <p className="skiper-text-reveal mt-[clamp(1rem,4vh,3rem)] max-w-2xl text-justify text-[clamp(1rem,2.5vmin,1.5rem)] leading-relaxed font-light text-white/80">
+                <p className="skiper-text-reveal mt-6 max-w-2xl text-justify text-lg leading-relaxed font-light text-white/80 md:text-xl">
                   {chapter.copy.split(" ").map((word, i, arr) => (
                     <span key={i}>
                       <span className="skiper-word will-change-opacity inline-block opacity-20">
@@ -314,7 +314,7 @@ export function ImmersiveHome() {
                 </p>
                 <Link
                   href={chapter.href}
-                  className="group mt-[clamp(1rem,4vh,2rem)] inline-flex items-center gap-3 border-b border-[#7bc8ff] pb-2 text-sm font-medium text-white transition-colors hover:border-white"
+                  className="group mt-6 inline-flex items-center gap-3 border-b border-[#7bc8ff] pb-2 text-sm font-medium text-white transition-colors hover:border-white"
                 >
                   {chapter.action}
                   <ArrowUpRight
