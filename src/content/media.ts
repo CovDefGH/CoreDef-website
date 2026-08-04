@@ -15,8 +15,8 @@ export const media = {
     alt: "Operations center with a wall of illuminated data displays.",
   },
   controlRoom: {
-    src: "/nuclear-control-room.jpg",
-    alt: "Nuclear power plant control room with analyst workstations and instrumentation panels.",
+    src: "/edim-cover.jpg",
+    alt: "Modern nuclear power plant control room at dusk with advanced analytical displays.",
   },
   comms: {
     src: "/comms.jpg",

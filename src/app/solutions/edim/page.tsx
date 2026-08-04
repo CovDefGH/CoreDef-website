@@ -42,7 +42,7 @@ export default function EdimPage() {
         <FeatureRow
           heading="A Patented Physics-Based Methodology to Correct Bias"
           body="EDIM applies information-theoretic tools to analyze, identify and correct the sources of calculational bias in predictive models. The mathematical rigor of information theory allows EDIM to solve the phenomena of underfitting, overfitting, and error compensation often encountered in extant methods. EDIM operates within established NRC-licensed methodologies, ensuring that our innovations are not only technically superior but also commercially viable and regulatory-compliant."
-          image={media.edimCover}
+          image={media.controlRoom}
           imageSide="left"
         />
         <FeatureRow
