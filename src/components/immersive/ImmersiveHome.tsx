@@ -210,7 +210,7 @@ export function ImmersiveHome() {
             stagger: 0.15,
             scrollTrigger: {
               trigger: ".grid-cards-container",
-              start: "top 80%",
+              start: "top 95%",
               toggleActions: "play none none reverse",
             },
           },
@@ -340,9 +340,9 @@ export function ImmersiveHome() {
         </div>
       </section>
 
-      <section className="relative bg-white py-24 md:py-32">
+      <section className="relative bg-white py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <div className="mb-20 flex flex-col items-center text-center">
+          <div className="mb-10 flex flex-col items-center text-center">
             <h2 className="text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[.94] font-semibold tracking-[-.05em] text-[#0c1723]">
               Industries we serve.
             </h2>
