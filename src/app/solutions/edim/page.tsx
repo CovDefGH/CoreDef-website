@@ -42,13 +42,13 @@ export default function EdimPage() {
         <FeatureRow
           heading="A Patented Physics-Based Methodology to Correct Bias"
           body="EDIM applies information-theoretic tools to analyze, identify and correct the sources of calculational bias in predictive models. The mathematical rigor of information theory allows EDIM to solve the phenomena of underfitting, overfitting, and error compensation often encountered in extant methods. EDIM operates within established NRC-licensed methodologies, ensuring that our innovations are not only technically superior but also commercially viable and regulatory-compliant."
-          image={media.edimSupport2}
+          image={media.edimCover}
           imageSide="left"
         />
         <FeatureRow
           heading="$200M–$500M in Recovered Operational Efficiencies"
           body="Current mitigation strategies for eigenvalue and thermal margin biases often involve detuning core designs, requiring the addition of 4–12 extra fuel bundles per cycle. A 1% reduction in reactor power output due to thermal margin bias or eigenvalue uncertainties results in millions of dollars in lost annual revenue per reactor. Applying EDIM results in substantial cost savings for nuclear utilities by mitigating power derates and cycle inefficiencies."
-          image={media.edimSupport3}
+          image={media.edimSupport2}
           imageSide="right"
         />
       </div>

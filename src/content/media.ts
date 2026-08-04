@@ -39,16 +39,12 @@ export const media = {
     alt: "Modern nuclear power plant control room at dusk with advanced analytical displays.",
   },
   edimSupport1: {
-    src: "/edim-bias.jpg",
-    alt: "Data visualization dashboard showing core eigenvalue analysis and thermal margin bias curves.",
+    src: "/edim-thermal-bias.jpg",
+    alt: "High-tech thermal imaging map of an industrial nuclear reactor core.",
   },
   edimSupport2: {
-    src: "/edim-correction.jpg",
-    alt: "Data assimilation engine visualizing Kalman filters and covariance matrix updates adjusting a reactor core model.",
-  },
-  edimSupport3: {
-    src: "/edim-efficiency.jpg",
-    alt: "Executive dashboard showing 94% operational efficiency and multi-million dollar cost savings.",
+    src: "/edim-support-2.jpg",
+    alt: "Sophisticated data analytics software on a sleek control room monitor.",
   },
   enadoxCover: {
     src: "/enadox-cover.jpg",
