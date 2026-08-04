@@ -35,8 +35,8 @@ export const media = {
     alt: "Two engineers collaborating at a workstation.",
   },
   edimCover: {
-    src: "/edim-cover.jpg",
-    alt: "Modern nuclear power plant control room at dusk with advanced analytical displays.",
+    src: "/hq720.jpg",
+    alt: "Animated stylized nuclear power plant control room with glowing holographic cooling tower.",
   },
   edimSupport1: {
     src: "/edim-thermal-bias.jpg",
