@@ -11,12 +11,6 @@ const outfit = Outfit({
 export default function Home() {
   return (
     <div className={`${outfit.variable} immersive-font-outfit`}>
-      <script
-        dangerouslySetInnerHTML={{
-          __html:
-            "if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }",
-        }}
-      />
       <ImmersiveHome />
     </div>
   );

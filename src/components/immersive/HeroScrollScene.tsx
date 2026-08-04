@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { preload } from "react-dom";
 import Image from "next/image";
 import { useLenis } from "lenis/react";
 import { Pointer } from "lucide-react";
@@ -39,8 +38,6 @@ const scheduleIdle = (cb: () => void) => {
 };
 
 export function HeroScrollScene() {
-  preload(frameSrc(FRAME_START), { as: "image" });
-
   const rootRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
