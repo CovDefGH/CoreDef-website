@@ -39,8 +39,8 @@ export const media = {
     alt: "Modern nuclear power plant control room at dusk with advanced analytical displays.",
   },
   edimSupport1: {
-    src: "/edim-support-1.jpg",
-    alt: "Glowing nuclear reactor core in blue Cherenkov radiation.",
+    src: "/edim-thermal-bias.jpg",
+    alt: "High-tech thermal imaging map of an industrial nuclear reactor core.",
   },
   edimSupport2: {
     src: "/edim-support-2.jpg",
