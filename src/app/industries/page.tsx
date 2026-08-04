@@ -43,24 +43,33 @@ export default function IndustriesPage() {
           <h2 className="text-ink text-2xl font-semibold">
             Use Cases
           </h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {industries.map((industry) => (
-              <MotionCard
-                key={industry.name}
-                className="border-line bg-surface hover:border-accent flex h-full flex-col border p-6 transition-colors"
-              >
-                <h3 className="text-ink text-xl">{industry.name}</h3>
-                <p className="text-ink-muted mt-3 flex-1 text-justify">
-                  {industry.description}
-                </p>
-                <Link
-                  href={industry.productHref}
-                  className="text-primary hover:text-ink mt-6 inline-flex items-center text-sm font-medium transition-colors"
+          <div className="mt-6 grid auto-rows-[minmax(200px,auto)] gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {industries.map((industry, i) => {
+              let bentoClass = "";
+              if (i === 0) bentoClass = "md:col-span-2 lg:col-span-3 lg:row-span-2 min-h-[300px]";
+              else if (i === 1) bentoClass = "md:col-span-1 lg:col-span-1 lg:row-span-1";
+              else if (i === 2) bentoClass = "md:col-span-1 lg:col-span-2 lg:row-span-1";
+              else if (i === 3) bentoClass = "md:col-span-2 lg:col-span-2 lg:row-span-1";
+              
+              return (
+                <MotionCard
+                  key={industry.name}
+                  className={`border-line bg-surface hover:border-accent flex flex-col border p-6 transition-colors ${bentoClass}`}
                 >
-                  Explore {industry.productLabel} &rarr;
-                </Link>
-              </MotionCard>
-            ))}
+                  <h3 className="text-ink text-2xl font-bold">{industry.name}</h3>
+                  <div className="bg-primary h-0.5 w-8 mt-3 mb-3 opacity-50" />
+                  <p className="text-ink-muted flex-1 text-justify">
+                    {industry.description}
+                  </p>
+                  <Link
+                    href={industry.productHref}
+                    className="text-primary hover:text-ink mt-6 inline-flex items-center text-sm font-medium transition-colors"
+                  >
+                    Explore {industry.productLabel} &rarr;
+                  </Link>
+                </MotionCard>
+              );
+            })}
           </div>
         </Reveal>
 
