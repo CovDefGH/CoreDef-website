@@ -280,7 +280,7 @@ export function ImmersiveHome() {
             </div>
 
             <div
-              className={`relative mx-auto flex h-full max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-16 md:pb-24 md:px-8 ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
+              className={`relative mx-auto flex h-full max-w-[1440px] flex-col px-4 pt-[calc(clamp(2rem,10vh,16rem)_+_env(safe-area-inset-top))] pb-16 md:px-8 md:pb-24 ${chapter.align === "right" ? "md:items-end" : "md:items-start"}`}
             >
               <div className="immersive-copy relative z-10 mt-auto max-w-2xl will-change-[transform,opacity]">
                 <h2 className="skiper-text-reveal flex flex-wrap overflow-visible bg-gradient-to-br from-white via-white to-[#7bc8ff]/40 bg-clip-text pb-2 text-4xl leading-tight font-semibold tracking-tight text-transparent md:text-5xl lg:text-6xl">

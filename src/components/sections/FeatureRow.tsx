@@ -25,7 +25,9 @@ export function FeatureRow({
       as="section"
       className="grid items-center gap-8 md:grid-cols-12 md:gap-12 lg:gap-16"
     >
-      <div className={`md:col-span-5 ${imageSide === "left" ? "md:order-2" : ""}`}>
+      <div
+        className={`md:col-span-5 ${imageSide === "left" ? "md:order-2" : ""}`}
+      >
         <h2 className="text-ink text-3xl font-bold md:text-4xl">{heading}</h2>
         <p className="text-ink-muted mt-5 text-justify text-lg leading-relaxed">
           {body}

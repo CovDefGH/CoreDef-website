@@ -18,8 +18,8 @@ export default function ContactPage() {
       <Reveal as="section">
         <h1 className="text-ink text-3xl font-bold md:text-4xl">Contact Us</h1>
         <p className="text-ink-muted mt-5 max-w-2xl text-justify text-lg">
-          Reach the Core Defenses team. Tell us about your program or inquiry and
-          we&apos;ll route it to the right group.
+          Reach the Core Defenses team. Tell us about your program or inquiry
+          and we&apos;ll route it to the right group.
         </p>
       </Reveal>
 

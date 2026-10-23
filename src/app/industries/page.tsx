@@ -18,7 +18,8 @@ export default function IndustriesPage() {
       <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
         <Reveal as="section">
           <h1 className="text-ink text-3xl font-bold md:text-4xl">
-            Industries</h1>
+            Industries
+          </h1>
           <p className="text-ink-muted mt-6 text-justify text-lg">
             Energy, nuclear, defense, and industrial operators depend on
             accurate data and secure communications. A compromised data point or
@@ -40,24 +41,29 @@ export default function IndustriesPage() {
         </div>
 
         <Reveal as="section" className="mt-12 md:mt-16">
-          <h2 className="text-ink text-2xl font-semibold">
-            Use Cases
-          </h2>
+          <h2 className="text-ink text-2xl font-semibold">Use Cases</h2>
           <div className="mt-6 grid auto-rows-[minmax(200px,auto)] gap-6 md:grid-cols-2 lg:grid-cols-4">
             {industries.map((industry, i) => {
               let bentoClass = "";
-              if (i === 0) bentoClass = "md:col-span-2 lg:col-span-3 lg:row-span-2 min-h-[300px]";
-              else if (i === 1) bentoClass = "md:col-span-1 lg:col-span-1 lg:row-span-1";
-              else if (i === 2) bentoClass = "md:col-span-1 lg:col-span-2 lg:row-span-1";
-              else if (i === 3) bentoClass = "md:col-span-2 lg:col-span-2 lg:row-span-1";
-              
+              if (i === 0)
+                bentoClass =
+                  "md:col-span-2 lg:col-span-3 lg:row-span-2 min-h-[300px]";
+              else if (i === 1)
+                bentoClass = "md:col-span-1 lg:col-span-1 lg:row-span-1";
+              else if (i === 2)
+                bentoClass = "md:col-span-1 lg:col-span-2 lg:row-span-1";
+              else if (i === 3)
+                bentoClass = "md:col-span-2 lg:col-span-2 lg:row-span-1";
+
               return (
                 <MotionCard
                   key={industry.name}
                   className={`border-line bg-surface hover:border-accent flex flex-col border p-6 transition-colors ${bentoClass}`}
                 >
-                  <h3 className="text-ink text-2xl font-bold">{industry.name}</h3>
-                  <div className="bg-primary h-0.5 w-8 mt-3 mb-3 opacity-50" />
+                  <h3 className="text-ink text-2xl font-bold">
+                    {industry.name}
+                  </h3>
+                  <div className="bg-primary mt-3 mb-3 h-0.5 w-8 opacity-50" />
                   <p className="text-ink-muted flex-1 text-justify">
                     {industry.description}
                   </p>
