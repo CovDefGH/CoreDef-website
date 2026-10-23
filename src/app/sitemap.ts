@@ -13,8 +13,6 @@ const ROUTES = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return ROUTES.map((path) => ({
-    url: `${BASE_URL}${path}`,
-    lastModified: new Date(),
-  }));
+  // ponytail: no lastModified, a fake always-now date trains crawlers to ignore it
+  return ROUTES.map((path) => ({ url: `${BASE_URL}${path}` }));
 }

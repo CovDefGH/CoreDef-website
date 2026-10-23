@@ -25,18 +25,24 @@ export const metadata: Metadata = {
     template: "%s | Core Defenses",
   },
   description,
+  alternates: { canonical: "./" },
   verification: { google: "UuTw9cncG44EELkIwHlPGDlYQkfcboqEc-ZJQ-rc2x4" },
   openGraph: {
-    title,
-    description,
     siteName: "Core Defenses",
     type: "website",
-    images: ["/hero-poster.jpg"],
+    locale: "en_US",
+    url: "./",
+    images: [
+      {
+        url: "/hero-poster.jpg",
+        width: 1920,
+        height: 1080,
+        alt: "Core Defenses: data analytics for critical infrastructure",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
     images: ["/hero-poster.jpg"],
   },
 };
