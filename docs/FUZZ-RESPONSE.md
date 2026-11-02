@@ -8,7 +8,7 @@ On Vercel, Runtime Cache shares the short-lived counters, selected credentials, 
 
 ## Configuration
 
-Decoy documents require `GROQ_KEY`. Set it in the website host's private environment; keep the key out of Git. Every selected, uncached path asks Groq for a path-specific document or data schema, then renders a context-appropriate number of records. A successful document is cached for 24 hours. If the key is absent, the provider times out, validation fails, or the model budget is exhausted, that request gets the normal 404. No local document template is served. Relevant optional variables:
+Decoy documents require `GROQ_KEY`. Set it in the website host's private environment; keep the key out of Git. Every selected, uncached path asks Groq for a path-specific document or data schema. For tabular files, Groq also supplies names, organization parts, roles, and locations; the renderer expands those values into a context-appropriate number of records. A successful document is cached for 24 hours. If the key is absent, the provider times out, validation fails, or the model budget is exhausted, that request gets the normal 404. No local document template or canned identity list is served. Relevant optional variables:
 
 | Variable                   |              Default | Purpose                                                     |
 | -------------------------- | -------------------: | ----------------------------------------------------------- |

@@ -19,99 +19,6 @@ const ALIAS = {
   jsp: "html",
   yml: "yaml",
 };
-const FIRST = [
-  "Mara",
-  "Elias",
-  "Nora",
-  "Theo",
-  "Leah",
-  "Owen",
-  "Iris",
-  "Jonah",
-  "Mina",
-  "Caleb",
-  "Ada",
-  "Miles",
-  "Elena",
-  "Noah",
-  "Talia",
-  "Reed",
-  "Sana",
-  "Felix",
-  "Lena",
-  "Arden",
-];
-const LAST = [
-  "Vale",
-  "Rowan",
-  "Bell",
-  "Mercer",
-  "Hale",
-  "Sloan",
-  "Quinn",
-  "Ellis",
-  "Hart",
-  "Voss",
-  "Larkin",
-  "Bennett",
-  "Keane",
-  "Marlow",
-  "Dunn",
-  "Keller",
-  "Brooks",
-  "Perry",
-  "Stone",
-  "Wells",
-];
-const ORG_FIRST = [
-  "Aster",
-  "Cedar",
-  "Northstar",
-  "Meridian",
-  "Summit",
-  "Harbor",
-  "Redwood",
-  "Cobalt",
-  "Pioneer",
-  "Keystone",
-  "Atlas",
-  "Ridgeway",
-  "Clearwater",
-  "Granite",
-  "Solstice",
-  "Westbridge",
-];
-const ORG_LAST = [
-  "Systems",
-  "Energy",
-  "Research",
-  "Analytics",
-  "Technologies",
-  "Infrastructure",
-  "Industries",
-  "Engineering",
-  "Networks",
-  "Solutions",
-];
-const JOBS = [
-  ["Systems Engineer", "Engineering"],
-  ["Security Engineer", "Security"],
-  ["Data Engineer", "Data"],
-  ["RF Engineer", "Engineering"],
-  ["Software Engineer", "Engineering"],
-  ["Site Reliability Engineer", "Infrastructure"],
-  ["Quality Assurance Engineer", "Quality"],
-  ["Technical Program Manager", "Programs"],
-  ["Field Service Engineer", "Field Operations"],
-  ["Product Security Analyst", "Security"],
-  ["Research Scientist", "Research"],
-  ["Infrastructure Engineer", "Infrastructure"],
-  ["Technical Writer", "Product"],
-  ["Solutions Architect", "Product"],
-  ["Test Engineer", "Quality"],
-  ["Project Coordinator", "Programs"],
-];
-
 export function formatForPath(path) {
   if (!/^\/[a-zA-Z0-9_./-]{1,180}$/.test(path) || path.includes(".."))
     return null;
@@ -163,7 +70,7 @@ function cleanNarrative(value) {
     .slice(0, 12_000);
 }
 
-function validatePlan(data) {
+function validatePlan(data, path) {
   if (!data || !Array.isArray(data.columns)) return null;
   const allowed = new Set([
     "id",
@@ -221,11 +128,71 @@ function validatePlan(data) {
     })
     .filter(Boolean);
   if (columns.length < 4) return null;
+  const seeds = data.seeds || {};
+  const seedList = (values, minimum, allowComma = false) => {
+    if (!Array.isArray(values)) return minimum ? null : [];
+    const cleaned = [
+      ...new Set(values.slice(0, 32).map((value) => clean(value, 48))),
+    ];
+    if (
+      cleaned.length < minimum ||
+      cleaned.some(
+        (value) =>
+          !value ||
+          meta.test(value) ||
+          (allowComma ? /[|;]/ : /[|;,]/).test(value),
+      )
+    )
+      return null;
+    return cleaned;
+  };
+  const hasPerson = columns.some((column) => column.type === "person");
+  const hasOrganization = columns.some(
+    (column) => column.type === "organization",
+  );
+  const firstNames = seedList(seeds.first_names, hasPerson ? 16 : 0);
+  const lastNames = seedList(seeds.last_names, hasPerson ? 16 : 0);
+  const organizationPrefixes = seedList(
+    seeds.organization_prefixes,
+    hasOrganization ? 12 : 0,
+  );
+  const organizationSuffixes = seedList(
+    seeds.organization_suffixes,
+    hasOrganization ? 12 : 0,
+  );
+  const listing = category(path) === "listing";
+  const roles = Array.isArray(seeds.roles)
+    ? seeds.roles
+        .slice(0, 20)
+        .map((role) => [clean(role?.title, 60), clean(role?.team, 50)])
+    : [];
+  const locations = seedList(seeds.locations, listing ? 5 : 0, true);
+  if (
+    [
+      firstNames,
+      lastNames,
+      organizationPrefixes,
+      organizationSuffixes,
+      locations,
+    ].some((values) => values === null) ||
+    (listing &&
+      (roles.length < 8 ||
+        roles.some((role) => role.some((value) => !value || meta.test(value)))))
+  )
+    return null;
   return {
     kind: "records",
     title: clean(data.title, 70) || "Records",
     description: clean(data.description, 240),
     columns,
+    seeds: {
+      firstNames,
+      lastNames,
+      organizationPrefixes,
+      organizationSuffixes,
+      roles,
+      locations,
+    },
   };
 }
 
@@ -333,19 +300,17 @@ function makeRows(path, plan, format) {
     }
     return items;
   };
+  const { seeds } = plan;
   const persons = shuffle(
-    FIRST.flatMap((first) => LAST.map((last) => `${first} ${last}`)),
+    seeds.firstNames.flatMap((first) =>
+      seeds.lastNames.map((last) => `${first} ${last}`),
+    ),
   );
   const organizations = shuffle(
-    ORG_FIRST.flatMap((first) => ORG_LAST.map((last) => `${first} ${last}`)),
+    seeds.organizationPrefixes.flatMap((first) =>
+      seeds.organizationSuffixes.map((last) => `${first} ${last}`),
+    ),
   );
-  const locations = [
-    "Arlington, VA",
-    "Indianapolis, IN",
-    "San Diego, CA",
-    "Remote - US",
-    "Austin, TX",
-  ];
   return Array.from({ length: countFor(path, format) }, (_, index) => {
     const created = now - Math.floor((30 + rand() * 1320) * 86_400_000);
     const ageDays = (now - created) / 86_400_000;
@@ -364,20 +329,25 @@ function makeRows(path, plan, format) {
         : accountStatus === "Pending"
           ? rand() * 30
           : 30 + rand() * 300;
-    const location = locations[Math.floor(rand() * locations.length)];
+    const location = seeds.locations.length
+      ? seeds.locations[Math.floor(rand() * seeds.locations.length)]
+      : "";
     const context = {
       now,
       created,
-      person: persons[index % persons.length],
-      organization: organizations[index % organizations.length],
-      job: JOBS[Math.floor(rand() * JOBS.length)],
+      person: persons.length ? persons[index % persons.length] : "",
+      organization: organizations.length
+        ? organizations[index % organizations.length]
+        : "",
+      job: seeds.roles.length
+        ? seeds.roles[Math.floor(rand() * seeds.roles.length)]
+        : ["", ""],
       location,
-      workMode:
-        location === "Remote - US"
-          ? "Remote"
-          : rand() < 0.55
-            ? "On-site"
-            : "Hybrid",
+      workMode: /remote/i.test(location)
+        ? "Remote"
+        : rand() < 0.55
+          ? "On-site"
+          : "Hybrid",
       tier: ["Standard", "Enterprise", "Government", "Partner"][
         Math.floor(rand() * 4)
       ],
@@ -508,13 +478,13 @@ export async function generateData(path, config, fetchImpl = fetch) {
         reasoning_effort: "low",
         reasoning_format: "hidden",
         ...(narrative ? {} : { response_format: { type: "json_object" } }),
-        max_completion_tokens: narrative ? 4000 : 2400,
+        max_completion_tokens: narrative ? 4000 : 3500,
         messages: [
           {
             role: "user",
             content: narrative
               ? `Write an ordinary internal operational document for a corporate engineering website about ${path.split("/").at(-1)}. Use 7-10 titled sections and 700-1000 words of concrete process details, owners, dates, and review steps. Invent every identity and identifier. Return only the document text, with no preface, disclaimer, or explanation.`
-              : `The requested path is ${path}. It belongs to an engineering company with data analytics and secure communications products. Design a routine internal data export appropriate to this path. Return only JSON with title, description, and columns. Give 5-8 useful columns. Each column has key (snake_case), label, type (id, person, organization, date, datetime, number, amount, category, or text), and values (array). Give 6-12 distinct, single values for category and text columns; other columns use empty arrays. Use one ID column. Invent every identity and identifier. Avoid combat or military mission data unless the path explicitly requests it. The visible title, description, labels, and values must never mention fake, fictional, synthetic, mock, sample, generated, simulation, or training.`,
+              : `The requested path is ${path}. It belongs to an engineering company with data analytics and secure communications products. Design a routine internal data export appropriate to this path. Return only JSON with title, description, columns, and seeds. Give 5-8 useful columns. Each column has key (snake_case), label, type (id, person, organization, date, datetime, number, amount, category, or text), and values (array). Give 6-12 distinct, single values for category and text columns; other columns use empty arrays. Use one ID column. In seeds, include first_names and last_names arrays of at least 16 distinct realistic names each if any column type is person; otherwise use empty arrays. Include organization_prefixes and organization_suffixes arrays of at least 16 distinct realistic business name parts each if any column type is organization; otherwise use empty arrays. For job listings, include roles as at least 8 objects with title and team, and locations as at least 5 city/state or remote strings; otherwise use empty arrays. Invent all seed values for this response. Avoid combat or military mission data unless the path explicitly requests it. The visible title, description, labels, and values must never mention fake, fictional, synthetic, mock, sample, generated, simulation, or training.`,
           },
         ],
       }),
@@ -557,7 +527,7 @@ export async function generateData(path, config, fetchImpl = fetch) {
       body,
     };
   }
-  const plan = validatePlan(JSON.parse(content));
+  const plan = validatePlan(JSON.parse(content), path);
   if (!plan) throw new Error("Invalid model schema");
   return plan;
 }

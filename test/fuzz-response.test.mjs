@@ -19,6 +19,14 @@ test("missing paths become stable decoys, and selected login credentials can be 
   const plan = {
     title: "Patient Registry",
     description: "Patient intake and care records.",
+    seeds: {
+      first_names: Array.from({ length: 16 }, (_, index) => `Given${index}`),
+      last_names: Array.from({ length: 16 }, (_, index) => `Family${index}`),
+      organization_prefixes: [],
+      organization_suffixes: [],
+      roles: [],
+      locations: [],
+    },
     columns: [
       { key: "patient_id", label: "Patient ID", type: "id", values: [] },
       {
@@ -83,6 +91,8 @@ test("missing paths become stable decoys, and selected login credentials can be 
     const body = await decoy.text();
     assert.match(body, /Records: 250/);
     assert.ok(body.length > 15_000);
+    assert.match(body, /Given\d+ Family\d+/);
+    assert.doesNotMatch(body, /Mara Vale|Elias Ellis/);
     const reopened = await handleRequest(
       new Request("http://localhost:3000/patients.txt", { headers: browser }),
     );

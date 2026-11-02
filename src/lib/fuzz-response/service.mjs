@@ -3,7 +3,7 @@ import { getCache, ipAddress } from "@vercel/functions";
 import { formatForPath, generateData, renderDocument } from "./decoy.mjs";
 
 const cache = getCache({
-  namespace: "fuzz-response-v2",
+  namespace: "fuzz-response-v3",
   keyHashFunction: (key) => digest(key),
 });
 const localCache = new Map();
