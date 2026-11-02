@@ -9,11 +9,16 @@ const cache = getCache({
 const localCache = new Map();
 const inflight = new Map();
 const MAX_LOCAL_ENTRIES = 2000;
+const DOCUMENT_CACHE_TTL_SECONDS = 5 * 60;
 const sleep = (ms) => new Promise((done) => setTimeout(done, ms));
 const delay = () => sleep(75 + randomInt(176));
 
 function digest(value) {
   return createHash("sha256").update(value).digest("hex");
+}
+
+function documentKey(path) {
+  return `document:v2:${path}`;
 }
 
 function number(name, fallback, min, max) {
@@ -146,7 +151,7 @@ async function allowDecoy(options) {
 }
 
 async function documentFor(path, format, options) {
-  const key = `document:${path}`;
+  const key = documentKey(path);
   const cached = await read(key);
   if (cached?.body && cached?.contentType) return cached;
   if (inflight.has(key)) return inflight.get(key);
@@ -155,7 +160,7 @@ async function documentFor(path, format, options) {
     try {
       const data = await generateData(path, options);
       const document = renderDocument(path, format, data);
-      await write(key, document, 86_400);
+      await write(key, document, DOCUMENT_CACHE_TTL_SECONDS);
       return document;
     } catch (error) {
       if (error.cooldownMs)
@@ -322,7 +327,7 @@ export async function handleRequest(request) {
 
   const format = formatForPath(path);
   if (!format) return null;
-  const cached = await read(`document:${path}`);
+  const cached = await read(documentKey(path));
   if (cached?.body && cached?.contentType) {
     await delay();
     return documentResponse(cached, method);

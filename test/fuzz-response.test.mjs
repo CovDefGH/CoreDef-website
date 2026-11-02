@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { handleRequest } from "../src/lib/fuzz-response/service.mjs";
 import { generateData } from "../src/lib/fuzz-response/decoy.mjs";
 
-test("missing paths become stable decoys, and selected login credentials can be reused", async () => {
+test("missing paths refresh after five minutes, and selected login credentials can be reused", async () => {
   const names = [
     "FUZZ_MIN_DISTINCT_MISSES",
     "DECOY_RATE",
@@ -15,6 +15,8 @@ test("missing paths become stable decoys, and selected login credentials can be 
     names.map((name) => [name, process.env[name]]),
   );
   const originalFetch = globalThis.fetch;
+  const originalNow = Date.now;
+  const start = originalNow();
   let modelCalls = 0;
   const plan = {
     title: "Patient Registry",
@@ -98,6 +100,14 @@ test("missing paths become stable decoys, and selected login credentials can be 
     );
     assert.equal(await reopened.text(), body);
     assert.equal(modelCalls, 1);
+    process.env.FUZZ_MIN_DISTINCT_MISSES = "1";
+    Date.now = () => start + 301_000;
+    const refreshed = await handleRequest(
+      new Request("http://localhost:3000/patients.txt", { headers: scanner }),
+    );
+    assert.equal(refreshed.status, 200);
+    assert.equal(modelCalls, 2);
+    Date.now = originalNow;
     assert.equal(
       await handleRequest(
         new Request("http://localhost:3000/missing.js", { headers: scanner }),
@@ -143,6 +153,7 @@ test("missing paths become stable decoys, and selected login credentials can be 
     assert.equal(rejected.headers.get("location"), "/login");
   } finally {
     globalThis.fetch = originalFetch;
+    Date.now = originalNow;
     for (const name of names) {
       if (old[name] === undefined) delete process.env[name];
       else process.env[name] = old[name];
