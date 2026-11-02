@@ -1,0 +1,27 @@
+[Unit]
+Description=Core Defenses loopback shell honeypot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+WorkingDirectory=/opt/coredef-honeyshell
+EnvironmentFile=/etc/coredef-site.env
+ExecStart=/usr/bin/python3 /opt/coredef-honeyshell/server.py --port 8023
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+MemoryMax=192M
+TasksMax=40
+
+[Install]
+WantedBy=multi-user.target
