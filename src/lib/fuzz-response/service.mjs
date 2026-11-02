@@ -1,15 +1,9 @@
 import { createHash, randomBytes, randomInt } from "node:crypto";
 import { getCache, ipAddress } from "@vercel/functions";
-import {
-  formatForPath,
-  generateData,
-  needsModel,
-  renderDocument,
-  templateDocument,
-} from "./decoy.mjs";
+import { formatForPath, generateData, renderDocument } from "./decoy.mjs";
 
 const cache = getCache({
-  namespace: "fuzz-response-v1",
+  namespace: "fuzz-response-v2",
   keyHashFunction: (key) => digest(key),
 });
 const localCache = new Map();
@@ -157,17 +151,18 @@ async function documentFor(path, format, options) {
   if (cached?.body && cached?.contentType) return cached;
   if (inflight.has(key)) return inflight.get(key);
   const task = (async () => {
-    let document;
-    if (options.groqKey && needsModel(path) && (await allowModel(options))) {
+    if (!options.groqKey || !(await allowModel(options))) return null;
+    try {
       const data = await generateData(path, options);
-      if (data.cooldownMs)
-        await write("model-cooldown", true, Math.ceil(data.cooldownMs / 1000));
-      document = renderDocument(path, format, data);
-    } else {
-      document = templateDocument(path, format);
+      const document = renderDocument(path, format, data);
+      await write(key, document, 86_400);
+      return document;
+    } catch (error) {
+      if (error.cooldownMs)
+        await write("model-cooldown", true, Math.ceil(error.cooldownMs / 1000));
+      console.warn(`Decoy generation failed for ${path}: ${error.message}`);
+      return null;
     }
-    await write(key, document, 86_400);
-    return document;
   })();
   inflight.set(key, task);
   try {
@@ -322,7 +317,7 @@ export async function handleRequest(request) {
     if (!format) return null;
     const document = await documentFor(path, format, options);
     await delay();
-    return documentResponse(document, method);
+    return document ? documentResponse(document, method) : null;
   }
 
   const format = formatForPath(path);
@@ -344,5 +339,5 @@ export async function handleRequest(request) {
   }
   const document = await documentFor(path, format, options);
   await delay();
-  return documentResponse(document, method);
+  return document ? documentResponse(document, method) : null;
 }
