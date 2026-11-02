@@ -350,19 +350,51 @@ async def serve_client(reader, writer, model):
         await writer.wait_closed()
 
 
+async def serve_json_client(reader, writer, model):
+    shell = ShellSession(model)
+    try:
+        writer.write((json.dumps({"output": "", "prompt": shell.prompt(), "done": False}) + "\n").encode())
+        await writer.drain()
+        while True:
+            try:
+                line = await asyncio.wait_for(reader.readline(), timeout=300)
+            except (asyncio.TimeoutError, ValueError):
+                break
+            if not line:
+                break
+            try:
+                payload = json.loads(line)
+                command = payload["command"]
+                if not isinstance(command, str) or len(command) > 2048:
+                    raise ValueError("invalid command")
+            except (ValueError, KeyError, TypeError):
+                output, done = "Invalid command\n", False
+            else:
+                output, done = await shell.run(command)
+            writer.write((json.dumps({"output": output, "prompt": shell.prompt(), "done": done}) + "\n").encode())
+            await writer.drain()
+            if done:
+                break
+    finally:
+        writer.close()
+        await writer.wait_closed()
+
+
 async def main():
     parser = argparse.ArgumentParser(description="Loopback-only virtual shell honeypot")
     parser.add_argument("--port", type=int, default=8023)
+    parser.add_argument("--api-port", type=int, default=8024)
     args = parser.parse_args()
-    if not 1024 <= args.port <= 65535:
-        parser.error("port must be between 1024 and 65535")
+    if not 1024 <= args.port <= 65535 or not 1024 <= args.api_port <= 65535 or args.port == args.api_port:
+        parser.error("ports must be distinct and between 1024 and 65535")
     key = os.environ.get("GROQ_KEY", "")
     if not key:
         parser.error("GROQ_KEY is required; there is no pregenerated fallback")
     model = GroqModel(key, os.environ.get("GROQ_MODEL", "openai/gpt-oss-20b"))
     server = await asyncio.start_server(lambda r, w: serve_client(r, w, model), "127.0.0.1", args.port, limit=4096)
-    async with server:
-        await server.serve_forever()
+    api_server = await asyncio.start_server(lambda r, w: serve_json_client(r, w, model), "127.0.0.1", args.api_port, limit=4096)
+    async with server, api_server:
+        await asyncio.gather(server.serve_forever(), api_server.serve_forever())
 
 
 if __name__ == "__main__":

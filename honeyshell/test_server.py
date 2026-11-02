@@ -1,7 +1,7 @@
 import asyncio
 import unittest
 
-from server import ShellSession
+from server import ShellSession, serve_json_client
 
 
 class FakeModel:
@@ -23,6 +23,33 @@ class FakeModel:
 
 
 class ShellTests(unittest.TestCase):
+    def test_json_channel_preserves_session_and_returns_structured_output(self):
+        async def check():
+            model = FakeModel()
+            server = await asyncio.start_server(lambda r, w: serve_json_client(r, w, model), "127.0.0.1", 0)
+            try:
+                port = server.sockets[0].getsockname()[1]
+                reader, writer = await asyncio.open_connection("127.0.0.1", port)
+                try:
+                    greeting = await reader.readline()
+                    self.assertIn(b'"prompt": "app@coredef:/opt/coredef$ "', greeting)
+                    writer.write(b'{"command":"ls"}\n')
+                    await writer.drain()
+                    listing = await reader.readline()
+                    self.assertIn(b"patients.csv", listing)
+                    writer.write(b'{"command":"cd records"}\n')
+                    await writer.drain()
+                    changed = await reader.readline()
+                    self.assertIn(b"/opt/coredef/records$ ", changed)
+                finally:
+                    writer.close()
+                    await writer.wait_closed()
+            finally:
+                server.close()
+                await server.wait_closed()
+
+        asyncio.run(check())
+
     def test_directory_and_file_state_is_per_session(self):
         async def check():
             model = FakeModel()
