@@ -1,0 +1,10 @@
+model.env
+*.ext4
+Image*
+ubuntu-*.squashfs
+firecracker
+firecracker-*.tgz
+rootfs/
+deps/
+run/
+__pycache__/
