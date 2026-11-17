@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Host-side, budgeted model broker. Guest sees only LIST/STAT/READ over vsock."""
+"""Budgeted model broker for FUSE listings, metadata and reads."""
 
 import json
 import os
@@ -13,13 +13,19 @@ import urllib.error
 from pathlib import Path
 
 BASE = Path.home() / "coredef-microvm"
-SOCKET = BASE / "run/guest.vsock_6000"
+SOCKET = Path(os.environ.get("COREDEF_BROKER_SOCKET", BASE / "run/guest.vsock_6000"))
 MODEL_URL = "https://api.groq.com/openai/v1/chat/completions"
 TTL = 300
 NAME = re.compile(r"^[A-Za-z0-9._-]{1,60}$")
 DISCLOSURE = re.compile(r"\b(fake|fictional|synthetic|mock|placeholder)\b", re.I)
 CONTROL = re.compile(r"[\x00-\x08\x0b-\x1f\x7f-\x9f]")
 TEXT_EXTENSIONS = {".txt", ".csv", ".tsv", ".json", ".jsonl", ".yaml", ".yml", ".xml", ".log", ".env", ".ini", ".conf", ".cfg", ".md", ".sql"}
+
+
+def estimated_size(path):
+    extension = posixpath.splitext(path)[1].lower()
+    base = 1500 if extension in (".env", ".ini", ".conf", ".cfg", ".yaml", ".yml") or path.endswith("/.env") else 5000
+    return base + sum((index + 1) * ord(char) for index, char in enumerate(path)) % 1201 - 600
 
 
 def read_key():
@@ -36,7 +42,7 @@ class Broker:
         self.model = os.environ.get("GROQ_MODEL", "openai/gpt-oss-20b")
         self.lock = threading.RLock()
         self.entries = {}  # directory path -> (expiry, [(name, kind)])
-        self.files = {}  # file path -> (expiry, bytes), RAM only
+        self.real_dirs = {}  # directories confirmed by the FUSE underlay
         self.minute = []
         self.day = []
 
@@ -112,6 +118,8 @@ class Broker:
     def kind(self, path):
         if path == "/":
             return "dir"
+        if self.real_dirs.get(path, 0) > time.monotonic():
+            return "dir"
         parent, name = posixpath.split(path)
         parent = parent or "/"
         if path.count("/") > 4:
@@ -124,10 +132,6 @@ class Broker:
         return None
 
     def file(self, path):
-        now = time.monotonic()
-        current = self.files.get(path)
-        if current and current[0] > now:
-            return current[1]
         extension = posixpath.splitext(path)[1].lower()
         if extension in (".csv", ".tsv"):
             shape = "A coherent delimited export with a header and at least 50 rows."
@@ -141,13 +145,16 @@ class Broker:
             shape = "A detailed internal operational file of roughly 600-900 words."
         prompt = (
             f"Write only the contents of {path} on a private engineering company Linux server. "
-            + shape + " Make all identities, identifiers, and values invented and nonfunctional. "
+            + shape + f" Aim for about {estimated_size(path)} UTF-8 bytes. "
+            "Make all identities, identifiers, and values invented and nonfunctional. "
             "No actual secrets, private data, Markdown fence, preface, disclaimer, or mention of "
             "simulation, sample, mock, fictional, synthetic, or AI generation."
         )
         minimum_length = 40 if extension in (".json", ".env", ".ini", ".conf", ".cfg") else 150
         for attempt in range(2):
-            answer = CONTROL.sub("", self.complete(prompt, 4000, extension == ".json")).replace("\x1b", "")
+            answer = CONTROL.sub("", self.complete(prompt, 3000, extension == ".json")).replace("\x1b", "")
+            answer = re.sub(r"\A```[A-Za-z0-9_-]*\s*\n", "", answer)
+            answer = re.sub(r"\n```\s*\Z", "", answer)
             valid = minimum_length <= len(answer) <= 24_000 and not DISCLOSURE.search(answer)
             if valid and extension == ".json":
                 try:
@@ -159,21 +166,25 @@ class Broker:
             if attempt:
                 raise RuntimeError("invalid file response")
         content = (answer + ("" if answer.endswith("\n") else "\n")).encode()
-        self.files[path] = (now + TTL, content)
         return content
 
     def request(self, line):
         verb, sep, path = line.partition(" ")
-        if not sep or verb not in ("LIST", "STAT", "READ") or not path.startswith("/") or len(path) > 240 or posixpath.normpath(path) != path or "\x00" in path:
+        if not sep or verb not in ("LIST", "LIST_REAL", "STAT", "READ") or not path.startswith("/") or len(path) > 240 or posixpath.normpath(path) != path or "\x00" in path:
             raise ValueError("invalid request")
         with self.lock:
             now = time.monotonic()
             self.entries = {k: v for k, v in self.entries.items() if v[0] > now}
-            self.files = {k: v for k, v in self.files.items() if v[0] > now}
+            self.real_dirs = {k: v for k, v in self.real_dirs.items() if v > now}
+            if verb == "LIST_REAL":
+                entries = self.directory(path)
+                self.real_dirs[path] = now + TTL
+                return "".join(name + "\t" + child_kind + "\n" for name, child_kind in entries).encode()
             kind = self.kind(path)
             if verb == "STAT":
                 if kind == "file":
-                    return ("file " + str(len(self.file(path)))).encode()
+                    # shortcut: size is an estimate until open, exact metadata needs retained content.
+                    return ("file " + str(estimated_size(path))).encode()
                 return (kind or "none").encode()
             if kind != ("dir" if verb == "LIST" else "file"):
                 raise FileNotFoundError(path)

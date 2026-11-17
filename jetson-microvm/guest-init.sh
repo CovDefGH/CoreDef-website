@@ -15,7 +15,7 @@ for slot in 0 1 2 3 4 5; do
   chmod 0700 "/home/app/$slot"
 done
 hostname coredef-app
-/opt/coredef/fuse-daemon -f -o ro,allow_other,default_permissions /srv/vault > /dev/console 2>&1 &
+/opt/coredef/fuse-daemon -f -o ro,allow_other,default_permissions,attr_timeout=0,entry_timeout=0,negative_timeout=0 /srv/vault > /dev/console 2>&1 &
 sleep 1
 if ! mountpoint -q /srv/vault; then
   echo 'vault mount failed' > /dev/console

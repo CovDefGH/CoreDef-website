@@ -21,6 +21,8 @@ if [ -d rootfs ]; then
 fi
 unsquashfs -no-progress -d rootfs ubuntu.squashfs
 mkdir -p rootfs/opt/coredef rootfs/srv/vault rootfs/home/app
+cp rootfs/etc/os-release rootfs/srv/vault/system-info.txt
+chmod 0644 rootfs/srv/vault/system-info.txt
 cp guest_server.py rootfs/opt/coredef/guest_server.py
 cp fuse-daemon rootfs/opt/coredef/fuse-daemon
 cp /lib/aarch64-linux-gnu/libfuse3.so.3 rootfs/usr/lib/aarch64-linux-gnu/libfuse3.so.3
