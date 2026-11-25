@@ -207,7 +207,7 @@ export function HeroScrollScene() {
         >
           <div className="mt-auto max-w-3xl">
             <h1 className="mt-5 max-w-5xl text-[clamp(2rem,5vmin,6rem)] leading-[1.05] font-semibold tracking-[-.02em] text-white md:font-bold">
-              Precision analytics <br className="hidden md:block" /> for
+              Secure precision analytics <br className="hidden md:block" /> for
               critical infrastructure.
             </h1>
             <p className="mt-7 max-w-2xl text-justify text-[clamp(1rem,2vmin,1.5rem)] leading-relaxed text-white/82">
